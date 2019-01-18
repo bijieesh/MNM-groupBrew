@@ -12,6 +12,10 @@
 		3D05EFBF21F128EE00174A91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFBD21F128EE00174A91 /* Main.storyboard */; };
 		3D05EFC121F128F000174A91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFC021F128F000174A91 /* Assets.xcassets */; };
 		3D05EFC421F128F000174A91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFC221F128F000174A91 /* LaunchScreen.storyboard */; };
+		3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFCD21F13B1600174A91 /* Networking.swift */; };
+		3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFD021F21A2400174A91 /* LoginRequest.swift */; };
+		3D05EFD421F21B7700174A91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFD321F21B7700174A91 /* User.swift */; };
+		3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFD521F2281C00174A91 /* SimpleError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		3D05EFC021F128F000174A91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D05EFC321F128F000174A91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D05EFC521F128F000174A91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D05EFCD21F13B1600174A91 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		3D05EFD021F21A2400174A91 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		3D05EFD321F21B7700174A91 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3D05EFD521F2281C00174A91 /* SimpleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,7 @@
 		3D05EFB821F128EE00174A91 /* Brew */ = {
 			isa = PBXGroup;
 			children = (
+				3D05EFCB21F139EC00174A91 /* BuisinessLogic */,
 				3D05EFB921F128EE00174A91 /* AppDelegate.swift */,
 				3D05EFBB21F128EE00174A91 /* ViewController.swift */,
 				3D05EFBD21F128EE00174A91 /* Main.storyboard */,
@@ -62,6 +71,41 @@
 				3D05EFC521F128F000174A91 /* Info.plist */,
 			);
 			path = Brew;
+			sourceTree = "<group>";
+		};
+		3D05EFCB21F139EC00174A91 /* BuisinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFD221F21B6700174A91 /* Entities */,
+				3D05EFCC21F13A7000174A91 /* Networking */,
+			);
+			path = BuisinessLogic;
+			sourceTree = "<group>";
+		};
+		3D05EFCC21F13A7000174A91 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFCF21F219EA00174A91 /* Requests */,
+				3D05EFCD21F13B1600174A91 /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		3D05EFCF21F219EA00174A91 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFD021F21A2400174A91 /* LoginRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		3D05EFD221F21B6700174A91 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFD321F21B7700174A91 /* User.swift */,
+				3D05EFD521F2281C00174A91 /* SimpleError.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +179,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
+				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
+				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,
 				3D05EFBC21F128EE00174A91 /* ViewController.swift in Sources */,
+				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

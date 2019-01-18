@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        LoginRequest(email: "vasylkhmil1995@gmail.com", password: "Qwerty123~").execute(
+            onSuccess: { (response) in
+                
+        },
+            onError: { (error) in
+
+        })
+
         return true
     }
 
