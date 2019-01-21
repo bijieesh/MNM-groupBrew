@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController" customModule="Brew" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="h8E-oi-JLs" id="U6n-iP-uGP"/>
+                <outlet property="passwordTextField" destination="csR-D3-uD6" id="wpa-d1-fCM"/>
+                <outlet property="view" destination="sRq-W5-qe9" id="0kB-zj-3Oi"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="sRq-W5-qe9" customClass="TPKeyboardAvoidingScrollView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4r6-QL-GFk">
+                    <rect key="frame" x="0.0" y="10" width="375" height="768"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="34R-2L-zPW">
+                            <rect key="frame" x="0.0" y="192" width="375" height="63"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpb-jY-dAr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="27.5"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signin to continue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hp-jU-yjz">
+                                    <rect key="frame" x="0.0" y="42.5" width="375" height="20.5"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                    <color key="textColor" white="0.45199197168508287" alpha="0.54424579326923073" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="yni-kI-ShJ">
+                            <rect key="frame" x="24" y="355" width="327" height="230"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h8E-oi-JLs">
+                                    <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="UHq-Ra-ATb"/>
+                                    </constraints>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="csR-D3-uD6">
+                                    <rect key="frame" x="0.0" y="85" width="327" height="60"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="fqO-U5-FrI"/>
+                                    </constraints>
+                                    <nil key="textColor"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9N-eS-ruS">
+                                    <rect key="frame" x="0.0" y="170" width="327" height="60"/>
+                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="K8a-eh-PsE"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                    <state key="normal" title="SIGN IN">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="signInPressed" destination="-1" eventType="touchUpInside" id="VLh-Pn-TWr"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="327" id="FwI-O0-8BZ"/>
+                            </constraints>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uSZ-ch-BfW">
+                            <rect key="frame" x="77" y="600" width="221" height="32.5"/>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="Don't have an account?">
+                                        <attributes>
+                                            <color key="NSColor" white="0.45733339090000003" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="17" name="SFProDisplay-Regular"/>
+                                            <font key="NSOriginalFont" size="17" name="SFProDisplay-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Signup">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="SFProDisplay-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <connections>
+                                <action selector="signUpPressed" destination="-1" eventType="touchUpInside" id="qS1-gg-0vv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="uSZ-ch-BfW" firstAttribute="top" secondItem="yni-kI-ShJ" secondAttribute="bottom" constant="15" id="3SY-Rs-D6Y"/>
+                        <constraint firstItem="yni-kI-ShJ" firstAttribute="centerX" secondItem="4r6-QL-GFk" secondAttribute="centerX" id="41d-BE-cfH"/>
+                        <constraint firstItem="34R-2L-zPW" firstAttribute="top" secondItem="4r6-QL-GFk" secondAttribute="top" constant="192" id="9EX-0c-sEY"/>
+                        <constraint firstItem="uSZ-ch-BfW" firstAttribute="centerX" secondItem="4r6-QL-GFk" secondAttribute="centerX" id="P1M-IP-YuO"/>
+                        <constraint firstItem="34R-2L-zPW" firstAttribute="leading" secondItem="4r6-QL-GFk" secondAttribute="leading" id="fRh-nV-5RB"/>
+                        <constraint firstAttribute="trailing" secondItem="34R-2L-zPW" secondAttribute="trailing" id="sat-KK-iRk"/>
+                        <constraint firstItem="yni-kI-ShJ" firstAttribute="top" secondItem="34R-2L-zPW" secondAttribute="bottom" constant="100" id="tFF-4L-PuN"/>
+                        <constraint firstAttribute="bottom" secondItem="uSZ-ch-BfW" secondAttribute="bottom" constant="16" id="ugF-C0-Aau"/>
+                        <constraint firstItem="34R-2L-zPW" firstAttribute="width" secondItem="4r6-QL-GFk" secondAttribute="width" id="w3G-ha-pdJ"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="4r6-QL-GFk" firstAttribute="centerX" secondItem="Zj3-qJ-xGP" secondAttribute="centerX" id="OTN-in-hvF"/>
+                <constraint firstItem="4r6-QL-GFk" firstAttribute="height" secondItem="sRq-W5-qe9" secondAttribute="height" id="dsl-Fo-pSL"/>
+                <constraint firstItem="4r6-QL-GFk" firstAttribute="width" secondItem="sRq-W5-qe9" secondAttribute="width" id="uaS-LA-L0s"/>
+                <constraint firstItem="4r6-QL-GFk" firstAttribute="centerY" secondItem="Zj3-qJ-xGP" secondAttribute="centerY" id="v00-cV-vzs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="Zj3-qJ-xGP"/>
+            <point key="canvasLocation" x="37.600000000000001" y="57.571214392803604"/>
+        </view>
+    </objects>
+</document>

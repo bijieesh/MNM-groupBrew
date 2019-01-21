@@ -8,21 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFB921F128EE00174A91 /* AppDelegate.swift */; };
-		3D05EFBC21F128EE00174A91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFBB21F128EE00174A91 /* ViewController.swift */; };
-		3D05EFBF21F128EE00174A91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFBD21F128EE00174A91 /* Main.storyboard */; };
 		3D05EFC121F128F000174A91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFC021F128F000174A91 /* Assets.xcassets */; };
 		3D05EFC421F128F000174A91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFC221F128F000174A91 /* LaunchScreen.storyboard */; };
 		3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFCD21F13B1600174A91 /* Networking.swift */; };
 		3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFD021F21A2400174A91 /* LoginRequest.swift */; };
 		3D05EFD421F21B7700174A91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFD321F21B7700174A91 /* User.swift */; };
 		3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFD521F2281C00174A91 /* SimpleError.swift */; };
+		3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFDF21F5C4B200174A91 /* SignInViewController.swift */; };
+		3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05EFE321F5C4E900174A91 /* AppViewController.swift */; };
+		3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFE521F5C54800174A91 /* SignInViewController.xib */; };
+		3D05EFFD21F5C8DE00174A91 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFEA21F5C8DE00174A91 /* SF-Pro-Display-Thin.otf */; };
+		3D05EFFE21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFEB21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf */; };
+		3D05EFFF21F5C8DE00174A91 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFEC21F5C8DE00174A91 /* SF-Pro-Display-RegularItalic.otf */; };
+		3D05F00021F5C8DE00174A91 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFED21F5C8DE00174A91 /* SF-Pro-Display-Light.otf */; };
+		3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFEE21F5C8DE00174A91 /* SF-Pro-Display-Regular.otf */; };
+		3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFEF21F5C8DE00174A91 /* SF-Pro-Display-Bold.otf */; };
+		3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF021F5C8DE00174A91 /* SF-Pro-Display-Medium.otf */; };
+		3D05F00421F5C8DE00174A91 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF121F5C8DE00174A91 /* SF-Pro-Display-Heavy.otf */; };
+		3D05F00521F5C8DE00174A91 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF221F5C8DE00174A91 /* SF-Pro-Display-Semibold.otf */; };
+		3D05F00621F5C8DE00174A91 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF321F5C8DE00174A91 /* README.md */; };
+		3D05F00721F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF421F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf */; };
+		3D05F00821F5C8DE00174A91 /* SF-Pro-Display-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF521F5C8DE00174A91 /* SF-Pro-Display-HeavyItalic.otf */; };
+		3D05F00921F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF621F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf */; };
+		3D05F00A21F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF721F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf */; };
+		3D05F00B21F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF821F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf */; };
+		3D05F00C21F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFF921F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf */; };
+		3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFFA21F5C8DE00174A91 /* SF-Pro-Display-Black.otf */; };
+		3D05F00E21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFFB21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf */; };
+		3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3D05EFFC21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf */; };
+		3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05F01121F5D12E00174A91 /* SignUpViewController.swift */; };
+		3D05F01421F5D14400174A91 /* SignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D05F01321F5D14400174A91 /* SignUpViewController.xib */; };
+		3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05F01621F5E45300174A91 /* AuthenticationCoordinator.swift */; };
+		3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05F01921F5F1BF00174A91 /* SignUpRequest.swift */; };
+		3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05F01D21F5F5EE00174A91 /* AuthResponse.swift */; };
+		3D05F02021F6020900174A91 /* AppAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05F01F21F6020900174A91 /* AppAlert.swift */; };
+		3D05F02321F6023600174A91 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05F02221F6023600174A91 /* UIViewController.swift */; };
+		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
+		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
+		3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C521F66CDD00F93876 /* AppFont.swift */; };
+		B0EBE211299A87DE3FBD8411 /* libPods-Brew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F22DAEA568D000B328B3AB /* libPods-Brew.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3D05EFB621F128EE00174A91 /* Brew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D05EFB921F128EE00174A91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3D05EFBB21F128EE00174A91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3D05EFBE21F128EE00174A91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3D05EFC021F128F000174A91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D05EFC321F128F000174A91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D05EFC521F128F000174A91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +59,41 @@
 		3D05EFD021F21A2400174A91 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		3D05EFD321F21B7700174A91 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3D05EFD521F2281C00174A91 /* SimpleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleError.swift; sourceTree = "<group>"; };
+		3D05EFDF21F5C4B200174A91 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3D05EFE321F5C4E900174A91 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		3D05EFE521F5C54800174A91 /* SignInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInViewController.xib; sourceTree = "<group>"; };
+		3D05EFEA21F5C8DE00174A91 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		3D05EFEB21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		3D05EFEC21F5C8DE00174A91 /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
+		3D05EFED21F5C8DE00174A91 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		3D05EFEE21F5C8DE00174A91 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		3D05EFEF21F5C8DE00174A91 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		3D05EFF021F5C8DE00174A91 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		3D05EFF121F5C8DE00174A91 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		3D05EFF221F5C8DE00174A91 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		3D05EFF321F5C8DE00174A91 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3D05EFF421F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-MediumItalic.otf"; sourceTree = "<group>"; };
+		3D05EFF521F5C8DE00174A91 /* SF-Pro-Display-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-HeavyItalic.otf"; sourceTree = "<group>"; };
+		3D05EFF621F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		3D05EFF721F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
+		3D05EFF821F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
+		3D05EFF921F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BlackItalic.otf"; sourceTree = "<group>"; };
+		3D05EFFA21F5C8DE00174A91 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		3D05EFFB21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-ThinItalic.otf"; sourceTree = "<group>"; };
+		3D05EFFC21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
+		3D05F01121F5D12E00174A91 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3D05F01321F5D14400174A91 /* SignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpViewController.xib; sourceTree = "<group>"; };
+		3D05F01621F5E45300174A91 /* AuthenticationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinator.swift; sourceTree = "<group>"; };
+		3D05F01921F5F1BF00174A91 /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
+		3D05F01D21F5F5EE00174A91 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		3D05F01F21F6020900174A91 /* AppAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAlert.swift; sourceTree = "<group>"; };
+		3D05F02221F6023600174A91 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
+		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
+		3DB447C521F66CDD00F93876 /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
+		88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.release.xcconfig"; sourceTree = "<group>"; };
+		B8F22DAEA568D000B328B3AB /* libPods-Brew.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Brew.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0EBE211299A87DE3FBD8411 /* libPods-Brew.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +113,8 @@
 			children = (
 				3D05EFB821F128EE00174A91 /* Brew */,
 				3D05EFB721F128EE00174A91 /* Products */,
+				65E97A5620630B01F8C70077 /* Pods */,
+				CFCEA6CE197181213CF7B381 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,24 +129,20 @@
 		3D05EFB821F128EE00174A91 /* Brew */ = {
 			isa = PBXGroup;
 			children = (
-				3D05EFCB21F139EC00174A91 /* BuisinessLogic */,
-				3D05EFB921F128EE00174A91 /* AppDelegate.swift */,
-				3D05EFBB21F128EE00174A91 /* ViewController.swift */,
-				3D05EFBD21F128EE00174A91 /* Main.storyboard */,
-				3D05EFC021F128F000174A91 /* Assets.xcassets */,
-				3D05EFC221F128F000174A91 /* LaunchScreen.storyboard */,
-				3D05EFC521F128F000174A91 /* Info.plist */,
+				3D05EFCB21F139EC00174A91 /* Buisiness Logic */,
+				3D05EFDA21F5C41100174A91 /* Presentation Logic */,
+				3D05EFE721F5C89900174A91 /* Resources */,
 			);
 			path = Brew;
 			sourceTree = "<group>";
 		};
-		3D05EFCB21F139EC00174A91 /* BuisinessLogic */ = {
+		3D05EFCB21F139EC00174A91 /* Buisiness Logic */ = {
 			isa = PBXGroup;
 			children = (
-				3D05EFD221F21B6700174A91 /* Entities */,
 				3D05EFCC21F13A7000174A91 /* Networking */,
+				3D05EFD221F21B6700174A91 /* Models */,
 			);
-			path = BuisinessLogic;
+			path = "Buisiness Logic";
 			sourceTree = "<group>";
 		};
 		3D05EFCC21F13A7000174A91 /* Networking */ = {
@@ -95,17 +158,204 @@
 			isa = PBXGroup;
 			children = (
 				3D05EFD021F21A2400174A91 /* LoginRequest.swift */,
+				3D05F01921F5F1BF00174A91 /* SignUpRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
 		};
-		3D05EFD221F21B6700174A91 /* Entities */ = {
+		3D05EFD221F21B6700174A91 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F01C21F5F5D500174A91 /* Entities */,
+				3D05F01B21F5F5C300174A91 /* Responses */,
+				3D05F01821F5E65C00174A91 /* Errors */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3D05EFDA21F5C41100174A91 /* Presentation Logic */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFE121F5C4C500174A91 /* General */,
+				3D05EFDB21F5C42A00174A91 /* Stories */,
+			);
+			path = "Presentation Logic";
+			sourceTree = "<group>";
+		};
+		3D05EFDB21F5C42A00174A91 /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFDD21F5C44900174A91 /* Authentication */,
+			);
+			path = Stories;
+			sourceTree = "<group>";
+		};
+		3D05EFDC21F5C43900174A91 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F01F21F6020900174A91 /* AppAlert.swift */,
+				3DB447C521F66CDD00F93876 /* AppFont.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3D05EFDD21F5C44900174A91 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F01621F5E45300174A91 /* AuthenticationCoordinator.swift */,
+				3D05F01521F5E35100174A91 /* Controllers */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		3D05EFDE21F5C49000174A91 /* SignInViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFDF21F5C4B200174A91 /* SignInViewController.swift */,
+				3D05EFE521F5C54800174A91 /* SignInViewController.xib */,
+			);
+			path = SignInViewController;
+			sourceTree = "<group>";
+		};
+		3D05EFE121F5C4C500174A91 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFB921F128EE00174A91 /* AppDelegate.swift */,
+				3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */,
+				3DB447C221F642D200F93876 /* Classes */,
+				3D05F02121F6022000174A91 /* Extensions */,
+				3D05EFDC21F5C43900174A91 /* Utils */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		3D05EFE221F5C4DB00174A91 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFE321F5C4E900174A91 /* AppViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3D05EFE721F5C89900174A91 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFE821F5C8C400174A91 /* Fonts */,
+				3D05EFC021F128F000174A91 /* Assets.xcassets */,
+				3D05EFC221F128F000174A91 /* LaunchScreen.storyboard */,
+				3D05EFC521F128F000174A91 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3D05EFE821F5C8C400174A91 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFE921F5C8DE00174A91 /* San-Francisco-Pro-Fonts */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3D05EFE921F5C8DE00174A91 /* San-Francisco-Pro-Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFEA21F5C8DE00174A91 /* SF-Pro-Display-Thin.otf */,
+				3D05EFEB21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf */,
+				3D05EFEC21F5C8DE00174A91 /* SF-Pro-Display-RegularItalic.otf */,
+				3D05EFED21F5C8DE00174A91 /* SF-Pro-Display-Light.otf */,
+				3D05EFEE21F5C8DE00174A91 /* SF-Pro-Display-Regular.otf */,
+				3D05EFEF21F5C8DE00174A91 /* SF-Pro-Display-Bold.otf */,
+				3D05EFF021F5C8DE00174A91 /* SF-Pro-Display-Medium.otf */,
+				3D05EFF121F5C8DE00174A91 /* SF-Pro-Display-Heavy.otf */,
+				3D05EFF221F5C8DE00174A91 /* SF-Pro-Display-Semibold.otf */,
+				3D05EFF321F5C8DE00174A91 /* README.md */,
+				3D05EFF421F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf */,
+				3D05EFF521F5C8DE00174A91 /* SF-Pro-Display-HeavyItalic.otf */,
+				3D05EFF621F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf */,
+				3D05EFF721F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf */,
+				3D05EFF821F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf */,
+				3D05EFF921F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf */,
+				3D05EFFA21F5C8DE00174A91 /* SF-Pro-Display-Black.otf */,
+				3D05EFFB21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf */,
+				3D05EFFC21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf */,
+			);
+			path = "San-Francisco-Pro-Fonts";
+			sourceTree = "<group>";
+		};
+		3D05F01021F5D11700174A91 /* SIgnUpViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F01121F5D12E00174A91 /* SignUpViewController.swift */,
+				3D05F01321F5D14400174A91 /* SignUpViewController.xib */,
+			);
+			path = SIgnUpViewController;
+			sourceTree = "<group>";
+		};
+		3D05F01521F5E35100174A91 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F01021F5D11700174A91 /* SIgnUpViewController */,
+				3D05EFDE21F5C49000174A91 /* SignInViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3D05F01821F5E65C00174A91 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				3D05EFD521F2281C00174A91 /* SimpleError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		3D05F01B21F5F5C300174A91 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F01D21F5F5EE00174A91 /* AuthResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		3D05F01C21F5F5D500174A91 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				3D05EFD321F21B7700174A91 /* User.swift */,
-				3D05EFD521F2281C00174A91 /* SimpleError.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		3D05F02121F6022000174A91 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D05F02221F6023600174A91 /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3DB447C221F642D200F93876 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447C321F644DC00F93876 /* ValidatedTextField.swift */,
+				3D05EFE221F5C4DB00174A91 /* Base */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		65E97A5620630B01F8C70077 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */,
+				88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CFCEA6CE197181213CF7B381 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B8F22DAEA568D000B328B3AB /* libPods-Brew.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +365,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D05EFC821F128F000174A91 /* Build configuration list for PBXNativeTarget "Brew" */;
 			buildPhases = (
+				A1ACD3A4ED7787F00B404552 /* [CP] Check Pods Manifest.lock */,
 				3D05EFB221F128EE00174A91 /* Sources */,
 				3D05EFB321F128EE00174A91 /* Frameworks */,
 				3D05EFB421F128EE00174A91 /* Resources */,
@@ -166,23 +417,78 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D05F00521F5C8DE00174A91 /* SF-Pro-Display-Semibold.otf in Resources */,
+				3D05F00021F5C8DE00174A91 /* SF-Pro-Display-Light.otf in Resources */,
+				3D05F00421F5C8DE00174A91 /* SF-Pro-Display-Heavy.otf in Resources */,
+				3D05EFFD21F5C8DE00174A91 /* SF-Pro-Display-Thin.otf in Resources */,
+				3D05F00821F5C8DE00174A91 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
+				3D05F01421F5D14400174A91 /* SignUpViewController.xib in Resources */,
+				3D05F00721F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf in Resources */,
+				3D05F00621F5C8DE00174A91 /* README.md in Resources */,
+				3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */,
+				3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */,
+				3D05F00B21F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf in Resources */,
+				3D05F00E21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf in Resources */,
+				3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */,
+				3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */,
+				3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */,
+				3D05F00921F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf in Resources */,
+				3D05EFFF21F5C8DE00174A91 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				3D05EFC421F128F000174A91 /* LaunchScreen.storyboard in Resources */,
+				3D05F00C21F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf in Resources */,
+				3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				3D05F00A21F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				3D05EFC121F128F000174A91 /* Assets.xcassets in Resources */,
-				3D05EFBF21F128EE00174A91 /* Main.storyboard in Resources */,
+				3D05EFFE21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A1ACD3A4ED7787F00B404552 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Brew-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3D05EFB221F128EE00174A91 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
+				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
+				3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */,
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
+				3D05F02021F6020900174A91 /* AppAlert.swift in Sources */,
+				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
+				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,
 				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
 				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,
-				3D05EFBC21F128EE00174A91 /* ViewController.swift in Sources */,
+				3D05F02321F6023600174A91 /* UIViewController.swift in Sources */,
+				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
+				3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */,
+				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
+				3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */,
 			);
@@ -191,14 +497,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3D05EFBD21F128EE00174A91 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3D05EFBE21F128EE00174A91 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		3D05EFC221F128F000174A91 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -328,11 +626,13 @@
 		};
 		3D05EFC921F128F000174A91 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6L4QH59CC;
-				INFOPLIST_FILE = Brew/Info.plist;
+				INFOPLIST_FILE = Brew/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,17 +640,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nerdzlab.com.Brew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		3D05EFCA21F128F000174A91 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J6L4QH59CC;
-				INFOPLIST_FILE = Brew/Info.plist;
+				INFOPLIST_FILE = Brew/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,7 +660,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nerdzlab.com.Brew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
