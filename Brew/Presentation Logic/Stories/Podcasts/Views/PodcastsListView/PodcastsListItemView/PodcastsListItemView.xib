@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Regular.otf">
+            <string>SFProDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PodcastsListItemView" customModule="Brew" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="4To-LA-qHy" id="28q-fr-boZ"/>
+                <outlet property="subtitleLabel" destination="FUu-4H-hVR" id="IC2-tG-477"/>
+                <outlet property="titleLabel" destination="Mwh-Cl-MZ3" id="pHt-aV-Zrd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="w54-d1-uEF">
+            <rect key="frame" x="0.0" y="0.0" width="175" height="233"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4To-LA-qHy">
+                    <rect key="frame" x="0.0" y="1" width="175" height="175"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="4To-LA-qHy" secondAttribute="height" multiplier="1:1" id="zVI-uR-97G"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwh-Cl-MZ3">
+                    <rect key="frame" x="0.0" y="191" width="175" height="16"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
+                    <color key="textColor" white="0.16" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUu-4H-hVR">
+                    <rect key="frame" x="0.0" y="213" width="175" height="13.5"/>
+                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
+                    <color key="textColor" white="0.46479540745856357" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Mwh-Cl-MZ3" firstAttribute="leading" secondItem="8ha-YD-DPQ" secondAttribute="leading" id="3Tp-kb-WRi"/>
+                <constraint firstItem="4To-LA-qHy" firstAttribute="top" secondItem="8ha-YD-DPQ" secondAttribute="top" constant="1" id="9qm-h4-VCd"/>
+                <constraint firstItem="4To-LA-qHy" firstAttribute="centerX" secondItem="8ha-YD-DPQ" secondAttribute="centerX" id="Rjp-cT-7wi"/>
+                <constraint firstItem="FUu-4H-hVR" firstAttribute="leading" secondItem="8ha-YD-DPQ" secondAttribute="leading" id="a8f-YZ-ZpN"/>
+                <constraint firstItem="8ha-YD-DPQ" firstAttribute="trailing" secondItem="FUu-4H-hVR" secondAttribute="trailing" id="ehT-Fd-eda"/>
+                <constraint firstItem="FUu-4H-hVR" firstAttribute="top" secondItem="Mwh-Cl-MZ3" secondAttribute="bottom" constant="6" id="jUm-Vx-bsu"/>
+                <constraint firstItem="8ha-YD-DPQ" firstAttribute="trailing" secondItem="Mwh-Cl-MZ3" secondAttribute="trailing" id="lmk-Yr-MI1"/>
+                <constraint firstItem="4To-LA-qHy" firstAttribute="width" secondItem="w54-d1-uEF" secondAttribute="width" id="xZd-Wa-6FV"/>
+                <constraint firstItem="Mwh-Cl-MZ3" firstAttribute="top" secondItem="4To-LA-qHy" secondAttribute="bottom" constant="15" id="zVb-YA-7ix"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="8ha-YD-DPQ"/>
+            <point key="canvasLocation" x="-362.39999999999998" y="-196.55172413793105"/>
+        </view>
+    </objects>
+</document>

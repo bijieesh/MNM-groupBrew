@@ -55,7 +55,7 @@ class AuthenticationCoordinator {
                 self?.onSuccess?(response.user)
         },
             onError: { error in
-                error.show()
+                error.display()
         })
     }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="KA6-Fs-f9U">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nKO-9c-rtW">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXa-3H-EGZ" customClass="PodcastsListItemView" customModule="Brew" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="Gtg-88-kQF"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAD-Vb-YRx" customClass="PodcastsListItemView" customModule="Brew" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="200" width="375" height="200"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="aYU-6R-JPs"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBJ-pQ-MUL" customClass="PodcastsListItemView" customModule="Brew" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="400" width="375" height="200"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="200" id="OgA-3R-dbR"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="gXa-3H-EGZ" firstAttribute="leading" secondItem="nKO-9c-rtW" secondAttribute="leading" id="4FI-kD-SyR"/>
+                        <constraint firstAttribute="bottom" secondItem="zBJ-pQ-MUL" secondAttribute="bottom" id="5JW-Jh-lI4"/>
+                        <constraint firstItem="zBJ-pQ-MUL" firstAttribute="top" secondItem="DAD-Vb-YRx" secondAttribute="bottom" id="G87-i3-Yas"/>
+                        <constraint firstItem="DAD-Vb-YRx" firstAttribute="top" secondItem="gXa-3H-EGZ" secondAttribute="bottom" id="Wy3-aw-cRt"/>
+                        <constraint firstItem="zBJ-pQ-MUL" firstAttribute="centerX" secondItem="nKO-9c-rtW" secondAttribute="centerX" id="b0I-Gc-ovC"/>
+                        <constraint firstItem="DAD-Vb-YRx" firstAttribute="centerX" secondItem="nKO-9c-rtW" secondAttribute="centerX" id="blp-UX-bwX"/>
+                        <constraint firstItem="gXa-3H-EGZ" firstAttribute="top" secondItem="nKO-9c-rtW" secondAttribute="top" id="cij-G3-AzJ"/>
+                        <constraint firstItem="gXa-3H-EGZ" firstAttribute="width" secondItem="nKO-9c-rtW" secondAttribute="width" id="fC2-c3-1O9"/>
+                        <constraint firstItem="zBJ-pQ-MUL" firstAttribute="width" secondItem="nKO-9c-rtW" secondAttribute="width" id="qnj-VP-e6C"/>
+                        <constraint firstItem="DAD-Vb-YRx" firstAttribute="width" secondItem="nKO-9c-rtW" secondAttribute="width" id="rJ5-J5-eG7"/>
+                        <constraint firstAttribute="trailing" secondItem="gXa-3H-EGZ" secondAttribute="trailing" id="wmL-9E-erc"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="nKO-9c-rtW" firstAttribute="width" secondItem="KA6-Fs-f9U" secondAttribute="width" id="OVz-i7-5WN"/>
+                <constraint firstItem="ZLs-n8-bAz" firstAttribute="top" secondItem="nKO-9c-rtW" secondAttribute="top" id="ZoF-yE-A2M"/>
+                <constraint firstItem="nKO-9c-rtW" firstAttribute="centerX" secondItem="ZLs-n8-bAz" secondAttribute="centerX" id="onG-ET-B0I"/>
+                <constraint firstItem="ZLs-n8-bAz" firstAttribute="bottom" secondItem="nKO-9c-rtW" secondAttribute="bottom" id="sHT-Gp-9Ga"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZLs-n8-bAz"/>
+            <point key="canvasLocation" x="44" y="-18"/>
+        </view>
+    </objects>
+</document>

@@ -1,16 +1,30 @@
 PODS:
+  - Reusable (4.0.5):
+    - Reusable/Storyboard (= 4.0.5)
+    - Reusable/View (= 4.0.5)
+  - Reusable/Storyboard (4.0.5)
+  - Reusable/View (4.0.5)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
   - TPKeyboardAvoiding (1.3.2)
 
 DEPENDENCIES:
+  - Reusable
+  - SDWebImage
   - TPKeyboardAvoiding
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Reusable
+    - SDWebImage
     - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
+  Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 90a35cd5830ff2f45b957ba20ecd438e39834ae1
+PODFILE CHECKSUM: eaef5fc4d3e38a94aca168681dbb4d5a7482e4e2
 
 COCOAPODS: 1.5.3

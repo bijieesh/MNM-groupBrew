@@ -46,7 +46,13 @@
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
 		3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C521F66CDD00F93876 /* AppFont.swift */; };
-		B0EBE211299A87DE3FBD8411 /* libPods-Brew.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8F22DAEA568D000B328B3AB /* libPods-Brew.a */; };
+		3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447CB21F74BC500F93876 /* PodcastsListView.swift */; };
+		3DB447CE21F74E2A00F93876 /* PodcastsListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447CD21F74E2A00F93876 /* PodcastsListView.xib */; };
+		3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447D021F7534E00F93876 /* PodcastsListItemView.swift */; };
+		3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */; };
+		3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447D721F76F5C00F93876 /* HomeViewController.swift */; };
+		3DB447DB21F76F7A00F93876 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447DA21F76F7A00F93876 /* HomeViewController.xib */; };
+		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,9 +97,15 @@
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
 		3DB447C521F66CDD00F93876 /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		3DB447CB21F74BC500F93876 /* PodcastsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsListView.swift; sourceTree = "<group>"; };
+		3DB447CD21F74E2A00F93876 /* PodcastsListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsListView.xib; sourceTree = "<group>"; };
+		3DB447D021F7534E00F93876 /* PodcastsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsListItemView.swift; sourceTree = "<group>"; };
+		3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsListItemView.xib; sourceTree = "<group>"; };
+		3DB447D721F76F5C00F93876 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		3DB447DA21F76F7A00F93876 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
+		7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.release.xcconfig"; sourceTree = "<group>"; };
-		B8F22DAEA568D000B328B3AB /* libPods-Brew.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Brew.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0EBE211299A87DE3FBD8411 /* libPods-Brew.a in Frameworks */,
+				7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +197,8 @@
 		3D05EFDB21F5C42A00174A91 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				3DB447D421F76EE500F93876 /* Home */,
+				3DB447C821F74B8B00F93876 /* Podcasts */,
 				3D05EFDD21F5C44900174A91 /* Authentication */,
 			);
 			path = Stories;
@@ -341,6 +355,66 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		3DB447C821F74B8B00F93876 /* Podcasts */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447C921F74B9500F93876 /* Views */,
+			);
+			path = Podcasts;
+			sourceTree = "<group>";
+		};
+		3DB447C921F74B9500F93876 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447CA21F74B9D00F93876 /* PodcastsListView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3DB447CA21F74B9D00F93876 /* PodcastsListView */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447CF21F7532300F93876 /* PodcastsListItemView */,
+				3DB447CB21F74BC500F93876 /* PodcastsListView.swift */,
+				3DB447CD21F74E2A00F93876 /* PodcastsListView.xib */,
+			);
+			path = PodcastsListView;
+			sourceTree = "<group>";
+		};
+		3DB447CF21F7532300F93876 /* PodcastsListItemView */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447D021F7534E00F93876 /* PodcastsListItemView.swift */,
+				3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */,
+			);
+			path = PodcastsListItemView;
+			sourceTree = "<group>";
+		};
+		3DB447D421F76EE500F93876 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447D521F76EFF00F93876 /* Controllers */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		3DB447D521F76EFF00F93876 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447D621F76F0500F93876 /* HomeViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3DB447D621F76F0500F93876 /* HomeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447D721F76F5C00F93876 /* HomeViewController.swift */,
+				3DB447DA21F76F7A00F93876 /* HomeViewController.xib */,
+			);
+			path = HomeViewController;
+			sourceTree = "<group>";
+		};
 		65E97A5620630B01F8C70077 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,7 +427,7 @@
 		CFCEA6CE197181213CF7B381 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B8F22DAEA568D000B328B3AB /* libPods-Brew.a */,
+				7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -369,6 +443,7 @@
 				3D05EFB221F128EE00174A91 /* Sources */,
 				3D05EFB321F128EE00174A91 /* Frameworks */,
 				3D05EFB421F128EE00174A91 /* Resources */,
+				BC57CBBEB65538D9CA49832E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -426,10 +501,13 @@
 				3D05F00721F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				3D05F00621F5C8DE00174A91 /* README.md in Resources */,
 				3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */,
+				3DB447CE21F74E2A00F93876 /* PodcastsListView.xib in Resources */,
 				3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */,
 				3D05F00B21F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf in Resources */,
+				3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */,
 				3D05F00E21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */,
+				3DB447DB21F76F7A00F93876 /* HomeViewController.xib in Resources */,
 				3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */,
 				3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */,
 				3D05F00921F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -468,6 +546,32 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BC57CBBEB65538D9CA49832E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -477,10 +581,12 @@
 			files = (
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
+				3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */,
 				3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */,
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
 				3D05F02021F6020900174A91 /* AppAlert.swift in Sources */,
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
+				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
 				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,
 				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
 				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,
@@ -490,6 +596,7 @@
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
+				3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */,
 				3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
