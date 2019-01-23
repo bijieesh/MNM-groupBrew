@@ -1,4 +1,5 @@
 PODS:
+  - AlignedCollectionViewFlowLayout (1.1.2)
   - Reusable (4.0.5):
     - Reusable/Storyboard (= 4.0.5)
     - Reusable/View (= 4.0.5)
@@ -10,21 +11,24 @@ PODS:
   - TPKeyboardAvoiding (1.3.2)
 
 DEPENDENCIES:
+  - AlignedCollectionViewFlowLayout
   - Reusable
   - SDWebImage
   - TPKeyboardAvoiding
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AlignedCollectionViewFlowLayout
     - Reusable
     - SDWebImage
     - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
+  AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: eaef5fc4d3e38a94aca168681dbb4d5a7482e4e2
+PODFILE CHECKSUM: ebc50d3342cc02b61be7616d6558a9afb4acb567
 
 COCOAPODS: 1.5.3

@@ -8,24 +8,23 @@
 
 import UIKit
 
-class AuthenticationCoordinator {
+class AuthenticationCoordinator: Coordinator {
     var onSuccess: ((User) -> Void)?
 
-    private let rootController: UIViewController
-
-    init(rootController: UIViewController) {
-        self.rootController = rootController
-    }
-
-    func start() {
+    override func start() {
+        super.start()
         showSignIn()
     }
 
     private func showSignIn() {
         let controller = SignInViewController()
 
-        controller.onSignUpSelected = showSignUp
-        controller.onSignIn = signIn(with:_:)
+        controller.onSignUpSelected = { [weak self] in
+            self?.showSignUp()
+        }
+        controller.onSignIn = { [weak self] (controller, email, password) in
+            self?.signIn(with: email, password, controller: controller)
+        }
 
         rootController.topController.present(controller, animated: false)
     }
@@ -33,29 +32,45 @@ class AuthenticationCoordinator {
     private func showSignUp() {
         let controller = SignUpViewController()
 
-        controller.onSignInSelected = showSignIn
-        controller.onSignUp = signUp(with:_:_:_:_:)
+        controller.onSignInSelected =  { [weak self] in
+            self?.showSignIn()
+        }
+
+        controller.onSignUp = { [weak self] (name, country, email, password, mobile) in
+            self?.signUp(with: name, country, email, password, mobile)
+        }
 
         rootController.topController.present(controller, animated: false)
     }
 
-    private func signIn(with email: String, _ password: String) {
+    private func signIn(with email: String, _ password: String, controller: SignInViewController) {
         let request = LoginRequest(email: email, password: password)
-        authenticate(with: request)
+        request.execute(
+            onSuccess: { [weak self] response in
+                self?.authenticate(with: response)
+            },
+            onError: { error in
+                if case let .custom(_, statusCode) = error, statusCode.isUnauthorize {
+                    controller.markInvalid()
+                }
+                else {
+                    error.display()
+                }
+        })
     }
 
     private func signUp(with name: String, _ country: String, _ email: String, _ password: String, _ mobile: String? = nil) {
         let request = SignUpRequest(name: name, country: country, email: email, password: password, mobile: mobile)
-        authenticate(with: request)
-    }
-
-    private func authenticate<T: RequestType>(with request: T) where T.ResponseObjectType == AuthResponse, T.ErrorType == SimpleError {
         request.execute(
             onSuccess: { [weak self] response in
                 self?.onSuccess?(response.user)
-        },
+            },
             onError: { error in
                 error.display()
         })
+    }
+
+    private func authenticate(with response: AuthResponse) {
+        onSuccess?(response.user)
     }
 }

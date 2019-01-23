@@ -68,6 +68,10 @@ class ValidatedTextField: UITextField {
 
     }
 
+    func markInvalid() {
+        updateUI(isValid: false)
+    }
+
     @discardableResult static func validateAll(in view: UIView) -> Bool {
         if let field = view as? ValidatedTextField  {
             return field.validate()

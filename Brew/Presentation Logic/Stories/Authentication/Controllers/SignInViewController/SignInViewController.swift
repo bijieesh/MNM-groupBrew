@@ -10,16 +10,28 @@ import UIKit
 
 class SignInViewController: AppViewController {
     var onSignUpSelected: (() -> Void)?
-    var onSignIn: ((String, String) -> Void)?
+    var onSignIn: ((SignInViewController, String, String) -> Void)?
 
-    @IBOutlet private var emailTextField: UITextField!
-    @IBOutlet private var passwordTextField: UITextField!
+    @IBOutlet private var emailTextField: ValidatedTextField!
+    @IBOutlet private var passwordTextField: ValidatedTextField!
 
     @IBAction private func signInPressed() {
-        onSignIn?(emailTextField.text!, passwordTextField.text!)
+        guard ValidatedTextField.validateAll(in: view) else {
+            return
+        }
+
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+
+        onSignIn?(self, email, password)
     }
 
     @IBAction private func signUpPressed() {
         onSignUpSelected?()
+    }
+
+    func markInvalid() {
+        emailTextField.markInvalid()
+        passwordTextField.markInvalid()
     }
 }

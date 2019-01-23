@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    private var appFlowCoordinator: AppFlowCoordinator?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
@@ -25,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
 
-        let c = AppFlowCoordinator(rootController: vc)
-        c.start()
+        appFlowCoordinator = AppFlowCoordinator(rootController: vc)
+        appFlowCoordinator?.start()
 
         return true
     }

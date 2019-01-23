@@ -9,11 +9,15 @@
 import Foundation
 
 class NetworkingStack {
-    static let instance = NetworkingStack()
+    private(set) static var instance = NetworkingStack()
 
     let requestExecuter: RequestExecuter
 
-    private init() {
+    static func reconfigure(with token: Token? = nil) {
+        instance = NetworkingStack(token: token)
+    }
+
+    private init(token: Token? = nil) {
         let session = URLSession.shared
         let requestFactory = DefaultRequestFactory(baseUrl: "https://cast.brew.com/api/")
         let dispatcher = URLSessionNetworkDispatcher(requestFactory: requestFactory, session: session)
@@ -57,7 +61,27 @@ protocol RequestFactory {
 }
 
 protocol RequestExecuter {
-    func execute<T: RequestType>(_ request: T, onSuccess: ((T.ResponseObjectType) -> Void)?, onError: ((NetworkingError<T.ErrorType>) -> Void)?)
+    func execute<T: RequestType>(_ request: T, onSuccess: ((T.ResponseObjectType) -> Void)?, onError: ((NetworkingError<T.ErrorType>) -> Void)?, responseQueue: DispatchQueue)
+}
+
+enum Token {
+    case bearer(token: String)
+    case jwt(token: String)
+    case custom(token: String)
+
+    var value: String {
+        switch self {
+        case .bearer(let token): return "Bearer \(token)"
+        case .jwt(let token): return "JWT \(token)"
+        case .custom(let token): return token
+        }
+    }
+
+    var token: String {
+        switch self {
+        case .bearer(let token), .jwt(let token), .custom(let token): return token
+        }
+    }
 }
 
 enum HTTPMethod: String {
@@ -108,8 +132,8 @@ extension RequestType {
         return DefaultRequestData(path: path, method: method, queryParams: queryParams, bodyParams: bodyParams, headers: headers)
     }
 
-    func execute(onSuccess: ResponseSuccessCallback? = nil, onError: ErrorCallback? = nil) {
-        NetworkingStack.instance.requestExecuter.execute(self, onSuccess: onSuccess, onError: onError)
+    func execute(onSuccess: ResponseSuccessCallback? = nil, onError: ErrorCallback? = nil, responseQueue: DispatchQueue = .main) {
+        NetworkingStack.instance.requestExecuter.execute(self, onSuccess: onSuccess, onError: onError, responseQueue: responseQueue)
     }
 }
 
@@ -122,7 +146,7 @@ struct DefaultRequestExecuter: RequestExecuter {
         self.jsonDecoder = decoder
     }
 
-    func execute<T: RequestType>(_ request: T, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil) {
+    func execute<T: RequestType>(_ request: T, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil, responseQueue: DispatchQueue = .main) {
         dispatcher.dispatch(request.data,
 
                             onSuccess: { (data, statusCode) in
@@ -132,20 +156,20 @@ struct DefaultRequestExecuter: RequestExecuter {
                                 do {
                                     if statusCode.isSuccessful {
                                         let result = try jsonDecoder.decode(T.ResponseObjectType.self, from: data)
-                                        onSuccess?(result)
+                                        responseQueue.async { onSuccess?(result)}
                                     }
                                     else {
                                         let result = try jsonDecoder.decode(T.ErrorType.self, from: data)
-                                        onError?(.custom(error: result, statusCode: statusCode))
+                                        responseQueue.async { onError?(.custom(error: result, statusCode: statusCode)) }
                                     }
                                 }
                                 catch {
-                                    onError?(.system(error: error))
+                                    responseQueue.async { onError?(.system(error: error)) }
                                 }
         },
 
-                            onError: {
-                                onError?(.system(error: $0))
+                            onError: { error in
+                                responseQueue.async { onError?(.system(error: error)) }
         })
     }
 }
@@ -161,6 +185,10 @@ struct StatusCode {
 
     var isSuccessful: Bool {
         return isIn(range: 200...299)
+    }
+
+    var isUnauthorize: Bool {
+        return code == 401
     }
 
     private func isIn(range: ClosedRange<Int>) -> Bool {

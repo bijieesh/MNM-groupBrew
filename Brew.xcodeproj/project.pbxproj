@@ -52,6 +52,15 @@
 		3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */; };
 		3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447D721F76F5C00F93876 /* HomeViewController.swift */; };
 		3DB447DB21F76F7A00F93876 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447DA21F76F7A00F93876 /* HomeViewController.xib */; };
+		3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447E021F7CBBB00F93876 /* InterestsViewController.swift */; };
+		3DB447E621F7CBBB00F93876 /* InterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447E121F7CBBB00F93876 /* InterestsViewController.xib */; };
+		3DB447E721F7CBBB00F93876 /* PriceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447E321F7CBBB00F93876 /* PriceViewController.xib */; };
+		3DB447E821F7CBBB00F93876 /* PriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447E421F7CBBB00F93876 /* PriceViewController.swift */; };
+		3DCBBA6921F7D08C009BCD31 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6821F7D08C009BCD31 /* UIColor.swift */; };
+		3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6A21F86B63009BCD31 /* OnboardingCoordinator.swift */; };
+		3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */; };
+		3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */; };
+		3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7321F8943F009BCD31 /* Coordinator.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +112,15 @@
 		3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsListItemView.xib; sourceTree = "<group>"; };
 		3DB447D721F76F5C00F93876 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3DB447DA21F76F7A00F93876 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		3DB447E021F7CBBB00F93876 /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
+		3DB447E121F7CBBB00F93876 /* InterestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterestsViewController.xib; sourceTree = "<group>"; };
+		3DB447E321F7CBBB00F93876 /* PriceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceViewController.xib; sourceTree = "<group>"; };
+		3DB447E421F7CBBB00F93876 /* PriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceViewController.swift; sourceTree = "<group>"; };
+		3DCBBA6821F7D08C009BCD31 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		3DCBBA6A21F86B63009BCD31 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewCell.xib; sourceTree = "<group>"; };
+		3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewCell.swift; sourceTree = "<group>"; };
+		3DCBBA7321F8943F009BCD31 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
 		7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +215,7 @@
 		3D05EFDB21F5C42A00174A91 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				3DB447DD21F7CB7A00F93876 /* Onboarding */,
 				3DB447D421F76EE500F93876 /* Home */,
 				3DB447C821F74B8B00F93876 /* Podcasts */,
 				3D05EFDD21F5C44900174A91 /* Authentication */,
@@ -235,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				3D05EFB921F128EE00174A91 /* AppDelegate.swift */,
+				3DCBBA7321F8943F009BCD31 /* Coordinator.swift */,
 				3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */,
 				3DB447C221F642D200F93876 /* Classes */,
 				3D05F02121F6022000174A91 /* Extensions */,
@@ -342,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				3D05F02221F6023600174A91 /* UIViewController.swift */,
+				3DCBBA6821F7D08C009BCD31 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -413,6 +434,60 @@
 				3DB447DA21F76F7A00F93876 /* HomeViewController.xib */,
 			);
 			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		3DB447DD21F7CB7A00F93876 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				3DCBBA6A21F86B63009BCD31 /* OnboardingCoordinator.swift */,
+				3DB447DE21F7CB8800F93876 /* Controllers */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		3DB447DE21F7CB8800F93876 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447E221F7CBBB00F93876 /* PriceViewController */,
+				3DB447DF21F7CBBB00F93876 /* InterestsViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3DB447DF21F7CBBB00F93876 /* InterestsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447E021F7CBBB00F93876 /* InterestsViewController.swift */,
+				3DB447E121F7CBBB00F93876 /* InterestsViewController.xib */,
+				3DCBBA6C21F87522009BCD31 /* Cells */,
+			);
+			path = InterestsViewController;
+			sourceTree = "<group>";
+		};
+		3DB447E221F7CBBB00F93876 /* PriceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DB447E321F7CBBB00F93876 /* PriceViewController.xib */,
+				3DB447E421F7CBBB00F93876 /* PriceViewController.swift */,
+			);
+			path = PriceViewController;
+			sourceTree = "<group>";
+		};
+		3DCBBA6C21F87522009BCD31 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3DCBBA7121F87581009BCD31 /* TagViewCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3DCBBA7121F87581009BCD31 /* TagViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */,
+				3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */,
+			);
+			path = TagViewCell;
 			sourceTree = "<group>";
 		};
 		65E97A5620630B01F8C70077 /* Pods */ = {
@@ -500,6 +575,7 @@
 				3D05F01421F5D14400174A91 /* SignUpViewController.xib in Resources */,
 				3D05F00721F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				3D05F00621F5C8DE00174A91 /* README.md in Resources */,
+				3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */,
 				3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */,
 				3DB447CE21F74E2A00F93876 /* PodcastsListView.xib in Resources */,
 				3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */,
@@ -515,9 +591,11 @@
 				3D05EFC421F128F000174A91 /* LaunchScreen.storyboard in Resources */,
 				3D05F00C21F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				3DB447E721F7CBBB00F93876 /* PriceViewController.xib in Resources */,
 				3D05F00A21F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				3D05EFC121F128F000174A91 /* Assets.xcassets in Resources */,
 				3D05EFFE21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				3DB447E621F7CBBB00F93876 /* InterestsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +633,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AlignedCollectionViewFlowLayout/AlignedCollectionViewFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
@@ -563,6 +642,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlignedCollectionViewFlowLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
@@ -582,11 +662,15 @@
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
 				3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */,
+				3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */,
 				3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */,
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
 				3D05F02021F6020900174A91 /* AppAlert.swift in Sources */,
+				3DCBBA6921F7D08C009BCD31 /* UIColor.swift in Sources */,
+				3DB447E821F7CBBB00F93876 /* PriceViewController.swift in Sources */,
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
 				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
+				3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */,
 				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,
 				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
 				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,
@@ -594,8 +678,10 @@
 				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
 				3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
+				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
 				3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
+				3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */,
 				3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */,
 				3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */,
 			);

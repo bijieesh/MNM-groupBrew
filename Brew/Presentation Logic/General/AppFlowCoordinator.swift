@@ -8,16 +8,17 @@
 
 import UIKit
 
-class AppFlowCoordinator {
+class AppFlowCoordinator: Coordinator {
 
-    private let rootController: UIViewController
-
-    init(rootController: UIViewController) {
-        self.rootController = rootController
+    override func start() {
+        super.start()
+        let authCoordinator = AuthenticationCoordinator(rootController: rootController)
+        authCoordinator.start()
     }
 
-    func start() {
+    private func startAuthenticationFlow() {
         let authCoordinator = AuthenticationCoordinator(rootController: rootController)
+
         authCoordinator.start()
     }
 }
