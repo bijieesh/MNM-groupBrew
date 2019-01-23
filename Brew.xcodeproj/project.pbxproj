@@ -61,6 +61,10 @@
 		3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */; };
 		3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */; };
 		3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7321F8943F009BCD31 /* Coordinator.swift */; };
+		3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */; };
+		3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7821F8DBCD009BCD31 /* TokenRefreshRequest.swift */; };
+		3DCBBA7F21F90063009BCD31 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7D21F90063009BCD31 /* PlayerViewController.xib */; };
+		3DCBBA8021F90063009BCD31 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +125,10 @@
 		3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewCell.xib; sourceTree = "<group>"; };
 		3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewCell.swift; sourceTree = "<group>"; };
 		3DCBBA7321F8943F009BCD31 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthManager.swift; sourceTree = "<group>"; };
+		3DCBBA7821F8DBCD009BCD31 /* TokenRefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshRequest.swift; sourceTree = "<group>"; };
+		3DCBBA7D21F90063009BCD31 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
 		7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.release.xcconfig"; sourceTree = "<group>"; };
@@ -180,6 +188,7 @@
 			children = (
 				3D05EFCF21F219EA00174A91 /* Requests */,
 				3D05EFCD21F13B1600174A91 /* Networking.swift */,
+				3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -189,6 +198,7 @@
 			children = (
 				3D05EFD021F21A2400174A91 /* LoginRequest.swift */,
 				3D05F01921F5F1BF00174A91 /* SignUpRequest.swift */,
+				3DCBBA7821F8DBCD009BCD31 /* TokenRefreshRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -215,6 +225,7 @@
 		3D05EFDB21F5C42A00174A91 /* Stories */ = {
 			isa = PBXGroup;
 			children = (
+				3DCBBA7A21F8FF3C009BCD31 /* Player */,
 				3DB447DD21F7CB7A00F93876 /* Onboarding */,
 				3DB447D421F76EE500F93876 /* Home */,
 				3DB447C821F74B8B00F93876 /* Podcasts */,
@@ -490,6 +501,31 @@
 			path = TagViewCell;
 			sourceTree = "<group>";
 		};
+		3DCBBA7A21F8FF3C009BCD31 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				3DCBBA7B21F90050009BCD31 /* Controllers */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		3DCBBA7B21F90050009BCD31 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DCBBA7C21F90063009BCD31 /* PlayerViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3DCBBA7C21F90063009BCD31 /* PlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */,
+				3DCBBA7D21F90063009BCD31 /* PlayerViewController.xib */,
+			);
+			path = PlayerViewController;
+			sourceTree = "<group>";
+		};
 		65E97A5620630B01F8C70077 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +614,7 @@
 				3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */,
 				3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */,
 				3DB447CE21F74E2A00F93876 /* PodcastsListView.xib in Resources */,
+				3DCBBA7F21F90063009BCD31 /* PlayerViewController.xib in Resources */,
 				3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */,
 				3D05F00B21F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */,
@@ -634,6 +671,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AlignedCollectionViewFlowLayout/AlignedCollectionViewFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/LDProgressView/LDProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
@@ -643,6 +681,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlignedCollectionViewFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LDProgressView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reusable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
@@ -662,6 +701,7 @@
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
 				3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */,
+				3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */,
 				3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */,
 				3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */,
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
@@ -675,11 +715,13 @@
 				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
 				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,
 				3D05F02321F6023600174A91 /* UIViewController.swift in Sources */,
+				3DCBBA8021F90063009BCD31 /* PlayerViewController.swift in Sources */,
 				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
 				3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
 				3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */,
+				3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */,
 				3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */,

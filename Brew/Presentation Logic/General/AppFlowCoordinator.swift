@@ -12,12 +12,43 @@ class AppFlowCoordinator: Coordinator {
 
     override func start() {
         super.start()
-        let authCoordinator = AuthenticationCoordinator(rootController: rootController)
+
+        let authManager = AppAuthManager()
+
+        initNetworkingStack(with: authManager)
+
+        if authManager.isUserLoggedIn {
+            startOnboardingFlow()
+        }
+        else {
+            startAuthenticationFlow(with: authManager)
+        }
+    }
+
+    private func initNetworkingStack(with authManager: AppAuthManager) {
+        NetworkingStack.instance.update(authManager: authManager, baseUrl: "https://cast.brew.com/api/")
+    }
+
+    private func startAuthenticationFlow(with authManager: AppAuthManager) {
+        let authCoordinator = AuthenticationCoordinator(rootController: rootController, authManager: authManager)
+
+        authCoordinator.onFinish = { [weak self] in
+            guard authManager.isUserLoggedIn else {
+                return false
+            }
+
+            self?.startOnboardingFlow()
+
+            return true
+        }
+
         authCoordinator.start()
     }
 
-    private func startAuthenticationFlow() {
-        let authCoordinator = AuthenticationCoordinator(rootController: rootController)
+    private func startOnboardingFlow() {
+        let authCoordinator = OnboardingCoordinator(rootController: rootController)
+
+        authCoordinator.onFinish = { return true }
 
         authCoordinator.start()
     }

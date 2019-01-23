@@ -1,5 +1,6 @@
 PODS:
   - AlignedCollectionViewFlowLayout (1.1.2)
+  - LDProgressView (1.2.1)
   - Reusable (4.0.5):
     - Reusable/Storyboard (= 4.0.5)
     - Reusable/View (= 4.0.5)
@@ -12,6 +13,7 @@ PODS:
 
 DEPENDENCIES:
   - AlignedCollectionViewFlowLayout
+  - LDProgressView
   - Reusable
   - SDWebImage
   - TPKeyboardAvoiding
@@ -19,16 +21,18 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AlignedCollectionViewFlowLayout
+    - LDProgressView
     - Reusable
     - SDWebImage
     - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
   AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
+  LDProgressView: f6afc7c30d2a9edf33001515f3189338567a32d2
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: ebc50d3342cc02b61be7616d6558a9afb4acb567
+PODFILE CHECKSUM: 9c8fa057e7faf9b9644f2111029b2d4f79aeb55c
 
 COCOAPODS: 1.5.3

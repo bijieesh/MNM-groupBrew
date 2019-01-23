@@ -9,21 +9,61 @@
 import Foundation
 
 class NetworkingStack {
-    private(set) static var instance = NetworkingStack()
+    static let instance = NetworkingStack()
 
-    let requestExecuter: RequestExecuter
+    private var authManager: AuthManager?
+    private var baseUrl: String?
 
-    static func reconfigure(with token: Token? = nil) {
-        instance = NetworkingStack(token: token)
+    private(set) var requestExecuter: RequestExecuter?
+
+    private init() {}
+
+    func update(authManager: AuthManager? = nil, baseUrl: String? = nil) {
+        if let authManager = authManager {
+            self.authManager = authManager
+        }
+
+        if let baseUrl = baseUrl {
+            self.baseUrl = baseUrl
+        }
+
+        configure()
     }
 
-    private init(token: Token? = nil) {
-        let session = URLSession.shared
-        let requestFactory = DefaultRequestFactory(baseUrl: "https://cast.brew.com/api/")
-        let dispatcher = URLSessionNetworkDispatcher(requestFactory: requestFactory, session: session)
+    private func configure() {
+        guard let dispatcher = networkDispatcher() else {
+            return
+        }
+
         let jsonDecoder = JSONDecoder()
         jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        requestExecuter = DefaultRequestExecuter(dispatcher: dispatcher, decoder: jsonDecoder)
+
+        let requestExecuter = DefaultRequestExecuter(dispatcher: dispatcher, decoder: jsonDecoder)
+
+        if let authManager = authManager {
+            requestExecuter.requestRetries = [TokenRefreshRetrier(authManager: authManager)]
+        }
+
+        self.requestExecuter = requestExecuter
+
+        authManager?.refreshToken(completion: nil)
+    }
+
+    private func networkDispatcher() -> NetworkDispatcher? {
+        guard let baseUrl = baseUrl else {
+            return nil
+        }
+
+        let requestFactory = DefaultRequestFactory(baseUrl: baseUrl, token: authManager?.authToken, encoding: .applicationJson)
+
+        authManager?.onTokenUpdated = { newToken in
+            requestFactory.updated(token: newToken, encoding: .applicationJson)
+        }
+
+        let session = URLSession.shared
+        let dispatcher = URLSessionNetworkDispatcher(requestFactory: requestFactory, session: session)
+
+        return dispatcher
     }
 }
 
@@ -32,24 +72,57 @@ protocol RequestData {
     var method: HTTPMethod { get }
     var queryParams: [(String, String)] { get }
     var bodyParams: [String: Any] { get }
-    var headers: [String: String] { get }
+    var headers: [NetworkingHeader] { get }
 }
 
-struct DefaultRequestData: RequestData {
-    let path: String
-    let method: HTTPMethod
-    let queryParams: [(String, String)]
-    let bodyParams: [String: Any]
-    let headers: [String: String]
+extension RequestData {
+    var queryParams: [(String, String)] { return [] }
+    var bodyParams: [String: Any] { return [:] }
+    var headers: [NetworkingHeader] { return [] }
+}
+
+protocol AuthManager {
+    var authToken: AuthToken? { get }
+
+    var onTokenUpdated: ((_ newToken: AuthToken?) -> Void)? { get set }
+
+    @discardableResult
+    func refreshToken(completion: ((_ success: Bool) -> Void)?) -> Bool
+
+    @discardableResult
+    func logout(completion: ((_ success: Bool) -> Void)?) -> Bool
 }
 
 protocol ServerError: Codable {
     var message: String { get }
 }
 
+protocol NetworkingHeader {
+    var key: String { get }
+    var value: String { get }
+}
+
 protocol RequestType: RequestData {
     associatedtype ResponseObjectType: Codable
     associatedtype ErrorType: ServerError
+}
+
+extension RequestType {
+    typealias ResponseSuccessCallback = (ResponseObjectType) -> Void
+    typealias ErrorCallback = (NetworkingError<ErrorType>) -> Void
+
+    var data: RequestData {
+        return DefaultRequestData(path: path, method: method, queryParams: queryParams, bodyParams: bodyParams, headers: headers)
+    }
+
+    func execute(responseQueue: DispatchQueue = .main, onSuccess: ResponseSuccessCallback? = nil, onError: ErrorCallback? = nil) {
+        guard let executer = NetworkingStack.instance.requestExecuter else {
+            onError?(.system(error: NetworkingInternalError.stackNotInitialized))
+            return
+        }
+
+        executer.execute(self, responseQueue: responseQueue, retryOnFail: true, onSuccess: onSuccess, onError: onError)
+    }
 }
 
 protocol NetworkDispatcher {
@@ -60,14 +133,23 @@ protocol RequestFactory {
     func request(from requestData: RequestData) throws -> URLRequest
 }
 
-protocol RequestExecuter {
-    func execute<T: RequestType>(_ request: T, onSuccess: ((T.ResponseObjectType) -> Void)?, onError: ((NetworkingError<T.ErrorType>) -> Void)?, responseQueue: DispatchQueue)
+protocol RequestRetrier {
+    @discardableResult
+    func handle<T: RequestType>(_ error: NetworkingError<T.ErrorType>, for request: T, completion: (_ newRequest: T) -> Void) -> Bool
 }
 
-enum Token {
+protocol RequestExecuter {
+    func execute<T: RequestType>(_ request: T, responseQueue: DispatchQueue, retryOnFail: Bool, onSuccess: ((T.ResponseObjectType) -> Void)?, onError: ((NetworkingError<T.ErrorType>) -> Void)?)
+}
+
+enum AuthToken: NetworkingHeader, Equatable {
     case bearer(token: String)
     case jwt(token: String)
     case custom(token: String)
+
+    var key: String {
+        return "Authorization"
+    }
 
     var value: String {
         switch self {
@@ -80,6 +162,32 @@ enum Token {
     var token: String {
         switch self {
         case .bearer(let token), .jwt(let token), .custom(let token): return token
+        }
+    }
+
+    static func ==(left: AuthToken, right: AuthToken) -> Bool {
+        return left.value == right.value
+    }
+}
+
+enum ContentType: NetworkingHeader {
+    case applicationJson
+    case applicationXml
+    case textHtml
+    case imagePng
+    case imageJpeg
+
+    var key: String {
+        return "Content-Type"
+    }
+
+    var value: String {
+        switch self {
+        case .applicationJson: return "application/json"
+        case .applicationXml: return "application/json"
+        case .textHtml: return "application/json"
+        case .imagePng: return "application/json"
+        case .imageJpeg: return "application/json"
         }
     }
 }
@@ -96,12 +204,14 @@ enum NetworkingInternalError: Error {
     case invalidUrl
     case noDataInResponse
     case invalidResponse
+    case stackNotInitialized
 
     var localizedDescription: String {
         switch self {
         case .invalidUrl: return "URL is invalid"
         case .noDataInResponse: return "No datain response"
         case .invalidResponse: return "Response is invalid"
+        case .stackNotInitialized: return "Networking stack is not initialized"
         }
     }
 }
@@ -118,35 +228,44 @@ enum NetworkingError<T: ServerError> {
     }
 }
 
-extension RequestData {
-    var queryParams: [(String, String)] { return [] }
-    var bodyParams: [(String, Any)] { return [] }
-    var headers: [String: String] { return [:] }
-}
+private class TokenRefreshRetrier: RequestRetrier {
+    private let authManager: AuthManager
 
-extension RequestType {
-    typealias ResponseSuccessCallback = (ResponseObjectType) -> Void
-    typealias ErrorCallback = (NetworkingError<ErrorType>) -> Void
-
-    var data: RequestData {
-        return DefaultRequestData(path: path, method: method, queryParams: queryParams, bodyParams: bodyParams, headers: headers)
+    init(authManager: AuthManager) {
+        self.authManager = authManager
     }
 
-    func execute(onSuccess: ResponseSuccessCallback? = nil, onError: ErrorCallback? = nil, responseQueue: DispatchQueue = .main) {
-        NetworkingStack.instance.requestExecuter.execute(self, onSuccess: onSuccess, onError: onError, responseQueue: responseQueue)
+    @discardableResult
+    func handle<T>(_ error: NetworkingError<T.ErrorType>, for request: T, completion: (T) -> Void) -> Bool where T : RequestType {
+        guard case .custom(_, let statusCode) = error, statusCode.isUnauthorize else {
+            return false
+        }
+
+
+        return true
     }
 }
 
-struct DefaultRequestExecuter: RequestExecuter {
-    private let jsonDecoder: JSONDecoder
-    private let dispatcher: NetworkDispatcher
+private struct DefaultRequestData: RequestData {
+    let path: String
+    let method: HTTPMethod
+    let queryParams: [(String, String)]
+    let bodyParams: [String: Any]
+    let headers: [NetworkingHeader]
+}
+
+private class DefaultRequestExecuter: RequestExecuter {
+    var jsonDecoder: JSONDecoder
+    var dispatcher: NetworkDispatcher
+
+    var requestRetries: [RequestRetrier] = []
 
     init(dispatcher: NetworkDispatcher, decoder: JSONDecoder = JSONDecoder()) {
         self.dispatcher = dispatcher
         self.jsonDecoder = decoder
     }
 
-    func execute<T: RequestType>(_ request: T, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil, responseQueue: DispatchQueue = .main) {
+    func execute<T: RequestType>(_ request: T, responseQueue: DispatchQueue = .main, retryOnFail: Bool = true, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil) {
         dispatcher.dispatch(request.data,
 
                             onSuccess: { (data, statusCode) in
@@ -160,7 +279,15 @@ struct DefaultRequestExecuter: RequestExecuter {
                                     }
                                     else {
                                         let result = try jsonDecoder.decode(T.ErrorType.self, from: data)
-                                        responseQueue.async { onError?(.custom(error: result, statusCode: statusCode)) }
+                                        let error: NetworkingError<T.ErrorType> = .custom(error: result, statusCode: statusCode)
+
+                                        if retryOnFail {
+                                            self.retry(with: error, for: request, responseQueue: responseQueue, onSuccess: onSuccess, onError: onError)
+                                        }
+                                        else {
+                                            responseQueue.async { onError?(error) }
+                                        }
+
                                     }
                                 }
                                 catch {
@@ -168,9 +295,29 @@ struct DefaultRequestExecuter: RequestExecuter {
                                 }
         },
 
-                            onError: { error in
-                                responseQueue.async { onError?(.system(error: error)) }
+                            onError: {
+                                let error: NetworkingError<T.ErrorType> = .system(error: $0)
+
+                                if retryOnFail {
+                                    self.retry(with: error, for: request, responseQueue: responseQueue, onSuccess: onSuccess, onError: onError)
+                                }
+                                else {
+                                    responseQueue.async { onError?(error) }
+                                }
         })
+    }
+
+    private func retry<T: RequestType>(with error: NetworkingError<T.ErrorType>, for request: T, responseQueue: DispatchQueue, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil) {
+
+        for retrier in requestRetries {
+            let handled = retrier.handle(error, for: request) { newRequest in
+                execute(newRequest, responseQueue: responseQueue, retryOnFail: false, onSuccess: onSuccess, onError: onError)
+            }
+
+            if handled {
+                break
+            }
+        }
     }
 }
 
@@ -196,14 +343,15 @@ struct StatusCode {
     }
 }
 
-struct DefaultRequestFactory: RequestFactory {
+private class DefaultRequestFactory: RequestFactory {
 
     private let baseUrl: String
-    private let defaultHeaders: [String: String]
+    private var defaultHeaders: [NetworkingHeader]
 
-    init(baseUrl: String, defaultHeaders: [String: String] = [:]) {
+    init(baseUrl: String, token: AuthToken? = nil, encoding: ContentType) {
         self.baseUrl = baseUrl
-        self.defaultHeaders = defaultHeaders
+        let headers: [NetworkingHeader?] = [token, encoding]
+        defaultHeaders = headers.compactMap({ $0 })
     }
 
     func request(from requestData: RequestData) throws -> URLRequest {
@@ -216,19 +364,23 @@ struct DefaultRequestFactory: RequestFactory {
         var urlRequest = URLRequest(url: url)
         urlRequest.httpBody = try JSONSerialization.data(withJSONObject: requestData.bodyParams, options: [])
         urlRequest.httpMethod = requestData.method.rawValue
-        urlRequest.allHTTPHeaderFields = defaultHeaders + requestData.headers
 
-        setEncoding(into: &urlRequest)
+        urlRequest.allHTTPHeaderFields = (defaultHeaders + requestData.headers).reduce([:]) {
+            var copy = $0
+            copy?[$1.key] = $1.value
+            return copy
+        }
 
         return urlRequest
     }
 
-    private func setEncoding(into request: inout URLRequest) {
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    func updated(token: AuthToken? = nil, encoding: ContentType) {
+        let headers: [NetworkingHeader?] = [token, encoding]
+        defaultHeaders = headers.compactMap({ $0 })
     }
 }
 
-struct URLSessionNetworkDispatcher: NetworkDispatcher {
+class URLSessionNetworkDispatcher: NetworkDispatcher {
     private let requestFactory: RequestFactory
     private let session: URLSession
 

@@ -9,7 +9,13 @@
 import UIKit
 
 class AuthenticationCoordinator: Coordinator {
-    var onSuccess: ((User) -> Void)?
+
+    private let authManager: AppAuthManager
+
+    init(rootController: UIViewController, authManager: AppAuthManager) {
+        self.authManager = authManager
+        super.init(rootController: rootController)
+    }
 
     override func start() {
         super.start()
@@ -63,7 +69,7 @@ class AuthenticationCoordinator: Coordinator {
         let request = SignUpRequest(name: name, country: country, email: email, password: password, mobile: mobile)
         request.execute(
             onSuccess: { [weak self] response in
-                self?.onSuccess?(response.user)
+                self?.authenticate(with: response)
             },
             onError: { error in
                 error.display()
@@ -71,6 +77,7 @@ class AuthenticationCoordinator: Coordinator {
     }
 
     private func authenticate(with response: AuthResponse) {
-        onSuccess?(response.user)
+        authManager.handle(response)
+        end()
     }
 }

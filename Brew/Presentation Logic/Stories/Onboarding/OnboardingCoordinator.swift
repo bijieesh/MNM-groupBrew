@@ -8,15 +8,12 @@
 
 import UIKit
 
-class OnboardingCoordinator {
+class OnboardingCoordinator: Coordinator {
 
-    private let rootController: UIViewController
+    override func start() {
+        super.start()
 
-    init(rootController: UIViewController) {
-        self.rootController = rootController
-    }
-
-    func start() {
-        
+        let interestsViewController = InterestsViewController()
+        rootController.present(interestsViewController, animated: false)
     }
 }

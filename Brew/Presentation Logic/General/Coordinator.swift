@@ -13,6 +13,8 @@ class Coordinator {
 
     let rootController: UIViewController
 
+    var onFinish: (() -> Bool)?
+
     private lazy var uuid = UUID().uuidString
 
     init(rootController: UIViewController) {
@@ -24,6 +26,8 @@ class Coordinator {
     }
 
     func end() {
-        Coordinator.coordonators.removeValue(forKey: uuid)
+        if onFinish?() == true {
+            Coordinator.coordonators.removeValue(forKey: uuid)
+        }
     }
 }
