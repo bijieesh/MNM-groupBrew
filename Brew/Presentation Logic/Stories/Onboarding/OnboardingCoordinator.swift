@@ -14,6 +14,6 @@ class OnboardingCoordinator: Coordinator {
         super.start()
 
         let interestsViewController = InterestsViewController()
-        rootController.present(interestsViewController, animated: false)
+        rootController.topController.present(interestsViewController, animated: false)
     }
 }

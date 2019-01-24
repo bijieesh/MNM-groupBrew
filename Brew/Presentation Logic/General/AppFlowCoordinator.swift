@@ -46,10 +46,10 @@ class AppFlowCoordinator: Coordinator {
     }
 
     private func startOnboardingFlow() {
-        let authCoordinator = OnboardingCoordinator(rootController: rootController)
+        let onboardingCoordinator = OnboardingCoordinator(rootController: rootController)
 
-        authCoordinator.onFinish = { return true }
+        onboardingCoordinator.onFinish = { return true }
 
-        authCoordinator.start()
+        onboardingCoordinator.start()
     }
 }
