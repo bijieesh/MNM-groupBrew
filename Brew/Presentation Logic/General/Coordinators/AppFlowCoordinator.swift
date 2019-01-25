@@ -18,7 +18,7 @@ class AppFlowCoordinator: Coordinator {
         initNetworkingStack(with: authManager)
 
         if authManager.isUserLoggedIn {
-            startOnboardingFlow()
+            startMainFlow()
         }
         else {
             startAuthenticationFlow(with: authManager)
@@ -38,7 +38,7 @@ class AppFlowCoordinator: Coordinator {
             }
 
             self?.rootController.dismiss(animated: true) {
-                self?.startMainFlow()
+                self?.startOnboardingFlow()
             }
 
             return true
@@ -54,7 +54,7 @@ class AppFlowCoordinator: Coordinator {
             self?.rootController.dismiss(animated: true) {
                 self?.startMainFlow()
             }
-            
+
             return true
         }
         onboardingCoordinator.start()
