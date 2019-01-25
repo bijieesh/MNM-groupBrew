@@ -19,15 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let vc = PodcastDetailViewController()
+        let vc = AppViewController()
 
         vc.view.backgroundColor = .white
 
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
 
-        //appFlowCoordinator = AppFlowCoordinator(rootController: vc)
-        //appFlowCoordinator?.start()
+        appFlowCoordinator = AppFlowCoordinator(rootController: vc)
+        appFlowCoordinator?.start()
 
         return true
     }
