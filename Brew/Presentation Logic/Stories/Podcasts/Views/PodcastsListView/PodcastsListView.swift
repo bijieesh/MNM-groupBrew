@@ -17,11 +17,20 @@ class PodcastsListView: UIView, NibOwnerLoadable {
         }
     }
 
+    @IBInspectable var isHighlited: Bool = false
+
+    @IBInspectable var title: String? {
+        didSet {
+            titleLabel?.text = title
+        }
+    }
+
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var contentStackView: UIStackView!
 
-    init(items: [PodcastsListItemView.Data]) {
+    init(items: [PodcastsListItemView.Data], isHighlited: Bool = false) {
         self.items = items
+        self.isHighlited = isHighlited
         super.init(frame: .zero)
         loadNibContent()
         update()
@@ -33,10 +42,19 @@ class PodcastsListView: UIView, NibOwnerLoadable {
     }
 
     private func update() {
+        guard !items.isEmpty else {
+            isHidden = true
+            return
+        }
+
+        isHidden = false
+
+        let titleFontSize: CGFloat = isHighlited ? 24 : 17
+        titleLabel.font = titleLabel.font.withSize(titleFontSize)
         contentStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
         for item in items {
-            let view = PodcastsListItemView(data: item)
+            let view: UIView = isHighlited ? PodcastsListHighlitedItemView(imageUrl: item.imageUrl) : PodcastsListItemView(data: item)
             contentStackView.addArrangedSubview(view)
         }
     }

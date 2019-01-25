@@ -32,8 +32,8 @@ class PodcastsListItemView: UIView, NibOwnerLoadable {
     }
 
     private func setup(with data: Data) {
-        imageView.sd_setImage(with: data.imageUrl)
-        titleLabel.text = data.title
-        subtitleLabel.text = data.subtitle
+        imageView?.sd_setImage(with: data.imageUrl)
+        titleLabel?.text = data.title
+        subtitleLabel?.text = data.subtitle
     }
 }

@@ -16,4 +16,14 @@ class OnboardingCoordinator: Coordinator {
         let interestsViewController = InterestsViewController()
         rootController.topController.present(interestsViewController, animated: false)
     }
+
+    private func showInterests() {
+        let interestsViewController = InterestsViewController()
+        rootController.topController.present(interestsViewController, animated: false)
+    }
+
+    private func showPriceSelection() {
+        let priceViewController = PriceViewController()
+        rootController.topController.present(priceViewController, animated: false)
+    }
 }

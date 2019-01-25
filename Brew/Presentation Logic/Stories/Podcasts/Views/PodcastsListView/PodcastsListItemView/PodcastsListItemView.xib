@@ -27,25 +27,31 @@
             <rect key="frame" x="0.0" y="0.0" width="175" height="233"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4To-LA-qHy">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4To-LA-qHy">
                     <rect key="frame" x="0.0" y="1" width="175" height="175"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="4To-LA-qHy" secondAttribute="height" multiplier="1:1" id="zVI-uR-97G"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                            <integer key="value" value="10"/>
+                            <integer key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwh-Cl-MZ3">
                     <rect key="frame" x="0.0" y="191" width="175" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="v4l-yn-GSg"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
                     <color key="textColor" white="0.16" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FUu-4H-hVR">
                     <rect key="frame" x="0.0" y="213" width="175" height="13.5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="13.5" id="k5R-xI-UQ1"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="11"/>
                     <color key="textColor" white="0.46479540745856357" alpha="0.84999999999999998" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -55,6 +61,7 @@
             <constraints>
                 <constraint firstItem="Mwh-Cl-MZ3" firstAttribute="leading" secondItem="8ha-YD-DPQ" secondAttribute="leading" id="3Tp-kb-WRi"/>
                 <constraint firstItem="4To-LA-qHy" firstAttribute="top" secondItem="8ha-YD-DPQ" secondAttribute="top" constant="1" id="9qm-h4-VCd"/>
+                <constraint firstItem="8ha-YD-DPQ" firstAttribute="bottom" secondItem="FUu-4H-hVR" secondAttribute="bottom" constant="6.5" id="C1K-3r-4w1"/>
                 <constraint firstItem="4To-LA-qHy" firstAttribute="centerX" secondItem="8ha-YD-DPQ" secondAttribute="centerX" id="Rjp-cT-7wi"/>
                 <constraint firstItem="FUu-4H-hVR" firstAttribute="leading" secondItem="8ha-YD-DPQ" secondAttribute="leading" id="a8f-YZ-ZpN"/>
                 <constraint firstItem="8ha-YD-DPQ" firstAttribute="trailing" secondItem="FUu-4H-hVR" secondAttribute="trailing" id="ehT-Fd-eda"/>

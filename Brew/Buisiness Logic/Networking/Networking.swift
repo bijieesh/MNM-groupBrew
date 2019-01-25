@@ -46,7 +46,7 @@ class NetworkingStack {
 
         self.requestExecuter = requestExecuter
 
-        authManager?.refreshToken(completion: nil)
+        //authManager?.refreshToken(completion: nil)
     }
 
     private func networkDispatcher() -> NetworkDispatcher? {
@@ -105,6 +105,14 @@ protocol NetworkingHeader {
 protocol RequestType: RequestData {
     associatedtype ResponseObjectType: Codable
     associatedtype ErrorType: ServerError
+
+    func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any
+}
+
+extension RequestType {
+    func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {
+        return serverJson
+    }
 }
 
 extension RequestType {
@@ -273,8 +281,12 @@ private class DefaultRequestExecuter: RequestExecuter {
                                 let jsonDecoder = JSONDecoder()
 
                                 do {
+                                    let serverJson = try JSONSerialization.jsonObject(with: data, options: [])
+                                    let convertedJson = request.convert(serverJson, for: statusCode)
+                                    let convertedData = try JSONSerialization.data(withJSONObject: convertedJson, options: [])
+
                                     if statusCode.isSuccessful {
-                                        let result = try jsonDecoder.decode(T.ResponseObjectType.self, from: data)
+                                        let result = try jsonDecoder.decode(T.ResponseObjectType.self, from: convertedData)
                                         responseQueue.async { onSuccess?(result)}
                                     }
                                     else {
