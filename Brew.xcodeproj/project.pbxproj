@@ -49,6 +49,8 @@
 		3D20029021FB5DEA00E38B99 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D20028E21FB5DEA00E38B99 /* ProfileViewController.swift */; };
 		3D20029221FB5FD800E38B99 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D20029121FB5FD800E38B99 /* ProfileCoordinator.swift */; };
 		3D20029421FB6D9B00E38B99 /* GetCurrentUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D20029321FB6D9B00E38B99 /* GetCurrentUserRequest.swift */; };
+		3D20029621FB7E2700E38B99 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D20029521FB7E2700E38B99 /* Category.swift */; };
+		3D20029821FB7E7700E38B99 /* GetAllCategoriesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D20029721FB7E7700E38B99 /* GetAllCategoriesRequest.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
 		3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C521F66CDD00F93876 /* AppFont.swift */; };
@@ -124,6 +126,8 @@
 		3D20028E21FB5DEA00E38B99 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3D20029121FB5FD800E38B99 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		3D20029321FB6D9B00E38B99 /* GetCurrentUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCurrentUserRequest.swift; sourceTree = "<group>"; };
+		3D20029521FB7E2700E38B99 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		3D20029721FB7E7700E38B99 /* GetAllCategoriesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllCategoriesRequest.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
 		3DB447C521F66CDD00F93876 /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
@@ -223,6 +227,7 @@
 				3DCBBA7821F8DBCD009BCD31 /* TokenRefreshRequest.swift */,
 				3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */,
 				3D20029321FB6D9B00E38B99 /* GetCurrentUserRequest.swift */,
+				3D20029721FB7E7700E38B99 /* GetAllCategoriesRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 			children = (
 				3D05EFD321F21B7700174A91 /* User.swift */,
 				3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */,
+				3D20029521FB7E2700E38B99 /* Category.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -794,12 +800,14 @@
 				3DCBBA8021F90063009BCD31 /* PlayerViewController.swift in Sources */,
 				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
 				3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */,
+				3D20029621FB7E2700E38B99 /* Category.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,
 				3DCBBA8721FA0BAA009BCD31 /* MainFlowCoordinator.swift in Sources */,
 				3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */,
+				3D20029821FB7E7700E38B99 /* GetAllCategoriesRequest.swift in Sources */,
 				3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */,

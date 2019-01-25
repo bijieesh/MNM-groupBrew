@@ -18,7 +18,7 @@ class AppFlowCoordinator: Coordinator {
         initNetworkingStack(with: authManager)
 
         if authManager.isUserLoggedIn {
-            startMainFlow()
+            startOnboardingFlow()
         }
         else {
             startAuthenticationFlow(with: authManager)
@@ -37,7 +37,9 @@ class AppFlowCoordinator: Coordinator {
                 return false
             }
 
-            self?.startMainFlow()
+            self?.rootController.dismiss(animated: true) {
+                self?.startMainFlow()
+            }
 
             return true
         }
@@ -47,7 +49,14 @@ class AppFlowCoordinator: Coordinator {
 
     private func startOnboardingFlow() {
         let onboardingCoordinator = OnboardingCoordinator(rootController: rootController)
-        onboardingCoordinator.onFinish = { return true }
+        onboardingCoordinator.onFinish = { [weak self] in
+
+            self?.rootController.dismiss(animated: true) {
+                self?.startMainFlow()
+            }
+            
+            return true
+        }
         onboardingCoordinator.start()
     }
 

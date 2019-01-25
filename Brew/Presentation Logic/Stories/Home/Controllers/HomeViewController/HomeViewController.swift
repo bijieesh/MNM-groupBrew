@@ -15,10 +15,10 @@ class HomeViewController: AppViewController {
     @IBOutlet private var editorsChoiceItemsView: PodcastsListView!
 
     func update(withDiscover discover: [Podcast], popular: [Podcast], new: [Podcast], editors: [Podcast]) {
-        discoverItemsView.items = discover.map { $0.listItemData }
-        popularItemsView.items = popular.map { $0.listItemData }
-        newReleasesItemsView.items = new.map { $0.listItemData }
-        editorsChoiceItemsView.items = editors.map { $0.listItemData }
+        discoverItemsView?.items = discover.map { $0.listItemData }
+        popularItemsView?.items = popular.map { $0.listItemData }
+        newReleasesItemsView?.items = new.map { $0.listItemData }
+        editorsChoiceItemsView?.items = editors.map { $0.listItemData }
     }
 }
 

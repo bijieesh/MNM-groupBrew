@@ -12,7 +12,7 @@ import AlignedCollectionViewFlowLayout
 
 class InterestsViewController: AppViewController {
 
-    var onNextTapped: ((_ podcasts: [String]?) -> Void)?
+    var onNextTapped: ((_ selected: [Category]) -> Void)?
 
     @IBOutlet private var collectionViewLayout: AlignedCollectionViewFlowLayout! {
         didSet {
@@ -29,21 +29,22 @@ class InterestsViewController: AppViewController {
         }
     }
 
-    var items: [String] = ["Arts", "Games and hobbies", "Comedy", "Society & Culture", "Education", "Science", "Family"]
+    var categories: [Category] = []
 
     @IBAction private func nextTapped() {
+        let selected = collectionView.indexPathsForSelectedItems?.map({ categories[$0.row] }) ?? []
+        onNextTapped?(selected)
     }
 }
 
 extension InterestsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: TagViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        let tag = items[indexPath.row]
-
+        let tag = categories[indexPath.row].name
         cell.title = tag
         return cell
     }
