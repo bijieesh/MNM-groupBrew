@@ -46,7 +46,7 @@ class NetworkingStack {
 
         self.requestExecuter = requestExecuter
 
-        //authManager?.refreshToken(completion: nil)
+        authManager?.refreshToken(completion: nil)
     }
 
     private func networkDispatcher() -> NetworkDispatcher? {
