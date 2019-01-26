@@ -22,7 +22,7 @@ class HomeViewController: AppViewController {
     }
 }
 
-private extension Podcast {
+extension Podcast {
     var listItemData: PodcastsListItemView.Data {
         return PodcastsListItemView.Data(title: title, subtitle: description, imageUrl: URL(string: "https://www.wired.com/wp-content/uploads/2015/12/headphones-podcast-business-500850383-blue-f.jpg")!)
     }

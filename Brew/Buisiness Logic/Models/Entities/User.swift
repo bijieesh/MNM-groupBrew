@@ -12,4 +12,7 @@ class User: Codable {
     let id: Int
     let name: String
     let email: String
+    let country: String
+    let phone_number: String
+    let profile: Profile
 }

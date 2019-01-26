@@ -85,6 +85,12 @@
 		3DCBBA8C21FA2322009BCD31 /* GetPodcastsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */; };
 		3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
+		7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865293A21FC646700A826F7 /* SettingsViewController.swift */; };
+		7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7865293B21FC646700A826F7 /* SettingsViewController.xib */; };
+		7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */; };
+		7865294221FC776A00A826F7 /* ChangePasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294121FC776A00A826F7 /* ChangePasswordRequest.swift */; };
+		7865294421FC915600A826F7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294321FC915600A826F7 /* Profile.swift */; };
+		7865294621FC91AE00A826F7 /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294521FC91AE00A826F7 /* ProfilePicture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +174,12 @@
 		3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPodcastsRequest.swift; sourceTree = "<group>"; };
 		3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
+		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7865293B21FC646700A826F7 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
+		7865294121FC776A00A826F7 /* ChangePasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRequest.swift; sourceTree = "<group>"; };
+		7865294321FC915600A826F7 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		7865294521FC91AE00A826F7 /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
 		7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +252,7 @@
 				3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */,
 				3D20029321FB6D9B00E38B99 /* GetCurrentUserRequest.swift */,
 				3D20029721FB7E7700E38B99 /* GetAllCategoriesRequest.swift */,
+				7865294121FC776A00A826F7 /* ChangePasswordRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -409,6 +422,8 @@
 				3D05EFD321F21B7700174A91 /* User.swift */,
 				3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */,
 				3D20029521FB7E2700E38B99 /* Category.swift */,
+				7865294321FC915600A826F7 /* Profile.swift */,
+				7865294521FC91AE00A826F7 /* ProfilePicture.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -443,8 +458,8 @@
 		3D20028C21FB5DEA00E38B99 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D20028E21FB5DEA00E38B99 /* ProfileViewController.swift */,
-				3D20028D21FB5DEA00E38B99 /* ProfileViewController.xib */,
+				7865293921FC645000A826F7 /* SettingsViewController */,
+				7865293821FC643000A826F7 /* ProfileViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -664,6 +679,7 @@
 		3DCBBA8A21FA134A009BCD31 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				7865293E21FC651400A826F7 /* ImagePickerCoordinator */,
 				3DCBBA7321F8943F009BCD31 /* Coordinator.swift */,
 				3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */,
 				3DCBBA8621FA0BAA009BCD31 /* MainFlowCoordinator.swift */,
@@ -678,6 +694,32 @@
 				88A54173F7B7B92D0BC3E336 /* Pods-Brew.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7865293821FC643000A826F7 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D20028E21FB5DEA00E38B99 /* ProfileViewController.swift */,
+				3D20028D21FB5DEA00E38B99 /* ProfileViewController.xib */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
+		7865293921FC645000A826F7 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7865293A21FC646700A826F7 /* SettingsViewController.swift */,
+				7865293B21FC646700A826F7 /* SettingsViewController.xib */,
+			);
+			path = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		7865293E21FC651400A826F7 /* ImagePickerCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */,
+			);
+			path = ImagePickerCoordinator;
 			sourceTree = "<group>";
 		};
 		CFCEA6CE197181213CF7B381 /* Frameworks */ = {
@@ -767,6 +809,7 @@
 				3D2002A221FBBA4100E38B99 /* PodcastEpisodeCell.xib in Resources */,
 				3D05F00E21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */,
+				7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */,
 				3DB447DB21F76F7A00F93876 /* HomeViewController.xib in Resources */,
 				3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */,
 				3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */,
@@ -819,7 +862,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AlignedCollectionViewFlowLayout/AlignedCollectionViewFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/LDProgressView/LDProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
@@ -838,7 +881,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -863,6 +906,7 @@
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
 				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
 				3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */,
+				7865294621FC91AE00A826F7 /* ProfilePicture.swift in Sources */,
 				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,
 				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
 				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,
@@ -872,15 +916,19 @@
 				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
 				3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */,
 				3D20029621FB7E2700E38B99 /* Category.swift in Sources */,
+				7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,
+				7865294421FC915600A826F7 /* Profile.swift in Sources */,
 				3DCBBA8721FA0BAA009BCD31 /* MainFlowCoordinator.swift in Sources */,
 				3D20029D21FBB84800E38B99 /* PodcastDetailViewController.swift in Sources */,
 				3D05F01E21F5F5EE00174A91 /* AuthResponse.swift in Sources */,
 				3D20029821FB7E7700E38B99 /* GetAllCategoriesRequest.swift in Sources */,
+				7865294221FC776A00A826F7 /* ChangePasswordRequest.swift in Sources */,
 				3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */,
+				7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */,
 				3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */,

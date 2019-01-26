@@ -14,7 +14,8 @@ class ProfileViewController: AppViewController {
     var onBackTapped:OnButtonTapped?
     var onSettingsTapped:OnButtonTapped?
     var onLogOutTapped:OnButtonTapped?
-
+    var onProfileImageTapped:OnButtonTapped?
+    var updateContent: ((ProfileViewController)-> Void)?
     @IBOutlet private var userNameLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var podcastsView: PodcastsListView!
@@ -23,9 +24,16 @@ class ProfileViewController: AppViewController {
             logoImageView.layer.masksToBounds = true
         }
     }
+    
+    var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateContent?(self)
     }
     
     @IBAction private func backTapped() {
@@ -36,5 +44,27 @@ class ProfileViewController: AppViewController {
     }
     @IBAction private func logOutTapped() {
         onLogOutTapped?(self)
+    }
+    @IBAction private func profilePhotoTapped() {
+        onProfileImageTapped?(self)
+    }
+}
+
+extension ProfileViewController {
+    func profileImageUpdatedWithNew(_ image: UIImage) {
+        logoImageView.image = image
+    }
+    
+    func updateContent(with user: User) {
+        self.user = user
+        userNameLabel.text = user.name
+        
+        let userProfilePicture = user.profile.profile_picture.url
+        
+        logoImageView.sd_setImage(with: URL(string: "https://cast.brew.com/" + userProfilePicture), completed: nil)
+    }
+    
+    func update(withDiscover discover: [Podcast]) {
+        podcastsView?.items = discover.map { $0.listItemData }
     }
 }
