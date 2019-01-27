@@ -109,6 +109,10 @@ class SettingsViewController: AppViewController {
     }
     
     @IBAction private func changePasswordTapped() {
+        guard ValidatedTextField.validateAll(in: passwordStackView) else {
+            showChangePasswordButton = false
+            return
+        }
         let password = passwordTextField.text ?? ""
         let oldPassword = oldPasswordTextField.text ?? ""
         onChangePassword?(self, oldPassword, password)

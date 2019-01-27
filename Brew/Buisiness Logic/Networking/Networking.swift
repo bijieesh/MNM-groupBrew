@@ -13,18 +13,23 @@ class NetworkingStack {
 
     private(set) var authManager: AuthManager?
     private(set) var baseUrl: String?
-
+    private(set) var photoUrl: String?
+    
     private(set) var requestExecuter: RequestExecuter?
 
     private init() {}
 
-    func update(authManager: AuthManager? = nil, baseUrl: String? = nil) {
+    func update(authManager: AuthManager? = nil, baseUrl: String? = nil, photoUrl: String? = nil) {
         if let authManager = authManager {
             self.authManager = authManager
         }
 
         if let baseUrl = baseUrl {
             self.baseUrl = baseUrl
+        }
+        
+        if let photoUrl = photoUrl {
+            self.photoUrl = photoUrl
         }
 
         configure()
@@ -295,7 +300,7 @@ private class DefaultRequestExecuter: RequestExecuter {
                                         let error: NetworkingError<T.ErrorType> = .custom(error: result, statusCode: statusCode)
 
                                         if retryOnFail {
-                                            self.retry(with: error, for: request, responseQueue: responseQueue, onSuccess: onSuccess, onError: onError)
+                                            strongSelf.retry(with: error, for: request, responseQueue: responseQueue, onSuccess: onSuccess, onError: onError)
                                         }
                                         else {
                                             responseQueue.async { onError?(error) }

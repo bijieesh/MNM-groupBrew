@@ -10,9 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Cera Pro Bold.otf">
-            <string>CeraPro-Bold</string>
-        </array>
         <array key="SF-Pro-Display-Bold.otf">
             <string>SFProDisplay-Bold</string>
         </array>
@@ -75,35 +72,29 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brian Powell" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkL-Ga-uyJ">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZkL-Ga-uyJ">
                             <rect key="frame" x="30" y="202" width="315" height="24"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9n-Fj-mfG">
-                            <rect key="frame" x="26" y="276" width="349" height="199"/>
+                            <rect key="frame" x="26" y="246" width="349" height="250"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Own podcasts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQM-WZ-uHp">
-                                    <rect key="frame" x="0.0" y="0.0" width="111" height="20"/>
-                                    <fontDescription key="fontDescription" name="CeraPro-Bold" family="Cera Pro" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-k8-SxE" customClass="PodcastsListView" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="40" width="349" height="159"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="349" height="250"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="250" id="uv0-nA-X8B"/>
+                                    </constraints>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="PQM-WZ-uHp" firstAttribute="top" secondItem="n9n-Fj-mfG" secondAttribute="top" id="6bd-Tf-CLT"/>
                                 <constraint firstAttribute="bottom" secondItem="gCe-k8-SxE" secondAttribute="bottom" id="Ldf-8k-gTW"/>
-                                <constraint firstItem="gCe-k8-SxE" firstAttribute="top" secondItem="PQM-WZ-uHp" secondAttribute="bottom" constant="20" id="ZAl-bb-Od6"/>
-                                <constraint firstAttribute="height" constant="199" id="fR1-rh-MJV"/>
                                 <constraint firstItem="gCe-k8-SxE" firstAttribute="leading" secondItem="n9n-Fj-mfG" secondAttribute="leading" id="fp4-3t-k0O"/>
                                 <constraint firstAttribute="trailing" secondItem="gCe-k8-SxE" secondAttribute="trailing" id="jqi-kI-cBp"/>
-                                <constraint firstItem="PQM-WZ-uHp" firstAttribute="leading" secondItem="n9n-Fj-mfG" secondAttribute="leading" id="okr-HV-olj"/>
+                                <constraint firstItem="gCe-k8-SxE" firstAttribute="top" secondItem="n9n-Fj-mfG" secondAttribute="top" id="xoo-0R-Fo0"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iBA-Hi-RsT">
@@ -144,7 +135,7 @@
                         <constraint firstItem="6f4-Wl-2eG" firstAttribute="leading" secondItem="92t-at-jFf" secondAttribute="trailing" constant="22" id="n62-bl-34w"/>
                         <constraint firstItem="ZkL-Ga-uyJ" firstAttribute="leading" secondItem="FPX-La-AlH" secondAttribute="leading" constant="30" id="o1B-Rg-oWS"/>
                         <constraint firstItem="ZkL-Ga-uyJ" firstAttribute="centerX" secondItem="FPX-La-AlH" secondAttribute="centerX" id="prz-nW-8u1"/>
-                        <constraint firstItem="n9n-Fj-mfG" firstAttribute="top" secondItem="ZkL-Ga-uyJ" secondAttribute="bottom" constant="50" id="tOY-hg-d6l"/>
+                        <constraint firstItem="n9n-Fj-mfG" firstAttribute="top" secondItem="ZkL-Ga-uyJ" secondAttribute="bottom" constant="20" id="tOY-hg-d6l"/>
                         <constraint firstItem="7cN-wj-gVo" firstAttribute="leading" secondItem="uSL-Xg-e7H" secondAttribute="leading" id="zYS-j9-mv6"/>
                     </constraints>
                 </view>

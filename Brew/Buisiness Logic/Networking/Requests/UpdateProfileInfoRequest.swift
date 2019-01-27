@@ -26,4 +26,12 @@ struct UpdateProfileInfoRequest: RequestType {
             bodyParams["phone_number"] = mobile
         }
     }
+    
+    func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {
+        guard let expectedJson = serverJson as? [String: Any], let userJson = expectedJson["user"] as? [String: Any], statusCode.isSuccessful else {
+            return serverJson
+        }
+        
+        return userJson
+    }
 }

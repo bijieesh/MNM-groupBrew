@@ -62,7 +62,7 @@ extension ProfileViewController {
     func updateContent(with user: User) {
         self.user = user
         userNameLabel.text = user.profile.profileFullName
-        update(withDiscover: user.podcasts)
+        update(withPodcasts: user.podcasts ?? [])
         
         guard let userProfilePictureUrl = user.profile.profilePicture?.url else {
             setupTabBarImage(UIImage(named: "icon-profile") ?? UIImage())
@@ -74,8 +74,8 @@ extension ProfileViewController {
         }
     }
     
-    func update(withDiscover discover: [Podcast]) {
-        podcastsView?.items = discover.map { $0.listItemData }
+    func update(withPodcasts podcasts: [Podcast]) {
+        podcastsView?.items = podcasts.map { $0.listItemData }
     }
 }
 

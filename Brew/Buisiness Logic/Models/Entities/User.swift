@@ -15,5 +15,5 @@ class User: Codable {
     let country: String
     let phoneNumber: String?
     let profile: Profile
-    let podcasts: [Podcast]
+    let podcasts: [Podcast]?
 }
