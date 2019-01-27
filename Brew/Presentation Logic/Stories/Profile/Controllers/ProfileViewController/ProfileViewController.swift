@@ -62,11 +62,8 @@ extension ProfileViewController {
     func updateContent(with user: User) {
         self.user = user
         userNameLabel.text = user.name
-        
-        let userProfilePicture = user.profile.profile_picture.url
-        let userProfileUrl = URL(string: "https://cast.brew.com/" + userProfilePicture)
-        logoImageView.sd_setImage(with: userProfileUrl, completed: nil)
-        logoImageView.sd_setImage(with: userProfileUrl) { [weak self] image, _, _, _ in
+        guard let userProfilePictureUrl = user.profile.profilePicture?.url else { return }
+        logoImageView.sd_setImage(with: userProfilePictureUrl) { [weak self] image, _, _, _ in
             guard let image = image else { return }
             self?.setupTabBarImage(image)
         }

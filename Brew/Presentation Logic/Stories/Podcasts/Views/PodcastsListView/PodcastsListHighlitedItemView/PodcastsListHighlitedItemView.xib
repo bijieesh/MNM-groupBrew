@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="200" height="117"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orl-Wc-kLN">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podcast_logo_big" translatesAutoresizingMaskIntoConstraints="NO" id="orl-Wc-kLN">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="117"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="orl-Wc-kLN" secondAttribute="height" multiplier="200:117" id="gha-cq-EWT"/>
@@ -45,4 +45,7 @@
             <point key="canvasLocation" x="-286.39999999999998" y="-196.55172413793105"/>
         </view>
     </objects>
+    <resources>
+        <image name="podcast_logo_big" width="750" height="456"/>
+    </resources>
 </document>

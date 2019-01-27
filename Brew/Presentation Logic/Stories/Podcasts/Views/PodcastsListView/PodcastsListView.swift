@@ -17,6 +17,8 @@ class PodcastsListView: UIView, NibOwnerLoadable {
         }
     }
 
+    var onItemSelected: ((Int) -> Void)?
+
     @IBInspectable var isHighlited: Bool = false
 
     @IBInspectable var title: String? {
@@ -53,9 +55,26 @@ class PodcastsListView: UIView, NibOwnerLoadable {
         titleLabel.font = titleLabel.font.withSize(titleFontSize)
         contentStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-        for item in items {
+        for (index, item) in items.enumerated() {
             let view: UIView = isHighlited ? PodcastsListHighlitedItemView(imageUrl: item.imageUrl) : PodcastsListItemView(data: item)
+            view.tag = index
+
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(podcastViewTapped(with:)))
+            view.addGestureRecognizer(tapGesture)
+
             contentStackView.addArrangedSubview(view)
         }
+    }
+
+    @objc private func podcastViewTapped(with recognizer: UITapGestureRecognizer) {
+        guard let view = recognizer.view else {
+            return
+        }
+
+        selectedPodcast(at: view.tag)
+    }
+
+    private func selectedPodcast(at index: Int) {
+        onItemSelected?(index)
     }
 }

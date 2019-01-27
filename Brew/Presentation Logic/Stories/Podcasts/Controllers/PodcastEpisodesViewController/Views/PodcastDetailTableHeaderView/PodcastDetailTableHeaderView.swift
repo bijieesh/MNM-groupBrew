@@ -12,10 +12,20 @@ import Reusable
 class PodcastDetailTableHeaderView: UIView, NibLoadable {
     
     var onSubscribeTapped: (() -> Void)?
+
+    var podcastName: String? {
+        didSet {
+            podcastNameLabel.text = podcastName
+        }
+    }
+
+    var podcastDescription: String? {
+        didSet {
+            descriptionLabel.text = podcastDescription
+        }
+    }
     
-    @IBOutlet private var songNameLabel: UILabel!
-    @IBOutlet private var autorNameLabel: UILabel!
-    @IBOutlet private var subscribeButton: UIButton!
+    @IBOutlet private var podcastNameLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
     
     @IBAction private func subscribeTapped() {

@@ -1,16 +1,16 @@
 //
-//  Podcast.swift
+//  Episode.swift
 //  Brew
 //
-//  Created by new user on 1/24/19.
+//  Created by Vasyl Khmil on 1/27/19.
 //  Copyright © 2019 NerdzLab. All rights reserved.
 //
 
 import Foundation
 
-struct Podcast: Codable {
+struct Episode: Codable {
     let id: Int
     let title: String
     let description: String
-    let episodes: [Episode]?
+    let duration: String
 }

@@ -11,7 +11,18 @@ import Reusable
 
 class PodcastEpisodeCell: UITableViewCell, NibReusable {
 
-    @IBOutlet private var datelabel: UILabel!
-    @IBOutlet private var episodeNameLabel: UILabel!
-    @IBOutlet private var timeLabel: UILabel!
+    var duration: String? {
+        didSet {
+            durationLabel.text = duration
+        }
+    }
+
+    var name: String? {
+        didSet {
+            nameLabel.text = name
+        }
+    }
+
+    @IBOutlet private var nameLabel: UILabel!
+    @IBOutlet private var durationLabel: UILabel!
 }

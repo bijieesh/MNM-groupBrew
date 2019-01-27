@@ -14,7 +14,7 @@ class PodcastsListItemView: UIView, NibOwnerLoadable {
     struct Data {
         let title: String
         let subtitle: String
-        let imageUrl: URL
+        let imageUrl: URL? = nil
     }
 
     @IBOutlet private var titleLabel: UILabel!
@@ -32,7 +32,10 @@ class PodcastsListItemView: UIView, NibOwnerLoadable {
     }
 
     private func setup(with data: Data) {
-        imageView?.sd_setImage(with: data.imageUrl)
+        if data.imageUrl != nil {
+            imageView?.sd_setImage(with: data.imageUrl)
+        }
+        
         titleLabel?.text = data.title
         subtitleLabel?.text = data.subtitle
     }
