@@ -39,5 +39,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSAllowsArbitraryLoads</key>
+	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Brew needs access to you camera to change profile photo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Brew needs access to youphoto library to change profile photo</string>
 </dict>
 </plist>
