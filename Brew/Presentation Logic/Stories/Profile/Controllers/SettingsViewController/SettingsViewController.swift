@@ -90,6 +90,7 @@ class SettingsViewController: AppViewController {
     
     private func fillUserInfo(_ user: User) {
         let profile = user.profile
+        
         nameTextField?.text = profile.profileFullName
         emailTextField?.text = user.email
         mobileTextField?.text = user.phoneNumber
@@ -113,8 +114,10 @@ class SettingsViewController: AppViewController {
             showChangePasswordButton = false
             return
         }
+        
         let password = passwordTextField.text ?? ""
         let oldPassword = oldPasswordTextField.text ?? ""
+        
         onChangePassword?(self, oldPassword, password)
     }
     

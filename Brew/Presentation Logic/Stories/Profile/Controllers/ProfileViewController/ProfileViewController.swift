@@ -19,8 +19,9 @@ class ProfileViewController: AppViewController {
     var onProfileImageTapped:OnButtonTapped?
     var updateContent: ((ProfileViewController)-> Void)?
     
+    //MARK: IBOutlets
+    
     @IBOutlet private var userNameLabel: UILabel!
-    @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var podcastsView: PodcastsListView!
     @IBOutlet private var logoImageView: UIImageView! {
         didSet {
@@ -30,14 +31,14 @@ class ProfileViewController: AppViewController {
     
     var user: User?
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    //MARK: Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateContent?(self)
     }
+    
+    //MARK: IBActions
     
     @IBAction private func backTapped() {
         onBackTapped?(self)
@@ -61,6 +62,7 @@ extension ProfileViewController {
     
     func updateContent(with user: User) {
         self.user = user
+        
         userNameLabel.text = user.profile.profileFullName
         update(withPodcasts: user.podcasts ?? [])
         
@@ -68,6 +70,7 @@ extension ProfileViewController {
             setupTabBarImage(UIImage(named: "icon-profile") ?? UIImage())
             return
         }
+        
         logoImageView.sd_setImage(with: userProfilePictureUrl) { [weak self] image, _, _, _ in
             guard let image = image else { return }
             self?.setupTabBarImage(image)
