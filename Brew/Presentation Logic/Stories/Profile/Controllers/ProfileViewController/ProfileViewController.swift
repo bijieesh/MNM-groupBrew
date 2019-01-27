@@ -33,9 +33,9 @@ class ProfileViewController: AppViewController {
 
     //MARK: Lifecycle
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateContent?(self)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUserInfo()
     }
     
     //MARK: IBActions
@@ -63,16 +63,17 @@ extension ProfileViewController {
     func updateContent(with user: User) {
         self.user = user
         
-        userNameLabel.text = user.profile.profileFullName
+        userNameLabel?.text = user.profile.profileFullName
         update(withPodcasts: user.podcasts ?? [])
         
         guard let userProfilePictureUrl = user.profile.profilePicture?.url else {
             setupTabBarImage(UIImage(named: "icon-profile") ?? UIImage())
             return
         }
-        
-        logoImageView.sd_setImage(with: userProfilePictureUrl) { [weak self] image, _, _, _ in
+    
+        SDWebImageManager.shared().loadImage(with: userProfilePictureUrl, options: .highPriority, progress: nil) { [weak self] (image, _, _, _, _, _) in
             guard let image = image else { return }
+            self?.logoImageView?.image = image
             self?.setupTabBarImage(image)
         }
     }
@@ -88,6 +89,12 @@ private extension ProfileViewController {
         if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {
             let customTabBarItem = UITabBarItem(title: "Profile", image: roundedImage, selectedImage: roundedImage)
             tabBarItem = customTabBarItem
+        }
+    }
+    
+    private func setupUserInfo() {
+        if let user = self.user {
+            updateContent(with: user)
         }
     }
 }

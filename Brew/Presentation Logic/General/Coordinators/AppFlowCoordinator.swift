@@ -36,7 +36,7 @@ class AppFlowCoordinator: Coordinator {
     }
     
     private func initNetworkingStack(with authManager: AppAuthManager) {
-        NetworkingStack.instance.update(authManager: authManager, baseUrl: "https://cast.brew.com/api/", photoUrl: "https://cast.brew.com/")
+        NetworkingStack.instance.update(authManager: authManager, baseUrl: "https://cast.brew.com/")
     }
 
     private func startAuthenticationFlow(with authManager: AppAuthManager) {

@@ -13,7 +13,7 @@ class TokenRefreshRequest: RequestType {
     typealias ErrorType = SimpleError
 
     let headers: [NetworkingHeader]
-    let path: String = "refresh"
+    let path: String = "api/refresh"
     let method: HTTPMethod = .post
 
     init(oldToken: AuthToken) {

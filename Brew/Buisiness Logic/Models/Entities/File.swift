@@ -15,7 +15,7 @@ struct File: Codable {
     let uploadExtension: String
 
     var url: URL? {
-        guard let baseUrl = NetworkingStack.instance.photoUrl else {
+        guard let baseUrl = NetworkingStack.instance.baseUrl else {
             return nil
         }
 

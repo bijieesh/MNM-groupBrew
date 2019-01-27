@@ -12,7 +12,7 @@ struct LoginRequest: RequestType {
     typealias ResponseObjectType = AuthResponse
     typealias ErrorType = SimpleError
 
-    let path = "login"
+    let path = "api/login"
     let method: HTTPMethod = .post
     let bodyParams: [String: Any]
 

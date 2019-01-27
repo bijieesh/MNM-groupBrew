@@ -13,23 +13,18 @@ class NetworkingStack {
 
     private(set) var authManager: AuthManager?
     private(set) var baseUrl: String?
-    private(set) var photoUrl: String?
     
     private(set) var requestExecuter: RequestExecuter?
 
     private init() {}
 
-    func update(authManager: AuthManager? = nil, baseUrl: String? = nil, photoUrl: String? = nil) {
+    func update(authManager: AuthManager? = nil, baseUrl: String? = nil) {
         if let authManager = authManager {
             self.authManager = authManager
         }
 
         if let baseUrl = baseUrl {
             self.baseUrl = baseUrl
-        }
-        
-        if let photoUrl = photoUrl {
-            self.photoUrl = photoUrl
         }
 
         configure()
