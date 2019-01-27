@@ -36,8 +36,6 @@ class ProfileCoordinator: Coordinator {
         }
         
         self.contentController = contentController
-    
-        loadProfileContent(for: profileController)
     }
 }
 
@@ -75,15 +73,6 @@ private extension ProfileCoordinator {
         }) { error in
             error.display()
         }
-    }
-    
-    func loadProfileContent(for controller: ProfileViewController) {
-        var discoverPodcasts: [Podcast] = []
-
-        GetPodcastsRequest(type: .discover).execute(onSuccess: {
-            discoverPodcasts = $0
-            controller.update(withDiscover: discoverPodcasts)
-        })
     }
     
     func change(oldPassword: String, with newPassword: String, on controller: SettingsViewController) {

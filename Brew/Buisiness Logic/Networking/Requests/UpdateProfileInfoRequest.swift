@@ -23,7 +23,7 @@ struct UpdateProfileInfoRequest: RequestType {
             "country": country
         ]
         if let mobile = mobile {
-            bodyParams["mobile"] = mobile
+            bodyParams["phone_number"] = mobile
         }
     }
 }

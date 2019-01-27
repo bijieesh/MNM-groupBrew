@@ -62,6 +62,8 @@ extension ProfileViewController {
     func updateContent(with user: User) {
         self.user = user
         userNameLabel.text = user.profile.profileFullName
+        update(withDiscover: user.podcasts)
+        
         guard let userProfilePictureUrl = user.profile.profilePicture?.url else {
             setupTabBarImage(UIImage(named: "icon-profile") ?? UIImage())
             return
