@@ -15,12 +15,12 @@ class PlayerCoordinator {
     private var activeAudioPlayer: AVAudioPlayer?
 
     @discardableResult
-    func playEpisode(at index: Int, from podcast: Podcast) -> AppViewController? {
+    func playEpisode(at index: Int, from podcast: Podcast, audioUrl: URL) -> AppViewController? {
         guard let episodes = podcast.episodes, episodes.count > index else {
             return nil
         }
-
-        guard let url = episodes[index].file.url, let audioPlayer = try? AVAudioPlayer(contentsOf: url) else {
+        
+        guard let audioPlayer = try? AVAudioPlayer(contentsOf: audioUrl) else {
             return nil
         }
 
@@ -33,7 +33,7 @@ class PlayerCoordinator {
 
         return controller
     }
-
+    
     private func prepareAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
         try? audioSession.setCategory(.playback, mode: .spokenAudio)

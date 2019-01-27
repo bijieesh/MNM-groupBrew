@@ -61,6 +61,7 @@ class PlayerViewController: AppViewController {
 
         if data.autoplay {
             data.audioPlayer.play()
+            setupTimer()
         }
     }
 
