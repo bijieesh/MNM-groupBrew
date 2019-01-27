@@ -9,13 +9,23 @@
 import UIKit
 import LDProgressView
 import AVFoundation
+import SDWebImage
 
-class PlayerViewController: UIViewController {
-    
-    var onPlayListTapped:(()->Void)?
-    
+class PlayerViewController: AppViewController {
+    struct Data {
+        let imageUrl: URL?
+        let title: String
+        let autoplay: Bool
+        let audioPlayer: AVAudioPlayer
+    }
+
+    var onPlayListTapped: (() -> Void)?
+    var onBackPressed: (() -> Void)?
+
+    var data: Data?
+
+    @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var songNameLabel: UILabel!
-    @IBOutlet private var autorNameLabel: UILabel!
     @IBOutlet private var currentTimeLabel: UILabel!
     @IBOutlet private var songFullTimeLabel: UILabel!
     @IBOutlet private var unmuteButton: UIButton!
@@ -35,120 +45,116 @@ class PlayerViewController: UIViewController {
     }
     
     private var timer: Timer?
-    private var isMuted = false {
-        didSet {
-            let icon: UIImage? = isMuted ? .mutedImage : .unmutedImage
-            unmuteButton.setImage(icon, for: .normal)
-            audioPlayer.volume = isMuted ? 0 : 1
-            
-        }
-    }
-    
-    private var isPlay = false {
-        didSet {
-            let icon: UIImage? = isPlay ? .pauseImage : .playImage
-            playButton.setImage(icon, for: .normal)
-        }
-    }
-    
-    private var audioPlayer = AVAudioPlayer() {
-        didSet {
-            let audioSession = AVAudioSession.sharedInstance()
-            
-            do {
-                //audio background mode
-                try audioSession.setCategory(.playback, mode: .spokenAudio)
-            } catch {
-                
-            }
-        }
-    }
-    private var urlString: String? {
-        didSet {
-            downloadFileFromURL(url: urlString ?? "")
-        }
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        urlString = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+
+        guard let data = data else {
+            return
+        }
+
+        songFullTimeLabel.text = TimeWatch(totalSeconds: Int(data.audioPlayer.duration)).timeString
+
+        if let imageUrl = data.imageUrl {
+            imageView.sd_setImage(with: imageUrl)
+        }
+
+        if data.autoplay {
+            data.audioPlayer.play()
+        }
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        updateUI()
+    }
+
+    private func setupTimer() {
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer?.fire()
+    }
+
+    private func updateUI() {
+        guard let data = data else {
+            return
+        }
+
+        let playIcon: UIImage? = data.audioPlayer.isPlaying ? .pauseImage : .playImage
+        playButton.setImage(playIcon, for: .normal)
+
+        let muteIcon: UIImage? = data.audioPlayer.isMuted ? .mutedImage : .unmutedImage
+        unmuteButton.setImage(muteIcon, for: .normal)
+
+        updateTime()
+    }
+
+    @objc private func updateTime() {
+        guard let data = data else {
+            return
+        }
+
+        let currentSongTime = TimeWatch(totalSeconds: Int(data.audioPlayer.currentTime))
+
+        self.progressView.progress = CGFloat(data.audioPlayer.currentTime / data.audioPlayer.duration)
+        self.currentTimeLabel.text = currentSongTime.timeString
+    }
+
+    private func play() {
+        data?.audioPlayer.play()
+        setupTimer()
+    }
+
+    private func pause() {
+        data?.audioPlayer.pause()
+        timer?.invalidate()
+    }
+
     //Actions
     @IBAction private func playlistTapped() {
         onPlayListTapped?()
     }
     
     @IBAction private func palyTapped() {
-        //fix app crash if audio didnt load yet but play button tapped
-        if audioPlayer.isPlaying {
-            audioPlayer.pause()
+        if data?.audioPlayer.isPlaying == true {
+            pause()
         } else {
-            audioPlayer.play()
+            play()
         }
-        isPlay = !isPlay
-        updateTime()
+
+        updateUI()
     }
+
+    @IBAction private func backPressed() {
+        onClose?()
+    }
+
     @IBAction private func replayTapped() {
-        self.audioPlayer.currentTime -= 30.0
+        data?.audioPlayer.currentTime -= 30.0
         updateTime()
         
     }
     @IBAction private func forvardTapped() {
-        self.audioPlayer.currentTime += 30.0
+        data?.audioPlayer.currentTime += 30.0
         updateTime()
     }
     
     @IBAction private func unmuteTapped() {
-        isMuted = !isMuted
+        data?.audioPlayer.isMuted = data?.audioPlayer.isMuted == false
+        updateUI()
     }
-    
-    private func updateTime() {
-        let totalSongTime = TimeWatch(totalSeconds: Int(self.audioPlayer.duration))
-        
-        let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-            let currentSongTime = TimeWatch(totalSeconds: Int(self.audioPlayer.currentTime))
-            
-            self.progressView.progress = CGFloat(self.audioPlayer.currentTime / self.audioPlayer.duration)
-            self.currentTimeLabel.text = currentSongTime.timeString
-        }
-        self.timer = timer
-        songFullTimeLabel.text = totalSongTime.timeString
-    }
-    
-    private func downloadFileFromURL(url:String){
-        guard let url = URL(string: url) else {
-            print("Something wrong with url link")
-            return
-        }
-        
-        var downloadTask:URLSessionDownloadTask
-        downloadTask = URLSession.shared.downloadTask(with: url, completionHandler: { (URL, response, error) in
-            guard let URL = URL else {
-                print("Something wrong with url link")
-                return
-            }
-            self.play(url:URL as NSURL)
-            
-        })
-        downloadTask.resume()
-    }
-    
-    private func play(url:NSURL) {
-        do {
-            self.audioPlayer = try AVAudioPlayer(contentsOf: url as URL)
-            audioPlayer.prepareToPlay()
-            audioPlayer.volume = 1.0
-            
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        } catch {
-            print("AVAudioPlayer init failed")
-        }
+
+}
+
+private extension AVAudioPlayer {
+    var isMuted: Bool {
+        set { volume = newValue ? 0 : 1 }
+        get { return volume == 0 }
     }
 }
 
-//remove from controller or find lib that can return this values
-struct TimeWatch {
+private struct TimeWatch {
     
     var totalSeconds: Int
     
@@ -184,7 +190,7 @@ struct TimeWatch {
     }
 }
 
-extension UIImage {
+private extension UIImage {
     static let mutedImage = UIImage(named: "muteIcon")
     static let unmutedImage = UIImage(named: "unMuteIcon")
     

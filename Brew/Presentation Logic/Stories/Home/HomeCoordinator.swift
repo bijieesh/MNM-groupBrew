@@ -39,6 +39,22 @@ class HomeCoordinator: Coordinator {
             self?.contentController?.popViewController(animated: true)
         }
 
+        controller.onEpisodeSelected = { [weak self] index in
+            self?.playEpisode(at: index, from: podcast)
+        }
+
+        contentController?.pushViewController(controller, animated: true)
+    }
+
+    private func playEpisode(at index: Int, from podcast: Podcast) {
+        guard let controller = PlayerCoordinator.instance.playEpisode(at: index, from: podcast) else {
+            return
+        }
+
+        controller.onClose = { [weak self] in
+            self?.contentController?.popViewController(animated: true)
+        }
+
         contentController?.pushViewController(controller, animated: true)
     }
 

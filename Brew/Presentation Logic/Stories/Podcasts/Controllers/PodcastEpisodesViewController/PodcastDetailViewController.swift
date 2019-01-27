@@ -18,7 +18,7 @@ class PodcastDetailViewController: AppViewController {
     }
 
     var onBackPressed: (() -> Void)?
-    var onEpisodeSelected: ((Episode) -> Void)?
+    var onEpisodeSelected: ((Int) -> Void)?
 
     @IBOutlet private var logoHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var logoImageView: UIImageView!
@@ -68,11 +68,7 @@ extension PodcastDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let episode = podcast?.episodes?[indexPath.row] else {
-            return
-        }
-
-        onEpisodeSelected?(episode)
+        onEpisodeSelected?(indexPath.row)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

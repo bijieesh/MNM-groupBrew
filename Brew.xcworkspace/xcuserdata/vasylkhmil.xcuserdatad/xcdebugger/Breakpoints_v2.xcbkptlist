@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brew/Presentation Logic/Stories/Profile/ProfileCoordinator.swift"
-            timestampString = "570283786.5951591"
+            timestampString = "570298371.678288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Brew/Buisiness Logic/Networking/Networking.swift"
-            timestampString = "570288068.00738"
+            filePath = "Brew/Presentation Logic/Stories/Player/PlayerCoordinator.swift"
+            timestampString = "570298729.318176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
-            landmarkName = "dispatch(_:onSuccess:onError:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "playEpisode(at:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -295,7 +295,7 @@ private class DefaultRequestExecuter: RequestExecuter {
                                         let error: NetworkingError<T.ErrorType> = .custom(error: result, statusCode: statusCode)
 
                                         if retryOnFail {
-                                            self.retry(with: error, for: request, responseQueue: responseQueue, onSuccess: onSuccess, onError: onError)
+                                            strongSelf.retry(with: error, for: request, responseQueue: responseQueue, onSuccess: onSuccess, onError: onError)
                                         }
                                         else {
                                             responseQueue.async { onError?(error) }

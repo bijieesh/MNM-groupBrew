@@ -9,5 +9,5 @@
 import UIKit
 
 class AppViewController: UIViewController {
-
+    var onClose: (() -> Void)?
 }

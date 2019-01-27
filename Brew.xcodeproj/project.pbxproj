@@ -59,6 +59,7 @@
 		3D2002AA21FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002A821FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift */; };
 		3D2002AC21FDB10800E38B99 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AB21FDB10800E38B99 /* Episode.swift */; };
 		3D2002AE21FDB1C800E38B99 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AD21FDB1C800E38B99 /* File.swift */; };
+		3D2002B021FDF5E500E38B99 /* PlayerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
 		3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C521F66CDD00F93876 /* AppFont.swift */; };
@@ -151,6 +152,7 @@
 		3D2002A821FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastDetailTableHeaderView.swift; sourceTree = "<group>"; };
 		3D2002AB21FDB10800E38B99 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		3D2002AD21FDB1C800E38B99 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
 		3DB447C521F66CDD00F93876 /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 		3DCBBA7A21F8FF3C009BCD31 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */,
 				3DCBBA7B21F90050009BCD31 /* Controllers */,
 			);
 			path = Player;
@@ -908,6 +911,7 @@
 				3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */,
 				3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */,
 				3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */,
+				3D2002B021FDF5E500E38B99 /* PlayerCoordinator.swift in Sources */,
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
 				3D2002AE21FDB1C800E38B99 /* File.swift in Sources */,
 				3D05F02021F6020900174A91 /* AppAlert.swift in Sources */,
