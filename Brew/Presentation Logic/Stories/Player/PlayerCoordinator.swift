@@ -20,7 +20,7 @@ class PlayerCoordinator {
             return nil
         }
 
-        guard let url = episodes[index].file.url, let audioPlayer = try? AVAudioPlayer(contentsOf: url) else {
+        guard let url = episodes[index].file?.url, let audioPlayer = try? AVAudioPlayer(contentsOf: url) else {
             return nil
         }
 
