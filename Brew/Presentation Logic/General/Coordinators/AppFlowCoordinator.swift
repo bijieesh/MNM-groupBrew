@@ -25,6 +25,14 @@ class AppFlowCoordinator: Coordinator {
         }
     }
     
+    func logout() {
+        end()
+        let authManager = AppAuthManager()
+        authManager.logout { success in
+            self.startAuthenticationFlow(with: authManager)
+        }
+    }
+    
     private func initNetworkingStack(with authManager: AppAuthManager) {
         NetworkingStack.instance.update(authManager: authManager, baseUrl: "https://cast.brew.com/api/")
     }

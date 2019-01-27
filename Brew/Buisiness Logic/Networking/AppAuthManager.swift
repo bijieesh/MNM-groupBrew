@@ -61,6 +61,7 @@ class AppAuthManager: AuthManager {
     @discardableResult
     func logout(completion: ((_ success: Bool) -> Void)?) -> Bool {
         authToken = nil
+        completion?(true)
         return true
     }
 

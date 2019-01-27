@@ -110,6 +110,8 @@ private extension ProfileCoordinator {
     }
     
     func logout() {
-
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.logout()
+        }
     }
 }

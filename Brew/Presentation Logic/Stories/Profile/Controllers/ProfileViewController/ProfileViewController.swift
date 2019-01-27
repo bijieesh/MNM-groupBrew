@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileViewController: AppViewController {
     
     typealias OnButtonTapped = ((_ on: ProfileViewController)->Void)
+    
     var onBackTapped:OnButtonTapped?
     var onSettingsTapped:OnButtonTapped?
     var onLogOutTapped:OnButtonTapped?
     var onProfileImageTapped:OnButtonTapped?
     var updateContent: ((ProfileViewController)-> Void)?
+    
     @IBOutlet private var userNameLabel: UILabel!
     @IBOutlet private var timeLabel: UILabel!
     @IBOutlet private var podcastsView: PodcastsListView!
@@ -53,11 +56,7 @@ class ProfileViewController: AppViewController {
 extension ProfileViewController {
     func profileImageUpdatedWithNew(_ image: UIImage) {
         logoImageView.image = image
-        let resizedImage = image.resizeImage(targetSize: CGSize(width: 24, height: 24))
-        if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {
-            let customTabBarItem = UITabBarItem(title: "Profile", image: roundedImage, selectedImage: roundedImage)
-            tabBarItem = customTabBarItem
-        }
+        setupTabBarImage(image)
     }
     
     func updateContent(with user: User) {
@@ -65,11 +64,25 @@ extension ProfileViewController {
         userNameLabel.text = user.name
         
         let userProfilePicture = user.profile.profile_picture.url
-        
-        logoImageView.sd_setImage(with: URL(string: "https://cast.brew.com/" + userProfilePicture), completed: nil)
+        let userProfileUrl = URL(string: "https://cast.brew.com/" + userProfilePicture)
+        logoImageView.sd_setImage(with: userProfileUrl, completed: nil)
+        logoImageView.sd_setImage(with: userProfileUrl) { [weak self] image, _, _, _ in
+            guard let image = image else { return }
+            self?.setupTabBarImage(image)
+        }
     }
     
     func update(withDiscover discover: [Podcast]) {
         podcastsView?.items = discover.map { $0.listItemData }
+    }
+}
+
+private extension ProfileViewController {
+    func setupTabBarImage(_ image: UIImage) {
+        let resizedImage = image.resizeImage(targetSize: CGSize(width: 24, height: 24))
+        if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {
+            let customTabBarItem = UITabBarItem(title: "Profile", image: roundedImage, selectedImage: roundedImage)
+            tabBarItem = customTabBarItem
+        }
     }
 }

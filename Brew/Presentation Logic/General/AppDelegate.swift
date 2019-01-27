@@ -31,5 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    func logout() {
+        appFlowCoordinator?.logout()
+    }
 }
 
