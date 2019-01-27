@@ -34,6 +34,11 @@ class HomeCoordinator: Coordinator {
     private func showPodcastDetails(for podcast: Podcast) {
         let controller = PodcastDetailViewController()
         controller.podcast = podcast
+
+        controller.onBackPressed = { [weak self] in
+            self?.contentController?.popViewController(animated: true)
+        }
+
         contentController?.pushViewController(controller, animated: true)
     }
 

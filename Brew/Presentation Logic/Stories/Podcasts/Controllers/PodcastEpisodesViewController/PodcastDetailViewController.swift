@@ -17,6 +17,9 @@ class PodcastDetailViewController: AppViewController {
         }
     }
 
+    var onBackPressed: (() -> Void)?
+    var onEpisodeSelected: ((Episode) -> Void)?
+
     @IBOutlet private var logoHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var logoImageView: UIImageView!
     @IBOutlet private var backButton: UIButton!
@@ -25,6 +28,10 @@ class PodcastDetailViewController: AppViewController {
         didSet {
             contentTableView.register(cellType: PodcastEpisodeCell.self)
         }
+    }
+
+    @IBAction private func backPressed() {
+        onBackPressed?()
     }
 }
 
@@ -58,6 +65,14 @@ extension PodcastDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 150
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let episode = podcast?.episodes?[indexPath.row] else {
+            return
+        }
+
+        onEpisodeSelected?(episode)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

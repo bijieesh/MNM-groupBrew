@@ -274,9 +274,12 @@ private class DefaultRequestExecuter: RequestExecuter {
     func execute<T: RequestType>(_ request: T, responseQueue: DispatchQueue = .main, retryOnFail: Bool = true, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil) {
         dispatcher.dispatch(request.data,
 
-                            onSuccess: { (data, statusCode) in
+                            onSuccess: { [weak self] (data, statusCode) in
+                                guard let strongSelf = self else {
+                                    return
+                                }
+
                                 let statusCode = StatusCode(statusCode)
-                                let jsonDecoder = JSONDecoder()
 
                                 do {
                                     let serverJson = try JSONSerialization.jsonObject(with: data, options: [])
@@ -284,11 +287,11 @@ private class DefaultRequestExecuter: RequestExecuter {
                                     let convertedData = try JSONSerialization.data(withJSONObject: convertedJson, options: [])
 
                                     if statusCode.isSuccessful {
-                                        let result = try jsonDecoder.decode(T.ResponseObjectType.self, from: convertedData)
+                                        let result = try strongSelf.jsonDecoder.decode(T.ResponseObjectType.self, from: convertedData)
                                         responseQueue.async { onSuccess?(result)}
                                     }
                                     else {
-                                        let result = try jsonDecoder.decode(T.ErrorType.self, from: data)
+                                        let result = try strongSelf.jsonDecoder.decode(T.ErrorType.self, from: data)
                                         let error: NetworkingError<T.ErrorType> = .custom(error: result, statusCode: statusCode)
 
                                         if retryOnFail {
