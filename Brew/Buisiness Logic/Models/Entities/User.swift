@@ -13,6 +13,6 @@ class User: Codable {
     let name: String
     let email: String
     let country: String
-    let phone_number: String
+    let phoneNumber: String?
     let profile: Profile
 }

@@ -92,7 +92,6 @@
 		7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */; };
 		7865294221FC776A00A826F7 /* ChangePasswordRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294121FC776A00A826F7 /* ChangePasswordRequest.swift */; };
 		7865294421FC915600A826F7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294321FC915600A826F7 /* Profile.swift */; };
-		7865294621FC91AE00A826F7 /* ProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294521FC91AE00A826F7 /* ProfilePicture.swift */; };
 		7865294821FCB33D00A826F7 /* UpdateProfileInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294721FCB33D00A826F7 /* UpdateProfileInfoRequest.swift */; };
 		7865294A21FDBD5A00A826F7 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294921FDBD5A00A826F7 /* UIImage+Resize.swift */; };
 /* End PBXBuildFile section */
@@ -185,7 +184,6 @@
 		7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
 		7865294121FC776A00A826F7 /* ChangePasswordRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRequest.swift; sourceTree = "<group>"; };
 		7865294321FC915600A826F7 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		7865294521FC91AE00A826F7 /* ProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicture.swift; sourceTree = "<group>"; };
 		7865294721FCB33D00A826F7 /* UpdateProfileInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileInfoRequest.swift; sourceTree = "<group>"; };
 		7865294921FDBD5A00A826F7 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -434,7 +432,6 @@
 				3D2002AB21FDB10800E38B99 /* Episode.swift */,
 				3D2002AD21FDB1C800E38B99 /* File.swift */,
 				7865294321FC915600A826F7 /* Profile.swift */,
-				7865294521FC91AE00A826F7 /* ProfilePicture.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -874,7 +871,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AlignedCollectionViewFlowLayout/AlignedCollectionViewFlowLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/LDProgressView/LDProgressView.framework",
 				"${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework",
@@ -893,7 +890,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Brew/Pods-Brew-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -920,7 +917,6 @@
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
 				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
 				3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */,
-				7865294621FC91AE00A826F7 /* ProfilePicture.swift in Sources */,
 				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,
 				3D05EFD121F21A2400174A91 /* LoginRequest.swift in Sources */,
 				3D05EFD621F2281C00174A91 /* SimpleError.swift in Sources */,

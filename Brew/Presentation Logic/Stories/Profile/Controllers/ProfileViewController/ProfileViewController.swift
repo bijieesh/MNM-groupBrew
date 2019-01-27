@@ -11,6 +11,7 @@ import UIKit
 class ProfileViewController: AppViewController {
     
     typealias OnButtonTapped = ((_ on: ProfileViewController)->Void)
+    
     var onBackTapped:OnButtonTapped?
     var onSettingsTapped:OnButtonTapped?
     var onLogOutTapped:OnButtonTapped?
@@ -63,10 +64,7 @@ extension ProfileViewController {
     func updateContent(with user: User) {
         self.user = user
         userNameLabel.text = user.name
-        
-        let userProfilePicture = user.profile.profile_picture.url
-        
-        logoImageView.sd_setImage(with: URL(string: "https://cast.brew.com/" + userProfilePicture), completed: nil)
+        logoImageView.sd_setImage(with: user.profile.profilePicture?.url, completed: nil)
     }
     
     func update(withDiscover discover: [Podcast]) {
