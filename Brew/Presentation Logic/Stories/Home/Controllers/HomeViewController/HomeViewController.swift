@@ -31,7 +31,7 @@ class HomeViewController: AppViewController {
     }
 }
 
-private extension Podcast {
+extension Podcast {
     var listItemData: PodcastsListItemView.Data {
         return PodcastsListItemView.Data(title: title, subtitle: description)
     }
