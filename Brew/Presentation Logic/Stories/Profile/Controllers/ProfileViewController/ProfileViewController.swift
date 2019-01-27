@@ -10,14 +10,10 @@ import UIKit
 import SDWebImage
 
 class ProfileViewController: AppViewController {
-    
-    typealias OnButtonTapped = ((_ on: ProfileViewController)->Void)
-    
-    var onBackTapped:OnButtonTapped?
-    var onSettingsTapped:OnButtonTapped?
-    var onLogOutTapped:OnButtonTapped?
-    var onProfileImageTapped:OnButtonTapped?
-    var updateContent: ((ProfileViewController)-> Void)?
+
+    var onSettingsTapped: (() -> Void)?
+    var onLogOutTapped: (() -> Void)?
+    var onProfileImageTapped: (() -> Void)?
     
     //MARK: IBOutlets
     
@@ -39,47 +35,50 @@ class ProfileViewController: AppViewController {
     }
     
     //MARK: IBActions
-    
-    @IBAction private func backTapped() {
-        onBackTapped?(self)
-    }
+
     @IBAction private func settingsTapped() {
-        onSettingsTapped?(self)
+        onSettingsTapped?()
     }
     @IBAction private func logOutTapped() {
-        onLogOutTapped?(self)
+        onLogOutTapped?()
     }
     @IBAction private func profilePhotoTapped() {
-        onProfileImageTapped?(self)
+        onProfileImageTapped?()
     }
 }
 
 extension ProfileViewController {
-    func profileImageUpdatedWithNew(_ image: UIImage) {
+
+    func updateProfileImage(with image: UIImage) {
         logoImageView.image = image
         setupTabBarImage(image)
     }
-    
+
+
     func updateContent(with user: User) {
         self.user = user
         
         userNameLabel?.text = user.profile.profileFullName
-        update(withPodcasts: user.podcasts ?? [])
-        
-        guard let userProfilePictureUrl = user.profile.profilePicture?.url else {
+
+        setupPodcasts()
+        setupAvatarFromUser()
+    }
+    
+    private func setupPodcasts() {
+        let podcasts = user?.podcasts ?? []
+        podcastsView.setup(with: podcasts)
+    }
+
+    private func setupAvatarFromUser() {
+        guard let userProfilePictureUrl = user?.profile.profilePicture?.url else {
             setupTabBarImage(UIImage(named: "icon-profile") ?? UIImage())
             return
         }
-    
+
         SDWebImageManager.shared().loadImage(with: userProfilePictureUrl, options: .highPriority, progress: nil) { [weak self] (image, _, _, _, _, _) in
             guard let image = image else { return }
-            self?.logoImageView?.image = image
-            self?.setupTabBarImage(image)
+            self?.updateProfileImage(with: image)
         }
-    }
-    
-    func update(withPodcasts podcasts: [Podcast]) {
-        podcastsView?.items = podcasts.map { $0.listItemData }
     }
 }
 

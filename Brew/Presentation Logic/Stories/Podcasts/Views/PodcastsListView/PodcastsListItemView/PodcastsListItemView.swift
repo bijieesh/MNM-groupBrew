@@ -40,3 +40,9 @@ class PodcastsListItemView: UIView, NibOwnerLoadable {
         subtitleLabel?.text = data.subtitle
     }
 }
+
+extension Podcast {
+    var listItemData: PodcastsListItemView.Data {
+        return PodcastsListItemView.Data(title: title, subtitle: description)
+    }
+}

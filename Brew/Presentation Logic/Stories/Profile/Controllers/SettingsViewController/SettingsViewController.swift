@@ -10,13 +10,10 @@ import UIKit
 
 class SettingsViewController: AppViewController {
     
-    typealias OnButtonTapped = ((_ on: SettingsViewController)->Void)
-    
     //MARK: Variables
-    
-    var onBackTapped:OnButtonTapped?
-    var onChangePassword: ((SettingsViewController, String, String) -> Void)?
-    var onUpdateProfile: ((SettingsViewController, String, String, String?, String) -> Void)?
+
+    var onChangePassword: ((String, String) -> Void)?
+    var onUpdateProfile: ((String, String, String?, String) -> Void)?
     
     //MARK: IBOutlets
     
@@ -83,7 +80,7 @@ class SettingsViewController: AppViewController {
         let country = countryTextField.text ?? ""
         let mobile = mobileTextField.text
         
-        onUpdateProfile?(self, name, email, mobile, country)
+        onUpdateProfile?(name, email, mobile, country)
     }
     
     //MARK: Private
@@ -106,7 +103,7 @@ class SettingsViewController: AppViewController {
     //MARK: IBActions
 
     @IBAction private func backTapped() {
-        onBackTapped?(self)
+        onClose?()
     }
     
     @IBAction private func changePasswordTapped() {
@@ -118,7 +115,7 @@ class SettingsViewController: AppViewController {
         let password = passwordTextField.text ?? ""
         let oldPassword = oldPasswordTextField.text ?? ""
         
-        onChangePassword?(self, oldPassword, password)
+        onChangePassword?(oldPassword, password)
     }
     
     @IBAction private func updateTapped() {

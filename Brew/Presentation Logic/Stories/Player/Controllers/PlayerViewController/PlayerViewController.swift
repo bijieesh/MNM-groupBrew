@@ -20,7 +20,6 @@ class PlayerViewController: AppViewController {
     }
 
     var onPlayListTapped: (() -> Void)?
-    var onBackPressed: (() -> Void)?
 
     var data: Data?
 

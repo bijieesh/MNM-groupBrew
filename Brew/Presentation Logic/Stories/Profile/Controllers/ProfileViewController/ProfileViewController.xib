@@ -68,10 +68,10 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9n-Fj-mfG">
-                            <rect key="frame" x="26" y="246" width="349" height="250"/>
+                            <rect key="frame" x="0.0" y="246" width="375" height="250"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-k8-SxE" customClass="PodcastsListView" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="349" height="250"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="250" id="uv0-nA-X8B"/>
@@ -108,7 +108,7 @@
                         <constraint firstAttribute="trailing" secondItem="qRC-Nr-TWM" secondAttribute="trailing" constant="17" id="2Md-el-cUg"/>
                         <constraint firstItem="iBA-Hi-RsT" firstAttribute="centerX" secondItem="FPX-La-AlH" secondAttribute="centerX" id="4i4-n5-2Eo"/>
                         <constraint firstItem="uSL-Xg-e7H" firstAttribute="centerX" secondItem="FPX-La-AlH" secondAttribute="centerX" id="6vn-Ke-AML"/>
-                        <constraint firstItem="n9n-Fj-mfG" firstAttribute="leading" secondItem="FPX-La-AlH" secondAttribute="leading" constant="26" id="7tO-Fz-lrR"/>
+                        <constraint firstItem="n9n-Fj-mfG" firstAttribute="leading" secondItem="FPX-La-AlH" secondAttribute="leading" id="7tO-Fz-lrR"/>
                         <constraint firstItem="7cN-wj-gVo" firstAttribute="bottom" secondItem="uSL-Xg-e7H" secondAttribute="bottom" id="Bxb-wr-ZYm"/>
                         <constraint firstAttribute="trailing" secondItem="n9n-Fj-mfG" secondAttribute="trailing" id="FI9-8O-MjO"/>
                         <constraint firstAttribute="trailing" secondItem="ZkL-Ga-uyJ" secondAttribute="trailing" constant="30" id="Gnu-Ge-qic"/>

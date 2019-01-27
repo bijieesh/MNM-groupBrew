@@ -10,8 +10,6 @@ import UIKit
 
 class ImagePickerCoordinator: NSObject {
     
-    static let shared = ImagePickerCoordinator()
-    
     private weak var responsibleController: UIViewController?
     private var imageSelectionCompletion: ((_ image: UIImage?) -> Void)?
     
@@ -20,8 +18,7 @@ class ImagePickerCoordinator: NSObject {
         
         responsibleController = controller
         imageSelectionCompletion = imageCompletion
-        
-        /* Show specific source type if needed */
+
         if let source = sourceType {
             showImagePickerWithType(source)
         } else {

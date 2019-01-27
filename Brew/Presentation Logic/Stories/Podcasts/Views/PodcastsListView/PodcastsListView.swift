@@ -43,6 +43,10 @@ class PodcastsListView: UIView, NibOwnerLoadable {
         loadNibContent()
     }
 
+    func setup(with podcasts: [Podcast]) {
+        items = podcasts.map { $0.listItemData }
+    }
+
     private func update() {
         guard !items.isEmpty else {
             isHidden = true

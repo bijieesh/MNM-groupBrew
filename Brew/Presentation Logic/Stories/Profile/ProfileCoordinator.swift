@@ -10,7 +10,8 @@ import UIKit
 
 class ProfileCoordinator: Coordinator {
 
-    private(set) var contentController: UIViewController?
+    private(set) var contentController: UINavigationController?
+    private var user: User?
 
     override func start() {
         super.start()
@@ -22,20 +23,18 @@ class ProfileCoordinator: Coordinator {
         let contentController = UINavigationController(rootViewController: profileController)
         contentController.isNavigationBarHidden = true
 
-        profileController.onProfileImageTapped = { [weak self] controller in
-            self?.showImagePickerFrom(controller)
+        profileController.onProfileImageTapped = { [weak self, profileController] in
+            self?.showImagePicker(from: profileController)
         }
 
-        profileController.onSettingsTapped = { [weak self] controller in
-            self?.showSettingsViewControllerFrom(controller)
+        profileController.onSettingsTapped = { [weak self, profileController] in
+            self?.showProfileSettings(onContentUpdated: { [weak self, profileController] in
+                self?.loadUserInfo(for: profileController)
+            })
         }
 
-        profileController.onLogOutTapped = { [weak self] controller in
+        profileController.onLogOutTapped = { [weak self] in
             self?.logout()
-        }
-
-        profileController.updateContent = { [weak self] controller in
-            self?.loadUserInfo(for: controller)
         }
     
         self.loadUserInfo(for: profileController)
@@ -44,41 +43,46 @@ class ProfileCoordinator: Coordinator {
 }
 
 private extension ProfileCoordinator {
-    func showImagePickerFrom(_ controller: ProfileViewController) {
-        ImagePickerCoordinator.shared.showImagePicker(for: controller) { image in
+
+    func showImagePicker(from controller: ProfileViewController) {
+        ImagePickerCoordinator().showImagePicker(for: controller) { image in
             guard let image = image else { return }
-            controller.profileImageUpdatedWithNew(image)
+            controller.updateProfileImage(with: image)
         }
     }
     
-    func showSettingsViewControllerFrom(_ profileController: ProfileViewController) {
+    func showProfileSettings(onContentUpdated: @escaping () -> Void) {
         let settingsViewController = SettingsViewController()
         
-        settingsViewController.onBackTapped = { controller in
-            controller.navigationController?.popViewController(animated: true)
+        settingsViewController.onClose = { [weak self] in
+            self?.contentController?.popViewController(animated: true)
         }
         
-        settingsViewController.onChangePassword = { [weak self] (controller, oldPassword, newPassword) in
-            self?.change(oldPassword, with: newPassword, on: controller)
+        settingsViewController.onChangePassword = { [weak self, settingsViewController] (oldPassword, newPassword) in
+            self?.change(oldPassword, with: newPassword, on: settingsViewController)
         }
         
-        settingsViewController.onUpdateProfile = { [weak self] (controller, fullname, email, mobile, country) in
-            self?.updateProfileInfo(fullname: fullname, email: email, mobile: mobile, country: country, on: controller) { [weak self] success in
-                if success {
-                    self?.loadUserInfo(for: profileController)
+        settingsViewController.onUpdateProfile = { [weak self, settingsViewController] (fullname, email, mobile, country) in
+            self?.updateProfileInfo(fullname: fullname, email: email, mobile: mobile, country: country) { success in
+                guard success else {
+                    return
                 }
+
+                settingsViewController.profileUpdated()
+                onContentUpdated()
             }
         }
         
-        settingsViewController.user = profileController.user
+        settingsViewController.user = user
     
-        profileController.navigationController?.pushViewController(settingsViewController, animated: true)
+        contentController?.pushViewController(settingsViewController, animated: true)
     }
     
     func loadUserInfo(for controller: ProfileViewController) {
         GetCurrentUserRequest().execute(
 
-            onSuccess: { user in
+            onSuccess: { [weak self] user in
+                self?.user = user
                 controller.updateContent(with: user)
         },
 
@@ -105,13 +109,16 @@ private extension ProfileCoordinator {
         })
     }
     
-    func updateProfileInfo(fullname: String, email: String, mobile: String?, country: String, on controller: SettingsViewController, completion: ((Bool)-> Void)? = nil) {
-        UpdateProfileInfoRequest(fullname: fullname, email: email, mobile: mobile, country: country).execute(onSuccess: { user in
-            controller.profileUpdated()
-            completion?(true)
-        }, onError: { error in
-            error.display()
-            completion?(false)
+    func updateProfileInfo(fullname: String, email: String, mobile: String?, country: String, completion: ((Bool)-> Void)? = nil) {
+
+        UpdateProfileInfoRequest(fullname: fullname, email: email, mobile: mobile, country: country).execute(
+
+            onSuccess: { user in
+                completion?(true)
+        },
+            onError: { error in
+                error.display()
+                completion?(false)
         })
     }
     
