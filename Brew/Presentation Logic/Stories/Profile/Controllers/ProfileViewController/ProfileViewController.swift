@@ -84,6 +84,7 @@ extension ProfileViewController {
 }
 
 private extension ProfileViewController {
+    
     func setupTabBarImage(_ image: UIImage) {
         let resizedImage = image.resizeImage(targetSize: CGSize(width: 24, height: 24))
         if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {
