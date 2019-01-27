@@ -12,7 +12,7 @@ struct ChangePasswordRequest: RequestType {
     typealias ResponseObjectType = User
     typealias ErrorType = SimpleError
     
-    let path = "reset_password"
+    let path = "api/reset_password"
     let method: HTTPMethod = .post
     let bodyParams: [String: Any]
     

@@ -28,7 +28,7 @@ class GetPodcastsRequest: RequestType {
     let method: HTTPMethod = .get
 
     init(type: Type) {
-        path = "podcast/\(type)"
+        path = "api/podcast/\(type)"
     }
 
     func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {

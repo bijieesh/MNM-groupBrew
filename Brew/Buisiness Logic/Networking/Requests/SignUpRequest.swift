@@ -12,7 +12,7 @@ struct SignUpRequest: RequestType {
     typealias ResponseObjectType = AuthResponse
     typealias ErrorType = SimpleError
 
-    let path = "register"
+    let path = "api/register"
     let method: HTTPMethod = .post
     let bodyParams: [String: Any]
 

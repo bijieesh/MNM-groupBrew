@@ -37,7 +37,8 @@ class ProfileCoordinator: Coordinator {
         profileController.updateContent = { [weak self] controller in
             self?.loadUserInfo(for: controller)
         }
-
+    
+        self.loadUserInfo(for: profileController)
         self.contentController = contentController
     }
 }
@@ -50,7 +51,7 @@ private extension ProfileCoordinator {
         }
     }
     
-    func showSettingsViewControllerFrom(_ controller: ProfileViewController) {
+    func showSettingsViewControllerFrom(_ profileController: ProfileViewController) {
         let settingsViewController = SettingsViewController()
         
         settingsViewController.onBackTapped = { controller in
@@ -62,12 +63,16 @@ private extension ProfileCoordinator {
         }
         
         settingsViewController.onUpdateProfile = { [weak self] (controller, fullname, email, mobile, country) in
-            self?.updateProfileInfo(fullname: fullname, email: email, mobile: mobile, country: country, on: controller)
+            self?.updateProfileInfo(fullname: fullname, email: email, mobile: mobile, country: country, on: controller) { [weak self] success in
+                if success {
+                    self?.loadUserInfo(for: profileController)
+                }
+            }
         }
         
-        settingsViewController.user = controller.user
+        settingsViewController.user = profileController.user
     
-        controller.navigationController?.pushViewController(settingsViewController, animated: true)
+        profileController.navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     func loadUserInfo(for controller: ProfileViewController) {
@@ -100,11 +105,13 @@ private extension ProfileCoordinator {
         })
     }
     
-    func updateProfileInfo(fullname: String, email: String, mobile: String?, country: String, on controller: SettingsViewController) {
+    func updateProfileInfo(fullname: String, email: String, mobile: String?, country: String, on controller: SettingsViewController, completion: ((Bool)-> Void)? = nil) {
         UpdateProfileInfoRequest(fullname: fullname, email: email, mobile: mobile, country: country).execute(onSuccess: { user in
             controller.profileUpdated()
+            completion?(true)
         }, onError: { error in
             error.display()
+            completion?(false)
         })
     }
     

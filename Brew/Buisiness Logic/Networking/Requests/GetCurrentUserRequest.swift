@@ -12,7 +12,7 @@ struct GetCurrentUserRequest: RequestType {
     typealias ResponseObjectType = User
     typealias ErrorType = SimpleError
 
-    let path: String = "user/me"
+    let path: String = "api/user/me"
     let method: HTTPMethod = .post
 
     func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {

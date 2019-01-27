@@ -12,7 +12,7 @@ struct GetAllCategoriesRequest: RequestType {
     typealias ResponseObjectType = [Category]
     typealias ErrorType = SimpleError
 
-    let path: String = "categories/all"
+    let path: String = "api/categories/all"
     let method: HTTPMethod = .get
 
     func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {

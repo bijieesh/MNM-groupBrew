@@ -12,7 +12,7 @@ struct UpdateProfileInfoRequest: RequestType {
     typealias ResponseObjectType = User
     typealias ErrorType = SimpleError
     
-    let path = "profile"
+    let path = "api/profile"
     let method: HTTPMethod = .post
     let bodyParams: [String: Any]
     
