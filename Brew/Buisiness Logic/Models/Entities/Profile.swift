@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Profile.swift
 //  Brew
 //
 //  Created by Vasyl Khmil on 1/26/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Profile: Codable {
+struct Profile: Codable {
     let profileFirstName: String?
     let profileFullName: String?
     let profilePicture: File?

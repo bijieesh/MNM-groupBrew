@@ -1,5 +1,5 @@
 //
-//  UpdateProfileInfo.swift
+//  UpdateProfileInfoRequest.swift
 //  Brew
 //
 //  Created by Vasyl Khmil on 1/26/19.
@@ -14,10 +14,10 @@ struct UpdateProfileInfoRequest: RequestType {
     
     let path = "profile"
     let method: HTTPMethod = .post
-    var bodyParams: [String: Any]
+    let bodyParams: [String: Any]
     
     init(fullname: String, email: String, mobile: String?, country: String) {
-        bodyParams = [
+        var bodyParams = [
             "email": email,
             "fullname": fullname,
             "country": country
@@ -25,6 +25,8 @@ struct UpdateProfileInfoRequest: RequestType {
         if let mobile = mobile {
             bodyParams["phone_number"] = mobile
         }
+
+        self.bodyParams = bodyParams
     }
     
     func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {

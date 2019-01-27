@@ -14,27 +14,30 @@ class ProfileCoordinator: Coordinator {
 
     override func start() {
         super.start()
+        setupProfileController()
+    }
 
+    private func setupProfileController() {
         let profileController = ProfileViewController()
         let contentController = UINavigationController(rootViewController: profileController)
         contentController.isNavigationBarHidden = true
-        
+
         profileController.onProfileImageTapped = { [weak self] controller in
             self?.showImagePickerFrom(controller)
         }
-        
+
         profileController.onSettingsTapped = { [weak self] controller in
             self?.showSettingsViewControllerFrom(controller)
         }
-        
+
         profileController.onLogOutTapped = { [weak self] controller in
             self?.logout()
         }
-        
+
         profileController.updateContent = { [weak self] controller in
             self?.loadUserInfo(for: controller)
         }
-        
+
         self.contentController = contentController
     }
 }
@@ -55,7 +58,7 @@ private extension ProfileCoordinator {
         }
         
         settingsViewController.onChangePassword = { [weak self] (controller, oldPassword, newPassword) in
-            self?.change(oldPassword: oldPassword, with: newPassword, on: controller)
+            self?.change(oldPassword, with: newPassword, on: controller)
         }
         
         settingsViewController.onUpdateProfile = { [weak self] (controller, fullname, email, mobile, country) in
@@ -68,25 +71,32 @@ private extension ProfileCoordinator {
     }
     
     func loadUserInfo(for controller: ProfileViewController) {
-        GetCurrentUserRequest().execute(onSuccess: { user in
-            controller.updateContent(with: user)
-        }) { error in
-            error.display()
-        }
+        GetCurrentUserRequest().execute(
+
+            onSuccess: { user in
+                controller.updateContent(with: user)
+        },
+
+            onError: { error in
+                error.display()
+        })
     }
     
-    func change(oldPassword: String, with newPassword: String, on controller: SettingsViewController) {
+    func change(_ oldPassword: String, with newPassword: String, on controller: SettingsViewController) {
         let changePasswordReques = ChangePasswordRequest(oldPassword: oldPassword, newPassword: newPassword)
-        changePasswordReques.execute(onSuccess: { user in
-            controller.clearPasswordFields()
+        changePasswordReques.execute(
+
+            onSuccess: { user in
+                controller.clearPasswordFields()
         },
-        onError: { error in
-            if case let .custom(_, statusCode) = error, statusCode.isUnauthorize {
-                controller.markInvalid()
-            }
-            else {
-                error.display()
-            }
+
+            onError: { error in
+                if case let .custom(_, statusCode) = error, statusCode.isUnauthorize {
+                    controller.markInvalid()
+                }
+                else {
+                    error.display()
+                }
         })
     }
     
