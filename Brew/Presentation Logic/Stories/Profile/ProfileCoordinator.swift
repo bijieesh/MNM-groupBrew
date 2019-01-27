@@ -36,8 +36,6 @@ class ProfileCoordinator: Coordinator {
         }
         
         self.contentController = contentController
-    
-        loadProfileContent(for: profileController)
     }
 }
 
@@ -77,15 +75,6 @@ private extension ProfileCoordinator {
         }
     }
     
-    func loadProfileContent(for controller: ProfileViewController) {
-        var discoverPodcasts: [Podcast] = []
-
-        GetPodcastsRequest(type: .discover).execute(onSuccess: {
-            discoverPodcasts = $0
-            controller.update(withDiscover: discoverPodcasts)
-        })
-    }
-    
     func change(oldPassword: String, with newPassword: String, on controller: SettingsViewController) {
         let changePasswordReques = ChangePasswordRequest(oldPassword: oldPassword, newPassword: newPassword)
         changePasswordReques.execute(onSuccess: { user in
@@ -110,6 +99,8 @@ private extension ProfileCoordinator {
     }
     
     func logout() {
-
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            appDelegate.logout()
+        }
     }
 }

@@ -10,5 +10,6 @@ import Foundation
 
 class Profile: Codable {
     let profileFirstName: String?
+    let profileFullName: String?
     let profilePicture: File?
 }

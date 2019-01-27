@@ -16,11 +16,11 @@ class SettingsViewController: AppViewController {
     
     var onBackTapped:OnButtonTapped?
     var onChangePassword: ((SettingsViewController, String, String) -> Void)?
-    
     var onUpdateProfile: ((SettingsViewController, String, String, String?, String) -> Void)?
     
-    @IBOutlet private weak var changePasswordButton: UIButton!
+    //MARK: IBOutlets
     
+    @IBOutlet private weak var changePasswordButton: UIButton!
     @IBOutlet private weak var updateInfoButton: UIButton!
     
     @IBOutlet private weak var nameTextField: ValidatedTextField!
@@ -32,8 +32,7 @@ class SettingsViewController: AppViewController {
     @IBOutlet private weak var confirmPasswordTextField: ValidatedTextField!
     
     @IBOutlet private weak var passwordStackView: UIStackView!
-    
-    @IBOutlet weak var userInfoStackView: UIStackView!
+    @IBOutlet private weak var userInfoStackView: UIStackView!
     
     var user: User?
 
@@ -43,21 +42,20 @@ class SettingsViewController: AppViewController {
         }
     }
     
+    private var showChangePasswordButton: Bool = false {
+        didSet {
+            changePasswordButton.isHidden = !showChangePasswordButton
+        }
+    }
+    
     //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let user = self.user {
-            fillUserInfo(user)
-        }
+        setupUserInfo()
     }
     
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-    }
+    //MARK: Public
     
     func markInvalid() {
         passwordTextField.markInvalid()
@@ -71,20 +69,13 @@ class SettingsViewController: AppViewController {
         confirmPasswordTextField.text = nil
     }
     
-    func fillUserInfo(_ user: User) {
-        let profile = user.profile
-        nameTextField?.text = profile.profileFirstName
-        emailTextField?.text = user.email
-        mobileTextField?.text = user.phoneNumber
-        countryTextField?.text = user.country
-    }
-    
     func profileUpdated() {
         showUpdateButton = false
     }
     
     func updateProfile() {
         guard ValidatedTextField.validateAll(in: userInfoStackView) else {
+            showUpdateButton = false
             return
         }
         let name = nameTextField.text ?? ""
@@ -95,6 +86,23 @@ class SettingsViewController: AppViewController {
         onUpdateProfile?(self, name, email, mobile, country)
     }
     
+    //MARK: Private
+    
+    private func fillUserInfo(_ user: User) {
+        let profile = user.profile
+        
+        nameTextField?.text = profile.profileFullName
+        emailTextField?.text = user.email
+        mobileTextField?.text = user.phoneNumber
+        countryTextField?.text = user.country
+    }
+    
+    private func setupUserInfo() {
+        if let user = self.user {
+            fillUserInfo(user)
+        }
+    }
+    
     //MARK: IBActions
 
     @IBAction private func backTapped() {
@@ -102,8 +110,14 @@ class SettingsViewController: AppViewController {
     }
     
     @IBAction private func changePasswordTapped() {
+        guard ValidatedTextField.validateAll(in: passwordStackView) else {
+            showChangePasswordButton = false
+            return
+        }
+        
         let password = passwordTextField.text ?? ""
         let oldPassword = oldPasswordTextField.text ?? ""
+        
         onChangePassword?(self, oldPassword, password)
     }
     
@@ -114,22 +128,41 @@ class SettingsViewController: AppViewController {
 
 extension SettingsViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        handleUserInfoFieldsChanges(textField)
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        handlePasswordFieldsChanges(textField)
+    }
+}
+
+private extension SettingsViewController {
+    func handlePasswordFieldsChanges(_ textField: UITextField) {
         switch textField {
-        case nameTextField, emailTextField, countryTextField, mobileTextField:
-            showUpdateButton = true
+        case passwordTextField, oldPasswordTextField, confirmPasswordTextField:
+            if passwordTextField.text?.isEmpty ?? true || oldPasswordTextField.text?.isEmpty ?? true || confirmPasswordTextField.text?.isEmpty ?? true {
+                showChangePasswordButton = false
+                return
+            }
+            guard ValidatedTextField.validateAll(in: passwordStackView) else {
+                showChangePasswordButton = false
+                return
+            }
+            showChangePasswordButton = true
         default:
             break
         }
-        return true
     }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
+    
+    func handleUserInfoFieldsChanges(_ textField: UITextField) {
         switch textField {
-        case passwordTextField, oldPasswordTextField, confirmPasswordTextField:
-            guard ValidatedTextField.validateAll(in: passwordStackView) else {
+        case nameTextField, emailTextField, countryTextField, mobileTextField:
+            guard ValidatedTextField.validateAll(in: userInfoStackView) else {
+                showUpdateButton = false
                 return
             }
-            changePasswordButton.isHidden = false
+            showUpdateButton = true
         default:
             break
         }

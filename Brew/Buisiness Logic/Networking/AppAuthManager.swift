@@ -60,11 +60,17 @@ class AppAuthManager: AuthManager {
 
     @discardableResult
     func logout(completion: ((_ success: Bool) -> Void)?) -> Bool {
+        deleteToken()
         authToken = nil
+        completion?(true)
         return true
     }
 
     private func storeToken(_ token: String) {
         UserDefaults.standard.set(token, forKey: Constants.tokenKey)
+    }
+    
+    private func deleteToken() {
+        UserDefaults.standard.removeObject(forKey: Constants.tokenKey)
     }
 }
