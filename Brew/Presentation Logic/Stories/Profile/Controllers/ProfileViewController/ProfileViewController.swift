@@ -53,6 +53,11 @@ class ProfileViewController: AppViewController {
 extension ProfileViewController {
     func profileImageUpdatedWithNew(_ image: UIImage) {
         logoImageView.image = image
+        let resizedImage = image.resizeImage(targetSize: CGSize(width: 24, height: 24))
+        if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {
+            let customTabBarItem = UITabBarItem(title: "Profile", image: roundedImage, selectedImage: roundedImage)
+            tabBarItem = customTabBarItem
+        }
     }
     
     func updateContent(with user: User) {

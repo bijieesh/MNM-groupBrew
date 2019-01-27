@@ -29,6 +29,8 @@
                 <outlet property="oldPasswordTextField" destination="stV-JT-Wy8" id="Whf-Pt-HM5"/>
                 <outlet property="passwordStackView" destination="08Y-fi-gOT" id="Dmg-aO-dqx"/>
                 <outlet property="passwordTextField" destination="nM3-7O-Ec5" id="uff-DD-zAb"/>
+                <outlet property="updateInfoButton" destination="FzI-VQ-kwQ" id="OlF-QP-AMj"/>
+                <outlet property="userInfoStackView" destination="ZJo-Qt-utg" id="502-c1-aGZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -52,12 +54,13 @@
                                 <constraint firstAttribute="height" constant="28" id="EkQ-tb-NuK"/>
                                 <constraint firstAttribute="width" constant="27" id="ryZ-zk-OYM"/>
                             </constraints>
-                            <state key="normal" image="back_arrow"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="back_arrow_black"/>
                             <connections>
                                 <action selector="backTapped" destination="-1" eventType="touchUpInside" id="yBW-dD-VJe"/>
                             </connections>
                         </button>
-                        <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZJo-Qt-utg">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZJo-Qt-utg">
                             <rect key="frame" x="20" y="94" width="327" height="282"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXi-mc-uTj" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
@@ -74,6 +77,9 @@
                                             <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="mJT-7Y-6EG"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-BB-cHP" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="74" width="327" height="60"/>
@@ -89,6 +95,9 @@
                                             <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="0RV-jp-48e"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile number(optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YFZ-72-19T">
                                     <rect key="frame" x="0.0" y="148" width="327" height="60"/>
@@ -98,6 +107,9 @@
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="AWD-hy-0BF"/>
+                                    </connections>
                                 </textField>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jjo-Q6-oDZ" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="222" width="327" height="60"/>
@@ -113,7 +125,29 @@
                                             <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <outlet property="delegate" destination="-1" id="BGr-wn-UDx"/>
+                                    </connections>
                                 </textField>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-VQ-kwQ">
+                                    <rect key="frame" x="0.0" y="282" width="327" height="60"/>
+                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="uvq-LL-6F7"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                    <state key="normal" title="Update">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="updateTapped" destination="-1" eventType="touchUpInside" id="DeE-iq-BfA"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="width" constant="327" id="AwT-he-Pvf"/>
@@ -236,6 +270,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_arrow" width="19" height="20"/>
+        <image name="back_arrow_black" width="23" height="23"/>
     </resources>
 </document>

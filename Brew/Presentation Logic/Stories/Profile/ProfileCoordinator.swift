@@ -36,8 +36,7 @@ class ProfileCoordinator: Coordinator {
         }
         
         self.contentController = contentController
-        
-        loadUserInfo(for: profileController)
+    
         loadProfileContent(for: profileController)
     }
 }
@@ -58,7 +57,11 @@ private extension ProfileCoordinator {
         }
         
         settingsViewController.onChangePassword = { [weak self] (controller, oldPassword, newPassword) in
-            self?.change(oldPassword: oldPassword, with: newPassword, controller: controller)
+            self?.change(oldPassword: oldPassword, with: newPassword, on: controller)
+        }
+        
+        settingsViewController.onUpdateProfile = { [weak self] (controller, fullname, email, mobile, country) in
+            self?.updateProfileInfo(fullname: fullname, email: email, mobile: mobile, country: country, on: controller)
         }
         
         settingsViewController.user = controller.user
@@ -83,7 +86,7 @@ private extension ProfileCoordinator {
         })
     }
     
-    func change(oldPassword: String, with newPassword: String, controller: SettingsViewController) {
+    func change(oldPassword: String, with newPassword: String, on controller: SettingsViewController) {
         let changePasswordReques = ChangePasswordRequest(oldPassword: oldPassword, newPassword: newPassword)
         changePasswordReques.execute(onSuccess: { user in
             controller.clearPasswordFields()
@@ -95,6 +98,14 @@ private extension ProfileCoordinator {
             else {
                 error.display()
             }
+        })
+    }
+    
+    func updateProfileInfo(fullname: String, email: String, mobile: String?, country: String, on controller: SettingsViewController) {
+        UpdateProfileInfoRequest(fullname: fullname, email: email, mobile: mobile, country: country).execute(onSuccess: { user in
+            controller.profileUpdated()
+        }, onError: { error in
+            error.display()
         })
     }
     
