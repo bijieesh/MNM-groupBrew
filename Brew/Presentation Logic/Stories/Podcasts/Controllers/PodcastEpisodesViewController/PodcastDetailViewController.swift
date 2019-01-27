@@ -10,7 +10,13 @@ import UIKit
 import Reusable
 
 class PodcastDetailViewController: AppViewController {
-    
+
+    var podcast: Podcast? {
+        didSet {
+            contentTableView?.reloadData()
+        }
+    }
+
     @IBOutlet private var logoHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var logoImageView: UIImageView!
     @IBOutlet private var backButton: UIButton!
@@ -25,25 +31,33 @@ class PodcastDetailViewController: AppViewController {
 extension PodcastDetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return PodcastDetailTableHeaderView.loadFromNib()
+        let view = PodcastDetailTableHeaderView.loadFromNib()
+
+        view.podcastName = podcast?.title
+        view.podcastDescription = podcast?.description
+
+        return view
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(for: indexPath, cellType: PodcastEpisodeCell.self)
+        let cell: PodcastEpisodeCell = tableView.dequeueReusableCell(for: indexPath)
+
+        guard let episode = podcast?.episodes?[indexPath.row] else {
+            return cell
+        }
+
+        cell.name = episode.title
+        cell.duration = episode.duration
 
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 14
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return podcast?.episodes?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 154
+        return 150
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

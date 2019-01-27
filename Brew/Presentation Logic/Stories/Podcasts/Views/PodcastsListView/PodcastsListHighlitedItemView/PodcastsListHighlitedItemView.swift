@@ -16,10 +16,13 @@ class PodcastsListHighlitedItemView: UIView, NibOwnerLoadable {
 
     @IBOutlet private var imageView: UIImageView!
 
-    init(imageUrl: URL) {
+    init(imageUrl: URL?) {
         super.init(frame: .zero)
         loadNibContent()
-        imageView?.sd_setImage(with: imageUrl)
+
+        if imageUrl != nil {
+            imageView?.sd_setImage(with: imageUrl)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

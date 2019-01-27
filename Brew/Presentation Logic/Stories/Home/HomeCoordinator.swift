@@ -10,16 +10,31 @@ import UIKit
 
 class HomeCoordinator: Coordinator {
 
-    private(set) var contentController: UIViewController?
+    private(set) var contentController: UINavigationController?
 
     override func start() {
         super.start()
 
+        setupHomeController()
+    }
+
+    private func setupHomeController() {
         let homeController = HomeViewController()
+
+        homeController.onPodcastSelected = { [weak self] in
+            self?.showPodcastDetails(for: $0)
+        }
+
         let contentController = UINavigationController(rootViewController: homeController)
         contentController.isNavigationBarHidden = true
         self.contentController = contentController
         loadHomeContent(for: homeController)
+    }
+
+    private func showPodcastDetails(for podcast: Podcast) {
+        let controller = PodcastDetailViewController()
+        controller.podcast = podcast
+        contentController?.pushViewController(controller, animated: true)
     }
 
     private func loadHomeContent(for controller: HomeViewController) {

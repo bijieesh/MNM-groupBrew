@@ -11,8 +11,8 @@ import Foundation
 class NetworkingStack {
     static let instance = NetworkingStack()
 
-    private var authManager: AuthManager?
-    private var baseUrl: String?
+    private(set) var authManager: AuthManager?
+    private(set) var baseUrl: String?
 
     private(set) var requestExecuter: RequestExecuter?
 
