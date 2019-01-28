@@ -10,7 +10,7 @@ import Foundation
 
 struct GetCurrentUserRequest: RequestType {
     typealias ResponseObjectType = User
-    typealias ErrorType = SimpleError
+    typealias ErrorType = MessageError
 
     let path: String = "api/user/me"
     let method: HTTPMethod = .post

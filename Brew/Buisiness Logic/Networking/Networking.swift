@@ -121,13 +121,13 @@ extension RequestType {
         return DefaultRequestData(path: path, method: method, queryParams: queryParams, bodyParams: bodyParams, headers: headers)
     }
 
-    func execute(responseQueue: DispatchQueue = .main, onSuccess: ResponseSuccessCallback? = nil, onError: ErrorCallback? = nil) {
+    func execute(responseQueue: DispatchQueue = .main, retryOnFail: Bool = true onSuccess: ResponseSuccessCallback? = nil, onError: ErrorCallback? = nil) {
         guard let executer = NetworkingStack.instance.requestExecuter else {
             onError?(.system(error: NetworkingInternalError.stackNotInitialized))
             return
         }
 
-        executer.execute(self, responseQueue: responseQueue, retryOnFail: true, onSuccess: onSuccess, onError: onError)
+        executer.execute(self, responseQueue: responseQueue, retryOnFail: retryOnFail, onSuccess: onSuccess, onError: onError)
     }
 }
 

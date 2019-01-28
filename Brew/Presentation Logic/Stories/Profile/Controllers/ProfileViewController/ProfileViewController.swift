@@ -31,7 +31,7 @@ class ProfileViewController: AppViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUserInfo()
+        updateUI()
     }
     
     //MARK: IBActions
@@ -56,18 +56,21 @@ extension ProfileViewController {
 
 
     func updateContent(with user: User) {
+        self.user = user
+        updateUI()
+    }
+
+    private func updateUI() {
         guard isViewLoaded else {
             return
         }
 
-        self.user = user
-        
-        userNameLabel?.text = user.profile.profileFullName
+        userNameLabel?.text = user?.profile.profileFullName
 
         setupPodcasts()
         setupAvatarFromUser()
     }
-    
+
     private func setupPodcasts() {
         let podcasts = user?.podcasts ?? []
         podcastsView?.setup(with: podcasts)
@@ -92,12 +95,6 @@ private extension ProfileViewController {
         if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {
             let customTabBarItem = UITabBarItem(title: "Profile", image: roundedImage, selectedImage: roundedImage)
             tabBarItem = customTabBarItem
-        }
-    }
-    
-    private func setupUserInfo() {
-        if let user = self.user {
-            updateContent(with: user)
         }
     }
 }

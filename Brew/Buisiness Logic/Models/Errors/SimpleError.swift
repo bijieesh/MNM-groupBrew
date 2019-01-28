@@ -15,3 +15,7 @@ struct SimpleError: ServerError {
         return error
     }
 }
+
+struct MessageError: ServerError {
+    let message: String
+}

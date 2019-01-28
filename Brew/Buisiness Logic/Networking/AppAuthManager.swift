@@ -47,6 +47,8 @@ class AppAuthManager: AuthManager {
         }
 
         TokenRefreshRequest(oldToken: oldToken).execute(
+            retryOnFail: false,
+
             onSuccess: { [weak self] (response) in
                 self?.authToken = .bearer(token: response.token)
                 completion?(true)
