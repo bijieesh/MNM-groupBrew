@@ -10,9 +10,10 @@ import UIKit
 
 class OnboardingCoordinator: Coordinator {
 
+    var onFinish: (() -> Void)?
+
     override func start() {
         super.start()
-
         showInterests()
     }
 
@@ -37,15 +38,21 @@ class OnboardingCoordinator: Coordinator {
             self?.showPriceSelection()
         }
 
-        rootController.topController.present(interestsViewController, animated: false)
+        contentController.present(interestsViewController, animated: false)
     }
 
     private func showPriceSelection() {
         let priceViewController = PriceViewController()
 
-        priceViewController.onLaterTapped = { [weak self] in self?.end() }
-        priceViewController.onNextTapped = { [weak self] in self?.end() }
+        priceViewController.onLaterTapped = { [weak self] in
+            self?.end()
+            self?.onFinish?()
+        }
+        priceViewController.onNextTapped = { [weak self] in
+            self?.end()
+            self?.onFinish?()
+        }
 
-        rootController.topController.present(priceViewController, animated: false)
+        contentController.present(priceViewController, animated: false)
     }
 }

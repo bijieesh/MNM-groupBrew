@@ -10,4 +10,10 @@ import UIKit
 
 class AppViewController: UIViewController {
     var onClose: (() -> Void)?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .white
+    }
 }

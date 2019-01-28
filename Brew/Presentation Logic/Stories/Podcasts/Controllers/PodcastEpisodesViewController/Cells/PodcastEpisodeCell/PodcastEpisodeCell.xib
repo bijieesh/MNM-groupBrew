@@ -23,8 +23,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="53.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Hell With Husbands" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNE-fv-Lfw">
-                        <rect key="frame" x="24" y="8" width="142.5" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To Hell With Husbands" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lNE-fv-Lfw">
+                        <rect key="frame" x="24" y="8" width="336" height="18"/>
                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -46,6 +46,7 @@
                     <constraint firstItem="N2V-bM-FVa" firstAttribute="centerY" secondItem="nCH-D2-beA" secondAttribute="centerY" id="5JW-HJ-dDu"/>
                     <constraint firstAttribute="bottom" secondItem="Kzt-CB-mNV" secondAttribute="bottom" constant="8" id="8s1-cf-ojf"/>
                     <constraint firstAttribute="trailing" secondItem="N2V-bM-FVa" secondAttribute="trailing" constant="24" id="DgF-JM-XRq"/>
+                    <constraint firstItem="N2V-bM-FVa" firstAttribute="leading" secondItem="lNE-fv-Lfw" secondAttribute="trailing" constant="16" id="Fll-th-s1j"/>
                     <constraint firstItem="Kzt-CB-mNV" firstAttribute="leading" secondItem="nCH-D2-beA" secondAttribute="leading" constant="24" id="kxO-0R-j2f"/>
                     <constraint firstItem="Kzt-CB-mNV" firstAttribute="top" secondItem="lNE-fv-Lfw" secondAttribute="bottom" constant="6" id="ttX-2R-uNq"/>
                     <constraint firstItem="lNE-fv-Lfw" firstAttribute="leading" secondItem="nCH-D2-beA" secondAttribute="leading" constant="24" id="wTb-uN-XLC"/>

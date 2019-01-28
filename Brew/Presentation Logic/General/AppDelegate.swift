@@ -13,27 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    private var appFlowCoordinator: AppFlowCoordinator?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let vc = AppViewController()
+        let appFlowCoordinator = AppFlowCoordinator()
 
-        vc.view.backgroundColor = .white
-
-        window?.rootViewController = vc
+        window?.rootViewController = appFlowCoordinator.contentController
         window?.makeKeyAndVisible()
 
-        appFlowCoordinator = AppFlowCoordinator(rootController: vc)
-        appFlowCoordinator?.start()
+        appFlowCoordinator.start()
 
         return true
-    }
-    
-    func logout() {
-        appFlowCoordinator?.logout()
     }
 }
 

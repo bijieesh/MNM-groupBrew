@@ -8,12 +8,13 @@
 
 import UIKit
 import Reusable
+import SDWebImage
 
 class PodcastDetailViewController: AppViewController {
 
     var podcast: Podcast? {
         didSet {
-            contentTableView?.reloadData()
+            updateUI()
         }
     }
 
@@ -32,6 +33,24 @@ class PodcastDetailViewController: AppViewController {
 
     @IBAction private func backPressed() {
         onBackPressed?()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        updateUI()
+    }
+
+    private func updateUI() {
+        guard isViewLoaded else {
+            return
+        }
+
+        if let url = podcast?.albumArt?.url {
+            logoImageView.sd_setImage(with: url)
+        }
+
+        contentTableView.reloadData()
     }
 }
 

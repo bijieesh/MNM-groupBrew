@@ -27,7 +27,7 @@ class PlayerCoordinator {
         invalidateCurrentPlayer()
         prepareAudioSession()
 
-        let data = PlayerViewController.Data(imageUrl: nil, title: podcast.title, autoplay: true, audioPlayer: audioPlayer)
+        let data = PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, autoplay: true, audioPlayer: audioPlayer)
         let controller = PlayerViewController()
         controller.data = data
 

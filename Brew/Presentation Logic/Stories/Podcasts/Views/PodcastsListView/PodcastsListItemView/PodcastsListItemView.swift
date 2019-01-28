@@ -14,7 +14,7 @@ class PodcastsListItemView: UIView, NibOwnerLoadable {
     struct Data {
         let title: String
         let subtitle: String
-        let imageUrl: URL? = nil
+        let imageUrl: URL?
     }
 
     @IBOutlet private var titleLabel: UILabel!
@@ -43,6 +43,6 @@ class PodcastsListItemView: UIView, NibOwnerLoadable {
 
 extension Podcast {
     var listItemData: PodcastsListItemView.Data {
-        return PodcastsListItemView.Data(title: title, subtitle: description)
+        return PodcastsListItemView.Data(title: title, subtitle: description, imageUrl: albumArt?.url)
     }
 }

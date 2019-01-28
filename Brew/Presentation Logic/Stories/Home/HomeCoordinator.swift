@@ -2,19 +2,16 @@
 //  HomeCoordinator.swift
 //  Brew
 //
-//  Created by new user on 1/24/19.
+//  Created by Vasyl Khmil on 1/24/19.
 //  Copyright © 2019 NerdzLab. All rights reserved.
 //
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
-
-    private(set) var contentController: UINavigationController?
+class HomeCoordinator: NavigationCoordinator {
 
     override func start() {
         super.start()
-
         setupHomeController()
     }
 
@@ -25,9 +22,8 @@ class HomeCoordinator: Coordinator {
             self?.showPodcastDetails(for: $0)
         }
 
-        let contentController = UINavigationController(rootViewController: homeController)
-        contentController.isNavigationBarHidden = true
-        self.contentController = contentController
+        navigationController?.pushViewController(homeController, animated: true)
+
         loadHomeContent(for: homeController)
     }
 
@@ -36,14 +32,14 @@ class HomeCoordinator: Coordinator {
         controller.podcast = podcast
 
         controller.onBackPressed = { [weak self] in
-            self?.contentController?.popViewController(animated: true)
+            self?.navigationController?.popViewController(animated: true)
         }
 
         controller.onEpisodeSelected = { [weak self] index in
             self?.playEpisode(at: index, from: podcast)
         }
 
-        contentController?.pushViewController(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     private func playEpisode(at index: Int, from podcast: Podcast) {
@@ -74,10 +70,10 @@ class HomeCoordinator: Coordinator {
         }
         
         controller.onClose = { [weak self] in
-            self?.contentController?.popViewController(animated: true)
+            self?.navigationController?.popViewController(animated: true)
         }
         DispatchQueue.main.async {
-            self.contentController?.pushViewController(controller, animated: true)
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ProfileCoordinator: Coordinator {
+class ProfileCoordinator: NavigationCoordinator {
 
-    private(set) var contentController: UINavigationController?
+    var onLogout: (() -> Void)?
+
     private var user: User?
 
     override func start() {
@@ -37,8 +38,8 @@ class ProfileCoordinator: Coordinator {
             self?.logout()
         }
     
-        self.loadUserInfo(for: profileController)
-        self.contentController = contentController
+        loadUserInfo(for: profileController)
+        navigationController?.pushViewController(profileController, animated: false)
     }
 }
 
@@ -55,7 +56,7 @@ private extension ProfileCoordinator {
         let settingsViewController = SettingsViewController()
         
         settingsViewController.onClose = { [weak self] in
-            self?.contentController?.popViewController(animated: true)
+            self?.navigationController?.popViewController(animated: true)
         }
         
         settingsViewController.onChangePassword = { [weak self, settingsViewController] (oldPassword, newPassword) in
@@ -75,7 +76,7 @@ private extension ProfileCoordinator {
         
         settingsViewController.user = user
     
-        contentController?.pushViewController(settingsViewController, animated: true)
+        navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
     func loadUserInfo(for controller: ProfileViewController) {
@@ -123,8 +124,6 @@ private extension ProfileCoordinator {
     }
     
     func logout() {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.logout()
-        }
+        onLogout?()
     }
 }

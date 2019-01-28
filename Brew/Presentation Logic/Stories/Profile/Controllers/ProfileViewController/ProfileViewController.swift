@@ -56,6 +56,10 @@ extension ProfileViewController {
 
 
     func updateContent(with user: User) {
+        guard isViewLoaded else {
+            return
+        }
+
         self.user = user
         
         userNameLabel?.text = user.profile.profileFullName
@@ -66,7 +70,7 @@ extension ProfileViewController {
     
     private func setupPodcasts() {
         let podcasts = user?.podcasts ?? []
-        podcastsView.setup(with: podcasts)
+        podcastsView?.setup(with: podcasts)
     }
 
     private func setupAvatarFromUser() {

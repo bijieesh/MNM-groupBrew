@@ -12,7 +12,6 @@ class AppFlowCoordinator: Coordinator {
 
     override func start() {
         super.start()
-
         let authManager = AppAuthManager()
 
         initNetworkingStack(with: authManager)
@@ -25,13 +24,17 @@ class AppFlowCoordinator: Coordinator {
         }
     }
     
-    func logout() {
-        end()
+    private func logout() {
         let authManager = AppAuthManager()
         initNetworkingStack(with: authManager)
         
-        authManager.logout { success in
-            self.startAuthenticationFlow(with: authManager)
+        authManager.logout { [weak self] success in
+            guard success else {
+                return
+            }
+            self?.contentController.dismiss(animated: false) {
+                self?.startAuthenticationFlow(with: authManager)
+            }
         }
     }
     
@@ -40,38 +43,46 @@ class AppFlowCoordinator: Coordinator {
     }
 
     private func startAuthenticationFlow(with authManager: AppAuthManager) {
-        let authCoordinator = AuthenticationCoordinator(rootController: rootController, authManager: authManager)
+        let authCoordinator = AuthenticationCoordinator(authManager: authManager)
 
-        authCoordinator.onFinish = { [weak self] in
-            guard authManager.isUserLoggedIn else {
-                return false
+        authCoordinator.onLogin = { [weak self] in
+            self?.contentController.dismiss(animated: true) {
+                self?.startMainFlow()
             }
-
-            self?.rootController.dismiss(animated: true) {
-                self?.startOnboardingFlow()
-            }
-
-            return true
         }
 
+        authCoordinator.onSignUp = { [weak self] in
+            self?.contentController.dismiss(animated: false) {
+                self?.startOnboardingFlow()
+            }
+        }
+
+        contentController.present(authCoordinator.contentController, animated: true)
         authCoordinator.start()
     }
 
     private func startOnboardingFlow() {
-        let onboardingCoordinator = OnboardingCoordinator(rootController: rootController)
+        let onboardingCoordinator = OnboardingCoordinator()
+
         onboardingCoordinator.onFinish = { [weak self] in
 
-            self?.rootController.dismiss(animated: true) {
+            self?.contentController.dismiss(animated: false) {
                 self?.startMainFlow()
             }
-
-            return true
         }
+
+        contentController.present(onboardingCoordinator.contentController, animated: true)
         onboardingCoordinator.start()
     }
 
     private func startMainFlow() {
-        let mainFlowCoordinator = MainFlowCoordinator(rootController: rootController)
+        let mainFlowCoordinator = MainFlowCoordinator()
+
+        mainFlowCoordinator.onLogout = { [weak self] in
+            self?.logout()
+        }
+
+        contentController.present(mainFlowCoordinator.contentController, animated: true)
         mainFlowCoordinator.start()
     }
 }

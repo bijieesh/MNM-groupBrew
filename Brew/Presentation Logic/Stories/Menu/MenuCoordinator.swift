@@ -15,19 +15,15 @@ class MenuCoordinator: Coordinator {
 
     private let controllers: [(option: Option, controller: UIViewController)]
 
-    init(rootController: UIViewController, controllers: [(Option, UIViewController)]) {
+    init(controllers: [(Option, UIViewController)]) {
         self.controllers = controllers
-        super.init(rootController: rootController)
+        let tabBarController = MenuCoordinator.setupedTabBarController(for: controllers)
+        super.init(contentController: tabBarController)
     }
 
-    override func start() {
-        super.start()
-        setupTabBarController()
-    }
-
-    private func setupTabBarController() {
+    private static func setupedTabBarController(for controllers: [(option: Option, controller: UIViewController)]) -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = controllers.sorted(by: { $0.option.rawValue < $1.option.rawValue }).map({ $0.controller })
-        rootController.present(tabBarController, animated: false)
+        return tabBarController
     }
 }

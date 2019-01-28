@@ -38,7 +38,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="834"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7WG-JJ-jdx">
-                            <rect key="frame" x="0.0" y="37" width="375" height="63"/>
+                            <rect key="frame" x="0.0" y="20" width="375" height="63"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to app" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqX-BF-Qh1">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="27.5"/>
@@ -55,7 +55,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ned-CC-UYQ">
-                            <rect key="frame" x="24" y="132" width="327" height="570"/>
+                            <rect key="frame" x="24" y="115" width="327" height="570"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpA-Lg-NUR" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
@@ -169,7 +169,7 @@
                             </constraints>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4E-2R-qUb">
-                            <rect key="frame" x="72.5" y="717" width="230" height="32.5"/>
+                            <rect key="frame" x="72.5" y="700" width="230" height="32.5"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
                                     <fragment content="Don't have an account?">
@@ -202,7 +202,7 @@
                         <constraint firstItem="7WG-JJ-jdx" firstAttribute="width" secondItem="hpd-IY-Xh9" secondAttribute="width" id="4N5-I0-AjA"/>
                         <constraint firstItem="7WG-JJ-jdx" firstAttribute="leading" secondItem="hpd-IY-Xh9" secondAttribute="leading" id="JNC-EO-Uxu"/>
                         <constraint firstItem="ned-CC-UYQ" firstAttribute="top" secondItem="7WG-JJ-jdx" secondAttribute="bottom" constant="32" id="NCk-M5-qtp"/>
-                        <constraint firstItem="7WG-JJ-jdx" firstAttribute="top" secondItem="hpd-IY-Xh9" secondAttribute="top" constant="37" id="Qkd-AP-tma"/>
+                        <constraint firstItem="7WG-JJ-jdx" firstAttribute="top" secondItem="hpd-IY-Xh9" secondAttribute="top" constant="20" id="Qkd-AP-tma"/>
                         <constraint firstItem="A4E-2R-qUb" firstAttribute="centerX" secondItem="hpd-IY-Xh9" secondAttribute="centerX" id="SvC-51-HWX"/>
                         <constraint firstItem="A4E-2R-qUb" firstAttribute="top" secondItem="ned-CC-UYQ" secondAttribute="bottom" constant="15" id="dNM-2O-a07"/>
                         <constraint firstAttribute="trailing" secondItem="7WG-JJ-jdx" secondAttribute="trailing" id="lpa-3R-fVv"/>

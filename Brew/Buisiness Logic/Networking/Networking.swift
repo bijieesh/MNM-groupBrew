@@ -141,7 +141,7 @@ protocol RequestFactory {
 
 protocol RequestRetrier {
     @discardableResult
-    func handle<T: RequestType>(_ error: NetworkingError<T.ErrorType>, for request: T, completion: (_ newRequest: T) -> Void) -> Bool
+    func handle<T: RequestType>(_ error: NetworkingError<T.ErrorType>, for request: T, completion: @escaping (T) -> Void) -> Bool
 }
 
 protocol RequestExecuter {
@@ -242,13 +242,14 @@ private class TokenRefreshRetrier: RequestRetrier {
     }
 
     @discardableResult
-    func handle<T>(_ error: NetworkingError<T.ErrorType>, for request: T, completion: (T) -> Void) -> Bool where T : RequestType {
+    func handle<T>(_ error: NetworkingError<T.ErrorType>, for request: T, completion: @escaping (T) -> Void) -> Bool where T : RequestType {
         guard case .custom(_, let statusCode) = error, statusCode.isUnauthorize else {
             return false
         }
 
-
-        return true
+        return authManager.refreshToken { _ in
+            completion(request)
+        }
     }
 }
 
@@ -323,14 +324,16 @@ private class DefaultRequestExecuter: RequestExecuter {
     private func retry<T: RequestType>(with error: NetworkingError<T.ErrorType>, for request: T, responseQueue: DispatchQueue, onSuccess: ((T.ResponseObjectType) -> Void)? = nil, onError: ((NetworkingError<T.ErrorType>) -> Void)? = nil) {
 
         for retrier in requestRetries {
-            let handled = retrier.handle(error, for: request) { newRequest in
-                execute(newRequest, responseQueue: responseQueue, retryOnFail: false, onSuccess: onSuccess, onError: onError)
+            let handled = retrier.handle(error, for: request) { [weak self] newRequest in
+                self?.execute(newRequest, responseQueue: responseQueue, retryOnFail: false, onSuccess: onSuccess, onError: onError)
             }
 
             if handled {
-                break
+                return
             }
         }
+
+        responseQueue.async { onError?(error) }
     }
 }
 

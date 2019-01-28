@@ -11,14 +11,16 @@ import UIKit
 class Coordinator {
     private static var coordonators: [String: Coordinator] = [:]
 
-    let rootController: UIViewController
-
-    var onFinish: (() -> Bool)?
+    let contentController: UIViewController
 
     private lazy var uuid = UUID().uuidString
 
-    init(rootController: UIViewController) {
-        self.rootController = rootController
+    init() {
+        contentController = AppViewController()
+    }
+
+    init(contentController: UIViewController) {
+        self.contentController = contentController
     }
 
     func start() {
@@ -26,8 +28,20 @@ class Coordinator {
     }
 
     func end() {
-        if onFinish?() == true {
-            Coordinator.coordonators.removeValue(forKey: uuid)
-        }
+        Coordinator.coordonators.removeValue(forKey: uuid)
+    }
+}
+
+class NavigationCoordinator: Coordinator {
+
+    var navigationController: UINavigationController? {
+        return contentController as? UINavigationController
+    }
+
+    override init() {
+        let navigationController = UINavigationController()
+        navigationController.isNavigationBarHidden = true
+
+        super.init(contentController: navigationController)
     }
 }

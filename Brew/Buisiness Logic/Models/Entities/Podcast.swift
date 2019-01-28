@@ -13,4 +13,5 @@ struct Podcast: Codable {
     let title: String
     let description: String
     let episodes: [Episode]?
+    let albumArt: File?
 }

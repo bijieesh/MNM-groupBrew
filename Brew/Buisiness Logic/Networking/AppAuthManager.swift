@@ -42,6 +42,7 @@ class AppAuthManager: AuthManager {
     @discardableResult
     func refreshToken(completion: ((_ success: Bool) -> Void)?) -> Bool {
         guard let oldToken = authToken else {
+            completion?(false)
             return false
         }
 
