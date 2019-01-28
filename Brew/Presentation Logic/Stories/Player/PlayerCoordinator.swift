@@ -30,7 +30,11 @@ class PlayerCoordinator {
         let data = PlayerViewController.Data(imageUrl: nil, title: podcast.title, autoplay: true, audioPlayer: audioPlayer)
         let controller = PlayerViewController()
         controller.data = data
-
+        
+        controller.onBackPressed = { playerController in
+            playerController.navigationController?.popViewController(animated: true)
+        }
+        
         return controller
     }
     
