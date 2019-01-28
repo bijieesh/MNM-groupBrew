@@ -80,7 +80,8 @@
                                 <constraint firstAttribute="bottom" secondItem="4kO-9i-ZUi" secondAttribute="bottom" constant="20" id="agK-Lk-jXx"/>
                                 <constraint firstAttribute="trailing" secondItem="pSY-z6-haT" secondAttribute="trailing" constant="20" id="cMH-6w-S4F"/>
                                 <constraint firstItem="ADu-A9-egQ" firstAttribute="centerX" secondItem="yZf-6S-1Rh" secondAttribute="centerX" id="fRx-KY-ef5"/>
-                                <constraint firstItem="ADu-A9-egQ" firstAttribute="centerY" secondItem="yZf-6S-1Rh" secondAttribute="centerY" constant="-100" id="oeg-gW-sFc"/>
+                                <constraint firstItem="ADu-A9-egQ" firstAttribute="centerY" secondItem="yZf-6S-1Rh" secondAttribute="centerY" priority="750" constant="-100" id="oeg-gW-sFc"/>
+                                <constraint firstItem="ADu-A9-egQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="yZf-6S-1Rh" secondAttribute="top" id="xbZ-Vd-kzl"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7S-VO-NAf" customClass="LDProgressView">
