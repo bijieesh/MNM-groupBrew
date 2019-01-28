@@ -14,6 +14,8 @@ class ProfileCoordinator: NavigationCoordinator {
 
     private var user: User?
 
+    private let imagePickerCoordinator = ImagePickerCoordinator()
+
     override func start() {
         super.start()
         setupProfileController()
@@ -46,7 +48,7 @@ class ProfileCoordinator: NavigationCoordinator {
 private extension ProfileCoordinator {
 
     func showImagePicker(from controller: ProfileViewController) {
-        ImagePickerCoordinator().showImagePicker(for: controller) { image in
+        imagePickerCoordinator.showImagePicker(for: controller) { image in
             guard let image = image else { return }
             controller.updateProfileImage(with: image)
         }

@@ -34,7 +34,7 @@ class PlayerViewController: AppViewController {
     @IBOutlet private var progressView: LDProgressView! {
         didSet {
             progressView.progress = 0.0
-            progressView.color = .red
+            progressView.color = .appOrange
             progressView.animate = false
             progressView.borderRadius = 0
             progressView.type = LDProgressSolid

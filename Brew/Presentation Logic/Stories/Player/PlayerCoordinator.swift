@@ -26,7 +26,7 @@ class PlayerCoordinator {
         }
 
         downloadFile(from: audioUrl) { [weak self] serverUrl in
-            guard let audioPlayer = try? AVAudioPlayer(contentsOf: audioUrl) else {
+            guard let url = serverUrl, let audioPlayer = try? AVAudioPlayer(contentsOf: url) else {
                 completion(nil)
                 return
             }
@@ -55,7 +55,8 @@ class PlayerCoordinator {
     
     private func prepareAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
-        try? audioSession.setCategory(.playback, mode: .spokenAudio)
+        try? audioSession.setCategory(.playback, mode: .default, policy: .longForm)
+        try? audioSession.setActive(true, options: [])
     }
 
     private func invalidateCurrentPlayer() {
