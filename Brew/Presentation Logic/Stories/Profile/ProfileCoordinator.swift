@@ -39,6 +39,10 @@ class ProfileCoordinator: NavigationCoordinator {
         profileController.onLogOutTapped = { [weak self] in
             self?.logout()
         }
+        
+        profileController.onPodcastSelected = { [weak self] in
+            self?.showPodcastDetails(for: $0)
+        }
     
         loadUserInfo(for: profileController)
         navigationController?.pushViewController(profileController, animated: false)
@@ -127,5 +131,36 @@ private extension ProfileCoordinator {
     
     func logout() {
         onLogout?()
+    }
+    
+    func showPodcastDetails(for podcast: Podcast) {
+        let controller = PodcastDetailViewController()
+        controller.podcast = podcast
+        
+        controller.onBackPressed = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        controller.onEpisodeSelected = { [weak self] index in
+            self?.playEpisode(at: index, from: podcast)
+        }
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func playEpisode(at index: Int, from podcast: Podcast) {
+        PlayerCoordinator.instance.playEpisode(at: index, from: podcast) { [weak self] controller in
+            guard let controller = controller else {
+                return
+            }
+            
+            controller.onClose = { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+            
+            DispatchQueue.main.async {
+                self?.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
     }
 }

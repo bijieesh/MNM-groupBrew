@@ -164,31 +164,38 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="327" id="gct-CQ-CKp"/>
-                            </constraints>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4E-2R-qUb">
-                            <rect key="frame" x="72.5" y="700" width="230" height="32.5"/>
+                            <rect key="frame" x="63.5" y="700" width="248" height="32.5"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="Don't have an account?">
+                                    <fragment content="Already">
+                                        <attributes>
+                                            <color key="NSColor" white="0.45733339090000003" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" have an account?">
                                         <attributes>
                                             <color key="NSColor" white="0.45733339090000003" alpha="1" colorSpace="calibratedWhite"/>
                                             <font key="NSFont" metaFont="system" size="17"/>
                                             <font key="NSOriginalFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" ">
                                         <attributes>
                                             <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <font key="NSFont" metaFont="system" size="15"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="Signin">
                                         <attributes>
                                             <color key="NSColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -202,11 +209,12 @@
                         <constraint firstItem="7WG-JJ-jdx" firstAttribute="width" secondItem="hpd-IY-Xh9" secondAttribute="width" id="4N5-I0-AjA"/>
                         <constraint firstItem="7WG-JJ-jdx" firstAttribute="leading" secondItem="hpd-IY-Xh9" secondAttribute="leading" id="JNC-EO-Uxu"/>
                         <constraint firstItem="ned-CC-UYQ" firstAttribute="top" secondItem="7WG-JJ-jdx" secondAttribute="bottom" constant="32" id="NCk-M5-qtp"/>
+                        <constraint firstItem="ned-CC-UYQ" firstAttribute="leading" secondItem="hpd-IY-Xh9" secondAttribute="leading" constant="24" id="O4j-ja-Hzm"/>
+                        <constraint firstAttribute="trailing" secondItem="ned-CC-UYQ" secondAttribute="trailing" constant="24" id="PtJ-8Y-Ue9"/>
                         <constraint firstItem="7WG-JJ-jdx" firstAttribute="top" secondItem="hpd-IY-Xh9" secondAttribute="top" constant="20" id="Qkd-AP-tma"/>
                         <constraint firstItem="A4E-2R-qUb" firstAttribute="centerX" secondItem="hpd-IY-Xh9" secondAttribute="centerX" id="SvC-51-HWX"/>
                         <constraint firstItem="A4E-2R-qUb" firstAttribute="top" secondItem="ned-CC-UYQ" secondAttribute="bottom" constant="15" id="dNM-2O-a07"/>
                         <constraint firstAttribute="trailing" secondItem="7WG-JJ-jdx" secondAttribute="trailing" id="lpa-3R-fVv"/>
-                        <constraint firstItem="ned-CC-UYQ" firstAttribute="centerX" secondItem="hpd-IY-Xh9" secondAttribute="centerX" id="sVE-cl-QJO"/>
                         <constraint firstAttribute="bottom" secondItem="A4E-2R-qUb" secondAttribute="bottom" constant="16" id="wMN-zr-ddJ"/>
                     </constraints>
                 </scrollView>

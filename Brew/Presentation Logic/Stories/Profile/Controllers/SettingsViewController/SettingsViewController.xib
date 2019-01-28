@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -40,219 +40,226 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52h-oj-lbY" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="20" width="375" height="771"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="713"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRz-n8-SK0">
-                            <rect key="frame" x="69" y="33.5" width="88" height="27.5"/>
-                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ay-Dn-6eB">
-                            <rect key="frame" x="20" y="33" width="27" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="EkQ-tb-NuK"/>
-                                <constraint firstAttribute="width" constant="27" id="ryZ-zk-OYM"/>
-                            </constraints>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="back_arrow_black"/>
-                            <connections>
-                                <action selector="backTapped" destination="-1" eventType="touchUpInside" id="yBW-dD-VJe"/>
-                            </connections>
-                        </button>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZJo-Qt-utg">
-                            <rect key="frame" x="20" y="94.5" width="327" height="282"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUS-UE-dIF">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="652.33333333333337"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXi-mc-uTj" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="Cnb-RY-1hC"/>
-                                    </constraints>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRz-n8-SK0">
+                                    <rect key="frame" x="69" y="20.333333333333329" width="88" height="27.666666666666671"/>
+                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
                                     <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" textContentType="name"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="mJT-7Y-6EG"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-BB-cHP" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="74" width="327" height="60"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ay-Dn-6eB">
+                                    <rect key="frame" x="20" y="20" width="27" height="28"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="jSR-JY-Nc3"/>
+                                        <constraint firstAttribute="height" constant="28" id="EkQ-tb-NuK"/>
+                                        <constraint firstAttribute="width" constant="27" id="ryZ-zk-OYM"/>
                                     </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="mustBeEmail" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="back_arrow_black"/>
                                     <connections>
-                                        <outlet property="delegate" destination="-1" id="0RV-jp-48e"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile number(optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YFZ-72-19T">
-                                    <rect key="frame" x="0.0" y="148" width="327" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="Vs5-Q8-oi9"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="AWD-hy-0BF"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jjo-Q6-oDZ" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="222" width="327" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="MLw-RG-HUU"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" textContentType="country-name"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="BGr-wn-UDx"/>
-                                    </connections>
-                                </textField>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-VQ-kwQ">
-                                    <rect key="frame" x="0.0" y="282" width="327" height="60"/>
-                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="uvq-LL-6F7"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                                    <state key="normal" title="Update">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="updateTapped" destination="-1" eventType="touchUpInside" id="DeE-iq-BfA"/>
+                                        <action selector="backTapped" destination="-1" eventType="touchUpInside" id="yBW-dD-VJe"/>
                                     </connections>
                                 </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="ZJo-Qt-utg">
+                                    <rect key="frame" x="24" y="81.333333333333314" width="327" height="282"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GXi-mc-uTj" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="Cnb-RY-1hC"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" textContentType="name"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
+                                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="mJT-7Y-6EG"/>
+                                            </connections>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRH-BB-cHP" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="74.000000000000014" width="327" height="59.999999999999986"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="jSR-JY-Nc3"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="mustBeEmail" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
+                                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="0RV-jp-48e"/>
+                                            </connections>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile number(optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YFZ-72-19T">
+                                            <rect key="frame" x="0.0" y="148" width="327" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="Vs5-Q8-oi9"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="AWD-hy-0BF"/>
+                                            </connections>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jjo-Q6-oDZ" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="222" width="327" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="MLw-RG-HUU"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" textContentType="country-name"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
+                                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="BGr-wn-UDx"/>
+                                            </connections>
+                                        </textField>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-VQ-kwQ">
+                                            <rect key="frame" x="0.0" y="282" width="327" height="60"/>
+                                            <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="uvq-LL-6F7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                            <state key="normal" title="Update">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="updateTapped" destination="-1" eventType="touchUpInside" id="DeE-iq-BfA"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="08Y-fi-gOT">
+                                    <rect key="frame" x="24" y="424.33333333333326" width="327" height="208"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stV-JT-Wy8" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="YOk-mt-gq0"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
+                                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="uq5-J9-fyc"/>
+                                            </connections>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nM3-7O-Ec5" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="74.000000000000057" width="327" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="Ywi-Ul-3yy"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="gll-gu-H8J"/>
+                                                <outlet property="equalTo" destination="5FK-ef-qbW" id="IW9-j5-mZc"/>
+                                            </connections>
+                                        </textField>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5FK-ef-qbW" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="148.00000000000006" width="327" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="BVx-Kv-edv"/>
+                                            </constraints>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
+                                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="-1" id="zzh-bs-MVT"/>
+                                            </connections>
+                                        </textField>
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qt-Ta-EnL">
+                                            <rect key="frame" x="0.0" y="208.00000000000006" width="327" height="60"/>
+                                            <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="sG6-ua-uVi"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
+                                            <state key="normal" title="Change Password">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="changePasswordTapped" destination="-1" eventType="touchUpInside" id="xHo-ww-uSd"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuc-Ig-JL5">
+                                    <rect key="frame" x="20" y="386.33333333333331" width="148.33333333333334" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="327" id="AwT-he-Pvf"/>
+                                <constraint firstItem="aRz-n8-SK0" firstAttribute="centerY" secondItem="9Ay-Dn-6eB" secondAttribute="centerY" id="36o-9n-GHB"/>
+                                <constraint firstAttribute="trailing" secondItem="ZJo-Qt-utg" secondAttribute="trailing" constant="24" id="8pc-bk-nOu"/>
+                                <constraint firstItem="Cuc-Ig-JL5" firstAttribute="leading" secondItem="tUS-UE-dIF" secondAttribute="leading" constant="20" id="HXJ-9L-7iu"/>
+                                <constraint firstItem="9Ay-Dn-6eB" firstAttribute="leading" secondItem="tUS-UE-dIF" secondAttribute="leading" constant="20" id="Qj4-hy-NSb"/>
+                                <constraint firstItem="08Y-fi-gOT" firstAttribute="leading" secondItem="tUS-UE-dIF" secondAttribute="leading" constant="24" id="Ur8-zX-cgM"/>
+                                <constraint firstAttribute="bottom" secondItem="08Y-fi-gOT" secondAttribute="bottom" constant="20" id="dwe-cJ-vUx"/>
+                                <constraint firstItem="aRz-n8-SK0" firstAttribute="leading" secondItem="9Ay-Dn-6eB" secondAttribute="trailing" constant="22" id="hBy-BE-tMx"/>
+                                <constraint firstAttribute="trailing" secondItem="08Y-fi-gOT" secondAttribute="trailing" constant="24" id="hqO-ch-tOF"/>
+                                <constraint firstItem="ZJo-Qt-utg" firstAttribute="leading" secondItem="tUS-UE-dIF" secondAttribute="leading" constant="24" id="kXF-4c-wES"/>
+                                <constraint firstItem="9Ay-Dn-6eB" firstAttribute="top" secondItem="tUS-UE-dIF" secondAttribute="top" constant="20" id="lqY-tj-Wnm"/>
+                                <constraint firstItem="08Y-fi-gOT" firstAttribute="top" secondItem="Cuc-Ig-JL5" secondAttribute="bottom" constant="20" id="pdN-Kw-fL6"/>
+                                <constraint firstItem="Cuc-Ig-JL5" firstAttribute="top" secondItem="ZJo-Qt-utg" secondAttribute="bottom" constant="23" id="rFh-7R-2Xt"/>
+                                <constraint firstItem="ZJo-Qt-utg" firstAttribute="top" secondItem="aRz-n8-SK0" secondAttribute="bottom" constant="33.5" id="zA1-FT-Z8g"/>
                             </constraints>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="08Y-fi-gOT">
-                            <rect key="frame" x="20" y="440" width="327" height="208"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stV-JT-Wy8" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="YOk-mt-gq0"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="uq5-J9-fyc"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nM3-7O-Ec5" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="74" width="327" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="Ywi-Ul-3yy"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="gll-gu-H8J"/>
-                                        <outlet property="equalTo" destination="5FK-ef-qbW" id="IW9-j5-mZc"/>
-                                    </connections>
-                                </textField>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5FK-ef-qbW" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="148" width="327" height="60"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="BVx-Kv-edv"/>
-                                    </constraints>
-                                    <nil key="textColor"/>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
-                                            <color key="value" red="1" green="0.0" blue="0.0" alpha="0.1488989526" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="zzh-bs-MVT"/>
-                                    </connections>
-                                </textField>
-                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qt-Ta-EnL">
-                                    <rect key="frame" x="0.0" y="208" width="327" height="60"/>
-                                    <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="60" id="sG6-ua-uVi"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
-                                    <state key="normal" title="Change Password">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="5"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="changePasswordTapped" destination="-1" eventType="touchUpInside" id="xHo-ww-uSd"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="327" id="Hu5-c0-Vkh"/>
-                            </constraints>
-                        </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuc-Ig-JL5">
-                            <rect key="frame" x="20" y="399.5" width="166.5" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        </view>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="ZJo-Qt-utg" firstAttribute="top" secondItem="aRz-n8-SK0" secondAttribute="bottom" constant="33.5" id="3iR-k7-wEh"/>
-                        <constraint firstAttribute="trailing" secondItem="08Y-fi-gOT" secondAttribute="trailing" constant="20" id="IYA-0d-am8"/>
-                        <constraint firstItem="08Y-fi-gOT" firstAttribute="top" secondItem="Cuc-Ig-JL5" secondAttribute="bottom" constant="20" id="UrU-Zu-DjI"/>
-                        <constraint firstItem="aRz-n8-SK0" firstAttribute="centerY" secondItem="9Ay-Dn-6eB" secondAttribute="centerY" id="VQj-KB-XYf"/>
-                        <constraint firstItem="Cuc-Ig-JL5" firstAttribute="leading" secondItem="52h-oj-lbY" secondAttribute="leading" constant="20" id="WNg-ns-agF"/>
-                        <constraint firstItem="9Ay-Dn-6eB" firstAttribute="leading" secondItem="52h-oj-lbY" secondAttribute="leading" constant="20" id="Wx2-KJ-ETu"/>
-                        <constraint firstItem="ZJo-Qt-utg" firstAttribute="leading" secondItem="52h-oj-lbY" secondAttribute="leading" constant="20" id="Yak-HF-B9U"/>
-                        <constraint firstAttribute="bottom" secondItem="08Y-fi-gOT" secondAttribute="bottom" constant="10.5" id="ZhX-nX-yjj"/>
-                        <constraint firstItem="9Ay-Dn-6eB" firstAttribute="top" secondItem="52h-oj-lbY" secondAttribute="top" constant="33" id="gjU-Du-T8f"/>
-                        <constraint firstItem="aRz-n8-SK0" firstAttribute="leading" secondItem="9Ay-Dn-6eB" secondAttribute="trailing" constant="22" id="hN9-sC-sBF"/>
-                        <constraint firstItem="Cuc-Ig-JL5" firstAttribute="top" secondItem="ZJo-Qt-utg" secondAttribute="bottom" constant="23" id="nQl-l8-drg"/>
-                        <constraint firstItem="08Y-fi-gOT" firstAttribute="leading" secondItem="52h-oj-lbY" secondAttribute="leading" constant="20" id="nbA-PA-8Ju"/>
-                        <constraint firstAttribute="trailing" secondItem="ZJo-Qt-utg" secondAttribute="trailing" constant="20" id="ucF-jD-Onf"/>
+                        <constraint firstItem="tUS-UE-dIF" firstAttribute="centerX" secondItem="52h-oj-lbY" secondAttribute="centerX" id="Fa7-d7-ReO"/>
+                        <constraint firstItem="tUS-UE-dIF" firstAttribute="top" secondItem="52h-oj-lbY" secondAttribute="top" id="PX9-1a-cxk"/>
+                        <constraint firstAttribute="trailing" secondItem="tUS-UE-dIF" secondAttribute="trailing" id="UQX-7x-I0v"/>
+                        <constraint firstAttribute="bottom" secondItem="tUS-UE-dIF" secondAttribute="bottom" id="mby-hv-w97"/>
+                        <constraint firstItem="tUS-UE-dIF" firstAttribute="leading" secondItem="52h-oj-lbY" secondAttribute="leading" id="pwE-s1-bCZ"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -269,6 +276,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_arrow_black" width="16" height="16"/>
+        <image name="back_arrow_black" width="20" height="20"/>
     </resources>
 </document>

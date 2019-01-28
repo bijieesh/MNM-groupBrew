@@ -14,6 +14,7 @@ class ProfileViewController: AppViewController {
     var onSettingsTapped: (() -> Void)?
     var onLogOutTapped: (() -> Void)?
     var onProfileImageTapped: (() -> Void)?
+    var onPodcastSelected: ((Podcast) -> Void)?
     
     //MARK: IBOutlets
     
@@ -74,6 +75,7 @@ extension ProfileViewController {
     private func setupPodcasts() {
         let podcasts = user?.podcasts ?? []
         podcastsView?.setup(with: podcasts)
+        podcastsView?.onItemSelected = { [weak self] in self?.onPodcastSelected?(podcasts[$0]) }
     }
 
     private func setupAvatarFromUser() {
