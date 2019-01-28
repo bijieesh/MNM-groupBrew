@@ -25,6 +25,7 @@ class PlayerViewController: AppViewController {
 
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var songNameLabel: UILabel!
+    @IBOutlet private var artistNameLabel: UILabel!
     @IBOutlet private var currentTimeLabel: UILabel!
     @IBOutlet private var songFullTimeLabel: UILabel!
     @IBOutlet private var unmuteButton: UIButton!
@@ -57,7 +58,10 @@ class PlayerViewController: AppViewController {
         if let imageUrl = data.imageUrl {
             imageView.sd_setImage(with: imageUrl)
         }
-
+        
+        songNameLabel.text = data.title
+        artistNameLabel.text = data.title
+        
         if data.autoplay {
             data.audioPlayer.play()
             setupTimer()

@@ -75,7 +75,6 @@ extension ProfileViewController {
 
     private func setupAvatarFromUser() {
         guard let userProfilePictureUrl = user?.profile.profilePicture?.url else {
-            setupTabBarImage(UIImage(named: "icon-profile") ?? UIImage())
             return
         }
 

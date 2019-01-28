@@ -43,38 +43,20 @@ class HomeCoordinator: NavigationCoordinator {
     }
 
     private func playEpisode(at index: Int, from podcast: Podcast) {
-        guard let episodes = podcast.episodes, episodes.count > index else {
-            return
+        PlayerCoordinator.instance.playEpisode(at: index, from: podcast) { [weak self] controller in
+            guard let controller = controller else {
+                return
+            }
+
+            controller.onClose = { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            }
+
+            DispatchQueue.main.async {
+                self?.navigationController?.pushViewController(controller, animated: true)
+            }
         }
-        guard let url = episodes[index].file?.url else {
-            return
-        }
-        downloadFileFromURL(url: url) { [weak self] audioUrl in
-            guard let audioUrl = audioUrl else { return }
-            self?.configurePayer(for: index, from: podcast, audioUrl: audioUrl)
-        }
-    }
-    
-    func downloadFileFromURL(url: URL, completion: ((URL?)-> Void)?) {
-        var downloadTask: URLSessionDownloadTask
-        downloadTask = URLSession.shared.downloadTask(with: url, completionHandler: { (serverurl, response, error) in
-            completion?(serverurl)
-        })
-        
-        downloadTask.resume()
-    }
-    
-    private func configurePayer(for index: Int, from podcast: Podcast, audioUrl: URL) {
-        guard let controller = PlayerCoordinator.instance.playEpisode(at: index, from: podcast, audioUrl: audioUrl) else {
-            return
-        }
-        
-        controller.onClose = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
+
     }
 
     private func loadHomeContent(for controller: HomeViewController) {

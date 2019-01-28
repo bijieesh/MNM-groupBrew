@@ -23,6 +23,11 @@ class MenuCoordinator: Coordinator {
 
     private static func setupedTabBarController(for controllers: [(option: Option, controller: UIViewController)]) -> UITabBarController {
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = .appOrange
+
+        controllers.first(where: { $0.option == .home })?.controller.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "tab_bar_home"), selectedImage: UIImage(named: "tab_bar_home_selected"))
+        controllers.first(where: { $0.option == .profile })?.controller.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "tab_bar_profile"), selectedImage: UIImage(named: "tab_bar_profile_selected"))
+
         tabBarController.viewControllers = controllers.sorted(by: { $0.option.rawValue < $1.option.rawValue }).map({ $0.controller })
         return tabBarController
     }

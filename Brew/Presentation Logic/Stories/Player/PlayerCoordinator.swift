@@ -14,24 +14,43 @@ class PlayerCoordinator {
 
     private var activeAudioPlayer: AVAudioPlayer?
 
-    @discardableResult
-    func playEpisode(at index: Int, from podcast: Podcast, audioUrl: URL) -> AppViewController? {
+    func playEpisode(at index: Int, from podcast: Podcast, completion: @escaping (AppViewController?) -> Void) {
         guard let episodes = podcast.episodes, episodes.count > index else {
-            return nil
-        }
-        
-        guard let audioPlayer = try? AVAudioPlayer(contentsOf: audioUrl) else {
-            return nil
+            completion(nil)
+            return
         }
 
-        invalidateCurrentPlayer()
-        prepareAudioSession()
+        guard let audioUrl = podcast.episodes?[index].file?.url else {
+            completion(nil)
+            return
+        }
 
-        let data = PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, autoplay: true, audioPlayer: audioPlayer)
-        let controller = PlayerViewController()
-        controller.data = data
+        downloadFile(from: audioUrl) { [weak self] serverUrl in
+            guard let audioPlayer = try? AVAudioPlayer(contentsOf: audioUrl) else {
+                completion(nil)
+                return
+            }
 
-        return controller
+            self?.invalidateCurrentPlayer()
+            self?.prepareAudioSession()
+
+            self?.activeAudioPlayer = audioPlayer
+
+            let data = PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, autoplay: true, audioPlayer: audioPlayer)
+            let controller = PlayerViewController()
+            controller.data = data
+
+            completion(controller)
+        }
+    }
+
+    private func downloadFile(from url: URL, completion: ((URL?) -> Void)?) {
+        var downloadTask: URLSessionDownloadTask
+        downloadTask = URLSession.shared.downloadTask(with: url, completionHandler: { (serverUrl, response, error) in
+            completion?(serverUrl)
+        })
+
+        downloadTask.resume()
     }
     
     private func prepareAudioSession() {

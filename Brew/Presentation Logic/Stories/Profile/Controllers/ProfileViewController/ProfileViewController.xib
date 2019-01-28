@@ -70,7 +70,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9n-Fj-mfG">
                             <rect key="frame" x="0.0" y="246" width="375" height="250"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-k8-SxE" customClass="PodcastsListView" customModule="Brew" customModuleProvider="target">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-k8-SxE" customClass="PodcastsListView" customModule="Brew" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
