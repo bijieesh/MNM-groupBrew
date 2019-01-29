@@ -6,4 +6,6 @@ target 'Brew' do
   pod 'SDWebImage'
   pod 'AlignedCollectionViewFlowLayout'
   pod 'LDProgressView'
+  pod 'RMStore'
+  pod 'SwiftKeychainWrapper'
 end
