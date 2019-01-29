@@ -7,5 +7,4 @@ target 'Brew' do
   pod 'AlignedCollectionViewFlowLayout'
   pod 'LDProgressView'
   pod 'RMStore'
-  pod 'SwiftKeychainWrapper'
 end

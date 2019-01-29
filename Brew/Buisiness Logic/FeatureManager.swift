@@ -8,33 +8,35 @@
 
 import Foundation
 import RMStore
-import SwiftKeychainWrapper
 
 class FeatureManager: NSObject, RMStoreObserver {
-    static let shared = SubscriptionManager()
+    static let shared = FeatureManager()
     
     func prepare() {
         RMStore.default().add(self)
         RMStore.default().restoreTransactions()
     }
     
-    func restore(with callback: ((_ restored: Bool) -> Void)? = nil) {
+    func restorePurchases(with callback: ((_ restored: Bool) -> Void)? = nil) {
         RMStore.default().restoreTransactions(
             onSuccess: { _ in
                 callback?(true)
-        }, failure: { _ in
-            callback?(false)
+        },
+            failure: { _ in
+                callback?(false)
         })
+
+
     }
     
-    func fetchAvailability(with callabck: ((_ available: [Feature], _ unavailable: [Feature]) -> Void)? = nil) {
-        let featuresId = Set([
+    func fetchAvailability(with completion: @escaping ((_ available: [Feature], _ unavailable: [Feature]) -> Void)) {
+        let featureIds = [
             Feature.lowPriceSubscription,
             Feature.mediumPriceSubscription,
             Feature.highPriceSubsription
-                ].map({ $0.rawValue }))
+        ]
         
-        RMStore.default().requestProducts(featuresId,
+        RMStore.default().requestProducts(Set(featureIds),
                                           success: { (products, invalidProductIds) in
                                             
                                             var available: [Feature] = []
@@ -48,9 +50,11 @@ class FeatureManager: NSObject, RMStoreObserver {
                                                 unavailable = unavailableStrings.compactMap({ Feature(rawValue: $0) })
                                             }
                                             
-                                            callabck?(available, unavailable)
+                                            completion(available, unavailable)
         },
-                                          failure: { _ in })
+                                          failure: { _ in
+                                            completion([], [])
+        })
     }
     
     func purchase(_ feature: Feature, with callback: ((_ success: Bool) -> Void)? = nil) {
@@ -63,8 +67,7 @@ class FeatureManager: NSObject, RMStoreObserver {
                                         callback?(false)
         })
     }
-    
-    // MARK: RMStoreObserver
+
     func storePaymentTransactionFinished(_ notification: Notification!) {
         guard let transaction = (notification as NSNotification?)?.rm_transaction else {
             return
@@ -80,19 +83,21 @@ extension FeatureManager {
         case lowPriceSubscription = "lowPriceSubscription"
         case mediumPriceSubscription = "mediumPriceSubscription"
         case highPriceSubsription = "highPriceSubsription"
-
-        private static let keychain = KeychainWrapper(serviceName: "AppFeature")
         
         var isPurchased: Bool {
-            return type(of: self).keychain.bool(forKey: rawValue) ?? false
+            return UserDefaults.standard.bool(forKey: rawValue)
         }
         
         var price: String {
             return RMStore.localizedPrice(of: RMStore.default().product(forIdentifier: rawValue))
         }
+
+        func purchase(completion: ((Bool) -> Void)? = nil) {
+            FeatureManager.shared.purchase(self, with: completion)
+        }
         
-        func store() {
-            type(of: self).keychain.set(true, forKey: rawValue)
+        fileprivate func store() {
+            UserDefaults.standard.set(true, forKey: rawValue)
         }
     }
 }
