@@ -10,11 +10,19 @@ import UIKit
 
 class AppFlowCoordinator: Coordinator {
 
-    override func start() {
-        super.start()
+    private  lazy var authManager: AppAuthManager = {
         let authManager = AppAuthManager()
 
+        authManager.onLoggedOut = { [weak self] in
+            self?.handleAfterLogout()
+        }
+
         initNetworkingStack(with: authManager)
+        return authManager
+    }()
+
+    override func start() {
+        super.start()
 
         if authManager.isUserLoggedIn {
             startMainFlow()
@@ -25,16 +33,17 @@ class AppFlowCoordinator: Coordinator {
     }
     
     private func logout() {
-        let authManager = AppAuthManager()
-        initNetworkingStack(with: authManager)
-        
-        authManager.logout { [weak self] success in
-            guard success else {
+        authManager.logout(completion: nil)
+    }
+
+    private func handleAfterLogout() {
+
+        contentController.dismiss(animated: false) { [weak self] in
+            guard let strongSelf = self else {
                 return
             }
-            self?.contentController.dismiss(animated: false) {
-                self?.startAuthenticationFlow(with: authManager)
-            }
+
+            self?.startAuthenticationFlow(with: strongSelf.authManager)
         }
     }
     

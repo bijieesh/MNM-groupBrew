@@ -16,6 +16,8 @@ class AppAuthManager: AuthManager {
 
     var onTokenUpdated: ((AuthToken?) -> Void)?
 
+    var onLoggedOut: (() -> Void)?
+
     var isUserLoggedIn: Bool {
         return authToken != nil
     }
@@ -54,7 +56,8 @@ class AppAuthManager: AuthManager {
                 completion?(true)
         },
 
-            onError: { _ in
+            onError: { [weak self] _ in
+                self?.logout(completion: nil)
                 completion?(false)
         })
 
@@ -65,6 +68,7 @@ class AppAuthManager: AuthManager {
     func logout(completion: ((_ success: Bool) -> Void)?) -> Bool {
         deleteToken()
         authToken = nil
+        onLoggedOut?()
         completion?(true)
         return true
     }
