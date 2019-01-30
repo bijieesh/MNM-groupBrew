@@ -30,6 +30,7 @@ class PlayerViewController: AppViewController {
     @IBOutlet private var songFullTimeLabel: UILabel!
     @IBOutlet private var unmuteButton: UIButton!
     @IBOutlet private var playButton: UIButton!
+    @IBOutlet private var rateLabel: UILabel!
     
     @IBOutlet private var progressView: LDProgressView! {
         didSet {
@@ -81,7 +82,7 @@ class PlayerViewController: AppViewController {
     }
 
     private func updateUI() {
-        guard let data = data else {
+        guard let data = data, isViewLoaded else {
             return
         }
 
@@ -92,6 +93,7 @@ class PlayerViewController: AppViewController {
         unmuteButton.setImage(muteIcon, for: .normal)
 
         updateTime()
+        updateRateLabel()
     }
 
     @objc private func updateTime() {
@@ -113,6 +115,15 @@ class PlayerViewController: AppViewController {
     private func pause() {
         data?.audioPlayer.pause()
         timer?.invalidate()
+    }
+
+    private func updateRateLabel() {
+        if let rate = data?.audioPlayer.rate {
+            rateLabel.text = String(rate)
+        }
+        else {
+            rateLabel.text = "1.0"
+        }
     }
 
     //Actions
@@ -149,6 +160,19 @@ class PlayerViewController: AppViewController {
         updateUI()
     }
 
+    @IBAction private func ratePlusPressed() {
+        data?.audioPlayer.enableRate = true
+        let currentRate = data?.audioPlayer.rate ?? 0
+        data?.audioPlayer.rate = min(2, currentRate + 0.25)
+        updateRateLabel()
+    }
+
+    @IBAction private func rateMinusPressed() {
+        data?.audioPlayer.enableRate = true
+        let currentRate = data?.audioPlayer.rate ?? 0
+        data?.audioPlayer.rate = max(0, currentRate - 0.25)
+        updateRateLabel()
+    }
 }
 
 private extension AVAudioPlayer {
