@@ -48,6 +48,10 @@ class ValidatedTextField: UITextField {
             return false
         }
 
+        if isRequired && text.replacingOccurrences(of: " ", with: "").isEmpty {
+            return false
+        }
+
         return text.count >= minLength && text.count <= maxLength
     }
 
