@@ -11,12 +11,47 @@ import LDProgressView
 import AVFoundation
 import SDWebImage
 
+private extension AVPlayer {
+    var isPlaying: Bool {
+        return rate == 0
+    }
+
+    var currentPosition: Int {
+        get {
+            let time = currentItem?.currentTime().seconds ?? 0
+            
+            if time.isNaN {
+                return 0
+            }
+            else {
+                return Int(time)
+            }
+        }
+
+        set {
+            let time = CMTime(seconds: Double(newValue), preferredTimescale: 1)
+            currentItem?.seek(to: time, completionHandler: nil)
+        }
+    }
+
+    var duration: Int {
+        let time = currentItem?.duration.seconds ?? 0
+
+        if time.isNaN {
+            return 0
+        }
+        else {
+            return Int(time)
+        }
+    }
+}
+
 class PlayerViewController: AppViewController {
     struct Data {
         let imageUrl: URL?
         let title: String
         let autoplay: Bool
-        let audioPlayer: AVAudioPlayer
+        let audioPlayer: AVPlayer
     }
 
     var onPlayListTapped: (() -> Void)?
@@ -54,7 +89,7 @@ class PlayerViewController: AppViewController {
             return
         }
 
-        songFullTimeLabel.text = TimeWatch(totalSeconds: Int(data.audioPlayer.duration)).timeString
+        songFullTimeLabel.text = TimeWatch(totalSeconds: data.audioPlayer.duration).timeString
 
         if let imageUrl = data.imageUrl {
             imageView.sd_setImage(with: imageUrl)
@@ -101,9 +136,13 @@ class PlayerViewController: AppViewController {
             return
         }
 
-        let currentSongTime = TimeWatch(totalSeconds: Int(data.audioPlayer.currentTime))
+        let currentTime = data.audioPlayer.currentPosition
+        let totalTime = max(data.audioPlayer.duration, 1)
 
-        self.progressView.progress = CGFloat(data.audioPlayer.currentTime / data.audioPlayer.duration)
+
+        let currentSongTime = TimeWatch(totalSeconds: currentTime)
+
+        self.progressView.progress = CGFloat(currentTime / totalTime)
         self.currentTimeLabel.text = currentSongTime.timeString
     }
 
@@ -146,12 +185,12 @@ class PlayerViewController: AppViewController {
     }
 
     @IBAction private func replayTapped() {
-        data?.audioPlayer.currentTime -= 30.0
+        data?.audioPlayer.currentPosition -= 30
         updateTime()
         
     }
     @IBAction private func forvardTapped() {
-        data?.audioPlayer.currentTime += 30.0
+        data?.audioPlayer.currentPosition += 30
         updateTime()
     }
     
@@ -161,14 +200,12 @@ class PlayerViewController: AppViewController {
     }
 
     @IBAction private func ratePlusPressed() {
-        data?.audioPlayer.enableRate = true
         let currentRate = data?.audioPlayer.rate ?? 0
         data?.audioPlayer.rate = min(2, currentRate + 0.25)
         updateRateLabel()
     }
 
     @IBAction private func rateMinusPressed() {
-        data?.audioPlayer.enableRate = true
         let currentRate = data?.audioPlayer.rate ?? 0
         data?.audioPlayer.rate = max(0, currentRate - 0.25)
         updateRateLabel()

@@ -12,45 +12,28 @@ import AVFoundation
 class PlayerCoordinator {
     static let instance = PlayerCoordinator()
 
-    private var activeAudioPlayer: AVAudioPlayer?
+    private var activeAudioPlayer: AVPlayer?
 
-    func playEpisode(at index: Int, from podcast: Podcast, completion: @escaping (AppViewController?) -> Void) {
+    func playEpisode(at index: Int, from podcast: Podcast) -> AppViewController? {
         guard let episodes = podcast.episodes, episodes.count > index else {
-            completion(nil)
-            return
+            return nil
         }
 
         guard let audioUrl = podcast.episodes?[index].file?.url else {
-            completion(nil)
-            return
+            return nil
         }
 
-        downloadFile(from: audioUrl) { [weak self] serverUrl in
-            guard let url = serverUrl, let audioPlayer = try? AVAudioPlayer(contentsOf: url) else {
-                completion(nil)
-                return
-            }
+        invalidateCurrentPlayer()
+        prepareAudioSession()
 
-            self?.invalidateCurrentPlayer()
-            self?.prepareAudioSession()
+        let player = AVPlayer(url: audioUrl)
+        activeAudioPlayer = player
 
-            self?.activeAudioPlayer = audioPlayer
+        let data = PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, autoplay: true, audioPlayer: player)
+        let controller = PlayerViewController()
+        controller.data = data
 
-            let data = PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, autoplay: true, audioPlayer: audioPlayer)
-            let controller = PlayerViewController()
-            controller.data = data
-
-            completion(controller)
-        }
-    }
-
-    private func downloadFile(from url: URL, completion: ((URL?) -> Void)?) {
-        var downloadTask: URLSessionDownloadTask
-        downloadTask = URLSession.shared.downloadTask(with: url, completionHandler: { (serverUrl, response, error) in
-            completion?(serverUrl)
-        })
-
-        downloadTask.resume()
+        return controller
     }
     
     private func prepareAudioSession() {
@@ -60,7 +43,7 @@ class PlayerCoordinator {
     }
 
     private func invalidateCurrentPlayer() {
-        activeAudioPlayer?.stop()
+        activeAudioPlayer?.pause()
         activeAudioPlayer = nil
     }
 }

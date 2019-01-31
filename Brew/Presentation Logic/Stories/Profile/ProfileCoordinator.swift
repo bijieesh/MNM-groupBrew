@@ -149,18 +149,16 @@ private extension ProfileCoordinator {
     }
     
     func playEpisode(at index: Int, from podcast: Podcast) {
-        PlayerCoordinator.instance.playEpisode(at: index, from: podcast) { [weak self] controller in
-            guard let controller = controller else {
-                return
-            }
-            
-            controller.onClose = { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
-            }
-            
-            DispatchQueue.main.async {
-                self?.navigationController?.pushViewController(controller, animated: true)
-            }
+        guard let controller = PlayerCoordinator.instance.playEpisode(at: index, from: podcast) else {
+            return
+        }
+
+        controller.onClose = { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        }
+
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(controller, animated: true)
         }
     }
 }
