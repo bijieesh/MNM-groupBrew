@@ -13,7 +13,7 @@ import SDWebImage
 
 private extension AVPlayer {
     var isPlaying: Bool {
-        return rate == 0
+        return rate == 1
     }
 
     var currentPosition: Int {
@@ -79,8 +79,8 @@ class PlayerViewController: AppViewController {
             progressView.showBackgroundInnerShadow = false
         }
     }
-    
-    private var timer: Timer?
+
+    private var playerObservationToken: Any?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,20 +100,27 @@ class PlayerViewController: AppViewController {
         
         if data.autoplay {
             data.audioPlayer.play()
-            setupTimer()
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setupObservaton()
+    }
+
+    private func setupObservaton() {
+        playerObservationToken = data?.audioPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] _ in
+            self?.updateUI()
+        }
 
         updateUI()
     }
 
-    private func setupTimer() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        timer?.fire()
+    private func invalidateObservation() {
+        if let token = playerObservationToken {
+            data?.audioPlayer.removeTimeObserver(token)
+            playerObservationToken = nil
+        }
     }
 
     private func updateUI() {
@@ -142,18 +149,16 @@ class PlayerViewController: AppViewController {
 
         let currentSongTime = TimeWatch(totalSeconds: currentTime)
 
-        self.progressView.progress = CGFloat(currentTime / totalTime)
+        self.progressView.progress = CGFloat(currentTime) / CGFloat(totalTime)
         self.currentTimeLabel.text = currentSongTime.timeString
     }
 
     private func play() {
         data?.audioPlayer.play()
-        setupTimer()
     }
 
     private func pause() {
         data?.audioPlayer.pause()
-        timer?.invalidate()
     }
 
     private func updateRateLabel() {
