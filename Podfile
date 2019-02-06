@@ -7,4 +7,6 @@ target 'Brew' do
   pod 'AlignedCollectionViewFlowLayout'
   pod 'LDProgressView'
   pod 'RMStore'
+  pod 'STRatingControl', '~> 1.1'
+
 end
