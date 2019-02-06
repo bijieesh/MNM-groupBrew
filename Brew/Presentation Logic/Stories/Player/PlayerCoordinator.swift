@@ -10,40 +10,113 @@ import UIKit
 import AVFoundation
 
 class PlayerCoordinator {
-    static let instance = PlayerCoordinator()
+    typealias ActiveData = (controller: PlayerViewController, miniController: PlayerViewController, podcast: Podcast, episodeIndex: Int, player: AVPlayer)
 
-    private var activeAudioPlayer: AVPlayer?
+    private var activeData: ActiveData?
 
-    func playEpisode(at index: Int, from podcast: Podcast) -> AppViewController? {
+    @discardableResult
+    func playEpisode(at index: Int, from podcast: Podcast) -> ActiveData? {
+        invalidateCurrentData()
+
         guard let episodes = podcast.episodes, episodes.count > index else {
             return nil
         }
 
-        guard let audioUrl = podcast.episodes?[index].file?.url else {
+        guard let data = playerData(for: episodes[index], in: podcast) else {
             return nil
         }
 
-        invalidateCurrentPlayer()
         prepareAudioSession()
 
-        let player = AVPlayer(url: audioUrl)
-        activeAudioPlayer = player
+        let controller = PlayerViewController(data: data, type: .fullScreen, autoplay: true)
+        let miniController = PlayerViewController(data: data, type: .mini, autoplay: false)
 
-        let data = PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, autoplay: true, audioPlayer: player)
-        let controller = PlayerViewController()
-        controller.data = data
+        activeData = (controller, miniController, podcast, index, data.audioPlayer)
 
-        return controller
+        return activeData
     }
-    
+
+    private func playNextEpisode() {
+        guard let activeData = activeData else {
+            return
+        }
+
+        let newIndex = activeData.episodeIndex + 1
+        playEpisode(at: newIndex)
+    }
+
+    private func playPreviousEpisode() {
+        guard let activeData = activeData else {
+            return
+        }
+
+        let newIndex = max(activeData.episodeIndex - 1, 0)
+        playEpisode(at: newIndex)
+    }
+
+    private func playEpisode(at index: Int) {
+        guard let activeData = activeData else {
+            return
+        }
+
+        guard let episodes = activeData.podcast.episodes, episodes.count > index, index >= 0 else {
+            return
+        }
+
+        guard let data = playerData(for: episodes[index], in: activeData.podcast) else {
+            invalidateCurrentData()
+            return
+        }
+
+        invalidateCurrentPlayer()
+
+        self.activeData?.controller.data = data
+        self.activeData?.miniController.data = data
+        self.activeData?.player = data.audioPlayer
+        self.activeData?.episodeIndex = index
+    }
+
+    private func playerData(for episode: Episode, in podcast: Podcast) -> PlayerViewController.Data? {
+        guard let audioUrl = episode.file?.url else {
+            return nil
+        }
+
+        let player = AVPlayer(url: audioUrl)
+        addPlayerEndObservation(to: player)
+        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, audioPlayer: player)
+    }
+
+    private func addPlayerEndObservation(to player: AVPlayer) {
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying(_:)),
+                                               name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+    }
+
+    private func removePlayerEndObservation(from player: AVPlayer) {
+        NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+    }
+
+    @objc private func playerDidFinishPlaying(_ notification: NSNotification) {
+        invalidateCurrentPlayer()
+        playNextEpisode()
+    }
+
     private func prepareAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
         try? audioSession.setCategory(.playback, mode: .default, policy: .longForm)
         try? audioSession.setActive(true, options: [])
     }
 
+    private func invalidateCurrentData() {
+        invalidateCurrentPlayer()
+        activeData = nil
+    }
+
     private func invalidateCurrentPlayer() {
-        activeAudioPlayer?.pause()
-        activeAudioPlayer = nil
+        guard let player = activeData?.player else {
+            return
+        }
+
+        removePlayerEndObservation(from: player)
+        player.pause()
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 class ProfileCoordinator: NavigationCoordinator {
 
     var onLogout: (() -> Void)?
+    var onNeedPlayPodcast: ((Podcast, Int) -> Void)?
 
     private var user: User?
 
@@ -142,23 +143,9 @@ private extension ProfileCoordinator {
         }
         
         controller.onEpisodeSelected = { [weak self] index in
-            self?.playEpisode(at: index, from: podcast)
+            self?.onNeedPlayPodcast?(podcast, index)
         }
         
         navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func playEpisode(at index: Int, from podcast: Podcast) {
-        guard let controller = PlayerCoordinator.instance.playEpisode(at: index, from: podcast) else {
-            return
-        }
-
-        controller.onClose = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
     }
 }

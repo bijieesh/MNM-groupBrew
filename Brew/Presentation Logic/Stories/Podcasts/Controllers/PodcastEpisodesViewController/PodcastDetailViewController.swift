@@ -67,8 +67,6 @@ class PodcastDetailViewController: AppViewController {
     }
 }
 
-//MARK:  Controller Helpers
-
 private extension PodcastDetailViewController {
 	func configureTableView() {
 		contentTableView.register(cellType: PodcastEpisodeCell.self)

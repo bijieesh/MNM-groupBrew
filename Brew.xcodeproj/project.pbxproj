@@ -83,13 +83,14 @@
 		3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7321F8943F009BCD31 /* Coordinator.swift */; };
 		3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */; };
 		3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7821F8DBCD009BCD31 /* TokenRefreshRequest.swift */; };
-		3DCBBA7F21F90063009BCD31 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7D21F90063009BCD31 /* PlayerViewController.xib */; };
+		3DCBBA7F21F90063009BCD31 /* PlayerViewControllerFullScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7D21F90063009BCD31 /* PlayerViewControllerFullScreen.xib */; };
 		3DCBBA8021F90063009BCD31 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */; };
 		3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8421FA0703009BCD31 /* MenuCoordinator.swift */; };
 		3DCBBA8721FA0BAA009BCD31 /* MainFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8621FA0BAA009BCD31 /* MainFlowCoordinator.swift */; };
 		3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8821FA0F45009BCD31 /* HomeCoordinator.swift */; };
 		3DCBBA8C21FA2322009BCD31 /* GetPodcastsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */; };
 		3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */; };
+		3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
 		7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865293A21FC646700A826F7 /* SettingsViewController.swift */; };
 		7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7865293B21FC646700A826F7 /* SettingsViewController.xib */; };
@@ -186,13 +187,14 @@
 		3DCBBA7321F8943F009BCD31 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthManager.swift; sourceTree = "<group>"; };
 		3DCBBA7821F8DBCD009BCD31 /* TokenRefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshRequest.swift; sourceTree = "<group>"; };
-		3DCBBA7D21F90063009BCD31 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		3DCBBA7D21F90063009BCD31 /* PlayerViewControllerFullScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewControllerFullScreen.xib; sourceTree = "<group>"; };
 		3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		3DCBBA8421FA0703009BCD31 /* MenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCoordinator.swift; sourceTree = "<group>"; };
 		3DCBBA8621FA0BAA009BCD31 /* MainFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DCBBA8821FA0F45009BCD31 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPodcastsRequest.swift; sourceTree = "<group>"; };
 		3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewControllerMini.xib; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
 		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7865293B21FC646700A826F7 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -720,7 +722,8 @@
 			isa = PBXGroup;
 			children = (
 				3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */,
-				3DCBBA7D21F90063009BCD31 /* PlayerViewController.xib */,
+				3DCBBA7D21F90063009BCD31 /* PlayerViewControllerFullScreen.xib */,
+				3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */,
 			);
 			path = PlayerViewController;
 			sourceTree = "<group>";
@@ -890,7 +893,7 @@
 				3D20029C21FBB84800E38B99 /* PodcastDetailViewController.xib in Resources */,
 				3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */,
 				3DB447CE21F74E2A00F93876 /* PodcastsListView.xib in Resources */,
-				3DCBBA7F21F90063009BCD31 /* PlayerViewController.xib in Resources */,
+				3DCBBA7F21F90063009BCD31 /* PlayerViewControllerFullScreen.xib in Resources */,
 				3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */,
 				3D05F00B21F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */,
@@ -911,6 +914,7 @@
 				85EAABD72209D25800436458 /* SharpSansNo1-Semibold.ttf in Resources */,
 				3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				3D20028F21FB5DEA00E38B99 /* ProfileViewController.xib in Resources */,
+				3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */,
 				3DB447E721F7CBBB00F93876 /* PriceViewController.xib in Resources */,
 				3D05F00A21F5C8DE00174A91 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
 				3D05EFC121F128F000174A91 /* Assets.xcassets in Resources */,

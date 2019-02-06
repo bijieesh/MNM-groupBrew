@@ -10,6 +10,8 @@ import UIKit
 
 class HomeCoordinator: NavigationCoordinator {
 
+    var onNeedPlayPodcast: ((Podcast, Int) -> Void)?
+
     override func start() {
         super.start()
         setupHomeController()
@@ -36,24 +38,10 @@ class HomeCoordinator: NavigationCoordinator {
         }
 
         controller.onEpisodeSelected = { [weak self] index in
-            self?.playEpisode(at: index, from: podcast)
+            self?.onNeedPlayPodcast?(podcast, index)
         }
 
         navigationController?.pushViewController(controller, animated: true)
-    }
-
-    private func playEpisode(at index: Int, from podcast: Podcast) {
-        guard let controller = PlayerCoordinator.instance.playEpisode(at: index, from: podcast) else {
-            return
-        }
-
-        controller.onClose = { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
-        }
-
-        DispatchQueue.main.async {
-            self.navigationController?.pushViewController(controller, animated: true)
-        }
     }
 
     private func loadHomeContent(for controller: HomeViewController) {
@@ -79,12 +67,6 @@ class HomeCoordinator: NavigationCoordinator {
         dispatchGroup.enter()
         GetPodcastsRequest(type: .new).execute(onSuccess: {
             newPodcasts = $0
-            dispatchGroup.leave()
-        })
-
-        dispatchGroup.enter()
-        GetPodcastsRequest(type: .editors).execute(onSuccess: {
-            editorsPodcasts = $0
             dispatchGroup.leave()
         })
 

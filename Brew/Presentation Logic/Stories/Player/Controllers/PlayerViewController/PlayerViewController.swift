@@ -50,57 +50,69 @@ class PlayerViewController: AppViewController {
     struct Data {
         let imageUrl: URL?
         let title: String
-        let autoplay: Bool
         let audioPlayer: AVPlayer
+    }
+
+    enum `Type` {
+        case fullScreen
+        case mini
+
+        var nibName: String {
+            switch self {
+            case .fullScreen: return "PlayerViewControllerFullScreen"
+            case .mini: return "PlayerViewControllerMini"
+            }
+        }
     }
 
     var onPlayListTapped: (() -> Void)?
 
-    var data: Data?
-
-    @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var songNameLabel: UILabel!
-    @IBOutlet private var artistNameLabel: UILabel!
-    @IBOutlet private var currentTimeLabel: UILabel!
-    @IBOutlet private var songFullTimeLabel: UILabel!
-    @IBOutlet private var unmuteButton: UIButton!
-    @IBOutlet private var playButton: UIButton!
-    @IBOutlet private var rateLabel: UILabel!
-    
-    @IBOutlet private var progressView: LDProgressView! {
+    var data: Data {
         didSet {
-            progressView.progress = 0.0
-            progressView.color = .appOrange
-            progressView.animate = false
-            progressView.borderRadius = 0
-            progressView.type = LDProgressSolid
-            progressView.showText = false
-            progressView.background = .lightGray
-            progressView.showBackgroundInnerShadow = false
+            updateFlow()
+        }
+    }
+
+    private var autoplay: Bool = false
+
+    @IBOutlet weak private var imageView: UIImageView?
+    @IBOutlet weak private var songNameLabel: UILabel?
+    @IBOutlet weak private var artistNameLabel: UILabel?
+    @IBOutlet weak private var currentTimeLabel: UILabel?
+    @IBOutlet weak private var songFullTimeLabel: UILabel?
+    @IBOutlet weak private var unmuteButton: UIButton?
+    @IBOutlet weak private var playButton: UIButton?
+    @IBOutlet weak private var rateLabel: UILabel?
+    
+    @IBOutlet weak private var progressView: LDProgressView? {
+        didSet {
+            progressView?.progress = 0.0
+            progressView?.color = .appOrange
+            progressView?.animate = false
+            progressView?.borderRadius = 0
+            progressView?.type = LDProgressSolid
+            progressView?.showText = false
+            progressView?.background = .lightGray
+            progressView?.showBackgroundInnerShadow = false
         }
     }
 
     private var playerObservationToken: Any?
 
+    init(data: Data, type: Type, autoplay: Bool = true) {
+        self.data = data
+        self.autoplay = autoplay
+        super.init(nibName: type.nibName, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let data = data else {
-            return
-        }
-
-        songFullTimeLabel.text = TimeWatch(totalSeconds: data.audioPlayer.duration).timeString
-
-        if let imageUrl = data.imageUrl {
-            imageView.sd_setImage(with: imageUrl)
-        }
-        
-        songNameLabel.text = data.title
-        artistNameLabel.text = data.title
-        
-        if data.autoplay {
-            data.audioPlayer.play()
-        }
+        updateFlow()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -108,40 +120,56 @@ class PlayerViewController: AppViewController {
         setupObservaton()
     }
 
-    private func setupObservaton() {
-        playerObservationToken = data?.audioPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] _ in
-            self?.updateUI()
+    private func updateFlow() {
+        guard isViewLoaded else {
+            return
         }
 
-        updateUI()
+        songFullTimeLabel?.text = TimeWatch(totalSeconds: data.audioPlayer.duration).timeString
+
+        if let imageUrl = data.imageUrl {
+            imageView?.sd_setImage(with: imageUrl)
+        }
+
+        songNameLabel?.text = data.title
+        artistNameLabel?.text = data.title
+
+        if autoplay {
+            data.audioPlayer.play()
+        }
+    }
+
+    private func setupObservaton() {
+        playerObservationToken = data.audioPlayer.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] _ in
+            self?.updatePlayerUI()
+        }
+
+        updatePlayerUI()
     }
 
     private func invalidateObservation() {
         if let token = playerObservationToken {
-            data?.audioPlayer.removeTimeObserver(token)
+            data.audioPlayer.removeTimeObserver(token)
             playerObservationToken = nil
         }
     }
 
-    private func updateUI() {
-        guard let data = data, isViewLoaded else {
+    private func updatePlayerUI() {
+        guard isViewLoaded else {
             return
         }
 
         let playIcon: UIImage? = data.audioPlayer.isPlaying ? .pauseImage : .playImage
-        playButton.setImage(playIcon, for: .normal)
+        playButton?.setImage(playIcon, for: .normal)
 
         let muteIcon: UIImage? = data.audioPlayer.isMuted ? .mutedImage : .unmutedImage
-        unmuteButton.setImage(muteIcon, for: .normal)
+        unmuteButton?.setImage(muteIcon, for: .normal)
 
         updateTime()
         updateRateLabel()
     }
 
     @objc private func updateTime() {
-        guard let data = data else {
-            return
-        }
 
         let currentTime = data.audioPlayer.currentPosition
         let totalTime = max(data.audioPlayer.duration, 1)
@@ -149,25 +177,20 @@ class PlayerViewController: AppViewController {
 
         let currentSongTime = TimeWatch(totalSeconds: currentTime)
 
-        self.progressView.progress = CGFloat(currentTime) / CGFloat(totalTime)
-        self.currentTimeLabel.text = currentSongTime.timeString
+        self.progressView?.progress = CGFloat(currentTime) / CGFloat(totalTime)
+        self.currentTimeLabel?.text = currentSongTime.timeString
     }
 
     private func play() {
-        data?.audioPlayer.play()
+        data.audioPlayer.play()
     }
 
     private func pause() {
-        data?.audioPlayer.pause()
+        data.audioPlayer.pause()
     }
 
     private func updateRateLabel() {
-        if let rate = data?.audioPlayer.rate {
-            rateLabel.text = String(rate)
-        }
-        else {
-            rateLabel.text = "1.0"
-        }
+        rateLabel?.text = String(data.audioPlayer.rate)
     }
 
     //Actions
@@ -176,13 +199,13 @@ class PlayerViewController: AppViewController {
     }
     
     @IBAction private func palyTapped() {
-        if data?.audioPlayer.isPlaying == true {
+        if data.audioPlayer.isPlaying == true {
             pause()
         } else {
             play()
         }
 
-        updateUI()
+        updatePlayerUI()
     }
 
     @IBAction private func backPressed() {
@@ -190,29 +213,29 @@ class PlayerViewController: AppViewController {
     }
 
     @IBAction private func replayTapped() {
-        data?.audioPlayer.currentPosition -= 30
+        data.audioPlayer.currentPosition -= 30
         updateTime()
         
     }
     @IBAction private func forvardTapped() {
-        data?.audioPlayer.currentPosition += 30
+        data.audioPlayer.currentPosition += 30
         updateTime()
     }
     
     @IBAction private func unmuteTapped() {
-        data?.audioPlayer.isMuted = data?.audioPlayer.isMuted == false
-        updateUI()
+        data.audioPlayer.isMuted = data.audioPlayer.isMuted == false
+        updatePlayerUI()
     }
 
     @IBAction private func ratePlusPressed() {
-        let currentRate = data?.audioPlayer.rate ?? 0
-        data?.audioPlayer.rate = min(2, currentRate + 0.25)
+        let currentRate = data.audioPlayer.rate
+        data.audioPlayer.rate = min(2, currentRate + 0.25)
         updateRateLabel()
     }
 
     @IBAction private func rateMinusPressed() {
-        let currentRate = data?.audioPlayer.rate ?? 0
-        data?.audioPlayer.rate = max(0, currentRate - 0.25)
+        let currentRate = data.audioPlayer.rate
+        data.audioPlayer.rate = max(0, currentRate - 0.25)
         updateRateLabel()
     }
 }

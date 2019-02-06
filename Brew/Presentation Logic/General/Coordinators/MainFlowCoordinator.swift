@@ -12,6 +12,9 @@ class MainFlowCoordinator: Coordinator {
 
     var onLogout: (() -> Void)?
 
+    private let playerCoordinator = PlayerCoordinator()
+    private var activeMenuCoordinator: MenuCoordinator?
+
     override func start() {
         super.start()
         setupMenuCoordinator()
@@ -32,11 +35,30 @@ class MainFlowCoordinator: Coordinator {
                 (.profile, profileController)
             ])
 
+        activeMenuCoordinator = menuCoordinator
         contentController.present(menuCoordinator.contentController, animated: false)
+    }
+
+    private func playPodcast(_ podcast: Podcast, from index: Int) {
+        guard let data = playerCoordinator.playEpisode(at: index, from: podcast) else {
+            return
+        }
+
+        data.controller.onClose = {
+            data.controller.dismiss(animated: true)
+        }
+
+        activeMenuCoordinator?.addMiniPlayer(data.miniController)
+        contentController.topController.present(data.controller, animated: true)
     }
 
     private func setupedHomeController() -> UIViewController? {
         let coordinator = HomeCoordinator()
+
+        coordinator.onNeedPlayPodcast = { [weak self] in
+            self?.playPodcast($0, from: $1)
+        }
+
         coordinator.start()
         return coordinator.contentController
     }
@@ -46,6 +68,10 @@ class MainFlowCoordinator: Coordinator {
 
         coordinator.onLogout = { [weak self] in
             self?.onLogout?()
+        }
+
+        coordinator.onNeedPlayPodcast = { [weak self] in
+            self?.playPodcast($0, from: $1)
         }
 
         coordinator.start()
