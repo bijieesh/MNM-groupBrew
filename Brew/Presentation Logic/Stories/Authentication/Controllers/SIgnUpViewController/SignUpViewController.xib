@@ -153,7 +153,6 @@
                                                 <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
                                                     <color key="value" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="password_icon"/>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <outlet property="equalTo" destination="mNU-5d-Yl5" id="nLl-TN-Z5I"/>
@@ -259,7 +258,4 @@
             <point key="canvasLocation" x="21.600000000000001" y="-23.838080959520241"/>
         </view>
     </objects>
-    <resources>
-        <image name="password_icon" width="20" height="20"/>
-    </resources>
 </document>
