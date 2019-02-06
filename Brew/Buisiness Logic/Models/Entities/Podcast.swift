@@ -14,4 +14,8 @@ struct Podcast: Codable {
     let description: String
     let episodes: [Episode]?
     let albumArt: File?
+
+    var episodesCount: Int {
+        return episodes?.count ?? 0
+    }
 }

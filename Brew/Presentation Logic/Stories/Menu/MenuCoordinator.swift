@@ -21,6 +21,23 @@ class MenuCoordinator: Coordinator {
         super.init(contentController: tabBarController)
     }
 
+    func addMiniPlayer(_ miniPlayer: UIViewController) {
+        guard let tabBarCntroller = contentController as? UITabBarController else {
+            return
+        }
+
+        miniPlayer.willMove(toParent: tabBarCntroller)
+
+        tabBarCntroller.view.addSubview(miniPlayer.view)
+        miniPlayer.view.translatesAutoresizingMaskIntoConstraints = false
+        miniPlayer.view.widthAnchor.constraint(equalTo: tabBarCntroller.view.widthAnchor).isActive = true
+        miniPlayer.view.centerXAnchor.constraint(equalTo: tabBarCntroller.view.centerXAnchor).isActive = true
+        miniPlayer.view.bottomAnchor.constraint(equalTo: tabBarCntroller.view.bottomAnchor, constant: -tabBarCntroller.tabBar.bounds.height).isActive = true
+
+        tabBarCntroller.addChild(miniPlayer)
+        miniPlayer.didMove(toParent: tabBarCntroller)
+    }
+
     private static func setupedTabBarController(for controllers: [(option: Option, controller: UIViewController)]) -> UITabBarController {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.tintColor = .appOrange

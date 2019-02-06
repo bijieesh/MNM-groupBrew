@@ -73,7 +73,6 @@ extension PodcastDetailViewController: UITableViewDelegate, UITableViewDataSourc
         }
 
         cell.name = episode.title
-        cell.duration = episode.duration
 
         return cell
     }
