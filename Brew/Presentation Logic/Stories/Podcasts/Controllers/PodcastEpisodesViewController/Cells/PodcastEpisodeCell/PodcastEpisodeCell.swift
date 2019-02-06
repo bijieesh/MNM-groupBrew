@@ -17,12 +17,20 @@ class PodcastEpisodeCell: UITableViewCell, NibReusable {
         }
     }
 
-    var name: String? {
+    var title: String? {
         didSet {
-            nameLabel.text = name
+            titleLabel.text = title
         }
     }
+	
+	var descriptions: String? {
+		didSet {
+			descriptionLabel.text = descriptions
+		}
+	}
 
-    @IBOutlet private var nameLabel: UILabel!
-    @IBOutlet private var durationLabel: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var descriptionLabel: UILabel!
+	@IBOutlet private var durationLabel: UILabel!
+	
 }

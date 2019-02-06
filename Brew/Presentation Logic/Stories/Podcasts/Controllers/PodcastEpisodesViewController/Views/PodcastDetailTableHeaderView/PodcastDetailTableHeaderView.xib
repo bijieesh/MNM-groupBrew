@@ -165,7 +165,6 @@
                             <rect key="frame" x="25" y="417" width="270" height="35.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="270" id="gpe-A5-99t"/>
-                                <constraint firstAttribute="height" constant="35.5" id="hMX-Zz-WIB"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SharpSansNo1-Medium" family="Sharp Sans No1 Medium" pointSize="13"/>
                             <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -337,10 +336,13 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="descriptionLabel" destination="TD6-PF-wh0" id="9Hl-zw-BLq"/>
                 <outlet property="episodesButton" destination="rgI-Zu-hHl" id="bSD-QD-fK5"/>
                 <outlet property="episodesIndicateView" destination="40P-zp-UKt" id="Qtp-3p-2mn"/>
                 <outlet property="exclusivesButton" destination="NDa-JM-wIS" id="F5r-L8-ZO5"/>
                 <outlet property="exclusivesIndicateView" destination="sc3-qc-64b" id="TEx-M7-yxJ"/>
+                <outlet property="logoImageView" destination="anV-ue-f80" id="Srz-pz-eaV"/>
+                <outlet property="titleLabel" destination="b24-BW-OZi" id="3et-w0-GYK"/>
             </connections>
             <point key="canvasLocation" x="-204.375" y="-8.97887323943662"/>
         </view>

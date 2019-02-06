@@ -99,10 +99,12 @@
 		7865294421FC915600A826F7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294321FC915600A826F7 /* Profile.swift */; };
 		7865294821FCB33D00A826F7 /* UpdateProfileInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294721FCB33D00A826F7 /* UpdateProfileInfoRequest.swift */; };
 		7865294A21FDBD5A00A826F7 /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865294921FDBD5A00A826F7 /* UIImage+Resize.swift */; };
+		858EECD1220B570E00C49128 /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EECD0220B570E00C49128 /* UITextField.swift */; };
 		85CA8F6A2209EC6C007557D9 /* UIView + Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */; };
 		85CA8F6E220AE487007557D9 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F6D220AE487007557D9 /* BaseButton.swift */; };
 		85CA8F72220AE4C7007557D9 /* PodcastButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F70220AE4C7007557D9 /* PodcastButton.swift */; };
 		85CA8F73220AE4C7007557D9 /* PodcastButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85CA8F71220AE4C7007557D9 /* PodcastButton.xib */; };
+		85CA8F75220B26EB007557D9 /* UIView +Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F74220B26EA007557D9 /* UIView +Gradient.swift */; };
 		85EAABD72209D25800436458 /* SharpSansNo1-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85EAABD62209D25800436458 /* SharpSansNo1-Semibold.ttf */; };
 		85EAABD92209D26900436458 /* SharpSansNo1-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85EAABD82209D26800436458 /* SharpSansNo1-Medium.ttf */; };
 		85EAABDB2209D27900436458 /* SharpSansNo1-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85EAABDA2209D27900436458 /* SharpSansNo1-Bold.ttf */; };
@@ -204,10 +206,12 @@
 		7865294721FCB33D00A826F7 /* UpdateProfileInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfileInfoRequest.swift; sourceTree = "<group>"; };
 		7865294921FDBD5A00A826F7 /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		858EECD0220B570E00C49128 /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Inspectable.swift"; sourceTree = "<group>"; };
 		85CA8F6D220AE487007557D9 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		85CA8F70220AE4C7007557D9 /* PodcastButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastButton.swift; sourceTree = "<group>"; };
 		85CA8F71220AE4C7007557D9 /* PodcastButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodcastButton.xib; sourceTree = "<group>"; };
+		85CA8F74220B26EA007557D9 /* UIView +Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView +Gradient.swift"; sourceTree = "<group>"; };
 		85EAABD62209D25800436458 /* SharpSansNo1-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SharpSansNo1-Semibold.ttf"; sourceTree = "<group>"; };
 		85EAABD82209D26800436458 /* SharpSansNo1-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SharpSansNo1-Medium.ttf"; sourceTree = "<group>"; };
 		85EAABDA2209D27900436458 /* SharpSansNo1-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SharpSansNo1-Bold.ttf"; sourceTree = "<group>"; };
@@ -468,10 +472,12 @@
 		3D05F02121F6022000174A91 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				85CA8F74220B26EA007557D9 /* UIView +Gradient.swift */,
 				3D05F02221F6023600174A91 /* UIViewController.swift */,
 				3DCBBA6821F7D08C009BCD31 /* UIColor.swift */,
 				7865294921FDBD5A00A826F7 /* UIImage+Resize.swift */,
 				85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */,
+				858EECD0220B570E00C49128 /* UITextField.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -995,6 +1001,7 @@
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
 				3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */,
 				3D2002AE21FDB1C800E38B99 /* File.swift in Sources */,
+				858EECD1220B570E00C49128 /* UITextField.swift in Sources */,
 				3D05F02021F6020900174A91 /* AppAlert.swift in Sources */,
 				3DCBBA6921F7D08C009BCD31 /* UIColor.swift in Sources */,
 				3DB447E821F7CBBB00F93876 /* PriceViewController.swift in Sources */,
@@ -1025,6 +1032,7 @@
 				7865294221FC776A00A826F7 /* ChangePasswordRequest.swift in Sources */,
 				3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */,
 				7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */,
+				85CA8F75220B26EB007557D9 /* UIView +Gradient.swift in Sources */,
 				3DA16B6822063CF900487323 /* LoadedFile.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */,

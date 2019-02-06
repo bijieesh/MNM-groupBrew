@@ -135,6 +135,11 @@ the Chief Marketing Officer and Product…</string>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="k3S-2C-oND" id="B3t-Oe-5iA"/>
+                <outlet property="durationLabel" destination="HE5-RI-isG" id="Dku-Z7-PFg"/>
+                <outlet property="titleLabel" destination="Tms-Lj-h2v" id="ihw-DF-Sde"/>
+            </connections>
             <point key="canvasLocation" x="225.59999999999999" y="6.2968515742128943"/>
         </tableViewCell>
     </objects>

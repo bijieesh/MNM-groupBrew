@@ -13,16 +13,13 @@ import SDWebImage
 
 class PodcastDetailViewController: AppViewController {
 
-    var podcast: Podcast? {
-        didSet {
-            updateUI()
-        }
-    }
+	var podcast: Podcast? {
+		didSet { fillData() }
+	}
 
     var onBackPressed: (() -> Void)?
     var onEpisodeSelected: ((Int) -> Void)?
 
-    @IBOutlet private var logoImageView: UIImageView!
     @IBOutlet private var backButton: UIButton!
 	
 	@IBOutlet private var contentTableView: UITableView! {
@@ -53,18 +50,7 @@ class PodcastDetailViewController: AppViewController {
 		
 		headerView.frame = CGRect(x: 0, y: 0, width: contentTableView.frame.width, height: 600)
 	}
-	
-    private func updateUI() {
-        guard isViewLoaded else {
-            return
-        }
 
-        if let url = podcast?.albumArt?.url {
-            logoImageView.sd_setImage(with: url)
-        }
-
-        contentTableView.reloadData()
-    }
 }
 
 private extension PodcastDetailViewController {
@@ -72,17 +58,33 @@ private extension PodcastDetailViewController {
 		contentTableView.register(cellType: PodcastEpisodeCell.self)
 		contentTableView.tableHeaderView = headerView
 	}
+	
+	func fillData() {
+		let data = PodcastDetailData.init(image: podcast?.albumArt?.url,
+										  title: podcast?.title,
+										  description: podcast?.description)
+		
+		headerView.data = data
+	}
 }
 
 //MARK: UITableViewDataSource
 
 extension PodcastDetailViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 10
+		return podcast?.episodes?.count ?? 0
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell: PodcastEpisodeCell = tableView.dequeueReusableCell(for: indexPath)
+		
+		guard let episode = podcast?.episodes?[indexPath.row] else {
+			return cell
+		}
+//
+		cell.title = episode.title
+		cell.duration = episode.duration
+		cell.descriptions = episode.description
 		
 		return cell
 	}
