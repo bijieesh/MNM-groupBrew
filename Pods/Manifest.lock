@@ -9,9 +9,10 @@ PODS:
   - RMStore (0.7.1):
     - RMStore/Core (= 0.7.1)
   - RMStore/Core (0.7.1)
-  - SDWebImage (4.4.4):
-    - SDWebImage/Core (= 4.4.4)
-  - SDWebImage/Core (4.4.4)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
+  - STRatingControl (1.1.2)
   - TPKeyboardAvoiding (1.3.2)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - Reusable
   - RMStore
   - SDWebImage
+  - STRatingControl (~> 1.1)
   - TPKeyboardAvoiding
 
 SPEC REPOS:
@@ -29,6 +31,7 @@ SPEC REPOS:
     - Reusable
     - RMStore
     - SDWebImage
+    - STRatingControl
     - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
@@ -36,9 +39,10 @@ SPEC CHECKSUMS:
   LDProgressView: f6afc7c30d2a9edf33001515f3189338567a32d2
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
-  SDWebImage: c00ec18ab25d10e5ffac109b0f78d1b4341c9691
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
+  STRatingControl: 254ee5f6dd174e3fa9d8365a08326291fd0bd950
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 4ad299047f4d7df478e508303e64db61914ad86b
+PODFILE CHECKSUM: f8cc8e007555e45b36a09c4b216b96ee8f30cc31
 
 COCOAPODS: 1.5.3

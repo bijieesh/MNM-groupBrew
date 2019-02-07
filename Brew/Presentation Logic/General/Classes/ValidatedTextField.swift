@@ -86,8 +86,36 @@ class ValidatedTextField: UITextField {
     }
 
     private func updateUI(isValid: Bool) {
-        backgroundColor = isValid ? .clear : invalidColor
+        backgroundColor = isValid ? .white : invalidColor
     }
+	
+	//MARK: UITextField + Image
+	
+	@IBInspectable var leftPadding: CGFloat = 0
+	@IBInspectable var leftImage: UIImage? {
+		didSet {
+			updateView()
+		}
+	}
+	
+	override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+		var textRect = super.leftViewRect(forBounds: bounds)
+		textRect.origin.x += leftPadding
+		return textRect
+	}
+	
+	func updateView() {
+		if let image = leftImage {
+			leftViewMode = UITextField.ViewMode.always
+			let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+			imageView.contentMode = .scaleAspectFit
+			imageView.image = image
+			leftView = imageView
+		} else {
+			leftViewMode = UITextField.ViewMode.never
+			leftView = nil
+		}
+	}
 }
 
 private extension String {
@@ -95,4 +123,5 @@ private extension String {
         return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
     }
 }
+
 

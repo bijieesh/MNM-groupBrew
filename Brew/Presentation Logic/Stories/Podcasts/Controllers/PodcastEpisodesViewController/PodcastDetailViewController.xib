@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,61 +13,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PodcastDetailViewController" customModule="Brew" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="gWj-6g-9Ci" id="oKr-6W-9Ci"/>
-                <outlet property="contentTableView" destination="XxM-iA-NlC" id="l1F-gX-Jm3"/>
-                <outlet property="logoHeightConstraint" destination="yAF-Ce-mT5" id="8c7-Pd-iIQ"/>
-                <outlet property="logoImageView" destination="BUQ-TA-wG2" id="8kE-P5-TFv"/>
+                <outlet property="contentTableView" destination="yU8-Te-IBw" id="1OM-io-rdG"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ub5-iq-Bnw"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="podcast_logo_big" translatesAutoresizingMaskIntoConstraints="NO" id="BUQ-TA-wG2">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQV-58-oaL">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-Te-IBw">
+                            <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="Ppc-EE-1Sn"/>
+                                <outlet property="delegate" destination="-1" id="MXn-JQ-wSl"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="228" id="yAF-Ce-mT5"/>
+                        <constraint firstAttribute="bottom" secondItem="yU8-Te-IBw" secondAttribute="bottom" id="1SR-UM-rdU"/>
+                        <constraint firstItem="yU8-Te-IBw" firstAttribute="top" secondItem="dQV-58-oaL" secondAttribute="top" constant="44" id="dmB-bx-zjX"/>
+                        <constraint firstAttribute="trailing" secondItem="yU8-Te-IBw" secondAttribute="trailing" id="dox-po-rDr"/>
+                        <constraint firstItem="yU8-Te-IBw" firstAttribute="leading" secondItem="dQV-58-oaL" secondAttribute="leading" id="oAP-sg-x12"/>
                     </constraints>
-                </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="XxM-iA-NlC">
-                    <rect key="frame" x="0.0" y="228" width="375" height="439"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="W1t-ei-iHq"/>
-                        <outlet property="delegate" destination="-1" id="Kkk-Lb-tVm"/>
-                    </connections>
-                </tableView>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWj-6g-9Ci">
-                    <rect key="frame" x="8" y="20" width="44" height="44"/>
+                    <rect key="frame" x="8" y="44" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="BuC-Ph-tyQ"/>
                         <constraint firstAttribute="width" constant="44" id="V0T-xm-nu8"/>
                     </constraints>
-                    <state key="normal" image="back_arrow"/>
+                    <state key="normal" image="back"/>
                     <connections>
                         <action selector="backPressed" destination="-1" eventType="touchUpInside" id="2R4-vi-hkF"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="gWj-6g-9Ci" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="05a-qr-DYL"/>
-                <constraint firstItem="XxM-iA-NlC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="8r4-J0-eMs"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XxM-iA-NlC" secondAttribute="trailing" id="A1j-2v-Dyw"/>
-                <constraint firstItem="BUQ-TA-wG2" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="HsK-of-0PF"/>
                 <constraint firstItem="gWj-6g-9Ci" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="KqC-GS-ysY"/>
-                <constraint firstItem="XxM-iA-NlC" firstAttribute="top" secondItem="BUQ-TA-wG2" secondAttribute="bottom" id="Lpc-At-Ro4"/>
-                <constraint firstAttribute="bottom" secondItem="XxM-iA-NlC" secondAttribute="bottom" id="MWq-hf-71S"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BUQ-TA-wG2" secondAttribute="trailing" id="Nje-wD-fRK"/>
-                <constraint firstItem="BUQ-TA-wG2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rnN-3R-cfO"/>
+                <constraint firstAttribute="bottom" secondItem="dQV-58-oaL" secondAttribute="bottom" constant="34" id="Ydx-q6-aER"/>
+                <constraint firstItem="dQV-58-oaL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="apl-12-SjP"/>
+                <constraint firstAttribute="trailing" secondItem="dQV-58-oaL" secondAttribute="trailing" id="shW-Hf-w8o"/>
+                <constraint firstItem="dQV-58-oaL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zsv-zs-6RE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
+            <point key="canvasLocation" x="60" y="62.068965517241381"/>
         </view>
     </objects>
     <resources>
-        <image name="back_arrow" width="19" height="20"/>
-        <image name="podcast_logo_big" width="750" height="456"/>
+        <image name="back" width="36" height="48"/>
     </resources>
 </document>
