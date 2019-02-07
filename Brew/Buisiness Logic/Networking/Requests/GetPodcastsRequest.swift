@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct PodcastsResponse {
-    
-}
-
 class GetPodcastsRequest: RequestType {
 
     enum `Type`: String {

@@ -28,16 +28,16 @@ private extension HomeCoordinator {
 	
 	func createNewReleaseController() -> NewReleaseViewController {
 		let newRelease = NewReleaseViewController()
-		
+		loadNewReleasesData(for: newRelease)
+
 		return newRelease
 	}
 	
 	func createShowsController() -> ShowsViewController {
 		let shows = ShowsViewController()
+		loadShowsData(for: shows)
 		
 		shows.onPodcastPressed = { [weak self] in self?.showPodcastDetails(by: $0) }
-		
-		loadShowsData(for: shows)
 		
 		return shows
 	}

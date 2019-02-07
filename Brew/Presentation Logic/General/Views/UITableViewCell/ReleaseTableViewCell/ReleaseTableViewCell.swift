@@ -11,7 +11,7 @@ import Reusable
 import MGSwipeTableCell
 
 final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
-	struct ReleaseCellData {
+	struct Data {
 		var image: URL?
 		var title: String?
 		var author: String?
@@ -26,7 +26,7 @@ final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
 	@IBOutlet private var progressView: UIProgressView!
 	@IBOutlet var bottomView: UIView!
 	
-	func fill(data: ReleaseCellData?) {
+	func fill(data: Data?) {
 		mainImageView.sd_setImage(with: data?.image)
 		titleLabel.text = data?.title
 		authorLabel.text = data?.author

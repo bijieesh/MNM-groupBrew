@@ -18,8 +18,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewReleaseViewController" customModule="Brew" customModuleProvider="target">
             <connections>
                 <outlet property="bottomReleaseTableView" destination="16a-87-pjV" id="fV7-Rk-t2G"/>
-                <outlet property="seeMoreButton" destination="UVJ-CZ-cLr" id="gFa-Jh-TQB"/>
+                <outlet property="oldTableViewHeaderView" destination="b6M-cb-hdg" id="VAT-XD-mGW"/>
                 <outlet property="seeMoreViewHeight" destination="kGu-N1-Gii" id="vSd-jd-XPN"/>
+                <outlet property="showMoreView" destination="5s6-g2-iHY" id="Gjf-sk-Nar"/>
                 <outlet property="topReleaseTableView" destination="A4N-Q2-MKp" id="VXT-AW-bUF"/>
                 <outlet property="topReleaseTableViewHeight" destination="CKM-wo-TO9" id="oCD-96-s0a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -33,76 +34,83 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL4-at-jPz">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A4N-Q2-MKp">
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-SH-fxX">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="300" id="CKM-wo-TO9"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="NAC-FF-1Tl"/>
-                                <outlet property="delegate" destination="-1" id="jlN-oj-bSo"/>
-                            </connections>
-                        </tableView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6M-cb-hdg">
-                            <rect key="frame" x="0.0" y="300" width="375" height="124"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UVJ-CZ-cLr">
-                                    <rect key="frame" x="170" y="30" width="35" height="22"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A4N-Q2-MKp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="8"/>
-                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" title="See more">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="selected" title="Hide more">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="300" id="CKM-wo-TO9"/>
+                                    </constraints>
                                     <connections>
-                                        <action selector="onSeeMorePressed:" destination="-1" eventType="touchUpInside" id="FMR-Lq-b0D"/>
+                                        <outlet property="dataSource" destination="-1" id="NAC-FF-1Tl"/>
+                                        <outlet property="delegate" destination="-1" id="jlN-oj-bSo"/>
                                     </connections>
-                                </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue listening to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-6x-w7I">
-                                    <rect key="frame" x="20" y="100" width="184" height="24"/>
-                                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                </tableView>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5s6-g2-iHY" userLabel="Show More View">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tc7-Gm-INX">
+                                            <rect key="frame" x="170" y="30" width="35" height="22"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="8"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="See more">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <state key="selected" title="Hide more">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="onSeeMorePressed" destination="-1" eventType="touchUpInside" id="tp8-R9-6gw"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="Poi-tg-k95"/>
+                                        <constraint firstItem="Tc7-Gm-INX" firstAttribute="top" secondItem="5s6-g2-iHY" secondAttribute="top" constant="30" id="WMU-li-SMn"/>
+                                        <constraint firstItem="Tc7-Gm-INX" firstAttribute="centerX" secondItem="5s6-g2-iHY" secondAttribute="centerX" id="vKK-Xd-FAU"/>
+                                    </constraints>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6M-cb-hdg">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue listening to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-6x-w7I">
+                                            <rect key="frame" x="20" y="36.5" width="184" height="23.5"/>
+                                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="GWd-6x-w7I" secondAttribute="bottom" id="LWj-Qg-wEQ"/>
+                                        <constraint firstItem="GWd-6x-w7I" firstAttribute="leading" secondItem="b6M-cb-hdg" secondAttribute="leading" constant="20" id="etb-ts-iP4"/>
+                                        <constraint firstAttribute="height" constant="60" id="kGu-N1-Gii"/>
+                                    </constraints>
+                                </view>
+                                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="16a-87-pjV">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="306"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="306" id="sKE-3D-Vzw"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="LGq-SF-y24"/>
+                                        <outlet property="delegate" destination="-1" id="ESH-7x-u7H"/>
+                                    </connections>
+                                </tableView>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="UVJ-CZ-cLr" firstAttribute="top" secondItem="b6M-cb-hdg" secondAttribute="top" constant="30" id="6CL-il-3v1"/>
-                                <constraint firstItem="UVJ-CZ-cLr" firstAttribute="centerX" secondItem="b6M-cb-hdg" secondAttribute="centerX" id="JIh-Wz-RZN"/>
-                                <constraint firstAttribute="bottom" secondItem="GWd-6x-w7I" secondAttribute="bottom" id="LWj-Qg-wEQ"/>
-                                <constraint firstItem="GWd-6x-w7I" firstAttribute="leading" secondItem="b6M-cb-hdg" secondAttribute="leading" constant="20" id="etb-ts-iP4"/>
-                                <constraint firstAttribute="height" constant="124" id="kGu-N1-Gii"/>
-                            </constraints>
-                        </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="16a-87-pjV">
-                            <rect key="frame" x="0.0" y="424" width="375" height="306"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="306" id="sKE-3D-Vzw"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="LGq-SF-y24"/>
-                                <outlet property="delegate" destination="-1" id="ESH-7x-u7H"/>
-                            </connections>
-                        </tableView>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="b6M-cb-hdg" firstAttribute="leading" secondItem="kL4-at-jPz" secondAttribute="leading" id="3aR-86-mQX"/>
-                        <constraint firstItem="A4N-Q2-MKp" firstAttribute="leading" secondItem="kL4-at-jPz" secondAttribute="leading" id="4Hj-DL-Mu0"/>
-                        <constraint firstItem="A4N-Q2-MKp" firstAttribute="top" secondItem="kL4-at-jPz" secondAttribute="top" id="5Bh-Up-2bj"/>
-                        <constraint firstItem="16a-87-pjV" firstAttribute="leading" secondItem="kL4-at-jPz" secondAttribute="leading" id="8cO-B6-JbF"/>
-                        <constraint firstItem="b6M-cb-hdg" firstAttribute="top" secondItem="A4N-Q2-MKp" secondAttribute="bottom" id="DOp-u3-VgY"/>
-                        <constraint firstItem="A4N-Q2-MKp" firstAttribute="width" secondItem="kL4-at-jPz" secondAttribute="width" id="JQv-b9-SYf"/>
-                        <constraint firstAttribute="trailing" secondItem="b6M-cb-hdg" secondAttribute="trailing" id="KaN-7C-lHC"/>
-                        <constraint firstAttribute="trailing" secondItem="A4N-Q2-MKp" secondAttribute="trailing" id="KyZ-BA-4MG"/>
-                        <constraint firstAttribute="bottom" secondItem="16a-87-pjV" secondAttribute="bottom" id="aZQ-Oo-OjP"/>
-                        <constraint firstItem="b6M-cb-hdg" firstAttribute="width" secondItem="kL4-at-jPz" secondAttribute="width" id="m4S-S6-JcP"/>
-                        <constraint firstItem="16a-87-pjV" firstAttribute="top" secondItem="b6M-cb-hdg" secondAttribute="bottom" id="md6-6k-b5P"/>
-                        <constraint firstAttribute="trailing" secondItem="16a-87-pjV" secondAttribute="trailing" id="r0t-dI-rOR"/>
+                        <constraint firstItem="Mto-SH-fxX" firstAttribute="top" secondItem="kL4-at-jPz" secondAttribute="top" id="09B-cd-0p3"/>
+                        <constraint firstAttribute="trailing" secondItem="Mto-SH-fxX" secondAttribute="trailing" id="5pf-ki-Qug"/>
+                        <constraint firstAttribute="bottom" secondItem="Mto-SH-fxX" secondAttribute="bottom" id="EfW-Wg-3cb"/>
+                        <constraint firstItem="Mto-SH-fxX" firstAttribute="leading" secondItem="kL4-at-jPz" secondAttribute="leading" id="box-5I-enn"/>
+                        <constraint firstItem="Mto-SH-fxX" firstAttribute="width" secondItem="kL4-at-jPz" secondAttribute="width" id="dl8-1Q-LAn"/>
                     </constraints>
                 </scrollView>
             </subviews>
@@ -110,7 +118,6 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="kL4-at-jPz" secondAttribute="trailing" id="7SJ-1b-5yh"/>
                 <constraint firstItem="kL4-at-jPz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gx0-dH-V5b"/>
-                <constraint firstItem="16a-87-pjV" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="ena-Bm-Nyn"/>
                 <constraint firstAttribute="bottom" secondItem="kL4-at-jPz" secondAttribute="bottom" id="g7l-lz-AaK"/>
                 <constraint firstItem="kL4-at-jPz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tjs-nP-DV9"/>
             </constraints>
