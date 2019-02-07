@@ -177,8 +177,8 @@ class PlayerViewController: AppViewController {
 
         let currentSongTime = TimeWatch(totalSeconds: currentTime)
 
-        self.progressView?.progress = CGFloat(currentTime) / CGFloat(totalTime)
-        self.currentTimeLabel?.text = currentSongTime.timeString
+        progressView?.progress = CGFloat(currentTime) / CGFloat(totalTime)
+        currentTimeLabel?.text = currentSongTime.timeString
     }
 
     private func play() {

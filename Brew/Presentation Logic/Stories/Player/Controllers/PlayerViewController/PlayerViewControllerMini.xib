@@ -23,6 +23,7 @@
                 <outlet property="artistNameLabel" destination="7dt-e8-Aas" id="yUQ-L3-hbT"/>
                 <outlet property="imageView" destination="U4J-fQ-ktn" id="ABH-fd-ZD1"/>
                 <outlet property="playButton" destination="GHd-FN-n3H" id="GYE-c1-9mX"/>
+                <outlet property="progressView" destination="XT8-8x-9Ow" id="xwM-l8-7aC"/>
                 <outlet property="songNameLabel" destination="nEx-zD-MPK" id="MH3-1u-8ym"/>
                 <outlet property="view" destination="m3p-xU-U9p" id="6YA-IG-PKZ"/>
             </connections>

@@ -34,7 +34,6 @@ class MenuCoordinator: Coordinator {
         miniPlayer.view.centerXAnchor.constraint(equalTo: tabBarCntroller.view.centerXAnchor).isActive = true
         miniPlayer.view.bottomAnchor.constraint(equalTo: tabBarCntroller.view.bottomAnchor, constant: -tabBarCntroller.tabBar.bounds.height).isActive = true
 
-        tabBarCntroller.addChild(miniPlayer)
         miniPlayer.didMove(toParent: tabBarCntroller)
     }
 
