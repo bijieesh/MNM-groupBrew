@@ -18,6 +18,8 @@ class MenuCoordinator: Coordinator {
     init(controllers: [(Option, UIViewController)]) {
         self.controllers = controllers
         let tabBarController = MenuCoordinator.setupedTabBarController(for: controllers)
+		tabBarController.tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		
         super.init(contentController: tabBarController)
     }
 
@@ -27,7 +29,7 @@ class MenuCoordinator: Coordinator {
         }
 
         miniPlayer.willMove(toParent: tabBarCntroller)
-
+		
         tabBarCntroller.view.addSubview(miniPlayer.view)
         miniPlayer.view.translatesAutoresizingMaskIntoConstraints = false
         miniPlayer.view.widthAnchor.constraint(equalTo: tabBarCntroller.view.widthAnchor).isActive = true

@@ -70,8 +70,6 @@
 		3DB447CE21F74E2A00F93876 /* PodcastsListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447CD21F74E2A00F93876 /* PodcastsListView.xib */; };
 		3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447D021F7534E00F93876 /* PodcastsListItemView.swift */; };
 		3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */; };
-		3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447D721F76F5C00F93876 /* HomeViewController.swift */; };
-		3DB447DB21F76F7A00F93876 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447DA21F76F7A00F93876 /* HomeViewController.xib */; };
 		3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447E021F7CBBB00F93876 /* InterestsViewController.swift */; };
 		3DB447E621F7CBBB00F93876 /* InterestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447E121F7CBBB00F93876 /* InterestsViewController.xib */; };
 		3DB447E721F7CBBB00F93876 /* PriceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB447E321F7CBBB00F93876 /* PriceViewController.xib */; };
@@ -176,8 +174,6 @@
 		3DB447CD21F74E2A00F93876 /* PodcastsListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsListView.xib; sourceTree = "<group>"; };
 		3DB447D021F7534E00F93876 /* PodcastsListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsListItemView.swift; sourceTree = "<group>"; };
 		3DB447D221F7543F00F93876 /* PodcastsListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastsListItemView.xib; sourceTree = "<group>"; };
-		3DB447D721F76F5C00F93876 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		3DB447DA21F76F7A00F93876 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		3DB447E021F7CBBB00F93876 /* InterestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InterestsViewController.swift; sourceTree = "<group>"; };
 		3DB447E121F7CBBB00F93876 /* InterestsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InterestsViewController.xib; sourceTree = "<group>"; };
 		3DB447E321F7CBBB00F93876 /* PriceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceViewController.xib; sourceTree = "<group>"; };
@@ -639,18 +635,8 @@
 		3DB447D521F76EFF00F93876 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3DB447D621F76F0500F93876 /* HomeViewController */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		3DB447D621F76F0500F93876 /* HomeViewController */ = {
-			isa = PBXGroup;
-			children = (
-				3DB447D721F76F5C00F93876 /* HomeViewController.swift */,
-				3DB447DA21F76F7A00F93876 /* HomeViewController.xib */,
-			);
-			path = HomeViewController;
 			sourceTree = "<group>";
 		};
 		3DB447DD21F7CB7A00F93876 /* Onboarding */ = {
@@ -907,7 +893,6 @@
 				3D05F00E21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */,
 				7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */,
-				3DB447DB21F76F7A00F93876 /* HomeViewController.xib in Resources */,
 				3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */,
 				3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */,
 				3D05F00921F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf in Resources */,
@@ -992,7 +977,6 @@
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
 				3D2002AA21FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift in Sources */,
-				3DB447D821F76F5C00F93876 /* HomeViewController.swift in Sources */,
 				3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */,
 				3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */,
 				3D05EFE021F5C4B200174A91 /* SignInViewController.swift in Sources */,
