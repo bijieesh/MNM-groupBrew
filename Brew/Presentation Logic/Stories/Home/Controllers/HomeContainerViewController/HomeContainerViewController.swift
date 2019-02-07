@@ -1,27 +1,24 @@
 //
-//  HomeContainerVC.swift
+//  HomeContainerViewController.swift
 //  Brew
 //
-//  Created by Andriy Vahniy on 2/7/19.
+//  Created by Vasyl Khmil on 2/7/19.
 //  Copyright © 2019 NerdzLab. All rights reserved.
 //
 
 import UIKit
 
-final class HomeContainerVC: AppViewController {
+final class HomeContainerViewController: AppViewController {
 	enum ContainerType {
 		case newRelease, shows, saved
 	}
-	
-	@IBOutlet private var scrollView: UIScrollView!
 	
 	@IBOutlet private var newReleasesButton: UIButton!
 	@IBOutlet private var showsButton: UIButton!
 	@IBOutlet private var savedButotn: UIButton!
 	
-	@IBOutlet private var newReleaseCOntainerView: UIView!
-	@IBOutlet private var showsContainerView: UIView!
-	@IBOutlet private var savedContainerView: UIView!
+	@IBOutlet private var scrollView: UIScrollView!
+	@IBOutlet private var stackView: UIStackView!
 	
 	var topButtons: [UIButton] {
 		return [newReleasesButton, showsButton, savedButotn]
@@ -36,7 +33,7 @@ final class HomeContainerVC: AppViewController {
     }
 }
 
-private extension HomeContainerVC {
+private extension HomeContainerViewController {
 	@IBAction func newReleasePressed() {
 		topButtons.forEach { $0.isSelected = false }
 		newReleasesButton.isSelected = true
@@ -56,9 +53,19 @@ private extension HomeContainerVC {
 	}
 }
 
-private extension HomeContainerVC {
+private extension HomeContainerViewController {
 	func setupView() {
 		topButtons.first?.isSelected = true
+		setupControllers()
+	}
+	
+	func setupControllers() {
+		controllers.forEach {
+			let view = UIView()
+			view.add(controller: $0)
+			
+			stackView.addArrangedSubview(view)
+		}
 	}
 	
 	func scrollTo(container: ContainerType) {

@@ -10,12 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeContainerVC" customModule="Brew" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeContainerViewController" customModule="Brew" customModuleProvider="target">
             <connections>
                 <outlet property="newReleasesButton" destination="Xm0-H3-g9D" id="Cte-4C-Dg2"/>
                 <outlet property="savedButotn" destination="oAj-Ac-698" id="02g-Zm-71M"/>
                 <outlet property="scrollView" destination="PI0-WW-rSU" id="uQM-MU-HRK"/>
                 <outlet property="showsButton" destination="sMA-B6-OcD" id="dc1-nb-ObY"/>
+                <outlet property="stackView" destination="eeM-dV-CXL" id="2Vn-ax-7lO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,46 +28,17 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI0-WW-rSU">
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Izs-CV-mAU">
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eeM-dV-CXL">
                             <rect key="frame" x="0.0" y="0.0" width="1125" height="597"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cq9-Jq-0sZ" userLabel="NewRelease">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
-                                    <color key="backgroundColor" red="0.86666666670000003" green="0.043137254899999998" blue="0.33725490200000002" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yzy-9L-wyM" userLabel="Shows">
-                                    <rect key="frame" x="375" y="0.0" width="375" height="597"/>
-                                    <color key="backgroundColor" red="0.078431372550000003" green="0.80784313730000001" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRE-aR-yab" userLabel="Saved">
-                                    <rect key="frame" x="750" y="0.0" width="375" height="597"/>
-                                    <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="BRE-aR-yab" firstAttribute="leading" secondItem="Yzy-9L-wyM" secondAttribute="trailing" id="7pu-NA-Y4D"/>
-                                <constraint firstAttribute="bottom" secondItem="BRE-aR-yab" secondAttribute="bottom" id="GyU-cw-OQP"/>
-                                <constraint firstItem="cq9-Jq-0sZ" firstAttribute="top" secondItem="Izs-CV-mAU" secondAttribute="top" id="ILb-Aj-yeN"/>
-                                <constraint firstAttribute="bottom" secondItem="Yzy-9L-wyM" secondAttribute="bottom" id="XLT-xl-CW8"/>
-                                <constraint firstItem="Yzy-9L-wyM" firstAttribute="leading" secondItem="cq9-Jq-0sZ" secondAttribute="trailing" id="c3R-lV-B26"/>
-                                <constraint firstItem="BRE-aR-yab" firstAttribute="top" secondItem="Izs-CV-mAU" secondAttribute="top" id="lfI-hx-Ni0"/>
-                                <constraint firstAttribute="trailing" secondItem="BRE-aR-yab" secondAttribute="trailing" id="oTE-vT-1aQ"/>
-                                <constraint firstItem="Yzy-9L-wyM" firstAttribute="top" secondItem="Izs-CV-mAU" secondAttribute="top" id="seZ-BB-hQd"/>
-                                <constraint firstItem="cq9-Jq-0sZ" firstAttribute="leading" secondItem="Izs-CV-mAU" secondAttribute="leading" id="wBI-fu-To2"/>
-                                <constraint firstAttribute="bottom" secondItem="cq9-Jq-0sZ" secondAttribute="bottom" id="xcb-8F-cMx"/>
-                            </constraints>
-                        </view>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="Izs-CV-mAU" secondAttribute="bottom" id="2Jo-Hr-WH3"/>
-                        <constraint firstItem="Yzy-9L-wyM" firstAttribute="width" secondItem="PI0-WW-rSU" secondAttribute="width" id="9oH-RV-lC4"/>
-                        <constraint firstItem="Izs-CV-mAU" firstAttribute="width" secondItem="PI0-WW-rSU" secondAttribute="width" multiplier="3" id="IGB-0S-AHA"/>
-                        <constraint firstAttribute="trailing" secondItem="Izs-CV-mAU" secondAttribute="trailing" id="c0j-ZI-i48"/>
-                        <constraint firstItem="cq9-Jq-0sZ" firstAttribute="width" secondItem="PI0-WW-rSU" secondAttribute="width" id="cUC-WX-rTO"/>
-                        <constraint firstItem="Izs-CV-mAU" firstAttribute="leading" secondItem="PI0-WW-rSU" secondAttribute="leading" id="dCg-5g-y6L"/>
-                        <constraint firstItem="Izs-CV-mAU" firstAttribute="height" secondItem="PI0-WW-rSU" secondAttribute="height" id="gF9-AY-jCa"/>
-                        <constraint firstItem="Izs-CV-mAU" firstAttribute="top" secondItem="PI0-WW-rSU" secondAttribute="top" id="t0H-Va-XY4"/>
+                        <constraint firstItem="eeM-dV-CXL" firstAttribute="leading" secondItem="PI0-WW-rSU" secondAttribute="leading" id="6gp-8J-w7A"/>
+                        <constraint firstAttribute="trailing" secondItem="eeM-dV-CXL" secondAttribute="trailing" id="LmC-PZ-wGH"/>
+                        <constraint firstItem="eeM-dV-CXL" firstAttribute="top" secondItem="PI0-WW-rSU" secondAttribute="top" id="Pgd-m6-dZb"/>
+                        <constraint firstAttribute="bottom" secondItem="eeM-dV-CXL" secondAttribute="bottom" id="TEh-Vt-Un1"/>
+                        <constraint firstItem="eeM-dV-CXL" firstAttribute="width" secondItem="PI0-WW-rSU" secondAttribute="width" multiplier="3" id="Vdt-bp-LHj"/>
+                        <constraint firstItem="eeM-dV-CXL" firstAttribute="height" secondItem="PI0-WW-rSU" secondAttribute="height" id="iyh-0Y-FkD"/>
                     </constraints>
                     <connections>
                         <outlet property="delegate" destination="-1" id="cZe-xa-Uwy"/>
