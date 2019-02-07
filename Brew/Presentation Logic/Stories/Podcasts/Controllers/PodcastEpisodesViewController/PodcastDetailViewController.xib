@@ -23,10 +23,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQV-58-oaL">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     <subviews>
-                        <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-Te-IBw">
-                            <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-Te-IBw">
+                            <rect key="frame" x="0.0" y="44" width="375" height="768"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Ppc-EE-1Sn"/>
@@ -58,7 +58,7 @@
             <constraints>
                 <constraint firstItem="gWj-6g-9Ci" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="05a-qr-DYL"/>
                 <constraint firstItem="gWj-6g-9Ci" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="KqC-GS-ysY"/>
-                <constraint firstAttribute="bottom" secondItem="dQV-58-oaL" secondAttribute="bottom" constant="34" id="Ydx-q6-aER"/>
+                <constraint firstAttribute="bottom" secondItem="dQV-58-oaL" secondAttribute="bottom" id="Ydx-q6-aER"/>
                 <constraint firstItem="dQV-58-oaL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="apl-12-SjP"/>
                 <constraint firstAttribute="trailing" secondItem="dQV-58-oaL" secondAttribute="trailing" id="shW-Hf-w8o"/>
                 <constraint firstItem="dQV-58-oaL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zsv-zs-6RE"/>
@@ -68,6 +68,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="12" height="16"/>
+        <image name="back" width="36" height="48"/>
     </resources>
 </document>

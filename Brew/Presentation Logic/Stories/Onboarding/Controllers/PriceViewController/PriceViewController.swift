@@ -21,6 +21,10 @@ class PriceViewController: AppViewController {
         super.viewDidLoad()
         selectOption(fifteenButton)
     }
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
     
     //MARK: - Action
     @IBAction private func fiveSelected() {

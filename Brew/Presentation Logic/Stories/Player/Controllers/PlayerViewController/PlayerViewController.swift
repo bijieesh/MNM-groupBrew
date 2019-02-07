@@ -119,6 +119,10 @@ class PlayerViewController: AppViewController {
         super.viewWillAppear(animated)
         setupObservaton()
     }
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 
     private func updateFlow() {
         guard isViewLoaded else {

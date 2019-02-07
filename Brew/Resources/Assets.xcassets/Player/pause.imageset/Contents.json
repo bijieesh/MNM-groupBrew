@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "round-pause-button-4.png",
+      "filename" : "round-pause-button(2-2).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "round-pause-button-3 copy.png",
+      "filename" : "round-pause-button(3-3).png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "round-pause-button-3 copy 2.png",
+      "filename" : "round-pause-button(2-2-2).png",
       "scale" : "3x"
     }
   ],
