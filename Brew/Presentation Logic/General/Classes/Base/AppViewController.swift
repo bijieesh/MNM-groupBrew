@@ -9,11 +9,17 @@
 import UIKit
 
 class AppViewController: UIViewController {
-    var onClose: (() -> Void)?
+	typealias Action = () -> Void
+	
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
+	
+    var onClose: Action?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .black
     }
 }

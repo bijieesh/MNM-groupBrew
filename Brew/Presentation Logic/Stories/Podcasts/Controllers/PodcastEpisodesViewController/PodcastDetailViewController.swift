@@ -87,11 +87,7 @@ extension PodcastDetailViewController: UITableViewDataSource {
 		}
 
 		cell.title = episode.title
-<<<<<<< Updated upstream
-//        cell.duration = episode.duration
-=======
 //		cell.duration = episode.duration
->>>>>>> Stashed changes
 		cell.descriptions = episode.description
 		
 		return cell

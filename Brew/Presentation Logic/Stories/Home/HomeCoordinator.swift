@@ -18,6 +18,10 @@ class HomeCoordinator: NavigationCoordinator {
     }
 
     private func setupHomeController() {
+		let homeContainer = HomeContainerVC()
+		
+		navigationController?.pushViewController(homeContainer, animated: true)
+		
 //        let homeController = HomeViewController()
 //
 //        homeController.onPodcastSelected = { [weak self] in

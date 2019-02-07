@@ -89,6 +89,8 @@
 		3DCBBA8C21FA2322009BCD31 /* GetPodcastsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8B21FA2322009BCD31 /* GetPodcastsRequest.swift */; };
 		3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */; };
 		3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */; };
+		5A68C3C4220C6E6C0064A991 /* HomeContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C2220C6E6C0064A991 /* HomeContainerVC.swift */; };
+		5A68C3C5220C6E6C0064A991 /* HomeContainerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3C3220C6E6C0064A991 /* HomeContainerVC.xib */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
 		7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865293A21FC646700A826F7 /* SettingsViewController.swift */; };
 		7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7865293B21FC646700A826F7 /* SettingsViewController.xib */; };
@@ -194,6 +196,8 @@
 		3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewControllerMini.xib; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
+		5A68C3C2220C6E6C0064A991 /* HomeContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerVC.swift; sourceTree = "<group>"; };
+		5A68C3C3220C6E6C0064A991 /* HomeContainerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainerVC.xib; sourceTree = "<group>"; };
 		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7865293B21FC646700A826F7 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -627,16 +631,9 @@
 			isa = PBXGroup;
 			children = (
 				3DCBBA8821FA0F45009BCD31 /* HomeCoordinator.swift */,
-				3DB447D521F76EFF00F93876 /* Controllers */,
+				5A68C3C0220C6E3F0064A991 /* Controllers */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		3DB447D521F76EFF00F93876 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		3DB447DD21F7CB7A00F93876 /* Onboarding */ = {
@@ -737,6 +734,23 @@
 				3DCBBA8621FA0BAA009BCD31 /* MainFlowCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		5A68C3C0220C6E3F0064A991 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5A68C3C1220C6E4C0064A991 /* HomeContainerVC */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5A68C3C1220C6E4C0064A991 /* HomeContainerVC */ = {
+			isa = PBXGroup;
+			children = (
+				5A68C3C2220C6E6C0064A991 /* HomeContainerVC.swift */,
+				5A68C3C3220C6E6C0064A991 /* HomeContainerVC.xib */,
+			);
+			path = HomeContainerVC;
 			sourceTree = "<group>";
 		};
 		65E97A5620630B01F8C70077 /* Pods */ = {
@@ -903,6 +917,7 @@
 				3D20028721FB508A00E38B99 /* PodcastsListHighlitedItemView.xib in Resources */,
 				3D05F00C21F5C8DE00174A91 /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				85EAABD72209D25800436458 /* SharpSansNo1-Semibold.ttf in Resources */,
+				5A68C3C5220C6E6C0064A991 /* HomeContainerVC.xib in Resources */,
 				3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				3D20028F21FB5DEA00E38B99 /* ProfileViewController.xib in Resources */,
 				3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */,
@@ -973,6 +988,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A68C3C4220C6E6C0064A991 /* HomeContainerVC.swift in Sources */,
 				3D2002AC21FDB10800E38B99 /* Episode.swift in Sources */,
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
