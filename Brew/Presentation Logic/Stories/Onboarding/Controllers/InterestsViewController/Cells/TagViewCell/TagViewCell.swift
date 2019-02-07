@@ -30,7 +30,7 @@ class TagViewCell: UICollectionViewCell, NibReusable {
     override var isSelected: Bool {
         didSet {
             self.layer.borderWidth = isSelected ? 0 : 1
-            self.backgroundColor = isSelected ? .appOrange : .white
+            self.backgroundColor = isSelected ? .clear : .white
             self.tagNameLabel.textColor = isSelected ? .white : .black
         }
     }
