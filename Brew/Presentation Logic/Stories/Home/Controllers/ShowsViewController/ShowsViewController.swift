@@ -17,6 +17,9 @@ final class ShowsViewController: AppViewController {
 	}
 	
 	var onPodcastPressed: IndexAction?
+	var data: [Podcast] = [] {
+		didSet { collectionView.reloadData() }
+	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
@@ -46,8 +49,10 @@ private extension ShowsViewController {
 	}
 	
 	func configureCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
+		let cellData = data[indexPath.item]
 		let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-		cell.image = URL(string: "https://blog.algolia.com/wp-content/uploads/2016/04/podcast.png")
+		
+		cell.image = cellData.albumArt?.url
 		
 		return cell
 	}
@@ -56,7 +61,7 @@ private extension ShowsViewController {
 //MARK: - UICollectionViewDataSource
 extension ShowsViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		return data.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

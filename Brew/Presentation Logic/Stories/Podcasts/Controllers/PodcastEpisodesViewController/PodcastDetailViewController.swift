@@ -10,7 +10,6 @@ import UIKit
 import Reusable
 import SDWebImage
 
-
 class PodcastDetailViewController: AppViewController {
 
 	var podcast: Podcast? {

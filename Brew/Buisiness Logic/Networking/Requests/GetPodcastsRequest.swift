@@ -19,6 +19,7 @@ class GetPodcastsRequest: RequestType {
         case popular
         case new
         case editors
+		case all
     }
 
     typealias ResponseObjectType = [Podcast]
@@ -33,13 +34,18 @@ class GetPodcastsRequest: RequestType {
 
     func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {
         guard
-            let expectedJson = serverJson as? [String: Any],
-            let podcastsJson = expectedJson["podcast"] as? [String: Any],
-            let dataJson = podcastsJson["data"] as? [Any],
+            let mappedJson = serverJson as? [String: Any],
             statusCode.isSuccessful else {
             return serverJson
         }
+		
+		//TODO: Delete this code when server fix data structure
+		var data = mappedJson["data"] as? [Any]
+		
+		if data == nil, let podcastJson = mappedJson["podcast"] as? [String : Any] {
+			data = podcastJson["data"] as? [Any]
+		}
 
-        return dataJson
+        return data ?? serverJson
     }
 }

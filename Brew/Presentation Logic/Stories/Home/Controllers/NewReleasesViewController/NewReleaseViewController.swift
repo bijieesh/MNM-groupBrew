@@ -30,7 +30,10 @@ class NewReleaseViewController: UIViewController {
 	
 	private var defaultCellHeight: CGFloat = 128
 	
-	var newReleaseData = [1, 2, 3, 4]
+	var newReleaseData: [Podcast] = [] {
+		didSet { topReleaseTableView.reloadData() }
+	}
+	
 	var oldReleaseData = [1, 2]
 	
 	//MARK: Life cycle
@@ -46,6 +49,8 @@ class NewReleaseViewController: UIViewController {
 		let cell: ReleaseTableViewCell = tableView.dequeueReusableCell(for: indexPath)
 		
 		if tableView == topReleaseTableView {
+			let cellData = oldReleaseData[indexPath.row]
+			
 			cell.bottomView.isHidden = true
 			cell.delegate = self as MGSwipeTableCellDelegate
 			
@@ -74,7 +79,7 @@ class NewReleaseViewController: UIViewController {
 		}
 		
 		
-		return cell ?? UITableViewCell()
+		return cell
 	}
 	
 	//MARK: Actions

@@ -11,9 +11,30 @@ import Reusable
 import MGSwipeTableCell
 
 final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
+	struct ReleaseCellData {
+		var image: URL?
+		var title: String?
+		var author: String?
+	}
 
 	//MARK: IBOutlets
 	
+	@IBOutlet private var mainImageView: UIImageView!
+	@IBOutlet private var titleLabel: UILabel!
+	@IBOutlet private var authorLabel: UILabel!
+	
 	@IBOutlet private var progressView: UIProgressView!
 	@IBOutlet var bottomView: UIView!
+	
+	func fill(data: ReleaseCellData?) {
+		mainImageView.sd_setImage(with: data?.image)
+		titleLabel.text = data?.title
+		authorLabel.text = data?.author
+	}
+	
+	override func prepareForReuse() {
+		super.prepareForReuse()
+		
+		mainImageView.sd_cancelCurrentImageLoad()
+	}
 }
