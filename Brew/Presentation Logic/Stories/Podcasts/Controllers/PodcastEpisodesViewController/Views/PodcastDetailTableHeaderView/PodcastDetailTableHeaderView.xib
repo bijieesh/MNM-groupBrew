@@ -35,18 +35,14 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zine Gapore Podcast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b24-BW-OZi">
-                            <rect key="frame" x="10" y="273" width="300" height="28"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="28" id="Cc0-p0-YtX"/>
-                            </constraints>
+                            <rect key="frame" x="10" y="273" width="300" height="33"/>
                             <fontDescription key="fontDescription" name="SharpSansNo1-Bold" family="Sharp Sans No1 Bold" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Zine Gapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEU-r2-xeq">
-                            <rect key="frame" x="25" y="311" width="270" height="18"/>
+                            <rect key="frame" x="25" y="316" width="270" height="18"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="18" id="sBo-5z-ShW"/>
                                 <constraint firstAttribute="width" constant="270" id="zY0-Us-pxk"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SharpSansNo1-Bold" family="Sharp Sans No1 Bold" pointSize="13"/>
@@ -54,7 +50,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-mr-UCU">
-                            <rect key="frame" x="100" y="339" width="120" height="35"/>
+                            <rect key="frame" x="100" y="344" width="120" height="35"/>
                             <subviews>
                                 <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="huT-CK-21F" customClass="STRatingControl" customModule="STRatingControl">
                                     <rect key="frame" x="0.0" y="0.0" width="68" height="35"/>
@@ -103,7 +99,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-gU-6Vl">
-                            <rect key="frame" x="100" y="384" width="120" height="17"/>
+                            <rect key="frame" x="100" y="389" width="120" height="17"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFT-hr-Boj">
                                     <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
@@ -162,7 +158,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Known for transforming her students with her magical, virtually unexplain…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD6-PF-wh0">
-                            <rect key="frame" x="25" y="417" width="270" height="35.5"/>
+                            <rect key="frame" x="25" y="422" width="270" height="35.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="270" id="gpe-A5-99t"/>
                             </constraints>
@@ -171,9 +167,9 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCB-wo-sWT">
-                            <rect key="frame" x="78" y="482.5" width="164" height="26"/>
+                            <rect key="frame" x="78" y="487.5" width="164" height="26"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mw-jd-rWP">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mw-jd-rWP">
                                     <rect key="frame" x="0.0" y="0.0" width="71" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="71" id="GdO-yW-Uvb"/>
@@ -195,7 +191,7 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adc-Gr-PBX">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adc-Gr-PBX">
                                     <rect key="frame" x="81" y="0.0" width="83" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="83" id="vwq-id-obv"/>
@@ -229,7 +225,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc5-lO-tTg">
-                            <rect key="frame" x="20" y="558.5" width="203" height="29"/>
+                            <rect key="frame" x="20" y="563.5" width="203" height="29"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgI-Zu-hHl">
                                     <rect key="frame" x="0.0" y="0.0" width="83" height="27"/>
@@ -336,6 +332,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="authorNameLabel" destination="ZEU-r2-xeq" id="Tzg-Ax-9iM"/>
                 <outlet property="descriptionLabel" destination="TD6-PF-wh0" id="9Hl-zw-BLq"/>
                 <outlet property="episodesButton" destination="rgI-Zu-hHl" id="bSD-QD-fK5"/>
                 <outlet property="episodesIndicateView" destination="40P-zp-UKt" id="Qtp-3p-2mn"/>
@@ -348,10 +345,10 @@
         </view>
     </objects>
     <resources>
-        <image name="blur_image" width="360" height="360"/>
+        <image name="blur_image" width="180" height="180"/>
         <image name="circle" width="8" height="8"/>
         <image name="filled_circle" width="8" height="8"/>
-        <image name="like" width="24" height="22"/>
-        <image name="music_sound" width="24" height="24"/>
+        <image name="like" width="12" height="11"/>
+        <image name="music_sound" width="12" height="12"/>
     </resources>
 </document>

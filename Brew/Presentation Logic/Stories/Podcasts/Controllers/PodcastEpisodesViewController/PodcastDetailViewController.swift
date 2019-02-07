@@ -36,7 +36,6 @@ class PodcastDetailViewController: AppViewController {
 	
 	private lazy var headerView: PodcastDetailTableHeaderView = {
 		let view = PodcastDetailTableHeaderView.loadFromNib()
-		
 		return view
 	}()
 
@@ -60,9 +59,14 @@ private extension PodcastDetailViewController {
 	}
 	
 	func fillData() {
-		let data = PodcastDetailData.init(image: podcast?.albumArt?.url,
-										  title: podcast?.title,
-										  description: podcast?.description)
+        guard let podcast = podcast else {
+            return
+        }
+
+        let data = PodcastDetailTableHeaderView.Data.init(image: podcast.albumArt?.url,
+                                                          title: podcast.title,
+                                                          description: podcast.description,
+                                                          authorName: podcast.user.profile.profileFullName)
 		
 		headerView.data = data
 	}
@@ -83,7 +87,7 @@ extension PodcastDetailViewController: UITableViewDataSource {
 		}
 //
 		cell.title = episode.title
-		cell.duration = episode.duration
+//        cell.duration = episode.duration
 		cell.descriptions = episode.description
 		
 		return cell

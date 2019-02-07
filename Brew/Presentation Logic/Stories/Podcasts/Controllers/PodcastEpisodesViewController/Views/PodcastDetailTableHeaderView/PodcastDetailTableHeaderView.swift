@@ -9,27 +9,28 @@
 import UIKit
 import Reusable
 
-struct PodcastDetailData {
-	var image: URL?
-	var title: String?
-	var description: String?
-}
-
 class PodcastDetailTableHeaderView: UIView, NibLoadable {
+    struct Data {
+        let image: URL?
+        let title: String
+        let description: String
+        let authorName: String
+    }
 	
 	//MARK: IBOutlets
 	
-	@IBOutlet weak var logoImageView: UIImageView!
-	@IBOutlet weak var titleLabel: UILabel!
-	@IBOutlet weak var descriptionLabel: UILabel!
-	@IBOutlet weak var exclusivesButton: UIButton!
-	@IBOutlet weak var episodesButton: UIButton!
-	@IBOutlet weak var exclusivesIndicateView: UIView!
-	@IBOutlet weak var episodesIndicateView: UIView!
+	@IBOutlet private var logoImageView: UIImageView!
+	@IBOutlet private var titleLabel: UILabel!
+	@IBOutlet private var descriptionLabel: UILabel!
+    @IBOutlet private var authorNameLabel: UILabel!
+	@IBOutlet private var exclusivesButton: UIButton!
+	@IBOutlet private var episodesButton: UIButton!
+	@IBOutlet private var exclusivesIndicateView: UIView!
+	@IBOutlet private var episodesIndicateView: UIView!
 	
 //    var onSubscribeTapped: (() -> Void)?
 	
-	var data: PodcastDetailData? {
+	var data: Data? {
 		didSet { fillData() }
 	}
 	
@@ -59,5 +60,9 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
 		logoImageView.sd_setImage(with: data?.image)
 		titleLabel.text = data?.title
 		descriptionLabel.text = data?.description
+
+        if let authorName = data?.authorName {
+            authorNameLabel.text = "By \(authorName)"
+        }
 	}
 }
