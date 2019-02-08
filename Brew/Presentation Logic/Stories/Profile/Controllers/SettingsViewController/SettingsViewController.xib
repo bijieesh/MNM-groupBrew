@@ -48,7 +48,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRz-n8-SK0">
                                     <rect key="frame" x="69" y="20.333333333333329" width="88" height="27.666666666666671"/>
                                     <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="23"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ay-Dn-6eB">
@@ -58,7 +58,7 @@
                                         <constraint firstAttribute="width" constant="27" id="ryZ-zk-OYM"/>
                                     </constraints>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <state key="normal" image="back_arrow_black"/>
+                                    <state key="normal" image="back"/>
                                     <connections>
                                         <action selector="backTapped" destination="-1" eventType="touchUpInside" id="yBW-dD-VJe"/>
                                     </connections>
@@ -232,11 +232,11 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHANGE PASSWORD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cuc-Ig-JL5">
                                     <rect key="frame" x="20" y="386.33333333333331" width="148.33333333333334" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="aRz-n8-SK0" firstAttribute="centerY" secondItem="9Ay-Dn-6eB" secondAttribute="centerY" id="36o-9n-GHB"/>
                                 <constraint firstAttribute="trailing" secondItem="ZJo-Qt-utg" secondAttribute="trailing" constant="24" id="8pc-bk-nOu"/>
@@ -254,16 +254,17 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="tUS-UE-dIF" firstAttribute="centerX" secondItem="52h-oj-lbY" secondAttribute="centerX" id="Fa7-d7-ReO"/>
                         <constraint firstItem="tUS-UE-dIF" firstAttribute="top" secondItem="52h-oj-lbY" secondAttribute="top" id="PX9-1a-cxk"/>
                         <constraint firstAttribute="trailing" secondItem="tUS-UE-dIF" secondAttribute="trailing" id="UQX-7x-I0v"/>
-                        <constraint firstAttribute="bottom" secondItem="tUS-UE-dIF" secondAttribute="bottom" id="mby-hv-w97"/>
+                        <constraint firstAttribute="bottom" secondItem="tUS-UE-dIF" secondAttribute="bottom" constant="100" id="mby-hv-w97"/>
                         <constraint firstItem="tUS-UE-dIF" firstAttribute="leading" secondItem="52h-oj-lbY" secondAttribute="leading" id="pwE-s1-bCZ"/>
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="52h-oj-lbY" secondAttribute="bottom" id="5mH-EN-6n4"/>
                 <constraint firstItem="52h-oj-lbY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="9AU-6d-AlT"/>
@@ -276,6 +277,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back_arrow_black" width="20" height="20"/>
+        <image name="back" width="36" height="48"/>
     </resources>
 </document>

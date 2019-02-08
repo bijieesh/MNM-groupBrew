@@ -28,6 +28,10 @@ class MainFlowCoordinator: Coordinator {
             return
         }
 
+		guard let searchController = setupedSearchController() else {
+			return
+		}
+		
         guard let profileController = setupedProfileController() else {
             return
         }
@@ -35,7 +39,8 @@ class MainFlowCoordinator: Coordinator {
         let menuCoordinator = MenuCoordinator(controllers:
             [
                 (.home, homeController),
-                (.profile, profileController)
+				(.search, searchController),
+				(.profile, profileController)
             ])
 
         activeMenuCoordinator = menuCoordinator
@@ -56,6 +61,13 @@ class MainFlowCoordinator: Coordinator {
         coordinator.start()
         return coordinator.contentController
     }
+	
+	private func setupedSearchController() -> UIViewController? {
+		let coordinator = SearchCoordinator()
+		
+		coordinator.start()
+		return coordinator.contentController
+	}
 
     private func setupedProfileController() -> UIViewController? {
         let coordinator = ProfileCoordinator()

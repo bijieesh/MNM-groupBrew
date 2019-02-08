@@ -2,6 +2,7 @@ PODS:
   - AlignedCollectionViewFlowLayout (1.1.2)
   - LDProgressView (1.2.1)
   - MGSwipeTableCell (1.6.8)
+  - NFDownloadButton (0.0.6)
   - Reusable (4.0.5):
     - Reusable/Storyboard (= 4.0.5)
     - Reusable/View (= 4.0.5)
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - AlignedCollectionViewFlowLayout
   - LDProgressView
   - MGSwipeTableCell
+  - NFDownloadButton
   - Reusable
   - RMStore
   - SDWebImage
@@ -31,6 +33,7 @@ SPEC REPOS:
     - AlignedCollectionViewFlowLayout
     - LDProgressView
     - MGSwipeTableCell
+    - NFDownloadButton
     - Reusable
     - RMStore
     - SDWebImage
@@ -41,12 +44,13 @@ SPEC CHECKSUMS:
   AlignedCollectionViewFlowLayout: ee2ef451e741ec08f8e0967d828001e2f051c20a
   LDProgressView: f6afc7c30d2a9edf33001515f3189338567a32d2
   MGSwipeTableCell: dc4eca3212ed38a563b27d6aa7b3c01ce656c1e2
+  NFDownloadButton: c35241034b1fb298c903e676be2c38dd53329b5c
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   STRatingControl: 254ee5f6dd174e3fa9d8365a08326291fd0bd950
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: 813172449917257f1dcf78e83230a01f9e1f3043
+PODFILE CHECKSUM: fbe8d4f0e64e725395c45d0389f69d2b0dac47e8
 
 COCOAPODS: 1.5.3

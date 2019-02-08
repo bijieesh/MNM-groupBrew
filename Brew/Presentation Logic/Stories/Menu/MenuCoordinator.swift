@@ -10,7 +10,7 @@ import UIKit
 
 class MenuCoordinator: Coordinator {
     enum Option: Int {
-        case home, profile
+        case home, search, profile
     }
 
     private let controllers: [(option: Option, controller: UIViewController)]
@@ -44,7 +44,8 @@ class MenuCoordinator: Coordinator {
         tabBarController.tabBar.tintColor = .appOrange
 
         controllers.first(where: { $0.option == .home })?.controller.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "tab_bar_home"), selectedImage: UIImage(named: "tab_bar_home_selected"))
-        controllers.first(where: { $0.option == .profile })?.controller.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "tab_bar_profile"), selectedImage: UIImage(named: "tab_bar_profile_selected"))
+		 controllers.first(where: { $0.option == .search })?.controller.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "tab_bar_search"), selectedImage: UIImage(named: "tab_bar_search_selected"))
+		controllers.first(where: { $0.option == .profile })?.controller.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "tab_bar_profile"), selectedImage: UIImage(named: "tab_bar_profile_selected"))
 
         tabBarController.viewControllers = controllers.sorted(by: { $0.option.rawValue < $1.option.rawValue }).map({ $0.controller })
         return tabBarController

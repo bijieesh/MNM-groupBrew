@@ -11,6 +11,15 @@ import MGSwipeTableCell
 import Reusable
 
 class NewReleaseViewController: UIViewController {
+	typealias PodcastAction = (_ podcastType: PodcastType, _ podcastActionType: PodcastActionType, _ index: Int) -> Void
+	
+	enum PodcastType {
+		case new, old
+	}
+	
+	enum PodcastActionType {
+		case skip, load
+	}
 	
 	//MARK: IBOutlets
 	@IBOutlet private var topReleaseTableView: UITableView! {
@@ -34,17 +43,14 @@ class NewReleaseViewController: UIViewController {
 	private var defaultCellHeight: CGFloat = 128
 	
 	var newReleaseData: [Podcast] = [] {
-		didSet {
-			showMoreView.isHidden = false
-			topReleaseTableView.reloadData()
-		}
+		didSet { handleNewReleaseData() }
 	}
 	
 	var oldReleaseData: [Podcast] = [] {
-		didSet {
-			oldTableViewHeaderView.isHidden = false
-		}
+		didSet { handleOldReleaseData() }
 	}
+	
+	var onPopcastPressed: PodcastAction?
 }
 
 //MARK: - @IBAction
@@ -57,6 +63,15 @@ private extension NewReleaseViewController {
 
 //MARK: - TableView Helpers
 private extension NewReleaseViewController {
+	func handleNewReleaseData() {
+		showMoreView.isHidden = false
+		topReleaseTableView.reloadData()
+	}
+	
+	func handleOldReleaseData() {
+		oldTableViewHeaderView.isHidden = false
+	}
+	
 	func configureTopReleaseTableView() {
 		topReleaseTableView.register(cellType: ReleaseTableViewCell.self)
 	}
@@ -119,13 +134,6 @@ private extension NewReleaseViewController {
 		cell.rightExpansion.fillOnTrigger = true
 		cell.rightExpansion.threshold = 2
 	}
-	
-	func deleteRow<T, U: UITableView>(from data: inout[T], for tableView: U, at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		data.remove(at: indexPath.row)
-		tableView.deleteRows(at: [indexPath], with: .top)
-		tableView.endUpdates()
-	}
 }
 
 //MARK: UITableViewDataSource
@@ -153,13 +161,21 @@ extension NewReleaseViewController: MGSwipeTableCellDelegate {
 		let bottomIndexPath = bottomReleaseTableView.indexPath(for: cell)
 		
 		if let topIndexPath = topIndexPath {
+			direction == .leftToRight
+				? onPopcastPressed?(.new, .skip, topIndexPath.row)
+				: onPopcastPressed?(.new, .load, topIndexPath.row)
+			
 			topReleaseTableView.performBatchUpdates({
 				newReleaseData.remove(at: topIndexPath.row)
-				topReleaseTableView.deleteRows(at: [topIndexPath], with: .top)
+				topReleaseTableView.deleteRows(at: [topIndexPath], with: .left)
 			})
 		}
 		
 		if let bottomIndexPath = bottomIndexPath {
+			direction == .leftToRight
+				? onPopcastPressed?(.old, .skip, bottomIndexPath.row)
+				: onPopcastPressed?(.old, .load, bottomIndexPath.row)
+
 			bottomReleaseTableView.performBatchUpdates({
 				oldReleaseData.remove(at: bottomIndexPath.row)
 				bottomReleaseTableView.deleteRows(at: [bottomIndexPath], with: .top)

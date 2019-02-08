@@ -12,6 +12,9 @@ class HomeCoordinator: NavigationCoordinator {
 	typealias PlayPodcastAction = (Podcast, Int) -> Void
 	
 	var onNeedPlayPodcast: PlayPodcastAction?
+	
+	private var newPodcasts: [Podcast] = []
+	private var oldPodcasts: [Podcast] = []
 	private var showsPodcasts: [Podcast] = []
 
     override func start() {
@@ -29,8 +32,32 @@ private extension HomeCoordinator {
 	func createNewReleaseController() -> NewReleaseViewController {
 		let newRelease = NewReleaseViewController()
 		loadNewReleasesData(for: newRelease)
-
+		
+		newRelease.onPopcastPressed = { [weak self] podcastType, actionType, index in
+			self?.handlePodcastType(type: podcastType, action: actionType, index: index)
+		}
+		
 		return newRelease
+	}
+	
+	func handlePodcastType(type: NewReleaseViewController.PodcastType, action: NewReleaseViewController.PodcastActionType, index: Int) {
+		switch type {
+		case .new:
+			let podcast = newPodcasts[index]
+			handlePodcastAction(podcast: podcast, action: action)
+		case .old:
+			let podcast = oldPodcasts[index]
+			handlePodcastAction(podcast: podcast, action: action)
+		}
+	}
+	
+	func handlePodcastAction(podcast: Podcast, action: NewReleaseViewController.PodcastActionType) {
+		switch action {
+		case .skip:
+			skip(podcast)
+		case .load:
+			load(podcast)
+		}
 	}
 	
 	func createShowsController() -> ShowsViewController {
@@ -74,12 +101,21 @@ private extension HomeCoordinator {
 		let podcast = showsPodcasts[index]
 		showPodcastDetails(for: podcast)
 	}
+	
+	func skip(_ podcast: Podcast) {
+		
+	}
+	
+	func load(_ podcast: Podcast) {
+		
+	}
 }
 
 //MARK: - Server Communication
 private extension HomeCoordinator {
 	func loadNewReleasesData(for controller: NewReleaseViewController) {
-		GetPodcastsRequest(type: .new).execute(onSuccess: { podcasts in
+		GetPodcastsRequest(type: .new).execute(onSuccess: { [weak self] podcasts in
+			self?.newPodcasts = podcasts
 			controller.newReleaseData = podcasts
 		})
 	}
