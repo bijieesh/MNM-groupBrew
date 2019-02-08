@@ -100,6 +100,8 @@
 		5A68C3D8220C83E20064A991 /* ShowsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3D6220C83E20064A991 /* ShowsViewController.xib */; };
 		5A68C3DE220C85740064A991 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3DC220C85740064A991 /* ImageCollectionViewCell.swift */; };
 		5A68C3DF220C85740064A991 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3DD220C85740064A991 /* ImageCollectionViewCell.xib */; };
+		5ADEFF14220DC88E00F7D8B9 /* SaveEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */; };
+		5ADEFF16220DCB5000F7D8B9 /* GetSavedEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodeRequest.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
 		7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7865293A21FC646700A826F7 /* SettingsViewController.swift */; };
 		7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7865293B21FC646700A826F7 /* SettingsViewController.xib */; };
@@ -221,6 +223,8 @@
 		5A68C3D6220C83E20064A991 /* ShowsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowsViewController.xib; sourceTree = "<group>"; };
 		5A68C3DC220C85740064A991 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A68C3DD220C85740064A991 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEpisodeRequest.swift; sourceTree = "<group>"; };
+		5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedEpisodeRequest.swift; sourceTree = "<group>"; };
 		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7865293B21FC646700A826F7 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		7865293F21FC653000A826F7 /* ImagePickerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCoordinator.swift; sourceTree = "<group>"; };
@@ -317,6 +321,8 @@
 				3D20029721FB7E7700E38B99 /* GetAllCategoriesRequest.swift */,
 				7865294121FC776A00A826F7 /* ChangePasswordRequest.swift */,
 				7865294721FCB33D00A826F7 /* UpdateProfileInfoRequest.swift */,
+				5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */,
+				5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodeRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -1120,6 +1126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ADEFF16220DCB5000F7D8B9 /* GetSavedEpisodeRequest.swift in Sources */,
 				5A68C3C4220C6E6C0064A991 /* HomeContainerViewController.swift in Sources */,
 				8596D383220DA5D500362DEC /* SearchCoordinator.swift in Sources */,
 				3D2002AC21FDB10800E38B99 /* Episode.swift in Sources */,
@@ -1127,6 +1134,7 @@
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
 				5A68C3CC220C7CC40064A991 /* NewReleaseViewController.swift in Sources */,
+				5ADEFF14220DC88E00F7D8B9 /* SaveEpisodeRequest.swift in Sources */,
 				3D2002AA21FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift in Sources */,
 				3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */,
 				3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */,

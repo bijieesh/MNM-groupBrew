@@ -12,34 +12,47 @@ import MGSwipeTableCell
 import NFDownloadButton
 
 final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
+	typealias Action = () -> Void
+	
 	struct Data {
 		var image: URL?
-		var title: String?
-		var author: String?
+		var title: String
+		var subtitle: String
+		var fileIsDownloaded: Bool = false
 	}
 
 	//MARK: IBOutlets
 	
 	@IBOutlet private var mainImageView: UIImageView!
 	@IBOutlet private var titleLabel: UILabel!
-	@IBOutlet private var authorLabel: UILabel!
+	@IBOutlet private var subtitleLabel: UILabel!
 	@IBOutlet private var saveButton: NFDownloadButton!
 	@IBOutlet private var progressView: UIProgressView!
 	@IBOutlet var bottomView: UIView!
 	
 	@IBAction func saveButtonPressed() {
-
+		onSavePressed?()
 	}
 	
-	func fill(data: Data?) {
-		mainImageView.sd_setImage(with: data?.image)
-		titleLabel.text = data?.title
-		authorLabel.text = data?.author
+	var onSavePressed: Action?
+	
+	func fill(data: Data) {
+		mainImageView.sd_setImage(with: data.image)
+		titleLabel.text = data.title
+		subtitleLabel.text = data.subtitle
+		saveButton.isDownloaded = data.fileIsDownloaded
 	}
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
 		mainImageView.sd_cancelCurrentImageLoad()
+	}
+}
+
+extension ReleaseTableViewCell: FileLoaderProgressHandler {
+	var progress: Float {
+		get { return Float(saveButton.downloadPercent) }
+		set { saveButton.downloadPercent = CGFloat(progress) }
 	}
 }
