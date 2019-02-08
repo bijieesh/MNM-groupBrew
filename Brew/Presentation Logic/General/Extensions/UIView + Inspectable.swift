@@ -2,8 +2,8 @@
 //  UIView + Inspectable.swift
 //  
 //
-//  Created by Admin on 9/26/18.
-//  Copyright © 2018 admin. All rights reserved.
+//  Created by Vasyl Khmil on 9/26/18.
+//  Copyright © 2018 Vasyl Khmil. All rights reserved.
 //
 
 import UIKit

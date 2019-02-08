@@ -15,7 +15,11 @@ class HomeCoordinator: NavigationCoordinator {
 	
 	private var newPodcasts: [Podcast] = []
 	private var oldPodcasts: [Podcast] = []
+	
 	private var showsPodcasts: [Podcast] = []
+
+	private var newSavedEpisodes: [Episode] = []
+	private var oldSavedEpisodes: [Episode] = []
 
     override func start() {
         super.start()
@@ -24,55 +28,47 @@ class HomeCoordinator: NavigationCoordinator {
     }
 }
 
+//MARK: - Controller Presentation
 private extension HomeCoordinator {
 	func setupHomeContainer() {
 		createHomeController()
 	}
 	
 	func createNewReleaseController() -> NewReleaseViewController {
-		let newRelease = NewReleaseViewController()
-		loadNewReleasesData(for: newRelease)
+		let newReleaseVC = NewReleaseViewController()
+		newReleaseVC.controllerType = .new
 		
-		newRelease.onPopcastPressed = { [weak self] podcastType, actionType, index in
-			self?.handlePodcastType(type: podcastType, action: actionType, index: index)
+		newReleaseVC.onPodcastPressed = { [weak self] controllerType, podcastType, actionType, index in
+			self?.handleNewReleaseControllerType(controllerType, dataType: podcastType, actionType: actionType, index: index)
 		}
 		
-		return newRelease
+		loadNewReleasesData(for: newReleaseVC)
+		
+		return newReleaseVC
 	}
 	
-	func handlePodcastType(type: NewReleaseViewController.PodcastType, action: NewReleaseViewController.PodcastActionType, index: Int) {
-		switch type {
-		case .new:
-			let podcast = newPodcasts[index]
-			handlePodcastAction(podcast: podcast, action: action)
-		case .old:
-			let podcast = oldPodcasts[index]
-			handlePodcastAction(podcast: podcast, action: action)
-		}
-	}
 	
-	func handlePodcastAction(podcast: Podcast, action: NewReleaseViewController.PodcastActionType) {
-		switch action {
-		case .skip:
-			skip(podcast)
-		case .load:
-			load(podcast)
-		}
-	}
 	
 	func createShowsController() -> ShowsViewController {
-		let shows = ShowsViewController()
-		loadShowsData(for: shows)
+		let showsVC = ShowsViewController()
+		loadShowsData(for: showsVC)
 		
-		shows.onPodcastPressed = { [weak self] in self?.showPodcastDetails(by: $0) }
+		showsVC.onPodcastPressed = { [weak self] in self?.showPodcastDetails(by: $0) }
 		
-		return shows
+		return showsVC
 	}
 	
 	func createSavedController() -> NewReleaseViewController {
-		let newRelease = NewReleaseViewController()
+		let savedVC = NewReleaseViewController()
+		savedVC.controllerType = .saved
 		
-		return newRelease
+		savedVC.onPodcastPressed = { [weak self] controllerType, podcastType, actionType, index in
+			self?.handleNewReleaseControllerType(controllerType, dataType: podcastType, actionType: actionType, index: index)
+		}
+		
+		loadSavedEpisodes(for: savedVC)
+		
+		return savedVC
 	}
 	
 	func createHomeController() {
@@ -101,12 +97,76 @@ private extension HomeCoordinator {
 		let podcast = showsPodcasts[index]
 		showPodcastDetails(for: podcast)
 	}
+}
+
+//MARK: - Action Handlers
+private extension HomeCoordinator {
+	func handleNewReleaseControllerType(_ controllerType: NewReleaseViewController.ControllerType,
+										dataType: NewReleaseViewController.DataType,
+										actionType: NewReleaseViewController.ActionType,
+										index: Int) {
+		switch controllerType {
+		case .new:
+			switch dataType {
+			case .new:
+				let podcast = newPodcasts[index]
+				handlePodcastAction(podcast: podcast, action: actionType)
+			case .old:
+				let podcast = oldPodcasts[index]
+				handlePodcastAction(podcast: podcast, action: actionType)
+			}
+		case .saved:
+			switch dataType {
+			case .new:
+				let episode = newSavedEpisodes[index]
+				handleEpisodeAction(episode: episode, action: actionType)
+			case .old:
+				let episode = oldSavedEpisodes[index]
+				handleEpisodeAction(episode: episode, action: actionType)
+			}
+		}
+	}
+	
+	func handlePodcastAction(podcast: Podcast, action: NewReleaseViewController.ActionType) {
+		switch action {
+		case .leftAction:
+			skip(podcast)
+		case .rightAction:
+			save(podcast)
+		case .select:
+			select(podcast)
+		}
+	}
+	
+	func handleEpisodeAction(episode: Episode, action: NewReleaseViewController.ActionType) {
+		switch action {
+		case .leftAction:
+			break
+		case .rightAction:
+			delete(episode)
+		case .select:
+			select(episode)
+		}
+	}
 	
 	func skip(_ podcast: Podcast) {
 		
 	}
 	
-	func load(_ podcast: Podcast) {
+	func save(_ podcast: Podcast) {
+		guard let id = podcast.episodes?.last?.id else { return }
+		saveEpisode(by: id)
+	}
+	
+	func select(_ podcast: Podcast) {
+		
+	}
+	
+	func delete(_ episode: Episode) {
+		
+	}
+	
+	func select(_ episode: Episode) {
 		
 	}
 }
@@ -115,8 +175,18 @@ private extension HomeCoordinator {
 private extension HomeCoordinator {
 	func loadNewReleasesData(for controller: NewReleaseViewController) {
 		GetPodcastsRequest(type: .new).execute(onSuccess: { [weak self] podcasts in
-			self?.newPodcasts = podcasts
-			controller.newReleaseData = podcasts
+			guard let self = self else { return }
+			
+			self.newPodcasts.removeAll()
+			controller.newReleaseData = podcasts.compactMap {
+				if let episode = $0.episodes?.last {
+					self.newPodcasts.append($0)
+					
+					return ReleaseTableViewCell.Data(podcast: $0, episode: episode)
+				}
+				
+				return nil
+			}
 		})
 	}
 	
@@ -125,5 +195,35 @@ private extension HomeCoordinator {
 			self?.showsPodcasts = podcasts
 			controller.data = podcasts
 		})
+	}
+	
+	func loadSavedEpisodes(for controller: NewReleaseViewController) {
+		GetSavedEpisodeRequest().execute(onSuccess: { [weak self] episodes in
+			guard let self = self else { return }
+			
+			self.newSavedEpisodes.removeAll()
+			controller.newReleaseData = episodes.compactMap {
+				if let podcast = $0.podcast {
+					self.newSavedEpisodes.append($0)
+					
+					return ReleaseTableViewCell.Data(podcast: podcast, episode: $0)
+				}
+				
+				return nil
+			}
+		})
+	}
+	
+	func saveEpisode(by id: Int) {
+		SaveEpisodeRequest(id: id).execute()
+	}
+}
+
+private extension ReleaseTableViewCell.Data {
+	init(podcast: Podcast, episode: Episode) {
+		image = podcast.albumArt?.url
+		title = podcast.title
+		subtitle = podcast.user.profile.profileFullName
+		fileIsDownloaded = (episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
 	}
 }

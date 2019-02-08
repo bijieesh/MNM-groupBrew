@@ -58,7 +58,7 @@ class AppFileLoader: NSObject {
     }
 
     func localFileUrl(for url: URL) -> URL? {
-        guard let localUrl = localUrl(from: url) else {
+		guard let localUrl = localUrl(from: url) else {
             return nil
         }
 

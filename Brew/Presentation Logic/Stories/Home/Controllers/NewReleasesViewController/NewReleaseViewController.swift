@@ -11,14 +11,18 @@ import MGSwipeTableCell
 import Reusable
 
 class NewReleaseViewController: UIViewController {
-	typealias PodcastAction = (_ podcastType: PodcastType, _ podcastActionType: PodcastActionType, _ index: Int) -> Void
+	typealias PodcastAction = (_ controllerType: ControllerType, _ podcastType: DataType, _ actionType: ActionType, _ index: Int) -> Void
 	
-	enum PodcastType {
+	enum ControllerType {
+		case new, saved
+	}
+	
+	enum DataType {
 		case new, old
 	}
 	
-	enum PodcastActionType {
-		case skip, load
+	enum ActionType {
+		case leftAction, rightAction, select
 	}
 	
 	//MARK: IBOutlets
@@ -42,15 +46,16 @@ class NewReleaseViewController: UIViewController {
 	//MARK: Properties
 	private var defaultCellHeight: CGFloat = 128
 	
-	var newReleaseData: [Podcast] = [] {
+	var newReleaseData: [ReleaseTableViewCell.Data] = [] {
 		didSet { handleNewReleaseData() }
 	}
 	
-	var oldReleaseData: [Podcast] = [] {
+	var oldReleaseData: [ReleaseTableViewCell.Data] = [] {
 		didSet { handleOldReleaseData() }
 	}
 	
-	var onPopcastPressed: PodcastAction?
+	var controllerType: ControllerType!
+	var onPodcastPressed: PodcastAction?
 }
 
 //MARK: - @IBAction
@@ -64,7 +69,7 @@ private extension NewReleaseViewController {
 //MARK: - TableView Helpers
 private extension NewReleaseViewController {
 	func handleNewReleaseData() {
-		showMoreView.isHidden = false
+		showMoreView.isHidden = newReleaseData.count < 4
 		topReleaseTableView.reloadData()
 	}
 	
@@ -91,9 +96,11 @@ private extension NewReleaseViewController {
 	}
 	
 	func fillRelease(_ cell: ReleaseTableViewCell, on tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-		let cellData = createData(for: indexPath)
+		let cellData = newReleaseData[indexPath.row]
 		
 		cell.fill(data: cellData)
+		
+		cell.onSavePressed = { }
 		
 		cell.bottomView.isHidden = true
 		
@@ -102,37 +109,44 @@ private extension NewReleaseViewController {
 		return cell
 	}
 	
-	func createData(for indexPath: IndexPath) -> ReleaseTableViewCell.Data {
-		let podcastData = newReleaseData[indexPath.row]
-		
-		return ReleaseTableViewCell.Data(image: podcastData.albumArt?.url,
-										 title: podcastData.title,
-										 author: podcastData.user.profile.profileFullName)
-	}
-	
 	func configureSwipe(for cell: ReleaseTableViewCell) {
-		let rightButton = MGSwipeButton(title: "Save      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
-		let leftButton = MGSwipeButton(title: "Skip      ", backgroundColor: #colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 0.102151113))
-		
-		rightButton.setTitleColor(#colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 1), for: .normal)
-		leftButton.setTitleColor(#colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 1), for: .normal)
-		
-		cell.delegate = self
-		
+		let rightButton = MGSwipeButton(title: "", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
 		cell.rightButtons = [rightButton]
-		cell.leftButtons = [leftButton]
-		
-		cell.leftSwipeSettings.transition = .clipCenter
-		cell.leftExpansion.expansionColor = #colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 0.1012949486)
-		cell.leftExpansion.buttonIndex = 0
-		cell.leftExpansion.fillOnTrigger = true
-		cell.leftExpansion.threshold = 2
-		
 		cell.rightSwipeSettings.transition = .clipCenter
 		cell.rightExpansion.expansionColor = #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.1012949486)
 		cell.rightExpansion.buttonIndex = 0
 		cell.rightExpansion.fillOnTrigger = true
 		cell.rightExpansion.threshold = 2
+		
+		cell.delegate = self
+		
+		if controllerType == .new {
+			let leftButton = MGSwipeButton(title: "Skip      ", backgroundColor: #colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 0.102151113))
+			leftButton.setTitleColor(#colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 1), for: .normal)
+			cell.leftButtons = [leftButton]
+			cell.leftSwipeSettings.transition = .clipCenter
+			cell.leftExpansion.expansionColor = #colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 0.1012949486)
+			cell.leftExpansion.buttonIndex = 0
+			cell.leftExpansion.fillOnTrigger = true
+			cell.leftExpansion.threshold = 2
+			
+			let rightButton = MGSwipeButton(title: "Save      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
+			rightButton.setTitleColor(#colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 1), for: .normal)
+			cell.rightButtons = [rightButton]
+			cell.rightSwipeSettings.transition = .clipCenter
+			cell.rightExpansion.expansionColor = #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.1012949486)
+			cell.rightExpansion.buttonIndex = 0
+			cell.rightExpansion.fillOnTrigger = true
+			cell.rightExpansion.threshold = 2
+		} else {
+			let rightButton = MGSwipeButton(title: "Delete      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
+			rightButton.setTitleColor(#colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 1), for: .normal)
+			cell.rightButtons = [rightButton]
+			cell.rightSwipeSettings.transition = .clipCenter
+			cell.rightExpansion.expansionColor = #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.1012949486)
+			cell.rightExpansion.buttonIndex = 0
+			cell.rightExpansion.fillOnTrigger = true
+			cell.rightExpansion.threshold = 2		}
 	}
 }
 
@@ -150,7 +164,9 @@ extension NewReleaseViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension NewReleaseViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
+		let type: DataType = tableView == topReleaseTableView ? .new : .old
+
+		onPodcastPressed?(controllerType, type, .select, indexPath.row)
 	}
 }
 
@@ -161,27 +177,46 @@ extension NewReleaseViewController: MGSwipeTableCellDelegate {
 		let bottomIndexPath = bottomReleaseTableView.indexPath(for: cell)
 		
 		if let topIndexPath = topIndexPath {
-			direction == .leftToRight
-				? onPopcastPressed?(.new, .skip, topIndexPath.row)
-				: onPopcastPressed?(.new, .load, topIndexPath.row)
-			
-			topReleaseTableView.performBatchUpdates({
-				newReleaseData.remove(at: topIndexPath.row)
-				topReleaseTableView.deleteRows(at: [topIndexPath], with: .left)
-			})
+			if direction == .leftToRight {
+				onPodcastPressed?(controllerType, .new, .leftAction, topIndexPath.row)
+				
+				topReleaseTableView.performBatchUpdates({
+					newReleaseData.remove(at: topIndexPath.row)
+					topReleaseTableView.deleteRows(at: [topIndexPath], with: .top)
+				})
+			} else {
+				if controllerType == .saved {
+					topReleaseTableView.performBatchUpdates({
+						newReleaseData.remove(at: topIndexPath.row)
+						topReleaseTableView.deleteRows(at: [topIndexPath], with: .top)
+					})
+				}
+				
+				onPodcastPressed?(controllerType, .new, .rightAction, topIndexPath.row)
+			}
 		}
 		
 		if let bottomIndexPath = bottomIndexPath {
-			direction == .leftToRight
-				? onPopcastPressed?(.old, .skip, bottomIndexPath.row)
-				: onPopcastPressed?(.old, .load, bottomIndexPath.row)
-
-			bottomReleaseTableView.performBatchUpdates({
-				oldReleaseData.remove(at: bottomIndexPath.row)
-				bottomReleaseTableView.deleteRows(at: [bottomIndexPath], with: .top)
-			})
+			if direction == .leftToRight {
+				onPodcastPressed?(controllerType, .old, .leftAction, bottomIndexPath.row)
+				
+				bottomReleaseTableView.performBatchUpdates({
+					oldReleaseData.remove(at: bottomIndexPath.row)
+					bottomReleaseTableView.deleteRows(at: [bottomIndexPath], with: .top)
+				})
+			} else {
+				if controllerType == .saved {
+					bottomReleaseTableView.performBatchUpdates({
+						oldReleaseData.remove(at: bottomIndexPath.row)
+						bottomReleaseTableView.deleteRows(at: [bottomIndexPath], with: .top)
+					})
+				}
+				
+				onPodcastPressed?(controllerType, .old, .rightAction, bottomIndexPath.row)
+			}
 		}
 
 		return true
 	}
 }
+
