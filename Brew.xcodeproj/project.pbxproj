@@ -112,6 +112,8 @@
 		8596D383220DA5D500362DEC /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596D382220DA5D500362DEC /* SearchCoordinator.swift */; };
 		8596D386220DA6B100362DEC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596D384220DA6B100362DEC /* SearchViewController.swift */; };
 		8596D387220DA6B100362DEC /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8596D385220DA6B100362DEC /* SearchViewController.xib */; };
+		8596D38B220DB2BE00362DEC /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596D389220DB2BE00362DEC /* CategoryCollectionViewCell.swift */; };
+		8596D38C220DB2BE00362DEC /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8596D38A220DB2BE00362DEC /* CategoryCollectionViewCell.xib */; };
 		85CA8F6A2209EC6C007557D9 /* UIView + Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */; };
 		85CA8F6E220AE487007557D9 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F6D220AE487007557D9 /* BaseButton.swift */; };
 		85CA8F72220AE4C7007557D9 /* PodcastButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F70220AE4C7007557D9 /* PodcastButton.swift */; };
@@ -231,6 +233,8 @@
 		8596D382220DA5D500362DEC /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		8596D384220DA6B100362DEC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8596D385220DA6B100362DEC /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		8596D389220DB2BE00362DEC /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		8596D38A220DB2BE00362DEC /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Inspectable.swift"; sourceTree = "<group>"; };
 		85CA8F6D220AE487007557D9 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		85CA8F70220AE4C7007557D9 /* PodcastButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastButton.swift; sourceTree = "<group>"; };
@@ -829,6 +833,7 @@
 		5A68C3D9220C853E0064A991 /* UICollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				8596D388220DB26E00362DEC /* CategoryCollectionViewCell */,
 				5A68C3DA220C85510064A991 /* ImageCollectionViewCell */,
 			);
 			path = UICollectionViewCell;
@@ -894,6 +899,15 @@
 				8596D385220DA6B100362DEC /* SearchViewController.xib */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8596D388220DB26E00362DEC /* CategoryCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8596D389220DB2BE00362DEC /* CategoryCollectionViewCell.swift */,
+				8596D38A220DB2BE00362DEC /* CategoryCollectionViewCell.xib */,
+			);
+			path = CategoryCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		85CA8F6B220AE3B4007557D9 /* CustomButtons */ = {
@@ -1028,6 +1042,7 @@
 				85EAABD72209D25800436458 /* SharpSansNo1-Semibold.ttf in Resources */,
 				5A68C3C5220C6E6C0064A991 /* HomeContainerViewController.xib in Resources */,
 				3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				8596D38C220DB2BE00362DEC /* CategoryCollectionViewCell.xib in Resources */,
 				5A68C3DF220C85740064A991 /* ImageCollectionViewCell.xib in Resources */,
 				3D20028F21FB5DEA00E38B99 /* ProfileViewController.xib in Resources */,
 				3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */,
@@ -1124,6 +1139,7 @@
 				3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */,
 				5A68C3C7220C78240064A991 /* UIView + Controller.swift in Sources */,
 				3D2002AE21FDB1C800E38B99 /* File.swift in Sources */,
+				8596D38B220DB2BE00362DEC /* CategoryCollectionViewCell.swift in Sources */,
 				858EECD1220B570E00C49128 /* UITextField.swift in Sources */,
 				3D05F02021F6020900174A91 /* AppAlert.swift in Sources */,
 				3DCBBA6921F7D08C009BCD31 /* UIColor.swift in Sources */,
