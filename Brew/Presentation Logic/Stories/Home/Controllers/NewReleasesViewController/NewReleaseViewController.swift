@@ -96,8 +96,8 @@ private extension NewReleaseViewController {
 	}
 	
 	func configureSwipe(for cell: ReleaseTableViewCell) {
-		let rightButton = MGSwipeButton(title: "Save", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
-		let leftButton = MGSwipeButton(title: "Skip", backgroundColor: #colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 0.102151113))
+		let rightButton = MGSwipeButton(title: "Save      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
+		let leftButton = MGSwipeButton(title: "Skip      ", backgroundColor: #colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 0.102151113))
 		
 		rightButton.setTitleColor(#colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 1), for: .normal)
 		leftButton.setTitleColor(#colorLiteral(red: 1, green: 0.3490196078, blue: 0.3490196078, alpha: 1), for: .normal)
