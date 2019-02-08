@@ -69,6 +69,10 @@ class PlayerViewController: AppViewController {
     var onPlayListTapped: (() -> Void)?
 
     var data: Data {
+        willSet {
+            invalidateObservation()
+        }
+
         didSet {
             updateFlow()
         }
@@ -142,6 +146,10 @@ class PlayerViewController: AppViewController {
         if autoplay {
             data.audioPlayer.play()
         }
+
+        if view.window != nil {
+            setupObservaton()
+        }
     }
 
     private func setupObservaton() {
@@ -184,6 +192,7 @@ class PlayerViewController: AppViewController {
 
         progressView?.progress = CGFloat(currentTime) / CGFloat(totalTime)
         currentTimeLabel?.text = currentSongTime.timeString
+        songFullTimeLabel?.text = TimeWatch(totalSeconds: totalTime).timeString
     }
 
     private func play() {

@@ -23,6 +23,11 @@
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
+		<key>NFDownloadButton.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
 		<key>Pods-Brew.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,7 +59,7 @@
 		<key>STRatingControl.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>10</integer>
 		</dict>
 		<key>TPKeyboardAvoiding.xcscheme</key>
 		<dict>
