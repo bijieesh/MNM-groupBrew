@@ -300,6 +300,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="sZR-Oz-hnU" firstAttribute="bottom" secondItem="Vc5-lO-tTg" secondAttribute="bottom" constant="30.5" id="1R2-Ab-xOe"/>
                         <constraint firstItem="anV-ue-f80" firstAttribute="centerX" secondItem="MzE-nW-Dnt" secondAttribute="centerX" id="8cd-gj-Vkd"/>
                         <constraint firstItem="Vc5-lO-tTg" firstAttribute="leading" secondItem="MzE-nW-Dnt" secondAttribute="leading" constant="20" id="AuI-aq-ne0"/>
                         <constraint firstItem="b24-BW-OZi" firstAttribute="leading" secondItem="MzE-nW-Dnt" secondAttribute="leading" constant="10" id="C9b-Xw-M2i"/>
@@ -307,8 +308,8 @@
                         <constraint firstItem="5jg-gU-6Vl" firstAttribute="top" secondItem="bjt-mr-UCU" secondAttribute="bottom" constant="10" id="LfD-OP-2NI"/>
                         <constraint firstItem="bjt-mr-UCU" firstAttribute="top" secondItem="ZEU-r2-xeq" secondAttribute="bottom" constant="10" id="Ndg-Xq-i0G"/>
                         <constraint firstItem="b24-BW-OZi" firstAttribute="centerX" secondItem="MzE-nW-Dnt" secondAttribute="centerX" id="P57-Ja-Dcj"/>
-                        <constraint firstItem="Vc5-lO-tTg" firstAttribute="top" secondItem="yCB-wo-sWT" secondAttribute="bottom" constant="50" id="RMc-01-Jko"/>
                         <constraint firstItem="ZEU-r2-xeq" firstAttribute="top" secondItem="b24-BW-OZi" secondAttribute="bottom" constant="10" id="Ted-jW-WCa"/>
+                        <constraint firstItem="Vc5-lO-tTg" firstAttribute="top" secondItem="yCB-wo-sWT" secondAttribute="bottom" constant="50" id="Tob-tk-oeM"/>
                         <constraint firstItem="yCB-wo-sWT" firstAttribute="top" secondItem="TD6-PF-wh0" secondAttribute="bottom" constant="30" id="b3e-v9-5cF"/>
                         <constraint firstItem="b24-BW-OZi" firstAttribute="top" secondItem="anV-ue-f80" secondAttribute="bottom" constant="29" id="gPA-JQ-1yf"/>
                         <constraint firstItem="anV-ue-f80" firstAttribute="top" secondItem="MzE-nW-Dnt" secondAttribute="top" constant="64" id="iuA-0b-Ep1"/>
@@ -345,10 +346,10 @@
         </view>
     </objects>
     <resources>
-        <image name="blur_image" width="180" height="180"/>
+        <image name="blur_image" width="360" height="360"/>
         <image name="circle" width="8" height="8"/>
         <image name="filled_circle" width="8" height="8"/>
-        <image name="like" width="12" height="11"/>
-        <image name="music_sound" width="12" height="12"/>
+        <image name="like" width="24" height="22"/>
+        <image name="music_sound" width="24" height="24"/>
     </resources>
 </document>

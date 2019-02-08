@@ -2,8 +2,8 @@
 //  UIView + Gradient.swift
 //  
 //
-//  Created by Admin on 1/8/19.
-//  Copyright © 2019 admin. All rights reserved.
+//  Created by Vasyl Khmil on 1/8/19.
+//  Copyright © 2019 Vasyl Khmil. All rights reserved.
 //
 
 import UIKit

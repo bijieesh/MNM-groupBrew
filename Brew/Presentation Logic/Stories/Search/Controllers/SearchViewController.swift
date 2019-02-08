@@ -2,7 +2,7 @@
 //  SearchViewController.swift
 //  Brew
 //
-//  Created by Admin on 2/8/19.
+//  Created by Vasyl Khmil on 2/8/19.
 //  Copyright © 2019 NerdzLab. All rights reserved.
 //
 
