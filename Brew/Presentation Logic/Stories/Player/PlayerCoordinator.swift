@@ -15,14 +15,14 @@ class PlayerCoordinator {
     private var activeData: ActiveData?
 
     @discardableResult
-    func playEpisode(at index: Int, from podcast: Podcast) -> ActiveData? {
+    func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true) -> ActiveData? {
         invalidateCurrentData()
 
         guard let episodes = podcast.episodes, episodes.count > index else {
             return nil
         }
 
-        guard let data = playerData(for: episodes[index], in: podcast) else {
+        guard let data = playerData(for: episodes[index], in: podcast, autoContinue: autoContinue) else {
             return nil
         }
 
@@ -63,7 +63,7 @@ class PlayerCoordinator {
             return
         }
 
-        guard let data = playerData(for: episodes[index], in: activeData.podcast) else {
+        guard let data = playerData(for: episodes[index], in: activeData.podcast, autoContinue: true) else {
             invalidateCurrentData()
             return
         }
@@ -76,13 +76,17 @@ class PlayerCoordinator {
         self.activeData?.episodeIndex = index
     }
 
-    private func playerData(for episode: Episode, in podcast: Podcast) -> PlayerViewController.Data? {
+    private func playerData(for episode: Episode, in podcast: Podcast, autoContinue: Bool) -> PlayerViewController.Data? {
         guard let audioUrl = episode.file?.url else {
             return nil
         }
 
         let player = AVPlayer(url: audioUrl)
-        addPlayerEndObservation(to: player)
+
+        if autoContinue {
+            addPlayerEndObservation(to: player)
+        }
+
         return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, audioPlayer: player)
     }
 

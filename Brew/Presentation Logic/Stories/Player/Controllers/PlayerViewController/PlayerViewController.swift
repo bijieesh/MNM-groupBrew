@@ -285,7 +285,7 @@ private struct TimeWatch {
     private func timeText(from number: Int) -> String {
         return number < 10 ? "0\(number)" : "\(number)"
     }
-}
+} 
 
 private extension UIImage {
     static let mutedImage = UIImage(named: "muteIcon")
