@@ -61,7 +61,6 @@
 		3D2002AE21FDB1C800E38B99 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AD21FDB1C800E38B99 /* File.swift */; };
 		3D2002B021FDF5E500E38B99 /* PlayerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */; };
 		3D2002C22200B08A00E38B99 /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002C12200B08A00E38B99 /* FeatureManager.swift */; };
-		3D798AEB220DA07000B3DF26 /* PlayerBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798AEA220DA07000B3DF26 /* PlayerBaseViewController.swift */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DA16B6822063CF900487323 /* LoadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B6722063CF900487323 /* LoadedFile.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
@@ -177,7 +176,6 @@
 		3D2002AD21FDB1C800E38B99 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinator.swift; sourceTree = "<group>"; };
 		3D2002C12200B08A00E38B99 /* FeatureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureManager.swift; sourceTree = "<group>"; };
-		3D798AEA220DA07000B3DF26 /* PlayerBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBaseViewController.swift; sourceTree = "<group>"; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DA16B6722063CF900487323 /* LoadedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedFile.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -733,7 +731,6 @@
 			isa = PBXGroup;
 			children = (
 				3DCBBA7E21F90063009BCD31 /* PlayerViewController.swift */,
-				3D798AEA220DA07000B3DF26 /* PlayerBaseViewController.swift */,
 				3DCBBA7D21F90063009BCD31 /* PlayerViewControllerFullScreen.xib */,
 				3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */,
 			);
@@ -1102,7 +1099,6 @@
 				3DCBBA6921F7D08C009BCD31 /* UIColor.swift in Sources */,
 				3DB447E821F7CBBB00F93876 /* PriceViewController.swift in Sources */,
 				3D2002A321FBBA4100E38B99 /* PodcastEpisodeCell.swift in Sources */,
-				3D798AEB220DA07000B3DF26 /* PlayerBaseViewController.swift in Sources */,
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
 				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
 				3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */,

@@ -12,8 +12,11 @@ class MainFlowCoordinator: Coordinator {
 
     var onLogout: (() -> Void)?
 
-    private let playerCoordinator = PlayerCoordinator()
     private var activeMenuCoordinator: MenuCoordinator?
+
+    private lazy var playerCoordinator: PlayerCoordinator = {
+        return PlayerCoordinator(playerContainer: self)
+    }()
 
     override func start() {
         super.start()
@@ -40,16 +43,7 @@ class MainFlowCoordinator: Coordinator {
     }
 
     private func playPodcast(_ podcast: Podcast, from index: Int) {
-        guard let data = playerCoordinator.playEpisode(at: index, from: podcast) else {
-            return
-        }
-
-        data.controller.onClose = {
-            data.controller.dismiss(animated: true)
-        }
-
-        activeMenuCoordinator?.addMiniPlayer(data.miniController)
-        contentController.topController.present(data.controller, animated: true)
+        playerCoordinator.playEpisode(at: index, from: podcast)
     }
 
     private func setupedHomeController() -> UIViewController? {
@@ -76,5 +70,20 @@ class MainFlowCoordinator: Coordinator {
 
         coordinator.start()
         return coordinator.contentController
+    }
+}
+
+extension MainFlowCoordinator: PlayerContainer {
+
+    func presentMiniPlayer(_ player: AppViewController) {
+        activeMenuCoordinator?.addMiniPlayer(player)
+    }
+
+    func presentFullScreenPlayer(_ player: AppViewController) {
+        player.onClose = { [weak player] in
+            player?.dismiss(animated: true)
+        }
+
+        contentController.topController.present(player, animated: true)
     }
 }

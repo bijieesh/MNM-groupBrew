@@ -32,31 +32,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WN8-In-ccj">
                     <rect key="frame" x="0.0" y="0.0" width="420" height="816"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mpc-9g-tNR">
-                            <rect key="frame" x="361" y="33" width="39" height="39"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="39" id="Ab5-bz-zn0"/>
-                                <constraint firstAttribute="width" secondItem="mpc-9g-tNR" secondAttribute="height" multiplier="1:1" id="kow-3b-27P"/>
-                            </constraints>
-                            <state key="normal" image="playListIcon"/>
-                            <connections>
-                                <action selector="playlistTapped" destination="-1" eventType="touchUpInside" id="jUw-9j-CyC"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-6S-1Rh">
-                            <rect key="frame" x="0.0" y="72" width="420" height="507"/>
+                            <rect key="frame" x="0.0" y="0.0" width="420" height="579"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HGl-O2-NK5">
-                                    <rect key="frame" x="0.0" y="266.5" width="420" height="240.5"/>
+                                    <rect key="frame" x="0.0" y="302.5" width="420" height="276.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="sqwsqwwsa" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSY-z6-haT">
-                                            <rect key="frame" x="20" y="106" width="380" height="29"/>
+                                            <rect key="frame" x="20" y="124" width="380" height="29"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="qwsqws" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kO-9i-ZUi">
-                                            <rect key="frame" x="20" y="145" width="380" height="16.5"/>
+                                            <rect key="frame" x="20" y="163" width="380" height="16.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -76,7 +65,7 @@
                                     </constraints>
                                 </view>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="350" image="podcast_logo_big" translatesAutoresizingMaskIntoConstraints="NO" id="ADu-A9-egQ">
-                                    <rect key="frame" x="97" y="40.5" width="226" height="226"/>
+                                    <rect key="frame" x="97" y="76.5" width="226" height="226"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="ADu-A9-egQ" secondAttribute="height" multiplier="1:1" id="XeN-g4-DDc"/>
                                         <constraint firstAttribute="width" constant="226" id="fv5-PQ-5HU"/>
@@ -226,13 +215,11 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="yZf-6S-1Rh" firstAttribute="top" secondItem="mpc-9g-tNR" secondAttribute="bottom" id="2su-wl-vsK"/>
                         <constraint firstItem="Klw-Pt-fDA" firstAttribute="top" secondItem="M7S-VO-NAf" secondAttribute="bottom" constant="52" id="3o6-Yk-JQ1"/>
                         <constraint firstItem="M7S-VO-NAf" firstAttribute="leading" secondItem="WN8-In-ccj" secondAttribute="leading" constant="46" id="ADY-ON-G3h"/>
                         <constraint firstItem="HOS-Yy-aFn" firstAttribute="centerY" secondItem="VtQ-CS-xkz" secondAttribute="centerY" id="DdJ-s1-KJq"/>
                         <constraint firstItem="V7F-d3-gbd" firstAttribute="centerY" secondItem="VtQ-CS-xkz" secondAttribute="centerY" id="GqP-Jq-jD6"/>
                         <constraint firstItem="V7F-d3-gbd" firstAttribute="width" secondItem="V7F-d3-gbd" secondAttribute="height" multiplier="1:1" id="KgD-rq-23f"/>
-                        <constraint firstAttribute="trailing" secondItem="mpc-9g-tNR" secondAttribute="trailing" constant="20" id="OrS-SL-7wi"/>
                         <constraint firstItem="BNS-aM-oJ8" firstAttribute="top" secondItem="M7S-VO-NAf" secondAttribute="bottom" constant="9" id="Pbe-XZ-rHV"/>
                         <constraint firstAttribute="trailing" secondItem="M7S-VO-NAf" secondAttribute="trailing" constant="46" id="Uvu-z1-fTB"/>
                         <constraint firstAttribute="trailing" secondItem="BNS-aM-oJ8" secondAttribute="trailing" constant="33" id="ayy-MP-PaV"/>
@@ -243,11 +230,11 @@
                         <constraint firstItem="VtQ-CS-xkz" firstAttribute="leading" secondItem="HOS-Yy-aFn" secondAttribute="trailing" id="fT3-mM-2Tg"/>
                         <constraint firstItem="UcS-4o-TDt" firstAttribute="leading" secondItem="WN8-In-ccj" secondAttribute="leading" constant="21" id="fmo-CZ-1aG"/>
                         <constraint firstItem="Klw-Pt-fDA" firstAttribute="centerX" secondItem="WN8-In-ccj" secondAttribute="centerX" id="gP3-92-O34"/>
+                        <constraint firstItem="yZf-6S-1Rh" firstAttribute="top" secondItem="WN8-In-ccj" secondAttribute="top" id="iMj-gX-hIs"/>
                         <constraint firstItem="Nr4-TS-sdt" firstAttribute="top" secondItem="Klw-Pt-fDA" secondAttribute="bottom" constant="20" id="igD-md-E95"/>
                         <constraint firstItem="yZf-6S-1Rh" firstAttribute="leading" secondItem="WN8-In-ccj" secondAttribute="leading" id="meS-ip-4rL"/>
                         <constraint firstItem="M7S-VO-NAf" firstAttribute="top" secondItem="yZf-6S-1Rh" secondAttribute="bottom" constant="40" id="mvi-2a-VnV"/>
                         <constraint firstAttribute="bottom" secondItem="Nr4-TS-sdt" secondAttribute="bottom" constant="29" id="pjS-M0-o0V"/>
-                        <constraint firstItem="mpc-9g-tNR" firstAttribute="top" secondItem="WN8-In-ccj" secondAttribute="top" constant="33" id="tXw-p3-6ic"/>
                         <constraint firstItem="VtQ-CS-xkz" firstAttribute="centerX" secondItem="WN8-In-ccj" secondAttribute="centerX" id="wIe-0q-sVy"/>
                         <constraint firstItem="6L7-Q2-Cur" firstAttribute="centerY" secondItem="Nr4-TS-sdt" secondAttribute="centerY" id="wuo-np-pMP"/>
                         <constraint firstItem="6L7-Q2-Cur" firstAttribute="leading" secondItem="WN8-In-ccj" secondAttribute="leading" constant="43" id="yPX-he-aeS"/>
@@ -260,7 +247,7 @@
                         <constraint firstAttribute="width" constant="44" id="lxZ-dn-yCS"/>
                         <constraint firstAttribute="height" constant="44" id="oUt-Xf-57Q"/>
                     </constraints>
-                    <state key="normal" image="back"/>
+                    <state key="normal" image="close"/>
                     <connections>
                         <action selector="backPressed" destination="-1" eventType="touchUpInside" id="LaA-up-fxz"/>
                     </connections>
@@ -281,17 +268,16 @@
         </view>
     </objects>
     <resources>
-        <image name="applause" width="48" height="48"/>
-        <image name="back" width="24" height="32"/>
-        <image name="circles" width="24" height="24"/>
-        <image name="forward_30" width="66" height="74"/>
-        <image name="muteIcon" width="48" height="48"/>
-        <image name="pause" width="48" height="48"/>
-        <image name="playListIcon" width="50" height="48"/>
-        <image name="player-comment" width="24" height="24"/>
+        <image name="applause" width="24" height="24"/>
+        <image name="circles" width="15" height="15"/>
+        <image name="close" width="16" height="12"/>
+        <image name="forward_30" width="33" height="37"/>
+        <image name="muteIcon" width="30" height="30"/>
+        <image name="pause" width="32" height="32"/>
+        <image name="player-comment" width="16" height="16"/>
         <image name="podcast_logo_big" width="750" height="456"/>
-        <image name="rate_minus" width="24" height="24"/>
-        <image name="rate_plus" width="24" height="24"/>
-        <image name="replay_30" width="66" height="74"/>
+        <image name="rate_minus" width="15" height="15"/>
+        <image name="rate_plus" width="15" height="15"/>
+        <image name="replay_30" width="33" height="37"/>
     </resources>
 </document>

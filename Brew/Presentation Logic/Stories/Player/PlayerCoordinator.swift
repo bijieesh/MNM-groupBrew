@@ -9,53 +9,104 @@
 import UIKit
 import AVFoundation
 
-class PlayerCoordinator {
-    typealias ActiveData = (controller: PlayerViewController, miniController: PlayerViewController, podcast: Podcast, episodeIndex: Int, player: AVPlayer)
+protocol PlayerContainer {
+    func presentMiniPlayer(_ player: AppViewController)
+    func presentFullScreenPlayer(_ player: AppViewController)
+}
 
-    private var activeData: ActiveData?
+class PlayerCoordinator: NSObject {
+
+    private(set) var miniPlayerController: PlayerViewController?
+    private(set) var fullScreenPlayerController: PlayerViewController?
+    private(set) var activePlayer: AVPlayer?
+
+    private var autoContinueData: (podcast: Podcast, playingIndex: Int)?
+
+    private let playerContainer: PlayerContainer
+
+    init(playerContainer: PlayerContainer) {
+        self.playerContainer = playerContainer
+        super.init()
+        prepareAudioSession()
+    }
 
     @discardableResult
-    func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true) -> ActiveData? {
+    func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true) -> Bool {
         invalidateCurrentData()
 
         guard let episodes = podcast.episodes, episodes.count > index else {
-            return nil
+            return false
         }
 
         guard let data = playerData(for: episodes[index], in: podcast, autoContinue: autoContinue) else {
-            return nil
+            return false
         }
 
-        prepareAudioSession()
+        updatePlayerControllers(with: data)
 
-        let controller = PlayerViewController(data: data, type: .fullScreen, autoplay: true)
-        let miniController = PlayerViewController(data: data, type: .mini, autoplay: false)
+        if autoContinue {
+            autoContinueData = (podcast, index)
+        }
+        else {
+            autoContinueData = nil
+        }
 
-        activeData = (controller, miniController, podcast, index, data.audioPlayer)
+        presentPlayerControllerIfNeeded()
 
-        return activeData
+        return true
     }
 
-    private func playNextEpisode() {
-        guard let activeData = activeData else {
+    private func updatePlayerControllers(with data: PlayerViewController.Data) {
+        if let miniPlayerController = miniPlayerController {
+            miniPlayerController.data = data
+        }
+        else {
+            miniPlayerController = PlayerViewController(data: data, type: .mini, autoplay: false)
+            miniPlayerController?.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(presentFullScreenControllerIfNeeded)))
+        }
+
+        if let fullScreenPlayerController = fullScreenPlayerController {
+            fullScreenPlayerController.data = data
+        }
+        else {
+            fullScreenPlayerController = PlayerViewController(data: data, type: .fullScreen, autoplay: true)
+        }
+    }
+
+    private func presentPlayerControllerIfNeeded() {
+        if let miniPlayerController = miniPlayerController, miniPlayerController.view.window == nil {
+            playerContainer.presentMiniPlayer(miniPlayerController)
+        }
+
+        presentFullScreenControllerIfNeeded()
+    }
+
+    @objc private func presentFullScreenControllerIfNeeded() {
+        if let fullScreenPlayerController = fullScreenPlayerController, fullScreenPlayerController.view.window == nil {
+            playerContainer.presentFullScreenPlayer(fullScreenPlayerController)
+        }
+    }
+
+    private func playNextEpisodeIfNeeded() {
+        guard let activeData = autoContinueData else {
             return
         }
 
-        let newIndex = activeData.episodeIndex + 1
+        let newIndex = activeData.playingIndex + 1
         playEpisode(at: newIndex)
     }
 
     private func playPreviousEpisode() {
-        guard let activeData = activeData else {
+        guard let activeData = autoContinueData else {
             return
         }
 
-        let newIndex = max(activeData.episodeIndex - 1, 0)
+        let newIndex = max(activeData.playingIndex - 1, 0)
         playEpisode(at: newIndex)
     }
 
     private func playEpisode(at index: Int) {
-        guard let activeData = activeData else {
+        guard let activeData = autoContinueData else {
             return
         }
 
@@ -70,10 +121,11 @@ class PlayerCoordinator {
 
         invalidateCurrentPlayer()
 
-        self.activeData?.controller.data = data
-        self.activeData?.miniController.data = data
-        self.activeData?.player = data.audioPlayer
-        self.activeData?.episodeIndex = index
+        fullScreenPlayerController?.data = data
+        miniPlayerController?.data = data
+        activePlayer = data.audioPlayer
+
+        autoContinueData?.playingIndex = index
     }
 
     private func playerData(for episode: Episode, in podcast: Podcast, autoContinue: Bool) -> PlayerViewController.Data? {
@@ -87,7 +139,7 @@ class PlayerCoordinator {
             addPlayerEndObservation(to: player)
         }
 
-        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: podcast.title, audioPlayer: player)
+        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile.profileFullName, audioPlayer: player)
     }
 
     private func addPlayerEndObservation(to player: AVPlayer) {
@@ -101,7 +153,7 @@ class PlayerCoordinator {
 
     @objc private func playerDidFinishPlaying(_ notification: NSNotification) {
         invalidateCurrentPlayer()
-        playNextEpisode()
+        playNextEpisodeIfNeeded()
     }
 
     private func prepareAudioSession() {
@@ -112,11 +164,11 @@ class PlayerCoordinator {
 
     private func invalidateCurrentData() {
         invalidateCurrentPlayer()
-        activeData = nil
+        autoContinueData = nil
     }
 
     private func invalidateCurrentPlayer() {
-        guard let player = activeData?.player else {
+        guard let player = activePlayer else {
             return
         }
 

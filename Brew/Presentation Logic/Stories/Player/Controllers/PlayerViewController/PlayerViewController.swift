@@ -13,7 +13,7 @@ import SDWebImage
 
 private extension AVPlayer {
     var isPlaying: Bool {
-        return rate == 1
+        return rate > 0
     }
 
     var currentPosition: Int {
@@ -50,6 +50,7 @@ class PlayerViewController: AppViewController {
     struct Data {
         let imageUrl: URL?
         let title: String
+        let artist: String
         let audioPlayer: AVPlayer
     }
 
@@ -136,7 +137,7 @@ class PlayerViewController: AppViewController {
         }
 
         songNameLabel?.text = data.title
-        artistNameLabel?.text = data.title
+        artistNameLabel?.text = data.artist
 
         if autoplay {
             data.audioPlayer.play()
@@ -285,7 +286,7 @@ private struct TimeWatch {
     private func timeText(from number: Int) -> String {
         return number < 10 ? "0\(number)" : "\(number)"
     }
-} 
+}
 
 private extension UIImage {
     static let mutedImage = UIImage(named: "muteIcon")

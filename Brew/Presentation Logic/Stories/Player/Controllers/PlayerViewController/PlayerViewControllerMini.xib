@@ -56,13 +56,13 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peace Is The Mission" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEx-zD-MPK">
-                            <rect key="frame" x="78" y="11" width="142" height="18"/>
+                            <rect key="frame" x="78" y="11" width="236.5" height="18"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tim berry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dt-e8-Aas">
-                            <rect key="frame" x="78" y="35" width="51.5" height="16"/>
+                            <rect key="frame" x="78" y="35" width="228.5" height="16"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="13"/>
                             <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                             <nil key="highlightedColor"/>
@@ -97,11 +97,13 @@
                         <constraint firstItem="U4J-fQ-ktn" firstAttribute="leading" secondItem="00l-UP-hAB" secondAttribute="leading" constant="24" id="1nt-hJ-lWY"/>
                         <constraint firstItem="U4J-fQ-ktn" firstAttribute="centerY" secondItem="00l-UP-hAB" secondAttribute="centerY" id="5tZ-vq-EYS"/>
                         <constraint firstAttribute="height" constant="62" id="CqD-dd-0Cz"/>
+                        <constraint firstItem="GHd-FN-n3H" firstAttribute="leading" secondItem="nEx-zD-MPK" secondAttribute="trailing" constant="8" id="F3c-Zo-J7i"/>
                         <constraint firstItem="e2n-1X-B8v" firstAttribute="centerY" secondItem="00l-UP-hAB" secondAttribute="centerY" id="Fa8-ti-iZ9"/>
                         <constraint firstItem="7dt-e8-Aas" firstAttribute="leading" secondItem="U4J-fQ-ktn" secondAttribute="trailing" constant="15" id="NZJ-9v-cyO"/>
                         <constraint firstItem="GHd-FN-n3H" firstAttribute="centerY" secondItem="00l-UP-hAB" secondAttribute="centerY" id="PKq-2u-gyb"/>
                         <constraint firstItem="e2n-1X-B8v" firstAttribute="leading" secondItem="GHd-FN-n3H" secondAttribute="trailing" constant="25" id="Q2e-Fx-Uem"/>
                         <constraint firstItem="7dt-e8-Aas" firstAttribute="top" secondItem="nEx-zD-MPK" secondAttribute="bottom" constant="6" id="THz-c4-P2U"/>
+                        <constraint firstItem="GHd-FN-n3H" firstAttribute="leading" secondItem="7dt-e8-Aas" secondAttribute="trailing" constant="16" id="V2Y-Ug-wdE"/>
                         <constraint firstItem="nEx-zD-MPK" firstAttribute="leading" secondItem="U4J-fQ-ktn" secondAttribute="trailing" constant="15" id="c4q-4l-vHT"/>
                         <constraint firstItem="nEx-zD-MPK" firstAttribute="top" secondItem="00l-UP-hAB" secondAttribute="top" constant="11" id="kcS-Pr-6O1"/>
                         <constraint firstAttribute="trailing" secondItem="e2n-1X-B8v" secondAttribute="trailing" constant="24" id="uc3-dr-27F"/>
@@ -124,7 +126,7 @@
         </view>
     </objects>
     <resources>
-        <image name="forward_30" width="66" height="74"/>
-        <image name="playIcon" width="64" height="64"/>
+        <image name="forward_30" width="33" height="37"/>
+        <image name="playIcon" width="32" height="32"/>
     </resources>
 </document>
