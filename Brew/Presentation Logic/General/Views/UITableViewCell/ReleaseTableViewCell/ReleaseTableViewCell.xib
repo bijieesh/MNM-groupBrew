@@ -41,9 +41,9 @@
                                         <rect key="frame" x="0.0" y="0.0" width="237" height="97.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqA-H7-CKu">
-                                                <rect key="frame" x="0.0" y="0.0" width="237" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="G7C-CI-SkM"/>
+                                                    <constraint firstAttribute="height" constant="40" id="G7C-CI-SkM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,12 +61,40 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pye-oi-IKj" customClass="NFDownloadButton" customModule="NFDownloadButton">
+                                                <rect key="frame" x="207" y="0.0" width="30" height="30"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="buttonBackgroundColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="initialColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="rippleColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="downloadColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="deviceColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="style" value="iOS"/>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isDownloaded" value="NO"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="saveButtonPressed" destination="KGk-i7-Jjw" eventType="touchUpInside" id="G3V-aJ-W8E"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="97.5" id="3AX-4r-hPe"/>
-                                            <constraint firstAttribute="trailing" secondItem="JqA-H7-CKu" secondAttribute="trailing" id="HvO-kk-zgG"/>
+                                            <constraint firstItem="Pye-oi-IKj" firstAttribute="top" secondItem="DMe-ed-6Fc" secondAttribute="top" id="5ct-Ex-zqF"/>
+                                            <constraint firstAttribute="trailing" secondItem="Pye-oi-IKj" secondAttribute="trailing" id="DPg-rr-xCO"/>
                                             <constraint firstItem="Tfr-iA-c0H" firstAttribute="leading" secondItem="DMe-ed-6Fc" secondAttribute="leading" id="MLC-TT-Mtd"/>
+                                            <constraint firstItem="Pye-oi-IKj" firstAttribute="leading" secondItem="JqA-H7-CKu" secondAttribute="trailing" id="Sam-HK-fBg"/>
+                                            <constraint firstItem="JqA-H7-CKu" firstAttribute="top" secondItem="DMe-ed-6Fc" secondAttribute="top" id="Snc-tM-1rY"/>
                                             <constraint firstAttribute="trailing" secondItem="Fyp-fR-5IW" secondAttribute="trailing" id="Yw7-oc-URK"/>
                                             <constraint firstAttribute="bottom" secondItem="Tfr-iA-c0H" secondAttribute="bottom" constant="20" id="jZ3-F6-LBI"/>
                                             <constraint firstItem="JqA-H7-CKu" firstAttribute="leading" secondItem="DMe-ed-6Fc" secondAttribute="leading" id="k1a-8S-Efc"/>
@@ -134,6 +162,7 @@
                 <outlet property="bottomView" destination="GBT-vf-n8I" id="P8F-oM-2nd"/>
                 <outlet property="mainImageView" destination="TCc-bD-DMc" id="uWJ-Bp-0D9"/>
                 <outlet property="progressView" destination="spU-ia-Rel" id="5UJ-Xb-luc"/>
+                <outlet property="saveButton" destination="Pye-oi-IKj" id="Gt2-Qm-8tE"/>
                 <outlet property="titleLabel" destination="JqA-H7-CKu" id="ikg-Q9-5TN"/>
             </connections>
             <point key="canvasLocation" x="119.2" y="143.47826086956522"/>

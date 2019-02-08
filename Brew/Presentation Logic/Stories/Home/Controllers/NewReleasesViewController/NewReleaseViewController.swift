@@ -119,13 +119,6 @@ private extension NewReleaseViewController {
 		cell.rightExpansion.fillOnTrigger = true
 		cell.rightExpansion.threshold = 2
 	}
-	
-	func deleteRow<T, U: UITableView>(from data: inout[T], for tableView: U, at indexPath: IndexPath) {
-		tableView.beginUpdates()
-		data.remove(at: indexPath.row)
-		tableView.deleteRows(at: [indexPath], with: .top)
-		tableView.endUpdates()
-	}
 }
 
 //MARK: UITableViewDataSource
@@ -155,7 +148,7 @@ extension NewReleaseViewController: MGSwipeTableCellDelegate {
 		if let topIndexPath = topIndexPath {
 			topReleaseTableView.performBatchUpdates({
 				newReleaseData.remove(at: topIndexPath.row)
-				topReleaseTableView.deleteRows(at: [topIndexPath], with: .top)
+				topReleaseTableView.deleteRows(at: [topIndexPath], with: .left)
 			})
 		}
 		

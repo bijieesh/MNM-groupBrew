@@ -9,6 +9,7 @@
 import UIKit
 import Reusable
 import MGSwipeTableCell
+import NFDownloadButton
 
 final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
 	struct Data {
@@ -22,9 +23,13 @@ final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
 	@IBOutlet private var mainImageView: UIImageView!
 	@IBOutlet private var titleLabel: UILabel!
 	@IBOutlet private var authorLabel: UILabel!
-	
+	@IBOutlet private var saveButton: NFDownloadButton!
 	@IBOutlet private var progressView: UIProgressView!
 	@IBOutlet var bottomView: UIView!
+	
+	@IBAction func saveButtonPressed() {
+
+	}
 	
 	func fill(data: Data?) {
 		mainImageView.sd_setImage(with: data?.image)
