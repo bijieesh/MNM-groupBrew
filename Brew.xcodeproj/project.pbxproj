@@ -61,6 +61,7 @@
 		3D2002AE21FDB1C800E38B99 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AD21FDB1C800E38B99 /* File.swift */; };
 		3D2002B021FDF5E500E38B99 /* PlayerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */; };
 		3D2002C22200B08A00E38B99 /* FeatureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2002C12200B08A00E38B99 /* FeatureManager.swift */; };
+		3D798AED220E35CF00B3DF26 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D798AEC220E35CF00B3DF26 /* StoreKit.framework */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DA16B6822063CF900487323 /* LoadedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B6722063CF900487323 /* LoadedFile.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
@@ -185,6 +186,7 @@
 		3D2002AD21FDB1C800E38B99 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		3D2002AF21FDF5E500E38B99 /* PlayerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoordinator.swift; sourceTree = "<group>"; };
 		3D2002C12200B08A00E38B99 /* FeatureManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureManager.swift; sourceTree = "<group>"; };
+		3D798AEC220E35CF00B3DF26 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DA16B6722063CF900487323 /* LoadedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedFile.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */,
+				3D798AED220E35CF00B3DF26 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,6 +961,7 @@
 		CFCEA6CE197181213CF7B381 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D798AEC220E35CF00B3DF26 /* StoreKit.framework */,
 				7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */,
 			);
 			name = Frameworks;
@@ -999,6 +1003,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};
@@ -1350,14 +1357,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J6L4QH59CC;
+				DEVELOPMENT_TEAM = L3V2465X79;
 				INFOPLIST_FILE = Brew/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nerdzlab.com.Brew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.brew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1370,14 +1377,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J6L4QH59CC;
+				DEVELOPMENT_TEAM = L3V2465X79;
 				INFOPLIST_FILE = Brew/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nerdzlab.com.Brew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.brew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
