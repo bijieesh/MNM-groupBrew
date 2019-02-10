@@ -11,7 +11,9 @@ import Reusable
 
 final class ShowsViewController: AppViewController {
 	typealias IndexAction = (Int) -> Void
-	
+
+    @IBOutlet var backButton: UIButton!
+
 	@IBOutlet private var collectionView: UICollectionView! {
 		didSet { configureCollectionView() }
 	}

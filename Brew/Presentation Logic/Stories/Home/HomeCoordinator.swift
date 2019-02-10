@@ -12,7 +12,7 @@ class HomeCoordinator: NavigationCoordinator {
 	typealias PlayPodcastAction = (Podcast, Int) -> Void
 	
 	var onNeedPlayPodcast: PlayPodcastAction?
-	
+
 	private var newPodcasts: [Podcast] = []
 	private var oldPodcasts: [Podcast] = []
 	
@@ -174,20 +174,10 @@ private extension HomeCoordinator {
 //MARK: - Server Communication
 private extension HomeCoordinator {
 	func loadNewReleasesData(for controller: NewReleaseViewController) {
-		GetPodcastsRequest(type: .new).execute(onSuccess: { [weak self] podcasts in
-			guard let self = self else { return }
-			
-			self.newPodcasts.removeAll()
-			controller.newReleaseData = podcasts.compactMap {
-				if let episode = $0.episodes?.last {
-					self.newPodcasts.append($0)
-					
-					return ReleaseTableViewCell.Data(podcast: $0, episode: episode)
-				}
-				
-				return nil
-			}
-		})
+        GetNewReleasesRequest().execute(
+            onSuccess: { episodes in
+                controller.newReleaseData = episodes.map { ReleaseTableViewCell.Data(episode: $0) }
+        })
 	}
 	
 	func loadShowsData(for controller: ShowsViewController) {
@@ -198,19 +188,8 @@ private extension HomeCoordinator {
 	}
 	
 	func loadSavedEpisodes(for controller: NewReleaseViewController) {
-		GetSavedEpisodeRequest().execute(onSuccess: { [weak self] episodes in
-			guard let self = self else { return }
-			
-			self.newSavedEpisodes.removeAll()
-			controller.newReleaseData = episodes.compactMap {
-				if let podcast = $0.podcast {
-					self.newSavedEpisodes.append($0)
-					
-					return ReleaseTableViewCell.Data(podcast: podcast, episode: $0)
-				}
-				
-				return nil
-			}
+		GetSavedEpisodesRequest().execute(onSuccess: { episodes in
+			controller.newReleaseData = episodes.map { ReleaseTableViewCell.Data(episode: $0) }
 		})
 	}
 	
@@ -220,10 +199,10 @@ private extension HomeCoordinator {
 }
 
 private extension ReleaseTableViewCell.Data {
-	init(podcast: Podcast, episode: Episode) {
-		image = podcast.albumArt?.url
-		title = podcast.title
-		subtitle = podcast.user.profile.profileFullName
+	init(episode: Episode) {
+		image = episode.podcast?.albumArt?.url
+		title = episode.title
+		subtitle = episode.podcast?.user.profile.profileFullName ?? ""
 		fileIsDownloaded = (episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
 	}
 }

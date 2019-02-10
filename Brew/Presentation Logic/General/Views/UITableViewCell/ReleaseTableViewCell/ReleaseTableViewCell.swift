@@ -50,7 +50,7 @@ final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
 	}
 }
 
-extension ReleaseTableViewCell: FileLoaderProgressHandler {
+extension ReleaseTableViewCell: AppFileLoaderProgressHandler {
 	var progress: Float {
 		get { return Float(saveButton.downloadPercent) }
 		set { saveButton.downloadPercent = CGFloat(progress) }

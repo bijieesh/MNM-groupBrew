@@ -38,11 +38,9 @@ class PlayerCoordinator: NSObject {
             return false
         }
 
-        guard let data = playerData(for: episodes[index], in: podcast, autoContinue: autoContinue) else {
+        guard let data = playerData(for: episodes[index], in: podcast) else {
             return false
         }
-
-        updatePlayerControllers(with: data)
 
         if autoContinue {
             autoContinueData = (podcast, index)
@@ -51,6 +49,27 @@ class PlayerCoordinator: NSObject {
             autoContinueData = nil
         }
 
+        updatePlayerControllers(with: data)
+        presentPlayerControllerIfNeeded()
+
+        return true
+    }
+
+    @discardableResult
+    func playEpisode(_ episode: Episode) -> Bool {
+        invalidateCurrentData()
+
+        guard let podcast = episode.podcast else {
+            return false
+        }
+
+        guard let data = playerData(for: episode, in: podcast) else {
+            return false
+        }
+
+        autoContinueData = nil
+
+        updatePlayerControllers(with: data)
         presentPlayerControllerIfNeeded()
 
         return true
@@ -114,7 +133,7 @@ class PlayerCoordinator: NSObject {
             return
         }
 
-        guard let data = playerData(for: episodes[index], in: activeData.podcast, autoContinue: true) else {
+        guard let data = playerData(for: episodes[index], in: activeData.podcast) else {
             invalidateCurrentData()
             return
         }
@@ -128,16 +147,14 @@ class PlayerCoordinator: NSObject {
         autoContinueData?.playingIndex = index
     }
 
-    private func playerData(for episode: Episode, in podcast: Podcast, autoContinue: Bool) -> PlayerViewController.Data? {
+    private func playerData(for episode: Episode, in podcast: Podcast) -> PlayerViewController.Data? {
         guard let audioUrl = episode.file?.url else {
             return nil
         }
 
         let player = AVPlayer(url: audioUrl)
 
-        if autoContinue {
-            addPlayerEndObservation(to: player)
-        }
+        addPlayerEndObservation(to: player)
 
         return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile.profileFullName, audioPlayer: player)
     }

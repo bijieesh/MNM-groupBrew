@@ -13,7 +13,6 @@ class GetPodcastsRequest: RequestType {
     enum `Type`: String {
         case discover
         case popular
-        case new
         case editors
 		case all
     }
@@ -26,6 +25,10 @@ class GetPodcastsRequest: RequestType {
 
     init(type: Type) {
         path = "api/podcast/\(type)"
+    }
+
+    init(categoryId: Int) {
+        path = "api/podcast/category/\(categoryId)"
     }
 
     func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {

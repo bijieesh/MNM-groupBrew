@@ -11,15 +11,13 @@ import Reusable
 
 class SearchViewController: UIViewController {
 
-	typealias IndexAction = (Int) -> Void
-	
 	@IBOutlet private var collectionView: UICollectionView! {
 		didSet {
 			configureCollectionView()
 		}
 	}
 	
-	var onCategorytPressed: IndexAction?
+	var onCategorySelected: ((Category) -> Void)?
 	var data: [Category] = []
 	
 	override func viewDidLayoutSubviews() {
@@ -54,7 +52,7 @@ private extension SearchViewController {
 	}
 	
 	func configureCell(for collectionView: UICollectionView, at indexPath: IndexPath) -> UICollectionViewCell {
-		let cellData = data[indexPath.item]
+		let cellData = data[indexPath.row]
 		let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
 		
 		cell.title = cellData.name
@@ -78,6 +76,7 @@ extension SearchViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		onCategorytPressed?(indexPath.item)
+        let category = data[indexPath.row]
+		onCategorySelected?(category)
 	}
 }

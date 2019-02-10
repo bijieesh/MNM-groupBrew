@@ -12,7 +12,7 @@ struct Episode: Codable {
     let id: Int
     let title: String
     let description: String
-	let duration: Int
+	let duration: Int?
 	let podcast: Podcast?
     let file: File?
 

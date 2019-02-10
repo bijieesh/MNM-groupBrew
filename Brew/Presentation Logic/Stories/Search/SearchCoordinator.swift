@@ -30,8 +30,8 @@ class SearchCoordinator: NavigationCoordinator {
 		let searchController = SearchViewController()
 		searchController.data = categories
 		
-		searchController.onCategorytPressed = { [weak self] index in
-			
+		searchController.onCategorySelected = { [weak self] in
+			self?.show($0)
 		}
 		
 		let contentController = UINavigationController(rootViewController: searchController)
@@ -39,5 +39,12 @@ class SearchCoordinator: NavigationCoordinator {
 		
 		navigationController?.pushViewController(searchController, animated: false)
 	}
+
+    private func show(_ category: Category) {
+        let request = GetPodcastsRequest(categoryId: category.id)
+        let coordinator = PodcastsListCoordinator(request: request)
+        coordinator.start()
+        navigationController?.pushViewController(coordinator.contentController, animated: true)
+    }
 }
 
