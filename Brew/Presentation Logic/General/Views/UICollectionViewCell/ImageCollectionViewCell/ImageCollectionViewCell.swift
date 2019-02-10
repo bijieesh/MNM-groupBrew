@@ -2,7 +2,7 @@
 //  ImageCollectionViewCell.swift
 //  Brew
 //
-//  Created by Andriy Vahniy on 2/7/19.
+//  Created by Vasyl Khmil on 2/7/19.
 //  Copyright © 2019 NerdzLab. All rights reserved.
 //
 

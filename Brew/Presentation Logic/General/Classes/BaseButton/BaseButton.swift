@@ -2,8 +2,8 @@
 //  UIControl + Action.swift
 //  SetaiTV
 //
-//  Created by Andriy Vahniy on 12/3/18.
-//  Copyright © 2018 Andriy Vahniy. All rights reserved.
+//  Created by Vasyl Khmil on 12/3/18.
+//  Copyright © 2018 Vasyl Khmil. All rights reserved.
 //
 
 import UIKit
