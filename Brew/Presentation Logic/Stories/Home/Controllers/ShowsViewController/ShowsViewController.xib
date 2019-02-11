@@ -12,7 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowsViewController" customModule="Brew" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="wu3-4F-SQZ" id="9MK-ds-CPw"/>
+                <outlet property="backButton" destination="wu3-4F-SQZ" id="wtK-4a-z3N"/>
                 <outlet property="collectionView" destination="KzY-t2-YvQ" id="F9p-FF-70A"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,13 +36,16 @@
                         <outlet property="delegate" destination="-1" id="UxB-Hf-iMS"/>
                     </connections>
                 </collectionView>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu3-4F-SQZ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wu3-4F-SQZ">
                     <rect key="frame" x="0.0" y="20" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="6Xz-vX-arS"/>
                         <constraint firstAttribute="width" constant="40" id="gXk-Ui-X3S"/>
                     </constraints>
                     <state key="normal" image="back"/>
+                    <connections>
+                        <action selector="backTapped:" destination="-1" eventType="touchUpInside" id="oUZ-GJ-wpo"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,6 +61,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="12" height="16"/>
+        <image name="back" width="24" height="32"/>
     </resources>
 </document>

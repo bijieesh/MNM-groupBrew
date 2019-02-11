@@ -27,21 +27,20 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MzE-nW-Dnt">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="623"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blur_image" translatesAutoresizingMaskIntoConstraints="NO" id="anV-ue-f80">
-                            <rect key="frame" x="70" y="64" width="180" height="180"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="261" verticalCompressionResistancePriority="740" image="blur_image" translatesAutoresizingMaskIntoConstraints="NO" id="anV-ue-f80">
+                            <rect key="frame" x="62.5" y="64" width="195.5" height="195.5"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="180" id="RyV-IB-cpZ"/>
-                                <constraint firstAttribute="width" constant="180" id="ns1-aT-ghZ"/>
+                                <constraint firstAttribute="width" secondItem="anV-ue-f80" secondAttribute="height" multiplier="1:1" id="Oax-cg-9hl"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zine Gapore Podcast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b24-BW-OZi">
-                            <rect key="frame" x="10" y="273" width="300" height="33"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="760" text="Zine Gapore Podcast" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b24-BW-OZi">
+                            <rect key="frame" x="10" y="288.5" width="300" height="33"/>
                             <fontDescription key="fontDescription" name="SharpSansNo1-Bold" family="Sharp Sans No1 Bold" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By Zine Gapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEU-r2-xeq">
-                            <rect key="frame" x="25" y="316" width="270" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="760" text="By Zine Gapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEU-r2-xeq">
+                            <rect key="frame" x="25" y="331.5" width="270" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="270" id="zY0-Us-pxk"/>
                             </constraints>
@@ -50,7 +49,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjt-mr-UCU">
-                            <rect key="frame" x="100" y="344" width="120" height="35"/>
+                            <rect key="frame" x="100" y="359.5" width="120" height="35"/>
                             <subviews>
                                 <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="huT-CK-21F" customClass="STRatingControl" customModule="STRatingControl">
                                     <rect key="frame" x="0.0" y="0.0" width="68" height="35"/>
@@ -99,7 +98,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-gU-6Vl">
-                            <rect key="frame" x="100" y="389" width="120" height="17"/>
+                            <rect key="frame" x="100" y="404.5" width="120" height="17"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFT-hr-Boj">
                                     <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
@@ -157,8 +156,8 @@
                                 <constraint firstAttribute="width" constant="120" id="zwv-Zj-y3C"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Known for transforming her students with her magical, virtually unexplain…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD6-PF-wh0">
-                            <rect key="frame" x="25" y="422" width="270" height="35.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="760" text="Known for transforming her students with her magical, virtually unexplain…" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TD6-PF-wh0">
+                            <rect key="frame" x="25" y="437.5" width="270" height="35.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="270" id="gpe-A5-99t"/>
                             </constraints>
@@ -167,7 +166,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yCB-wo-sWT">
-                            <rect key="frame" x="78" y="487.5" width="164" height="26"/>
+                            <rect key="frame" x="78" y="503" width="164" height="26"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Mw-jd-rWP">
                                     <rect key="frame" x="0.0" y="0.0" width="71" height="26"/>
@@ -225,7 +224,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vc5-lO-tTg">
-                            <rect key="frame" x="20" y="563.5" width="203" height="29"/>
+                            <rect key="frame" x="20" y="579" width="203" height="29"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rgI-Zu-hHl">
                                     <rect key="frame" x="0.0" y="0.0" width="83" height="27"/>
@@ -253,7 +252,7 @@
                                         <constraint firstAttribute="height" constant="2" id="a7r-gC-rcY"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDa-JM-wIS">
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDa-JM-wIS">
                                     <rect key="frame" x="113" y="0.0" width="90" height="27"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -300,7 +299,7 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="sZR-Oz-hnU" firstAttribute="bottom" secondItem="Vc5-lO-tTg" secondAttribute="bottom" constant="30.5" id="1R2-Ab-xOe"/>
+                        <constraint firstItem="sZR-Oz-hnU" firstAttribute="bottom" secondItem="Vc5-lO-tTg" secondAttribute="bottom" constant="15" id="1R2-Ab-xOe"/>
                         <constraint firstItem="anV-ue-f80" firstAttribute="centerX" secondItem="MzE-nW-Dnt" secondAttribute="centerX" id="8cd-gj-Vkd"/>
                         <constraint firstItem="Vc5-lO-tTg" firstAttribute="leading" secondItem="MzE-nW-Dnt" secondAttribute="leading" constant="20" id="AuI-aq-ne0"/>
                         <constraint firstItem="b24-BW-OZi" firstAttribute="leading" secondItem="MzE-nW-Dnt" secondAttribute="leading" constant="10" id="C9b-Xw-M2i"/>

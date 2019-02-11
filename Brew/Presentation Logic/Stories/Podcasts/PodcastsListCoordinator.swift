@@ -15,7 +15,12 @@ class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseOb
     init(request: T) {
         self.request = request
         let controller = ShowsViewController()
+		
         super.init(contentController: controller)
+		
+		controller.onClose = { [weak self] in
+			self?.contentController.navigationController?.popViewController(animated: true)
+		}
 
         loadContent(for: controller)
     }

@@ -21,9 +21,10 @@ class PodcastDetailViewController: AppViewController {
 
     @IBOutlet private var backButton: UIButton!
 	
-	@IBOutlet private var contentTableView: UITableView! {
-		didSet { configureTableView() }
-    }
+	@IBOutlet private var contentTableView: UITableView!
+//		{
+//		didSet { configureTableView() }
+//    }
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
@@ -37,24 +38,20 @@ class PodcastDetailViewController: AppViewController {
 		let view = PodcastDetailTableHeaderView.loadFromNib()
 		return view
 	}()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		
-    }
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
-		headerView.frame = CGRect(x: 0, y: 0, width: contentTableView.frame.width, height: 600)
+		configureTableView()
 	}
-
 }
 
 private extension PodcastDetailViewController {
 	func configureTableView() {
 		contentTableView.register(cellType: PodcastEpisodeCell.self)
+		contentTableView.rowHeight = UITableView.automaticDimension
 		contentTableView.tableHeaderView = headerView
+		contentTableView.tableHeaderView?.bounds = CGRect(x: 0, y: 0, width: contentTableView.frame.width, height: headerView.expectedHeight)
 	}
 	
 	func fillData() {

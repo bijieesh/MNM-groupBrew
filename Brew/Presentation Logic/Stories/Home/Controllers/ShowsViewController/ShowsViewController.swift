@@ -12,12 +12,17 @@ import Reusable
 final class ShowsViewController: AppViewController {
 	typealias IndexAction = (Int) -> Void
 
-    @IBOutlet var backButton: UIButton!
+	@IBOutlet private var backButton: UIButton! {
+		didSet {
+			backButton.isHidden = back
+		}
+	}
 
 	@IBOutlet private var collectionView: UICollectionView! {
 		didSet { configureCollectionView() }
 	}
 	
+	var back: Bool  = false
 	var onPodcastPressed: IndexAction?
 	
 	var data: [Podcast] = [] {
@@ -28,6 +33,9 @@ final class ShowsViewController: AppViewController {
 		super.viewDidLayoutSubviews()
 		
 		configureCollectionViewLayout()
+	}
+	@IBAction func backTapped(_ sender: Any) {
+		onClose?()
 	}
 }
 

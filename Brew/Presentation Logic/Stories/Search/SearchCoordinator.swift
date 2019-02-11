@@ -43,6 +43,7 @@ class SearchCoordinator: NavigationCoordinator {
     private func show(_ category: Category) {
         let request = GetPodcastsRequest(categoryId: category.id)
         let coordinator = PodcastsListCoordinator(request: request)
+	
         coordinator.start()
         navigationController?.pushViewController(coordinator.contentController, animated: true)
     }

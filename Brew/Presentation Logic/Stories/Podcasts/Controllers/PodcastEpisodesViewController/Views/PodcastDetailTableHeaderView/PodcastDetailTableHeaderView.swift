@@ -17,6 +17,8 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
         let authorName: String
     }
 	
+	let expectedHeight: CGFloat = 623
+	
 	//MARK: IBOutlets
 	
 	@IBOutlet private var logoImageView: UIImageView!

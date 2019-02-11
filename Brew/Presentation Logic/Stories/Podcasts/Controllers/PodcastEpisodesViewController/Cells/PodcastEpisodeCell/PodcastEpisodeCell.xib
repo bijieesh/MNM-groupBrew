@@ -99,7 +99,6 @@ the Chief Marketing Officer and Product…</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="xhR-VP-f1G" firstAttribute="leading" secondItem="6Vd-vs-zs8" secondAttribute="leading" id="3SE-yU-xY7"/>
-                                    <constraint firstAttribute="height" constant="121.5" id="5Z1-I7-VDk"/>
                                     <constraint firstAttribute="trailing" secondItem="GBi-lx-mB1" secondAttribute="trailing" constant="2" id="6a3-DL-GGo"/>
                                     <constraint firstItem="lSB-cD-bS7" firstAttribute="top" secondItem="6Vd-vs-zs8" secondAttribute="top" id="7bA-Kk-ZFo"/>
                                     <constraint firstItem="k3S-2C-oND" firstAttribute="leading" secondItem="6Vd-vs-zs8" secondAttribute="leading" id="B0E-Za-D7j"/>
@@ -111,6 +110,7 @@ the Chief Marketing Officer and Product…</string>
                                     <constraint firstItem="xhR-VP-f1G" firstAttribute="top" secondItem="k3S-2C-oND" secondAttribute="bottom" constant="18" id="as1-LG-sWY"/>
                                     <constraint firstAttribute="trailing" secondItem="Tms-Lj-h2v" secondAttribute="trailing" constant="111" id="fUe-B2-zBH"/>
                                     <constraint firstItem="Tms-Lj-h2v" firstAttribute="top" secondItem="6Vd-vs-zs8" secondAttribute="top" id="gwb-Q2-uEj"/>
+                                    <constraint firstItem="k3S-2C-oND" firstAttribute="top" secondItem="Tms-Lj-h2v" secondAttribute="bottom" constant="11.5" id="iMW-1K-xqu"/>
                                     <constraint firstItem="Tms-Lj-h2v" firstAttribute="leading" secondItem="6Vd-vs-zs8" secondAttribute="leading" id="sFt-de-fD3"/>
                                     <constraint firstItem="HE5-RI-isG" firstAttribute="centerY" secondItem="GBi-lx-mB1" secondAttribute="centerY" id="v6n-80-35t"/>
                                 </constraints>
