@@ -10,7 +10,7 @@ import UIKit
 import Reusable
 
 final class ShowsViewController: AppViewController {
-	typealias IndexAction = (Int) -> Void
+	typealias PodcastAction = (Podcast) -> Void
 
 	@IBOutlet private var backButton: UIButton! {
 		didSet {
@@ -23,7 +23,7 @@ final class ShowsViewController: AppViewController {
 	}
 	
 	var back: Bool  = false
-	var onPodcastPressed: IndexAction?
+	var onPodcastPressed: PodcastAction?
 	
 	var data: [Podcast] = [] {
 		didSet { collectionView.reloadData() }
@@ -34,6 +34,7 @@ final class ShowsViewController: AppViewController {
 		
 		configureCollectionViewLayout()
 	}
+	
 	@IBAction func backTapped(_ sender: Any) {
 		onClose?()
 	}
@@ -83,6 +84,7 @@ extension ShowsViewController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 extension ShowsViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		onPodcastPressed?(indexPath.item)
+		let podcast = data[indexPath.item]
+		onPodcastPressed?(podcast)
 	}
 }

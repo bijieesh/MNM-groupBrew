@@ -30,8 +30,8 @@ private extension HomeCoordinator {
 		let newReleaseVC = EpisodesViewController()
 		newReleaseVC.controllerType = .new
 		
-		newReleaseVC.onPodcastPressed = { podcast, actionType in
-			
+		newReleaseVC.onPodcastPressed = { [weak self] episode, actionType in
+			self?.handleActionOn(episode, action: actionType)
 		}
 		
 		loadNewReleasesData(for: newReleaseVC)
@@ -44,8 +44,8 @@ private extension HomeCoordinator {
 		loadShowsData(for: showsVC)
 		showsVC.back = true
 		
-		showsVC.onPodcastPressed = { index in
-			
+		showsVC.onPodcastPressed = { [weak self] podcast in
+			self?.showDetails(for: podcast)
 		}
 		
 		return showsVC
@@ -76,7 +76,7 @@ private extension HomeCoordinator {
 		navigationController?.pushViewController(homeContainer, animated: true)
 	}
 	
-	func showPodcastDetails(for podcast: Podcast) {
+	func showDetails(for podcast: Podcast) {
 		let controller = PodcastDetailViewController()
 		controller.podcast = podcast
 		
@@ -89,6 +89,17 @@ private extension HomeCoordinator {
 
 //MARK: - Action Handlers
 private extension HomeCoordinator {
+	func handleActionOn(_ episode: Episode, action: EpisodesViewController.ActionType) {
+		switch action {
+		case .select:
+			select(episode)
+		case .save:
+			save(episode)
+		case .delete:
+			delete(episode)
+		}
+	}
+	
 	func save(_ episode: Episode) {
 		saveEpisode(by: episode.id)
 	}
