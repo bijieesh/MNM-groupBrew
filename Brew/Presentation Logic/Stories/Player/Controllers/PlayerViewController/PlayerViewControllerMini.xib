@@ -114,11 +114,13 @@
             <constraints>
                 <constraint firstItem="RlJ-o5-4d1" firstAttribute="leading" secondItem="XT8-8x-9Ow" secondAttribute="leading" id="Fwu-zG-wEm"/>
                 <constraint firstItem="RlJ-o5-4d1" firstAttribute="trailing" secondItem="00l-UP-hAB" secondAttribute="trailing" id="IAJ-Pn-wfZ"/>
+                <constraint firstItem="U4J-fQ-ktn" firstAttribute="top" secondItem="RlJ-o5-4d1" secondAttribute="top" constant="17.5" id="QgQ-cZ-dDk"/>
                 <constraint firstItem="00l-UP-hAB" firstAttribute="leading" secondItem="RlJ-o5-4d1" secondAttribute="leading" id="UMN-Tk-5cV"/>
                 <constraint firstItem="00l-UP-hAB" firstAttribute="bottom" secondItem="RlJ-o5-4d1" secondAttribute="bottom" id="bZm-DC-cUi"/>
                 <constraint firstItem="RlJ-o5-4d1" firstAttribute="trailing" secondItem="XT8-8x-9Ow" secondAttribute="trailing" id="cAF-LP-kbH"/>
                 <constraint firstItem="XT8-8x-9Ow" firstAttribute="top" secondItem="RlJ-o5-4d1" secondAttribute="top" id="dBO-Yh-vaW"/>
                 <constraint firstItem="00l-UP-hAB" firstAttribute="top" secondItem="XT8-8x-9Ow" secondAttribute="bottom" id="gaa-uX-Lyu"/>
+                <constraint firstItem="RlJ-o5-4d1" firstAttribute="bottom" secondItem="U4J-fQ-ktn" secondAttribute="bottom" constant="11.5" id="t2c-ae-HfF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="RlJ-o5-4d1"/>

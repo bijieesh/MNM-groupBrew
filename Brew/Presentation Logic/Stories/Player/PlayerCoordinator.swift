@@ -133,7 +133,7 @@ class PlayerCoordinator: NSObject {
             return
         }
 
-        let newIndex = max(activeData.playingIndex - 1, 0)
+        let newIndex = activeData.playingIndex + 1
         playAutoContinueEpisode(at: newIndex)
     }
 

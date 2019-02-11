@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuContainerViewController" customModule="Brew" customModuleProvider="target">
             <connections>
                 <outlet property="controllersContainer" destination="lSD-xa-JqW" id="8hK-jK-fqa"/>
-                <outlet property="heightForPlayerContainer" destination="fRp-dx-OhD" id="dWV-Pf-Sb2"/>
                 <outlet property="playerContainer" destination="rND-Er-PhX" id="NFl-GS-wRp"/>
                 <outlet property="tabBar" destination="wXm-Le-To9" id="2VU-Pn-g5d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,14 +24,14 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lSD-xa-JqW" userLabel="Controller Container">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="548"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rND-Er-PhX" userLabel="Player Container">
-                    <rect key="frame" x="0.0" y="548" width="375" height="70"/>
+                    <rect key="frame" x="0.0" y="618" width="375" height="0.0"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="fRp-dx-OhD"/>
+                        <constraint firstAttribute="height" priority="250" id="cw2-xb-QSP"/>
                     </constraints>
                 </view>
                 <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wXm-Le-To9">

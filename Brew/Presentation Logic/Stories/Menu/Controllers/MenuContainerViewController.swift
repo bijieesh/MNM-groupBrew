@@ -25,15 +25,9 @@ class MenuContainerViewController: AppViewController {
 		}
 	}
 	
-	var showPlayerView: Bool = false {
-		didSet {
-			showPlayer()
-		}
-	}
-	
 	//MARK: IBOutlets
 	@IBOutlet private var controllersContainer: UIView!
-	@IBOutlet var playerContainer: UIView!
+	@IBOutlet private var playerContainer: UIView!
 	@IBOutlet private var tabBar: UITabBar!
 	@IBOutlet private var heightForPlayerContainer: NSLayoutConstraint!
 	
@@ -52,19 +46,21 @@ class MenuContainerViewController: AppViewController {
 	//MARK: Life cycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		showPlayerView = false
 		setupTabBar()
 		updateContentController()
 	}
-	
-	private func showPlayer() {
-		if showPlayerView {
-			heightForPlayerContainer.constant = 70
-		} else {
-			heightForPlayerContainer.constant = 0
-		}
-	}
+
+    func addPlayer(_ miniPlayer: UIViewController) {
+        miniPlayer.willMove(toParent: self)
+        playerContainer.addSubview(miniPlayer.view)
+        addChild(miniPlayer)
+        miniPlayer.view.translatesAutoresizingMaskIntoConstraints = false
+        miniPlayer.view.leadingAnchor.constraint(equalTo: playerContainer.leadingAnchor).isActive = true
+        miniPlayer.view.topAnchor.constraint(equalTo: playerContainer.topAnchor).isActive = true
+        miniPlayer.view.trailingAnchor.constraint(equalTo: playerContainer.trailingAnchor).isActive = true
+        miniPlayer.view.bottomAnchor.constraint(equalTo: playerContainer.bottomAnchor).isActive = true
+        miniPlayer.didMove(toParent: self)
+    }
 	
 	private func updateContentController() {
 		let controller = controllers[selectedIndex]
