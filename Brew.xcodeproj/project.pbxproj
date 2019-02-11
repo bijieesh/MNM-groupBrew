@@ -65,6 +65,9 @@
 		3D798AF1220EFE3300B3DF26 /* GetNewReleasesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798AF0220EFE3300B3DF26 /* GetNewReleasesRequest.swift */; };
 		3D798AF5220F99D800B3DF26 /* PodcastsListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798AF4220F99D800B3DF26 /* PodcastsListCoordinator.swift */; };
 		3D798AF92210777400B3DF26 /* AppFileLoaderOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798AF82210777400B3DF26 /* AppFileLoaderOperation.swift */; };
+		3D798AFB2210CF0F00B3DF26 /* UpdateActivityRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798AFA2210CF0F00B3DF26 /* UpdateActivityRequest.swift */; };
+		3D798AFD221180BB00B3DF26 /* AVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798AFC221180BB00B3DF26 /* AVPlayer.swift */; };
+		3D798B012211930F00B3DF26 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B002211930F00B3DF26 /* Array.swift */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
@@ -94,7 +97,7 @@
 		3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */; };
 		5A68C3C4220C6E6C0064A991 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */; };
 		5A68C3C5220C6E6C0064A991 /* HomeContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */; };
-		5A68C3C7220C78240064A991 /* UIView + Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C6220C78240064A991 /* UIView + Controller.swift */; };
+		5A68C3C7220C78240064A991 /* UIView+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C6220C78240064A991 /* UIView+Controller.swift */; };
 		5A68C3CB220C7CC40064A991 /* NewReleaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3C9220C7CC40064A991 /* NewReleaseViewController.xib */; };
 		5A68C3CC220C7CC40064A991 /* NewReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3CA220C7CC40064A991 /* NewReleaseViewController.swift */; };
 		5A68C3D2220C80AC0064A991 /* ReleaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3D0220C80AC0064A991 /* ReleaseTableViewCell.swift */; };
@@ -121,11 +124,11 @@
 		8596D38C220DB2BE00362DEC /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8596D38A220DB2BE00362DEC /* CategoryCollectionViewCell.xib */; };
 		8596D390220DEA0D00362DEC /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8596D38E220DEA0D00362DEC /* MenuContainerViewController.swift */; };
 		8596D391220DEA0D00362DEC /* MenuContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8596D38F220DEA0D00362DEC /* MenuContainerViewController.xib */; };
-		85CA8F6A2209EC6C007557D9 /* UIView + Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */; };
+		85CA8F6A2209EC6C007557D9 /* UIView+Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F692209EC6C007557D9 /* UIView+Inspectable.swift */; };
 		85CA8F6E220AE487007557D9 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F6D220AE487007557D9 /* BaseButton.swift */; };
 		85CA8F72220AE4C7007557D9 /* PodcastButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F70220AE4C7007557D9 /* PodcastButton.swift */; };
 		85CA8F73220AE4C7007557D9 /* PodcastButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85CA8F71220AE4C7007557D9 /* PodcastButton.xib */; };
-		85CA8F75220B26EB007557D9 /* UIView +Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F74220B26EA007557D9 /* UIView +Gradient.swift */; };
+		85CA8F75220B26EB007557D9 /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85CA8F74220B26EA007557D9 /* UIView+Gradient.swift */; };
 		85EAABD72209D25800436458 /* SharpSansNo1-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85EAABD62209D25800436458 /* SharpSansNo1-Semibold.ttf */; };
 		85EAABD92209D26900436458 /* SharpSansNo1-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85EAABD82209D26800436458 /* SharpSansNo1-Medium.ttf */; };
 		85EAABDB2209D27900436458 /* SharpSansNo1-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 85EAABDA2209D27900436458 /* SharpSansNo1-Bold.ttf */; };
@@ -192,6 +195,9 @@
 		3D798AF0220EFE3300B3DF26 /* GetNewReleasesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewReleasesRequest.swift; sourceTree = "<group>"; };
 		3D798AF4220F99D800B3DF26 /* PodcastsListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsListCoordinator.swift; sourceTree = "<group>"; };
 		3D798AF82210777400B3DF26 /* AppFileLoaderOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoaderOperation.swift; sourceTree = "<group>"; };
+		3D798AFA2210CF0F00B3DF26 /* UpdateActivityRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateActivityRequest.swift; sourceTree = "<group>"; };
+		3D798AFC221180BB00B3DF26 /* AVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.swift; sourceTree = "<group>"; };
+		3D798B002211930F00B3DF26 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
@@ -222,7 +228,7 @@
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
 		5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainerViewController.xib; sourceTree = "<group>"; };
-		5A68C3C6220C78240064A991 /* UIView + Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Controller.swift"; sourceTree = "<group>"; };
+		5A68C3C6220C78240064A991 /* UIView+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Controller.swift"; sourceTree = "<group>"; };
 		5A68C3C9220C7CC40064A991 /* NewReleaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewReleaseViewController.xib; sourceTree = "<group>"; };
 		5A68C3CA220C7CC40064A991 /* NewReleaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewReleaseViewController.swift; sourceTree = "<group>"; };
 		5A68C3D0220C80AC0064A991 /* ReleaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReleaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -249,11 +255,11 @@
 		8596D38A220DB2BE00362DEC /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		8596D38E220DEA0D00362DEC /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
 		8596D38F220DEA0D00362DEC /* MenuContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuContainerViewController.xib; sourceTree = "<group>"; };
-		85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Inspectable.swift"; sourceTree = "<group>"; };
+		85CA8F692209EC6C007557D9 /* UIView+Inspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Inspectable.swift"; sourceTree = "<group>"; };
 		85CA8F6D220AE487007557D9 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		85CA8F70220AE4C7007557D9 /* PodcastButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PodcastButton.swift; sourceTree = "<group>"; };
 		85CA8F71220AE4C7007557D9 /* PodcastButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PodcastButton.xib; sourceTree = "<group>"; };
-		85CA8F74220B26EA007557D9 /* UIView +Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView +Gradient.swift"; sourceTree = "<group>"; };
+		85CA8F74220B26EA007557D9 /* UIView+Gradient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
 		85EAABD62209D25800436458 /* SharpSansNo1-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SharpSansNo1-Semibold.ttf"; sourceTree = "<group>"; };
 		85EAABD82209D26800436458 /* SharpSansNo1-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SharpSansNo1-Medium.ttf"; sourceTree = "<group>"; };
 		85EAABDA2209D27900436458 /* SharpSansNo1-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SharpSansNo1-Bold.ttf"; sourceTree = "<group>"; };
@@ -294,6 +300,7 @@
 		3D05EFB821F128EE00174A91 /* Brew */ = {
 			isa = PBXGroup;
 			children = (
+				3D798AFE221192FC00B3DF26 /* General */,
 				3D05EFCB21F139EC00174A91 /* Buisiness Logic */,
 				3D05EFDA21F5C41100174A91 /* Presentation Logic */,
 				3D05EFE721F5C89900174A91 /* Resources */,
@@ -335,6 +342,7 @@
 				7865294721FCB33D00A826F7 /* UpdateProfileInfoRequest.swift */,
 				5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */,
 				5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */,
+				3D798AFA2210CF0F00B3DF26 /* UpdateActivityRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -520,13 +528,14 @@
 		3D05F02121F6022000174A91 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				85CA8F74220B26EA007557D9 /* UIView +Gradient.swift */,
+				85CA8F74220B26EA007557D9 /* UIView+Gradient.swift */,
 				3D05F02221F6023600174A91 /* UIViewController.swift */,
 				3DCBBA6821F7D08C009BCD31 /* UIColor.swift */,
 				7865294921FDBD5A00A826F7 /* UIImage+Resize.swift */,
-				85CA8F692209EC6C007557D9 /* UIView + Inspectable.swift */,
+				85CA8F692209EC6C007557D9 /* UIView+Inspectable.swift */,
 				858EECD0220B570E00C49128 /* UITextField.swift */,
-				5A68C3C6220C78240064A991 /* UIView + Controller.swift */,
+				5A68C3C6220C78240064A991 /* UIView+Controller.swift */,
+				3D798AFC221180BB00B3DF26 /* AVPlayer.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -609,6 +618,22 @@
 				3D2002A721FBBA9600E38B99 /* PodcastDetailTableHeaderView.xib */,
 			);
 			path = PodcastDetailTableHeaderView;
+			sourceTree = "<group>";
+		};
+		3D798AFE221192FC00B3DF26 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				3D798AFF2211930200B3DF26 /* Extensions */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		3D798AFF2211930200B3DF26 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D798B002211930F00B3DF26 /* Array.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3DA16B632206299600487323 /* Utils */ = {
@@ -1164,6 +1189,7 @@
 				5A68C3CC220C7CC40064A991 /* NewReleaseViewController.swift in Sources */,
 				5ADEFF14220DC88E00F7D8B9 /* SaveEpisodeRequest.swift in Sources */,
 				3D798AF5220F99D800B3DF26 /* PodcastsListCoordinator.swift in Sources */,
+				3D798AFB2210CF0F00B3DF26 /* UpdateActivityRequest.swift in Sources */,
 				3D2002AA21FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift in Sources */,
 				3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */,
 				3DB447E521F7CBBB00F93876 /* InterestsViewController.swift in Sources */,
@@ -1174,7 +1200,8 @@
 				5A68C3D2220C80AC0064A991 /* ReleaseTableViewCell.swift in Sources */,
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
 				3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */,
-				5A68C3C7220C78240064A991 /* UIView + Controller.swift in Sources */,
+				3D798B012211930F00B3DF26 /* Array.swift in Sources */,
+				5A68C3C7220C78240064A991 /* UIView+Controller.swift in Sources */,
 				3D2002AE21FDB1C800E38B99 /* File.swift in Sources */,
 				8596D38B220DB2BE00362DEC /* CategoryCollectionViewCell.swift in Sources */,
 				858EECD1220B570E00C49128 /* UITextField.swift in Sources */,
@@ -1209,9 +1236,10 @@
 				5A68C3D7220C83E20064A991 /* ShowsViewController.swift in Sources */,
 				3DCBBA7921F8DBCD009BCD31 /* TokenRefreshRequest.swift in Sources */,
 				7865293C21FC646700A826F7 /* SettingsViewController.swift in Sources */,
-				85CA8F75220B26EB007557D9 /* UIView +Gradient.swift in Sources */,
+				85CA8F75220B26EB007557D9 /* UIView+Gradient.swift in Sources */,
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3D798AF1220EFE3300B3DF26 /* GetNewReleasesRequest.swift in Sources */,
+				3D798AFD221180BB00B3DF26 /* AVPlayer.swift in Sources */,
 				3D798AF92210777400B3DF26 /* AppFileLoaderOperation.swift in Sources */,
 				3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */,
 				3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */,
@@ -1224,7 +1252,7 @@
 				3DCBBA8C21FA2322009BCD31 /* GetPodcastsRequest.swift in Sources */,
 				3D20029021FB5DEA00E38B99 /* ProfileViewController.swift in Sources */,
 				3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */,
-				85CA8F6A2209EC6C007557D9 /* UIView + Inspectable.swift in Sources */,
+				85CA8F6A2209EC6C007557D9 /* UIView+Inspectable.swift in Sources */,
 				3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

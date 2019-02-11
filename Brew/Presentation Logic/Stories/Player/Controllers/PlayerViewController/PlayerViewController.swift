@@ -11,41 +11,6 @@ import LDProgressView
 import AVFoundation
 import SDWebImage
 
-private extension AVPlayer {
-    var isPlaying: Bool {
-        return rate > 0
-    }
-
-    var currentPosition: Int {
-        get {
-            let time = currentItem?.currentTime().seconds ?? 0
-            
-            if time.isNaN {
-                return 0
-            }
-            else {
-                return Int(time)
-            }
-        }
-
-        set {
-            let time = CMTime(seconds: Double(newValue), preferredTimescale: 1)
-            currentItem?.seek(to: time, completionHandler: nil)
-        }
-    }
-
-    var duration: Int {
-        let time = currentItem?.duration.seconds ?? 0
-
-        if time.isNaN {
-            return 0
-        }
-        else {
-            return Int(time)
-        }
-    }
-}
-
 class PlayerViewController: AppViewController {
     struct Data {
         let imageUrl: URL?
@@ -78,8 +43,6 @@ class PlayerViewController: AppViewController {
         }
     }
 
-    private var autoplay: Bool = false
-
     @IBOutlet weak private var imageView: UIImageView?
     @IBOutlet weak private var songNameLabel: UILabel?
     @IBOutlet weak private var artistNameLabel: UILabel?
@@ -104,9 +67,8 @@ class PlayerViewController: AppViewController {
 
     private var playerObservationToken: Any?
 
-    init(data: Data, type: Type, autoplay: Bool = true) {
+    init(data: Data, type: Type) {
         self.data = data
-        self.autoplay = autoplay
         super.init(nibName: type.nibName, bundle: nil)
     }
 
@@ -142,10 +104,6 @@ class PlayerViewController: AppViewController {
 
         songNameLabel?.text = data.title
         artistNameLabel?.text = data.artist
-
-        if autoplay {
-            data.audioPlayer.play()
-        }
 
         if view.window != nil {
             setupObservaton()
