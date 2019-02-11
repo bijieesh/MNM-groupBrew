@@ -8,6 +8,7 @@
 
 import UIKit
 import Reusable
+import STRatingControl
 
 class PodcastDetailTableHeaderView: UIView, NibLoadable {
     struct Data {
@@ -15,12 +16,20 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
         let title: String
         let description: String
         let authorName: String
+		let rating: Int
+		let podcastCategories: [Category]
+		let likesCount: Int
     }
+	
+	var onFirstCategoryPressed: ((Category) -> Void)?
 	
 	let expectedHeight: CGFloat = 623
 	
 	//MARK: IBOutlets
 	
+	@IBOutlet private var ratingView: STRatingControl!
+	@IBOutlet private var ratingLabel: UILabel!
+	@IBOutlet private var likesCountLabel: UILabel!
 	@IBOutlet private var logoImageView: UIImageView!
 	@IBOutlet private var titleLabel: UILabel!
 	@IBOutlet private var descriptionLabel: UILabel!
@@ -29,6 +38,7 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
 	@IBOutlet private var episodesButton: UIButton!
 	@IBOutlet private var exclusivesIndicateView: UIView!
 	@IBOutlet private var episodesIndicateView: UIView!
+	@IBOutlet private var firstCategoryButton: UIButton!
 	
 //    var onSubscribeTapped: (() -> Void)?
 	
@@ -58,6 +68,12 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
 		hideIndicateView(episodes: true, exclusives: false)
 	}
 	
+	@IBAction func firstCategoryButtonPressed() {
+		if let category = data?.podcastCategories.first {
+			onFirstCategoryPressed?(category)
+		}
+	}
+	
 	private func fillData() {
 		logoImageView.sd_setImage(with: data?.image)
 		titleLabel.text = data?.title
@@ -66,5 +82,23 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
         if let authorName = data?.authorName {
             authorNameLabel.text = "By \(authorName)"
         }
+		
+		if let rating = data?.rating {
+			ratingView.rating = rating
+			ratingLabel.text = "(\(rating))"
+		}
+		
+		if let likes = data?.likesCount {
+			likesCountLabel.text = "\(likes)"
+		}
+		
+		if let categories = data?.podcastCategories {
+			if categories.count >= 1 {
+				if let title = data?.podcastCategories.first?.name {
+					firstCategoryButton.setTitle("   \(title)   ", for: .normal)
+					firstCategoryButton.isHidden = false
+				}
+			}
+		}
 	}
 }

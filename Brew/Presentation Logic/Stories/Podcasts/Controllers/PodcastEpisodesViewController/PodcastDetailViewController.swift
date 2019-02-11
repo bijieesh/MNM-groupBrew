@@ -18,7 +18,8 @@ class PodcastDetailViewController: AppViewController {
 
     var onBackPressed: (() -> Void)?
     var onPodcastPressed: ((Podcast, Int) -> Void)?
-
+	var onFirstCategoryPressed: ((Category) -> Void)?
+	
     @IBOutlet private var backButton: UIButton!
 	
 	@IBOutlet private var contentTableView: UITableView!
@@ -36,6 +37,9 @@ class PodcastDetailViewController: AppViewController {
 	
 	private lazy var headerView: PodcastDetailTableHeaderView = {
 		let view = PodcastDetailTableHeaderView.loadFromNib()
+		view.onFirstCategoryPressed = { [weak self] in
+			self?.onFirstCategoryPressed?($0)
+		}
 		return view
 	}()
 	
@@ -62,7 +66,11 @@ private extension PodcastDetailViewController {
         let data = PodcastDetailTableHeaderView.Data.init(image: podcast.albumArt?.url,
                                                           title: podcast.title,
                                                           description: podcast.description,
-                                                          authorName: podcast.user.profile.profileFullName)
+                                                          authorName: podcast.user.profile.profileFullName,
+														  rating: podcast.totalRating,
+														  podcastCategories: podcast.categories ?? [],
+														  likesCount: podcast.likesCount
+		)
 		
 		headerView.data = data
 	}
