@@ -37,7 +37,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="asz-oA-zAM">
                                 <rect key="frame" x="118" y="29" width="237" height="122.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DMe-ed-6Fc" userLabel="Right View">
+                                    <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMe-ed-6Fc" userLabel="Right View">
                                         <rect key="frame" x="0.0" y="0.0" width="237" height="97.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqA-H7-CKu">
@@ -90,7 +90,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="97.5" id="3AX-4r-hPe"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="97.5" id="3AX-4r-hPe"/>
                                             <constraint firstItem="Pye-oi-IKj" firstAttribute="top" secondItem="DMe-ed-6Fc" secondAttribute="top" id="5ct-Ex-zqF"/>
                                             <constraint firstAttribute="trailing" secondItem="Pye-oi-IKj" secondAttribute="trailing" id="DPg-rr-xCO"/>
                                             <constraint firstItem="Tfr-iA-c0H" firstAttribute="leading" secondItem="DMe-ed-6Fc" secondAttribute="leading" id="MLC-TT-Mtd"/>
@@ -139,7 +139,6 @@
                             <constraint firstAttribute="bottom" secondItem="msu-9b-kWr" secondAttribute="bottom" id="Iut-mR-DjD"/>
                             <constraint firstItem="msu-9b-kWr" firstAttribute="width" secondItem="asz-oA-zAM" secondAttribute="width" id="K9B-aR-Cz2"/>
                             <constraint firstItem="asz-oA-zAM" firstAttribute="leading" secondItem="TCc-bD-DMc" secondAttribute="trailing" constant="15" id="PjC-KU-20H"/>
-                            <constraint firstItem="msu-9b-kWr" firstAttribute="centerX" secondItem="asz-oA-zAM" secondAttribute="centerX" id="SYt-Xn-ji5"/>
                             <constraint firstItem="msu-9b-kWr" firstAttribute="top" secondItem="asz-oA-zAM" secondAttribute="bottom" id="iyW-2y-ZWy"/>
                             <constraint firstItem="TCc-bD-DMc" firstAttribute="top" secondItem="AQh-ed-VuA" secondAttribute="top" constant="30" id="l2b-DK-TCb"/>
                             <constraint firstItem="asz-oA-zAM" firstAttribute="top" secondItem="AQh-ed-VuA" secondAttribute="top" constant="29" id="vZf-85-DSN"/>

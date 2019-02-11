@@ -34,6 +34,10 @@ class AppFileLoader: NSObject {
             queue.addOperation(operation)
         }
     }
+	
+	func isLoading(_ url: URL) -> Bool {
+		return operation(for: url) != nil
+	}
 
     func setProgressHandler(_ handler: AppFileLoaderProgressHandler?, for url: URL) {
         guard let operation = operation(for: url) else {
