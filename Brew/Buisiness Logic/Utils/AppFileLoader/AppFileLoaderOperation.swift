@@ -43,17 +43,10 @@ class AppFileLoaderOperation: Operation, URLSessionDownloadDelegate {
     }
 
     override func main() {
-
-        let semaphore = DispatchSemaphore(value: 0)
-
-        downloadTask = urlSession.downloadTask(with: url) { _, _, _ in
-            semaphore.signal()
-        }
+        downloadTask = urlSession.downloadTask(with: url)
 
         progress = 0
         downloadTask?.resume()
-
-        semaphore.wait()
     }
 
     override func cancel() {
@@ -62,14 +55,19 @@ class AppFileLoaderOperation: Operation, URLSessionDownloadDelegate {
     }
 
     private func sendProgressUpdate() {
-        progressHandler?.progress = (progress)
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+
+            strongSelf.progressHandler?.progress = strongSelf.progress
+        }
     }
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         try? FileManager.default.moveItem(at: location, to: localUrl)
         progress = 1
     }
-
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         progress = Float(totalBytesExpectedToWrite) / Float(totalBytesWritten)
