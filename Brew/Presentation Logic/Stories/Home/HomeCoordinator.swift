@@ -13,14 +13,6 @@ class HomeCoordinator: NavigationCoordinator {
 	
 	var onNeedPlayPodcast: PlayPodcastAction?
 
-	private var newPodcasts: [Podcast] = []
-	private var oldPodcasts: [Podcast] = []
-	
-	private var showsPodcasts: [Podcast] = []
-
-	private var newSavedEpisodes: [Episode] = []
-	private var oldSavedEpisodes: [Episode] = []
-
     override func start() {
         super.start()
 		
@@ -34,12 +26,12 @@ private extension HomeCoordinator {
 		createHomeController()
 	}
 	
-	func createNewReleaseController() -> NewReleaseViewController {
-		let newReleaseVC = NewReleaseViewController()
+	func createNewReleaseController() -> EpisodesViewController {
+		let newReleaseVC = EpisodesViewController()
 		newReleaseVC.controllerType = .new
 		
-		newReleaseVC.onPodcastPressed = { [weak self] controllerType, podcastType, actionType, index in
-			self?.handleNewReleaseControllerType(controllerType, dataType: podcastType, actionType: actionType, index: index)
+		newReleaseVC.onPodcastPressed = { podcast, actionType in
+			
 		}
 		
 		loadNewReleasesData(for: newReleaseVC)
@@ -47,23 +39,23 @@ private extension HomeCoordinator {
 		return newReleaseVC
 	}
 	
-	
-	
 	func createShowsController() -> ShowsViewController {
 		let showsVC = ShowsViewController()
 		loadShowsData(for: showsVC)
 		
-		showsVC.onPodcastPressed = { [weak self] in self?.showPodcastDetails(by: $0) }
+		showsVC.onPodcastPressed = { index in
+			
+		}
 		
 		return showsVC
 	}
 	
-	func createSavedController() -> NewReleaseViewController {
-		let savedVC = NewReleaseViewController()
+	func createSavedController() -> EpisodesViewController {
+		let savedVC = EpisodesViewController()
 		savedVC.controllerType = .saved
 		
-		savedVC.onPodcastPressed = { [weak self] controllerType, podcastType, actionType, index in
-			self?.handleNewReleaseControllerType(controllerType, dataType: podcastType, actionType: actionType, index: index)
+		savedVC.onPodcastPressed = { podcast, actionType in
+			
 		}
 		
 		loadSavedEpisodes(for: savedVC)
@@ -92,74 +84,12 @@ private extension HomeCoordinator {
 		
 		navigationController?.pushViewController(controller, animated: true)
 	}
-	
-	func showPodcastDetails(by index: Int) {
-		let podcast = showsPodcasts[index]
-		showPodcastDetails(for: podcast)
-	}
 }
 
 //MARK: - Action Handlers
 private extension HomeCoordinator {
-	func handleNewReleaseControllerType(_ controllerType: NewReleaseViewController.ControllerType,
-										dataType: NewReleaseViewController.DataType,
-										actionType: NewReleaseViewController.ActionType,
-										index: Int) {
-		switch controllerType {
-		case .new:
-			switch dataType {
-			case .new:
-				let podcast = newPodcasts[index]
-				handlePodcastAction(podcast: podcast, action: actionType)
-			case .old:
-				let podcast = oldPodcasts[index]
-				handlePodcastAction(podcast: podcast, action: actionType)
-			}
-		case .saved:
-			switch dataType {
-			case .new:
-				let episode = newSavedEpisodes[index]
-				handleEpisodeAction(episode: episode, action: actionType)
-			case .old:
-				let episode = oldSavedEpisodes[index]
-				handleEpisodeAction(episode: episode, action: actionType)
-			}
-		}
-	}
-	
-	func handlePodcastAction(podcast: Podcast, action: NewReleaseViewController.ActionType) {
-		switch action {
-		case .leftAction:
-			skip(podcast)
-		case .rightAction:
-			save(podcast)
-		case .select:
-			select(podcast)
-		}
-	}
-	
-	func handleEpisodeAction(episode: Episode, action: NewReleaseViewController.ActionType) {
-		switch action {
-		case .leftAction:
-			break
-		case .rightAction:
-			delete(episode)
-		case .select:
-			select(episode)
-		}
-	}
-	
-	func skip(_ podcast: Podcast) {
-		
-	}
-	
-	func save(_ podcast: Podcast) {
-		guard let id = podcast.episodes?.last?.id else { return }
-		saveEpisode(by: id)
-	}
-	
-	func select(_ podcast: Podcast) {
-		
+	func save(_ episode: Episode) {
+		saveEpisode(by: episode.id)
 	}
 	
 	func delete(_ episode: Episode) {
@@ -173,36 +103,25 @@ private extension HomeCoordinator {
 
 //MARK: - Server Communication
 private extension HomeCoordinator {
-	func loadNewReleasesData(for controller: NewReleaseViewController) {
-        GetNewReleasesRequest().execute(
-            onSuccess: { episodes in
-                controller.newReleaseData = episodes.map { ReleaseTableViewCell.Data(episode: $0) }
+	func loadNewReleasesData(for controller: EpisodesViewController) {
+        GetNewReleasesRequest().execute(onSuccess: { episodes in
+			controller.topData = episodes
         })
 	}
 	
 	func loadShowsData(for controller: ShowsViewController) {
-		GetPodcastsRequest(type: .all).execute(onSuccess: { [weak self] podcasts in
-			self?.showsPodcasts = podcasts
+		GetPodcastsRequest(type: .all).execute(onSuccess: { podcasts in
 			controller.data = podcasts
 		})
 	}
 	
-	func loadSavedEpisodes(for controller: NewReleaseViewController) {
+	func loadSavedEpisodes(for controller: EpisodesViewController) {
 		GetSavedEpisodesRequest().execute(onSuccess: { episodes in
-			controller.newReleaseData = episodes.map { ReleaseTableViewCell.Data(episode: $0) }
+			controller.topData = episodes
 		})
 	}
 	
 	func saveEpisode(by id: Int) {
 		SaveEpisodeRequest(id: id).execute()
-	}
-}
-
-private extension ReleaseTableViewCell.Data {
-	init(episode: Episode) {
-		image = episode.podcast?.albumArt?.url
-		title = episode.title
-		subtitle = episode.podcast?.user.profile.profileFullName ?? ""
-		fileIsDownloaded = (episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
 	}
 }

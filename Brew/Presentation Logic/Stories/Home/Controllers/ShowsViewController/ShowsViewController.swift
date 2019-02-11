@@ -19,6 +19,7 @@ final class ShowsViewController: AppViewController {
 	}
 	
 	var onPodcastPressed: IndexAction?
+	
 	var data: [Podcast] = [] {
 		didSet { collectionView.reloadData() }
 	}

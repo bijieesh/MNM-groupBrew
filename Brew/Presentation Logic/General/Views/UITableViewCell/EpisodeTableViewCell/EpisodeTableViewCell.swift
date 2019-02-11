@@ -11,7 +11,7 @@ import Reusable
 import MGSwipeTableCell
 import NFDownloadButton
 
-final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
+final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 	typealias Action = () -> Void
 	
 	struct Data {
@@ -50,7 +50,7 @@ final class ReleaseTableViewCell: MGSwipeTableCell, NibReusable {
 	}
 }
 
-extension ReleaseTableViewCell: AppFileLoaderProgressHandler {
+extension EpisodeTableViewCell: AppFileLoaderProgressHandler {
 	var progress: Float {
 		get { return Float(saveButton.downloadPercent) }
 		set { saveButton.downloadPercent = CGFloat(progress) }
