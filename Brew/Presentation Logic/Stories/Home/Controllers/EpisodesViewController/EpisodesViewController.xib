@@ -18,7 +18,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EpisodesViewController" customModule="Brew" customModuleProvider="target">
             <connections>
                 <outlet property="bottomTableView" destination="16a-87-pjV" id="fV7-Rk-t2G"/>
-                <outlet property="oldTableViewHeaderView" destination="b6M-cb-hdg" id="VAT-XD-mGW"/>
+                <outlet property="bottomTableViewHeaderView" destination="b6M-cb-hdg" id="VAT-XD-mGW"/>
                 <outlet property="seeMoreViewHeight" destination="kGu-N1-Gii" id="vSd-jd-XPN"/>
                 <outlet property="showMoreView" destination="5s6-g2-iHY" id="Gjf-sk-Nar"/>
                 <outlet property="topReleaseTableViewHeight" destination="CKM-wo-TO9" id="oCD-96-s0a"/>

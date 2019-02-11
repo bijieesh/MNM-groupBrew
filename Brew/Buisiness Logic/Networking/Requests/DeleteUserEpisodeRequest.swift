@@ -2,7 +2,7 @@
 //  DeleteUserEpisodeRequest.swift
 //  Brew
 //
-//  Created by Andriy Vahniy on 2/11/19.
+//  Created by Vasyl Khmil on 2/11/19.
 //  Copyright © 2019 NerdzLab. All rights reserved.
 //
 

@@ -135,6 +135,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="msu-9b-kWr" firstAttribute="centerX" secondItem="asz-oA-zAM" secondAttribute="centerX" id="37s-AK-but"/>
                             <constraint firstAttribute="trailing" secondItem="asz-oA-zAM" secondAttribute="trailing" constant="20" id="6DD-aX-vwU"/>
                             <constraint firstAttribute="bottom" secondItem="msu-9b-kWr" secondAttribute="bottom" id="Iut-mR-DjD"/>
                             <constraint firstItem="msu-9b-kWr" firstAttribute="width" secondItem="asz-oA-zAM" secondAttribute="width" id="K9B-aR-Cz2"/>

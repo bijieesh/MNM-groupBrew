@@ -36,7 +36,8 @@ private extension HomeCoordinator {
 			self?.handleActionOn(episode, action: actionType)
 		}
 		
-		loadNewReleasesData(for: newReleaseVC)
+		loadNewEpisodes(for: newReleaseVC)
+		loadUserEpisodes(for: newReleaseVC)
 		
 		return newReleaseVC
 	}
@@ -62,6 +63,7 @@ private extension HomeCoordinator {
 		}
 		
 		loadSavedEpisodes(for: savedVC)
+		loadUserEpisodes(for: savedVC)
 		
 		return savedVC
 	}
@@ -121,7 +123,7 @@ private extension HomeCoordinator {
 
 //MARK: - Server Communication
 private extension HomeCoordinator {
-	func loadNewReleasesData(for controller: EpisodesViewController) {
+	func loadNewEpisodes(for controller: EpisodesViewController) {
         GetNewReleasesRequest().execute(onSuccess: { episodes in
 			controller.topData = episodes
         })
@@ -153,5 +155,11 @@ private extension HomeCoordinator {
 		
 		coordinator.start()
 		navigationController?.pushViewController(coordinator.contentController, animated: true)
+	}
+	
+	func loadUserEpisodes(for controller: EpisodesViewController) {
+		GetUserActivitiesRequest().execute(onSuccess: { activities in
+			controller.bottomData = activities
+		})
 	}
 }

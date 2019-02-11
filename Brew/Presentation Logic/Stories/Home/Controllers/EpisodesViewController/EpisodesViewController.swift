@@ -31,7 +31,7 @@ class EpisodesViewController: UIViewController {
 	}
 	
 	@IBOutlet private var showMoreView: UIView!
-	@IBOutlet private var oldTableViewHeaderView: UIView!
+	@IBOutlet private var bottomTableViewHeaderView: UIView!
 	
 	@IBOutlet private var topReleaseTableViewHeight: NSLayoutConstraint! {
 		didSet { topReleaseTableViewHeight.constant = defaultCellHeight * 3 }
@@ -46,8 +46,8 @@ class EpisodesViewController: UIViewController {
 		didSet { topControllerData = topData.map { EpisodeTableViewCell.Data(episode: $0) } }
 	}
 	
-	var bottomData: [Episode] = [] {
-		didSet { bottomControllerData = bottomData.map { EpisodeTableViewCell.Data(episode: $0) } }
+	var bottomData: [Activity] = [] {
+		didSet { bottomControllerData = bottomData.map { EpisodeTableViewCell.Data(activity: $0) } }
 	}
 	
 	private var topControllerData: [EpisodeTableViewCell.Data] = [] {
@@ -95,7 +95,9 @@ private extension EpisodesViewController {
 	}
 	
 	func handleBottomData() {
-		oldTableViewHeaderView.isHidden = false
+		bottomTableViewHeaderView.isHidden = false
+		bottomTableView.isHidden = false
+		bottomTableView.reloadData()
 	}
 	
 	func configureTopTableView() {
@@ -110,32 +112,34 @@ private extension EpisodesViewController {
 		let cell: EpisodeTableViewCell = tableView.dequeueReusableCell(for: indexPath)
 		
 		if tableView == topTableView {
-			return fillTop(cell, on: tableView, at: indexPath)
+			cell.bottomView.isHidden = true
+
+			return fill(cell, with: topControllerData, originalData: topData, at: indexPath.row)
+		}
+		
+		if tableView == bottomTableView {
+			cell.bottomView.isHidden = false
+			
+			return fill(cell, with: bottomControllerData, originalData: bottomData.map { $0.episode }, at: indexPath.row)
 		}
 		
 		return cell
 	}
 	
-	func fillTop(_ cell: EpisodeTableViewCell, on tableView: UITableView, at indexPath: IndexPath) -> UITableViewCell {
-		let cellData = topControllerData[indexPath.row]
+	func fill(_ cell: EpisodeTableViewCell, with data: [EpisodeTableViewCell.Data], originalData: [Episode], at index: Int) -> UITableViewCell {
+		let cellData = data[index]
 		
 		cell.fill(data: cellData)
 		
 		cell.onSavePressed = { [weak self] in
-			guard let self = self else { return }
-			
-			let episode = self.topData[indexPath.row]
-			self.save(episode, for: cell)
+			let episode = originalData[index]
+			self?.save(episode, for: cell)
 		}
 		
 		cell.onCancelDownloadPressed = { [weak self] in
-			guard let self = self else { return }
-			
-			let episode = self.topData[indexPath.row]
-			self.cancelDownload(for: episode, cell: cell)
+			let episode = originalData[index]
+			self?.cancelDownload(for: episode, cell: cell)
 		}
-		
-		cell.bottomView.isHidden = true
 		
 		configureSwipe(for: cell)
 		
@@ -183,7 +187,7 @@ extension EpisodesViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		let podcast = tableView == topTableView
 			? topData[indexPath.row]
-			: bottomData[indexPath.row]
+			: bottomData[indexPath.row].episode
 		
 		onPodcastPressed?(podcast, .select)
 	}
@@ -211,7 +215,7 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 		}
 		
 		if let bottomIndexPath = bottomIndexPath {
-			let podcast = bottomData[bottomIndexPath.row]
+			let podcast = bottomData[bottomIndexPath.row].episode
 			
 			if controllerType == .saved {
 				onPodcastPressed?(podcast, .delete)
@@ -237,5 +241,14 @@ private extension EpisodeTableViewCell.Data {
 		subtitle = episode.podcast?.user.profile.profileFullName ?? ""
 		fileIsDownloaded = (episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
 		fileIsDownloading = episode.file?.url.flatMap { AppFileLoader.shared.isLoading($0) } ?? false
+	}
+	
+	init(activity: Activity) {
+		image = activity.episode.podcast?.albumArt?.url
+		title = activity.episode.title
+		subtitle = activity.episode.podcast?.user.profile.profileFullName ?? ""
+		fileIsDownloaded = (activity.episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
+		fileIsDownloading = activity.episode.file?.url.flatMap { AppFileLoader.shared.isLoading($0) } ?? false
+		listeningProgress = Float(activity.duration / activity.episode.duration)
 	}
 }

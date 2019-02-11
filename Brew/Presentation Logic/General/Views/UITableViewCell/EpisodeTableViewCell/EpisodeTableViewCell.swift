@@ -18,6 +18,7 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 		var image: URL?
 		var title: String
 		var subtitle: String
+		var listeningProgress: Float = 0
 		var fileIsDownloaded: Bool = false
 		var fileIsDownloading: Bool = false
 	}
@@ -49,6 +50,7 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 		titleLabel.text = data.title
 		subtitleLabel.text = data.subtitle
 		saveButton.isDownloaded = data.fileIsDownloaded
+		progressView.progress = data.listeningProgress
 		
 		if data.fileIsDownloading  {
 			saveButton.downloadState = .readyToDownload
