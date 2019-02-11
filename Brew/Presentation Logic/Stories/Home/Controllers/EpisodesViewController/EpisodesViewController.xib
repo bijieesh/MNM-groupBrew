@@ -19,10 +19,11 @@
             <connections>
                 <outlet property="bottomTableView" destination="16a-87-pjV" id="fV7-Rk-t2G"/>
                 <outlet property="bottomTableViewHeaderView" destination="b6M-cb-hdg" id="VAT-XD-mGW"/>
+                <outlet property="bottomTableViewHeight" destination="sKE-3D-Vzw" id="vRs-Ne-4va"/>
                 <outlet property="seeMoreViewHeight" destination="kGu-N1-Gii" id="vSd-jd-XPN"/>
                 <outlet property="showMoreView" destination="5s6-g2-iHY" id="Gjf-sk-Nar"/>
-                <outlet property="topReleaseTableViewHeight" destination="CKM-wo-TO9" id="oCD-96-s0a"/>
                 <outlet property="topTableView" destination="A4N-Q2-MKp" id="VXT-AW-bUF"/>
+                <outlet property="topTableViewHeight" destination="CKM-wo-TO9" id="oCD-96-s0a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

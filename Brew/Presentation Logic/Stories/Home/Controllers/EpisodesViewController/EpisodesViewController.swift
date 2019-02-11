@@ -33,14 +33,13 @@ class EpisodesViewController: UIViewController {
 	@IBOutlet private var showMoreView: UIView!
 	@IBOutlet private var bottomTableViewHeaderView: UIView!
 	
-	@IBOutlet private var topReleaseTableViewHeight: NSLayoutConstraint! {
-		didSet { topReleaseTableViewHeight.constant = defaultCellHeight * 3 }
-	}
-	
+	@IBOutlet private var topTableViewHeight: NSLayoutConstraint!
+	@IBOutlet private var bottomTableViewHeight: NSLayoutConstraint!
 	@IBOutlet private var seeMoreViewHeight: NSLayoutConstraint!
 	
 	//MARK: Properties
-	private var defaultCellHeight: CGFloat = 128
+	private var topCellHeight: CGFloat = 130
+	private var bottomCellHeight: CGFloat = 155
 	
 	var topData: [Episode] = [] {
 		didSet { topControllerData = topData.map { EpisodeTableViewCell.Data(episode: $0) } }
@@ -65,7 +64,7 @@ class EpisodesViewController: UIViewController {
 //MARK: - @IBAction
 private extension EpisodesViewController {
 	@IBAction func onSeeMorePressed() {
-		topReleaseTableViewHeight.constant = defaultCellHeight * CGFloat(topData.count)
+		topTableViewHeight.constant = topCellHeight * CGFloat(topData.count)
 		showMoreView.isHidden = true
 	}
 }
@@ -90,11 +89,13 @@ private extension EpisodesViewController {
 //MARK: - TableView Helpers
 private extension EpisodesViewController {
 	func handleTopData() {
+		topTableViewHeight.constant = topCellHeight * CGFloat((topData.count < 4 ? topData.count : 3))
 		showMoreView.isHidden = topData.count < 4
 		topTableView.reloadData()
 	}
 	
 	func handleBottomData() {
+		bottomTableViewHeight.constant = bottomCellHeight * CGFloat(bottomData.count)
 		bottomTableViewHeaderView.isHidden = false
 		bottomTableView.isHidden = false
 		bottomTableView.reloadData()
