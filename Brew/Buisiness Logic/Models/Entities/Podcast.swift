@@ -15,6 +15,9 @@ struct Podcast: Codable {
     let episodes: [Episode]?
     let albumArt: File?
     let user: User
+	let categories: [Category]?
+	let totalRating: Int
+	let likesCount: Int
 
     var episodesCount: Int {
         return episodes?.count ?? 0

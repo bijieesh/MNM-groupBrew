@@ -83,7 +83,11 @@ private extension HomeCoordinator {
 		controller.podcast = podcast
 		
 		controller.onBackPressed = { [weak self] in self?.navigationController?.popViewController(animated: true) }
+		
 		controller.onPodcastPressed = { [weak self] in self?.onPodcastPressed?($0, $1) }
+		controller.onFirstCategoryPressed = { [weak self] in
+			self?.show($0)
+		}
 		
 		navigationController?.pushViewController(controller, animated: true)
 	}
@@ -141,5 +145,13 @@ private extension HomeCoordinator {
 	
 	func deleteEpisode(by id: Int) {
 		DeleteUserEpisodeRequest(id: id).execute()
+	}
+	
+	private func show(_ category: Category) {
+		let request = GetPodcastsRequest(categoryId: category.id)
+		let coordinator = PodcastsListCoordinator(request: request)
+		
+		coordinator.start()
+		navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
 }
