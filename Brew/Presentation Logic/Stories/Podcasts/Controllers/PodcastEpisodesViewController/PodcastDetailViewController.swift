@@ -23,9 +23,6 @@ class PodcastDetailViewController: AppViewController {
     @IBOutlet private var backButton: UIButton!
 	
 	@IBOutlet private var contentTableView: UITableView!
-//		{
-//		didSet { configureTableView() }
-//    }
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
@@ -54,8 +51,6 @@ private extension PodcastDetailViewController {
 	func configureTableView() {
 		contentTableView.register(cellType: PodcastEpisodeCell.self)
 		contentTableView.rowHeight = UITableView.automaticDimension
-		contentTableView.tableHeaderView = headerView
-		contentTableView.tableHeaderView?.bounds = CGRect(x: 0, y: 0, width: contentTableView.frame.width, height: headerView.expectedHeight)
 	}
 	
 	func fillData() {
@@ -91,7 +86,6 @@ extension PodcastDetailViewController: UITableViewDataSource {
 		}
 
 		cell.title = episode.title
-//		cell.duration = episode.duration
 		cell.descriptions = episode.description
 		
 		return cell
@@ -105,51 +99,17 @@ extension PodcastDetailViewController: UITableViewDelegate {
 		guard let podcast = podcast else { return }
 		onPodcastPressed?(podcast, indexPath.row)
 	}
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerView.expectedHeight
+    }
+
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
 }
 
-
-//extension PodcastDetailViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let view = PodcastDetailTableHeaderView.loadFromNib()
-//
-//        view.podcastName = podcast?.title
-//        view.podcastDescription = podcast?.description
-//
-//        return view
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell: PodcastEpisodeCell = tableView.dequeueReusableCell(for: indexPath)
-//
-//        guard let episode = podcast?.episodes?[indexPath.row] else {
-//            return cell
-//        }
-//
-//        cell.name = episode.title
-//        cell.duration = episode.duration
-//
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-////        return podcast?.episodes?.count ?? 0
-//		return 2
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        onEpisodeSelected?(indexPath.row)
-//    }
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let maxHeight: CGFloat = 228
-//        let minHeight: CGFloat = backButton.frame.maxY
-//
-//        let offset = scrollView.contentOffset.y
-//
-//        let finalHeight = max(min(maxHeight - offset, maxHeight), minHeight)
-//        logoHeightConstraint.constant = finalHeight
-//        view.layoutIfNeeded()
-//    }
-//}
-//

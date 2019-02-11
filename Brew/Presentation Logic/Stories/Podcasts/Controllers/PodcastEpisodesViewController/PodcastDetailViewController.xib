@@ -25,9 +25,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQV-58-oaL">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
                     <subviews>
-                        <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-Te-IBw">
+                        <tableView contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="yU8-Te-IBw">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="Ppc-EE-1Sn"/>
                                 <outlet property="delegate" destination="-1" id="MXn-JQ-wSl"/>
@@ -68,6 +68,6 @@
         </view>
     </objects>
     <resources>
-        <image name="back" width="36" height="48"/>
+        <image name="back" width="12" height="16"/>
     </resources>
 </document>
