@@ -107,7 +107,7 @@ private extension HomeCoordinator {
 	}
 	
 	func delete(_ episode: Episode) {
-		
+		deleteEpisode(by: episode.id)
 	}
 	
 	func select(_ episode: Episode) {
@@ -137,5 +137,9 @@ private extension HomeCoordinator {
 	
 	func saveEpisode(by id: Int) {
 		SaveEpisodeRequest(id: id).execute()
+	}
+	
+	func deleteEpisode(by id: Int) {
+		DeleteUserEpisodeRequest(id: id).execute()
 	}
 }

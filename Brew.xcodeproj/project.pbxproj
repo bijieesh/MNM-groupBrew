@@ -106,6 +106,7 @@
 		5A68C3D8220C83E20064A991 /* ShowsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3D6220C83E20064A991 /* ShowsViewController.xib */; };
 		5A68C3DE220C85740064A991 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3DC220C85740064A991 /* ImageCollectionViewCell.swift */; };
 		5A68C3DF220C85740064A991 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3DD220C85740064A991 /* ImageCollectionViewCell.xib */; };
+		5ACC947E2211AD4700AA012A /* DeleteUserEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */; };
 		5ADEFF14220DC88E00F7D8B9 /* SaveEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */; };
 		5ADEFF16220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
@@ -237,6 +238,7 @@
 		5A68C3D6220C83E20064A991 /* ShowsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowsViewController.xib; sourceTree = "<group>"; };
 		5A68C3DC220C85740064A991 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A68C3DD220C85740064A991 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserEpisodeRequest.swift; sourceTree = "<group>"; };
 		5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEpisodeRequest.swift; sourceTree = "<group>"; };
 		5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedEpisodesRequest.swift; sourceTree = "<group>"; };
 		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */,
 				5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */,
 				3D798AFA2210CF0F00B3DF26 /* UpdateActivityRequest.swift */,
+				5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
+				5ACC947E2211AD4700AA012A /* DeleteUserEpisodeRequest.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,
 				7865294421FC915600A826F7 /* Profile.swift in Sources */,
 				3DCBBA8721FA0BAA009BCD31 /* MainFlowCoordinator.swift in Sources */,

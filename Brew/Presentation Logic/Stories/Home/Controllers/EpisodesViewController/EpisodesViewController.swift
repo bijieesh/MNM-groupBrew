@@ -70,6 +70,23 @@ private extension EpisodesViewController {
 	}
 }
 
+//MARK: - Controller Helpers
+private extension EpisodesViewController {
+	func save(_ episode: Episode, for cell: EpisodeTableViewCell) {
+		guard let url = episode.file?.url else { return }
+		
+		cell.saveButton.downloadState = .readyToDownload
+		AppFileLoader.shared.storeFile(from: url, progressHandler: cell)
+	}
+	
+	func cancelDownload(for episode: Episode, cell: EpisodeTableViewCell) {
+		guard let url = episode.file?.url else { return }
+		
+		cell.saveButton.downloadState = .toDownload
+		AppFileLoader.shared.cancelLoading(from: url)
+	}
+}
+
 //MARK: - TableView Helpers
 private extension EpisodesViewController {
 	func handleTopData() {
@@ -104,8 +121,18 @@ private extension EpisodesViewController {
 		
 		cell.fill(data: cellData)
 		
-		cell.onSavePressed = {
-
+		cell.onSavePressed = { [weak self] in
+			guard let self = self else { return }
+			
+			let episode = self.topData[indexPath.row]
+			self.save(episode, for: cell)
+		}
+		
+		cell.onCancelDownloadPressed = { [weak self] in
+			guard let self = self else { return }
+			
+			let episode = self.topData[indexPath.row]
+			self.cancelDownload(for: episode, cell: cell)
 		}
 		
 		cell.bottomView.isHidden = true
@@ -209,5 +236,6 @@ private extension EpisodeTableViewCell.Data {
 		title = episode.title
 		subtitle = episode.podcast?.user.profile.profileFullName ?? ""
 		fileIsDownloaded = (episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
+		fileIsDownloading = episode.file?.url.flatMap { AppFileLoader.shared.isLoading($0) } ?? false
 	}
 }

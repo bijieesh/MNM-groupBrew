@@ -19,6 +19,7 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 		var title: String
 		var subtitle: String
 		var fileIsDownloaded: Bool = false
+		var fileIsDownloading: Bool = false
 	}
 
 	//MARK: IBOutlets
@@ -26,21 +27,32 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 	@IBOutlet private var mainImageView: UIImageView!
 	@IBOutlet private var titleLabel: UILabel!
 	@IBOutlet private var subtitleLabel: UILabel!
-	@IBOutlet private var saveButton: NFDownloadButton!
 	@IBOutlet private var progressView: UIProgressView!
+	@IBOutlet var saveButton: NFDownloadButton!
 	@IBOutlet var bottomView: UIView!
 	
 	@IBAction func saveButtonPressed() {
-		onSavePressed?()
+		if saveButton.downloadState == .toDownload {
+			onSavePressed?()
+		}
+		
+		if saveButton.downloadState == .readyToDownload {
+			onCancelDownloadPressed?()
+		}
 	}
 	
 	var onSavePressed: Action?
+	var onCancelDownloadPressed: Action?
 	
 	func fill(data: Data) {
 		mainImageView.sd_setImage(with: data.image)
 		titleLabel.text = data.title
 		subtitleLabel.text = data.subtitle
 		saveButton.isDownloaded = data.fileIsDownloaded
+		
+		if data.fileIsDownloading  {
+			saveButton.downloadState = .readyToDownload
+		}
 	}
 	
 	override func prepareForReuse() {
@@ -53,6 +65,6 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 extension EpisodeTableViewCell: AppFileLoaderProgressHandler {
 	var progress: Float {
 		get { return Float(saveButton.downloadPercent) }
-		set { saveButton.downloadPercent = CGFloat(progress) }
+		set { saveButton.downloadPercent = CGFloat(newValue) }
 	}
 }
