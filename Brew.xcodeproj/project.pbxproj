@@ -72,6 +72,7 @@
 		3D798B0622119F1F00B3DF26 /* EpisodesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B0422119F1E00B3DF26 /* EpisodesViewController.swift */; };
 		3D798B0A22119FDD00B3DF26 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B0822119FDD00B3DF26 /* EpisodeTableViewCell.swift */; };
 		3D798B0B22119FDD00B3DF26 /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D798B0922119FDD00B3DF26 /* EpisodeTableViewCell.xib */; };
+		3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B0C2211C57500B3DF26 /* StatusResponse.swift */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
@@ -202,6 +203,7 @@
 		3D798B0422119F1E00B3DF26 /* EpisodesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodesViewController.swift; sourceTree = "<group>"; };
 		3D798B0822119FDD00B3DF26 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		3D798B0922119FDD00B3DF26 /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
+		3D798B0C2211C57500B3DF26 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
@@ -521,6 +523,7 @@
 				3D2002AB21FDB10800E38B99 /* Episode.swift */,
 				3D2002AD21FDB1C800E38B99 /* File.swift */,
 				7865294321FC915600A826F7 /* Profile.swift */,
+				3D798B0C2211C57500B3DF26 /* StatusResponse.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1222,6 +1225,7 @@
 				3D20029621FB7E2700E38B99 /* Category.swift in Sources */,
 				7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
+				3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,

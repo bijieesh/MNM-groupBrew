@@ -9,7 +9,7 @@
 import Foundation
 
 class UpdateActivityRequest: RequestType {
-    typealias ResponseObjectType = Bool
+    typealias ResponseObjectType = StatusResponse
     typealias ErrorType = SimpleError
 
     let path: String = "api/episode/activity"
@@ -22,14 +22,5 @@ class UpdateActivityRequest: RequestType {
             "episode_id" : episodeId,
             "duration" : duration
         ]
-    }
-
-    func convert(_ serverJson: Any, for statusCode: StatusCode) -> Any {
-        if let mappedJson = serverJson as? [String : Any] {
-            return mappedJson["success"] ?? serverJson
-        }
-        else {
-            return serverJson
-        }
     }
 }
