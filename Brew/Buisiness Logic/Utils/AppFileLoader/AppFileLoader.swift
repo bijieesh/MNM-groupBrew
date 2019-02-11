@@ -92,7 +92,6 @@ class AppFileLoader: NSObject {
 }
 
 extension AppFileLoader: URLSessionDownloadDelegate {
-
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
 
     }

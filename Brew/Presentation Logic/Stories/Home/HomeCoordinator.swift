@@ -9,9 +9,11 @@
 import UIKit
 
 class HomeCoordinator: NavigationCoordinator {
-	typealias PlayPodcastAction = (Podcast, Int) -> Void
+	typealias EpisodeAction = (Episode) -> Void
+	typealias PodcastAction = (Podcast, Int) -> Void
 	
-	var onNeedPlayPodcast: PlayPodcastAction?
+	var onEpisodePressed: EpisodeAction?
+	var onPodcastPressed: PodcastAction?
 
     override func start() {
         super.start()
@@ -55,8 +57,8 @@ private extension HomeCoordinator {
 		let savedVC = EpisodesViewController()
 		savedVC.controllerType = .saved
 		
-		savedVC.onPodcastPressed = { podcast, actionType in
-			
+		savedVC.onPodcastPressed = { [weak self] episode, actionType in
+			self?.handleActionOn(episode, action: actionType)
 		}
 		
 		loadSavedEpisodes(for: savedVC)
@@ -81,7 +83,7 @@ private extension HomeCoordinator {
 		controller.podcast = podcast
 		
 		controller.onBackPressed = { [weak self] in self?.navigationController?.popViewController(animated: true) }
-		controller.onEpisodeSelected = { [weak self] in self?.onNeedPlayPodcast?(podcast, $0) }
+		controller.onPodcastPressed = { [weak self] in self?.onPodcastPressed?($0, $1) }
 		
 		navigationController?.pushViewController(controller, animated: true)
 	}
@@ -109,7 +111,7 @@ private extension HomeCoordinator {
 	}
 	
 	func select(_ episode: Episode) {
-		
+		onEpisodePressed?(episode)
 	}
 }
 

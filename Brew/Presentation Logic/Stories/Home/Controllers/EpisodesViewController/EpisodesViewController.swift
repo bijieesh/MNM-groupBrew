@@ -104,7 +104,9 @@ private extension EpisodesViewController {
 		
 		cell.fill(data: cellData)
 		
-		cell.onSavePressed = { }
+		cell.onSavePressed = {
+
+		}
 		
 		cell.bottomView.isHidden = true
 		
@@ -133,7 +135,8 @@ private extension EpisodesViewController {
 			cell.rightExpansion.expansionColor = #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.1012949486)
 			cell.rightExpansion.buttonIndex = 0
 			cell.rightExpansion.fillOnTrigger = true
-			cell.rightExpansion.threshold = 2		}
+			cell.rightExpansion.threshold = 2
+		}
 	}
 }
 

@@ -142,8 +142,8 @@ private extension ProfileCoordinator {
             self?.navigationController?.popViewController(animated: true)
         }
         
-        controller.onEpisodeSelected = { [weak self] index in
-            self?.onNeedPlayPodcast?(podcast, index)
+        controller.onPodcastPressed = { [weak self] in
+            self?.onNeedPlayPodcast?($0, $1)
         }
         
         navigationController?.pushViewController(controller, animated: true)

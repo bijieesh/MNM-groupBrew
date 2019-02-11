@@ -50,13 +50,17 @@ class MainFlowCoordinator: Coordinator {
     private func playPodcast(_ podcast: Podcast, from index: Int) {
         playerCoordinator.playEpisode(at: index, from: podcast)
     }
-
+	
     private func setupedHomeController() -> UIViewController? {
         let coordinator = HomeCoordinator()
 
-        coordinator.onNeedPlayPodcast = { [weak self] in
-            self?.playPodcast($0, from: $1)
+        coordinator.onEpisodePressed = { [weak self] in
+            self?.playerCoordinator.playEpisode($0)
         }
+		
+		coordinator.onPodcastPressed = { [weak self] in
+			self?.playerCoordinator.playEpisode(at: $1, from: $0)
+		}
 
         coordinator.start()
         return coordinator.contentController
@@ -77,7 +81,7 @@ class MainFlowCoordinator: Coordinator {
         }
 
         coordinator.onNeedPlayPodcast = { [weak self] in
-            self?.playPodcast($0, from: $1)
+            self?.playerCoordinator.playEpisode(at: $1, from: $0)
         }
 
         coordinator.start()

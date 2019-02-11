@@ -17,7 +17,7 @@ class PodcastDetailViewController: AppViewController {
 	}
 
     var onBackPressed: (() -> Void)?
-    var onEpisodeSelected: ((Int) -> Void)?
+    var onPodcastPressed: ((Podcast, Int) -> Void)?
 
     @IBOutlet private var backButton: UIButton!
 	
@@ -94,7 +94,8 @@ extension PodcastDetailViewController: UITableViewDataSource {
 
 extension PodcastDetailViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		onEpisodeSelected?(indexPath.row)
+		guard let podcast = podcast else { return }
+		onPodcastPressed?(podcast, indexPath.row)
 	}
 }
 
