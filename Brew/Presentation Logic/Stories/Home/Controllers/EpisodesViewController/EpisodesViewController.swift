@@ -18,7 +18,7 @@ class EpisodesViewController: UIViewController {
 	}
 	
 	enum ActionType {
-		case save, delete, select
+		case save, delete, skip, select
 	}
 	
 	//MARK: IBOutlets
@@ -38,8 +38,8 @@ class EpisodesViewController: UIViewController {
 	@IBOutlet private var seeMoreViewHeight: NSLayoutConstraint!
 	
 	//MARK: Properties
-	private var topCellHeight: CGFloat = 130
-	private var bottomCellHeight: CGFloat = 155
+	private var topCellHeight: CGFloat = 140
+	private var bottomCellHeight: CGFloat = 165
 	
 	var topData: [Episode] = [] {
 		didSet { topControllerData = topData.map { EpisodeTableViewCell.Data(episode: $0) } }
@@ -163,6 +163,7 @@ private extension EpisodesViewController {
                 cell.downloadState = .notDownloaded
             }
         }
+		
 		configureSwipe(for: cell)
 		
 		return cell
@@ -170,6 +171,15 @@ private extension EpisodesViewController {
 	
 	func configureSwipe(for cell: EpisodeTableViewCell) {
 		cell.delegate = self
+		
+		let leftButton = MGSwipeButton(title: "Skip      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
+		leftButton.setTitleColor(#colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 1), for: .normal)
+		cell.leftButtons = [leftButton]
+		cell.leftSwipeSettings.transition = .clipCenter
+		cell.leftExpansion.expansionColor = #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.1012949486)
+		cell.leftExpansion.buttonIndex = 0
+		cell.leftExpansion.fillOnTrigger = true
+		cell.leftExpansion.threshold = 2
 		
 		if controllerType == .new {
 			let rightButton = MGSwipeButton(title: "Save      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
@@ -221,9 +231,19 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 		let topIndexPath = topTableView.indexPath(for: cell)
 		let bottomIndexPath = bottomTableView.indexPath(for: cell)
 		
+		
 		if let topIndexPath = topIndexPath {
 			let podcast = topData[topIndexPath.row]
 
+			if direction == .leftToRight {
+				onPodcastPressed?(podcast, .skip)
+				
+				topTableView.performBatchUpdates({
+					topData.remove(at: topIndexPath.row)
+					topTableView.deleteRows(at: [topIndexPath], with: .top)
+				})
+			}
+			
 			if controllerType == .saved {
 				onPodcastPressed?(podcast, .delete)
 				
@@ -239,6 +259,15 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 		if let bottomIndexPath = bottomIndexPath {
 			let podcast = bottomData[bottomIndexPath.row].episode
 			
+			if direction == .leftToRight {
+				onPodcastPressed?(podcast, .skip)
+				
+				topTableView.performBatchUpdates({
+					topData.remove(at: bottomIndexPath.row)
+					topTableView.deleteRows(at: [bottomIndexPath], with: .top)
+				})
+			}
+			
 			if controllerType == .saved {
 				onPodcastPressed?(podcast, .delete)
 				
@@ -250,7 +279,7 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 				onPodcastPressed?(podcast, .save)
 			}
 		}
-
+		
 		return true
 	}
 }
@@ -267,6 +296,6 @@ private extension EpisodeTableViewCell.Data {
 		image = activity.episode.podcast?.albumArt?.url
 		title = activity.episode.title
 		subtitle = activity.episode.podcast?.user.profile?.profileFullName ?? ""
-		listeningProgress = Float(activity.duration / activity.episode.duration)
+		listeningProgress = Float(activity.duration) / Float(activity.episode.duration)
 	}
 }

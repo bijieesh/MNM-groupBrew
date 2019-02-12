@@ -9,12 +9,20 @@
 import Foundation
 
 class GetPodcastsRequest: RequestType {
-
-    enum `Type`: String {
+    enum RequestType: String {
         case discover
         case popular
         case editors
 		case all
+		
+		var name: String {
+			switch self {
+			case .discover: return "Discover"
+			case .popular: return "Top podcasts"
+			case .editors: return "Editros' choice"
+			case .all: return "All"
+			}
+		}
     }
 
     typealias ResponseObjectType = [Podcast]
@@ -23,7 +31,7 @@ class GetPodcastsRequest: RequestType {
     let path: String
     let method: HTTPMethod = .get
 
-    init(type: Type) {
+    init(type: RequestType) {
         path = "api/podcast/\(type)"
     }
 

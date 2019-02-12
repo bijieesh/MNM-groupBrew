@@ -8,30 +8,30 @@
 
 import UIKit
 
-class SearchCoordinator: NavigationCoordinator {
+final class SearchCoordinator: NavigationCoordinator {
 	
 	override func start() {
 		super.start()
-		loadCategory()
-	}
-	
-	private func loadCategory() {
-		GetAllCategoriesRequest().execute(
-			onSuccess: { [weak self] in
-				self?.setupSearchController(with: $0)
-			},
-			
-			onError: { error in
-				error.display()
-		})
-	}
-	
-	private func setupSearchController(with categories: [Category]) {
-		let searchController = SearchViewController()
-		searchController.data = categories
 		
-		searchController.onCategorySelected = { [weak self] in
+		setupSearchController()
+	}
+}
+
+//MARK: - View Helpers
+private extension SearchCoordinator {
+	func setupSearchController() {
+		let searchController = SearchViewController()
+		loadCategories(for: searchController)
+		
+		searchController.onCategory = { [weak self] in
 			self?.show($0)
+		}
+		
+		searchController.onTopPodcast = { [weak self] in
+			self?.showPodcasts(for: .popular)
+		}
+		searchController.onEditorsChoice = { [weak self] in
+			self?.showPodcasts(for: .editors)
 		}
 		
 		let contentController = UINavigationController(rootViewController: searchController)
@@ -39,13 +39,31 @@ class SearchCoordinator: NavigationCoordinator {
 		
 		navigationController?.pushViewController(searchController, animated: false)
 	}
-
-    private func show(_ category: Category) {
-        let request = GetPodcastsRequest(categoryId: category.id)
-        let coordinator = PodcastsListCoordinator(request: request)
 	
-        coordinator.start()
-        navigationController?.pushViewController(coordinator.contentController, animated: true)
-    }
+	func showPodcasts(for type: GetPodcastsRequest.RequestType) {
+		let request = GetPodcastsRequest(type: type)
+		loadPodcatListCoordinator(with: request,  title: type.name)
+	}
+	
+	func show(_ category: Category) {
+		let request = GetPodcastsRequest(categoryId: category.id)
+		loadPodcatListCoordinator(with: request, title: category.name)
+	}
+	
+	func loadPodcatListCoordinator<T: RequestType>(with request: T, title: String) where T.ResponseObjectType == [Podcast], T.ErrorType == SimpleError {
+		let coordinator = PodcastsListCoordinator(request: request, title: title)
+		coordinator.start()
+		
+		navigationController?.pushViewController(coordinator.contentController, animated: true)
+	}
+}
+
+//MARK: - Server Communication
+private extension SearchCoordinator {
+	func loadCategories(for controller: SearchViewController) {
+		GetAllCategoriesRequest().execute(onSuccess: { categories in
+			controller.data = categories
+		})
+	}
 }
 

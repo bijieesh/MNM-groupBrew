@@ -77,7 +77,10 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
                 downloadState = .downloaded
             }
             else {
-                saveButton.setTitle("\(Int(progress*100))%", for: .normal)
+				UIView.performWithoutAnimation {
+					saveButton.setTitle("\(Int(progress*100))%", for: .normal)
+					saveButton.layoutIfNeeded()
+				}
             }
         }
     }

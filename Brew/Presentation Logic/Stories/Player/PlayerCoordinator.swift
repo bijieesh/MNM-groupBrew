@@ -238,7 +238,7 @@ class PlayerCoordinator: NSObject {
         }
 
         GetEpisodeCommentsRequest(episodeId: episodeId).execute(
-            onSuccess: {  [weak self] in
+            onSuccess: { [weak self] in
                 let controller = CommentsViewController()
                 controller.comments = $0
 
