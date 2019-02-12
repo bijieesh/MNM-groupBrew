@@ -34,6 +34,7 @@ class PlayerViewController: AppViewController {
     var onPlayListTapped: (() -> Void)?
     var onClap: (() -> Void)?
     var onShowComments: (() -> Void)?
+    var onShare: (() -> Void)?
 
     var data: Data {
         willSet {
@@ -219,6 +220,10 @@ class PlayerViewController: AppViewController {
 
     @IBAction private func commentPressed() {
         onShowComments?()
+    }
+
+    @IBAction private func sharePressed() {
+        onShare?()
     }
 }
 

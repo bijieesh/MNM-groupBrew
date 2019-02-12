@@ -105,6 +105,10 @@ class PlayerCoordinator: NSObject {
                 self?.clap()
             }
 
+            fullScreenPlayerController?.onShare = { [weak self] in
+                self?.share()
+            }
+
             fullScreenPlayerController?.onShowComments = { [weak self] in
                 self?.showComments()
             }
@@ -230,6 +234,15 @@ class PlayerCoordinator: NSObject {
         }
 
         ClapEpisodeRequest(episodeId: episode.id).execute()
+    }
+
+    private func share() {
+        guard let link = activeEpisode?.shareableLink, let name = activeEpisode?.title else {
+            return
+        }
+
+        let controller = UIActivityViewController(activityItems: [link, name], applicationActivities: nil)
+        fullScreenPlayerController?.present(controller, animated: true)
     }
 
     private func showComments() {

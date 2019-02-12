@@ -113,6 +113,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udr-fM-mX5">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="32"/>
                                     <state key="normal" image="circles"/>
+                                    <connections>
+                                        <action selector="sharePressed" destination="-1" eventType="touchUpInside" id="RLZ-Um-BXW"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM0-O8-Djp">
                                     <rect key="frame" x="60" y="0.0" width="30" height="32"/>
