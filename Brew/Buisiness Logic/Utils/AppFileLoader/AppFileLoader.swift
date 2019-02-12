@@ -94,9 +94,3 @@ class AppFileLoader: NSObject {
         return queue.operations.first(where: { ($0 as? AppFileLoaderOperation)?.url == url }) as? AppFileLoaderOperation
     }
 }
-
-extension AppFileLoader: URLSessionDownloadDelegate {
-    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-
-    }
-}

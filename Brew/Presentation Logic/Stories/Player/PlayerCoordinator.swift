@@ -171,7 +171,7 @@ class PlayerCoordinator: NSObject {
 
         addPlayerEndObservation(to: player)
 
-        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile.profileFullName, audioPlayer: player)
+        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile?.profileFullName ?? "", audioPlayer: player)
     }
 
     private func addPlayerEndObservation(to player: AVPlayer) {

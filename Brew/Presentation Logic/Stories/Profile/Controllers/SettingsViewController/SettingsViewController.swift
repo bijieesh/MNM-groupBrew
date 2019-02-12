@@ -88,7 +88,7 @@ class SettingsViewController: AppViewController {
     private func fillUserInfo(_ user: User) {
         let profile = user.profile
         
-        nameTextField?.text = profile.profileFullName
+        nameTextField?.text = profile?.profileFullName
         emailTextField?.text = user.email
         mobileTextField?.text = user.phoneNumber
         countryTextField?.text = user.country

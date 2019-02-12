@@ -12,6 +12,5 @@ target 'Brew' do
   pod 'RMStore'
   pod 'STRatingControl', '~> 1.1'
   pod 'MGSwipeTableCell'
-  pod 'NFDownloadButton'
 
 end

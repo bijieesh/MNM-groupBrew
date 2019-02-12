@@ -9,7 +9,6 @@
 import UIKit
 import Reusable
 import MGSwipeTableCell
-import NFDownloadButton
 
 final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 	typealias Action = () -> Void
@@ -19,43 +18,69 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 		var title: String
 		var subtitle: String
 		var listeningProgress: Float = 0
-		var fileIsDownloaded: Bool = false
-		var fileIsDownloading: Bool = false
 	}
 
 	//MARK: IBOutlets
+
+    enum DownloadState {
+        case downloaded
+        case notDownloaded
+        case downloading(progress: Float)
+    }
+
+    var downloadState: DownloadState = .notDownloaded {
+        didSet {
+            updateDownloadButton()
+        }
+    }
 	
 	@IBOutlet private var mainImageView: UIImageView!
 	@IBOutlet private var titleLabel: UILabel!
 	@IBOutlet private var subtitleLabel: UILabel!
 	@IBOutlet private var progressView: UIProgressView!
-	@IBOutlet var saveButton: NFDownloadButton!
+	@IBOutlet private var saveButton: UIButton!
 	@IBOutlet var bottomView: UIView!
 	
 	@IBAction func saveButtonPressed() {
-		if saveButton.downloadState == .toDownload {
+        if case .notDownloaded = downloadState {
 			onSavePressed?()
 		}
-		
-		if saveButton.downloadState == .readyToDownload {
+        else if case .downloading = downloadState {
 			onCancelDownloadPressed?()
 		}
+        else {
+            onRemoveLocalFilePressed?()
+        }
 	}
 	
 	var onSavePressed: Action?
 	var onCancelDownloadPressed: Action?
+    var onRemoveLocalFilePressed: Action?
 	
 	func fill(data: Data) {
 		mainImageView.sd_setImage(with: data.image)
 		titleLabel.text = data.title
 		subtitleLabel.text = data.subtitle
-		saveButton.isDownloaded = data.fileIsDownloaded
 		progressView.progress = data.listeningProgress
-		
-		if data.fileIsDownloading  {
-			saveButton.downloadState = .readyToDownload
-		}
+
+        updateDownloadButton()
 	}
+
+    private func updateDownloadButton() {
+        switch downloadState {
+        case .downloaded:
+            saveButton.setTitle("REMOVE", for: .normal)
+        case .notDownloaded:
+            saveButton.setTitle("DOWNLOAD", for: .normal)
+        case .downloading(let progress):
+            if progress >= 1 {
+                downloadState = .downloaded
+            }
+            else {
+                saveButton.setTitle("\(Int(progress*100))%", for: .normal)
+            }
+        }
+    }
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
@@ -66,7 +91,16 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 
 extension EpisodeTableViewCell: AppFileLoaderProgressHandler {
 	var progress: Float {
-		get { return Float(saveButton.downloadPercent) }
-		set { saveButton.downloadPercent = CGFloat(newValue) }
+		get {
+            if case .downloading(let progress) = downloadState {
+                return progress
+            }
+            else {
+                return 0
+            }
+        }
+		set {
+            downloadState = .downloading(progress: newValue)
+        }
 	}
 }

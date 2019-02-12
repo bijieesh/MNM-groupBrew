@@ -61,7 +61,7 @@ private extension PodcastDetailViewController {
         let data = PodcastDetailTableHeaderView.Data.init(image: podcast.albumArt?.url,
                                                           title: podcast.title,
                                                           description: podcast.description,
-                                                          authorName: podcast.user.profile.profileFullName,
+                                                          authorName: podcast.user.profile?.profileFullName ?? "",
 														  rating: podcast.totalRating,
 														  podcastCategories: podcast.categories ?? [],
 														  likesCount: podcast.likesCount

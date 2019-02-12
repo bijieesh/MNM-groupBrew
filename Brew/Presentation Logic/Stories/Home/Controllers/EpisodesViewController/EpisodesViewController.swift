@@ -73,17 +73,23 @@ private extension EpisodesViewController {
 private extension EpisodesViewController {
 	func save(_ episode: Episode, for cell: EpisodeTableViewCell) {
 		guard let url = episode.file?.url else { return }
-		
-		cell.saveButton.downloadState = .readyToDownload
+
 		AppFileLoader.shared.storeFile(from: url, progressHandler: cell)
 	}
 	
 	func cancelDownload(for episode: Episode, cell: EpisodeTableViewCell) {
 		guard let url = episode.file?.url else { return }
 		
-		cell.saveButton.downloadState = .toDownload
+		cell.downloadState = .notDownloaded
 		AppFileLoader.shared.cancelLoading(from: url)
 	}
+
+    func removeDownload(for episode: Episode, cell: EpisodeTableViewCell) {
+        guard let url = episode.file?.url else { return }
+
+        cell.downloadState = .notDownloaded
+        AppFileLoader.shared.deleteFile(for: url)
+    }
 }
 
 //MARK: - TableView Helpers
@@ -131,17 +137,32 @@ private extension EpisodesViewController {
 		let cellData = data[index]
 		
 		cell.fill(data: cellData)
-		
+
+        let episode = originalData[index]
+
 		cell.onSavePressed = { [weak self] in
-			let episode = originalData[index]
 			self?.save(episode, for: cell)
 		}
 		
 		cell.onCancelDownloadPressed = { [weak self] in
-			let episode = originalData[index]
 			self?.cancelDownload(for: episode, cell: cell)
 		}
-		
+
+        cell.onRemoveLocalFilePressed = { [weak self] in
+            self?.removeDownload(for: episode, cell: cell)
+        }
+
+        if let url = episode.file?.url {
+            if AppFileLoader.shared.localFileUrl(for: url) != nil {
+                cell.downloadState = .downloaded
+            }
+            else if AppFileLoader.shared.isLoading(url) {
+                cell.downloadState = .downloading(progress: 0)
+            }
+            else {
+                cell.downloadState = .notDownloaded
+            }
+        }
 		configureSwipe(for: cell)
 		
 		return cell
@@ -239,17 +260,13 @@ private extension EpisodeTableViewCell.Data {
 	init(episode: Episode) {
 		image = episode.podcast?.albumArt?.url
 		title = episode.title
-		subtitle = episode.podcast?.user.profile.profileFullName ?? ""
-		fileIsDownloaded = (episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
-		fileIsDownloading = episode.file?.url.flatMap { AppFileLoader.shared.isLoading($0) } ?? false
+		subtitle = episode.podcast?.user.profile?.profileFullName ?? ""
 	}
 	
 	init(activity: Activity) {
 		image = activity.episode.podcast?.albumArt?.url
 		title = activity.episode.title
-		subtitle = activity.episode.podcast?.user.profile.profileFullName ?? ""
-		fileIsDownloaded = (activity.episode.file?.url.flatMap { AppFileLoader.shared.localFileUrl(for: $0) }) != nil
-		fileIsDownloading = activity.episode.file?.url.flatMap { AppFileLoader.shared.isLoading($0) } ?? false
+		subtitle = activity.episode.podcast?.user.profile?.profileFullName ?? ""
 		listeningProgress = Float(activity.duration / activity.episode.duration)
 	}
 }

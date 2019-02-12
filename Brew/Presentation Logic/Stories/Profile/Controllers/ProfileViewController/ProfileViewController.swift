@@ -66,7 +66,7 @@ extension ProfileViewController {
             return
         }
 
-        userNameLabel?.text = user?.profile.profileFullName
+        userNameLabel?.text = user?.profile?.profileFullName
 
         setupPodcasts()
         setupAvatarFromUser()
@@ -79,7 +79,7 @@ extension ProfileViewController {
     }
 
     private func setupAvatarFromUser() {
-        guard let userProfilePictureUrl = user?.profile.profilePicture?.url else {
+        guard let userProfilePictureUrl = user?.profile?.profilePicture?.url else {
             return
         }
 

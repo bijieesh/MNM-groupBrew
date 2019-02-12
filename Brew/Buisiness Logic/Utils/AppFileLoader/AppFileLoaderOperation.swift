@@ -70,6 +70,6 @@ class AppFileLoaderOperation: Operation, URLSessionDownloadDelegate {
     }
 
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        progress = Float(totalBytesExpectedToWrite) / Float(totalBytesWritten)
+        progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
     }
 }
