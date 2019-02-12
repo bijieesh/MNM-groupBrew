@@ -11,17 +11,16 @@ import Reusable
 import STRatingControl
 
 class PodcastDetailTableHeaderView: UIView, NibLoadable {
-    struct Data {
-        let image: URL?
-        let title: String
-        let description: String
-        let authorName: String
-		let rating: Int
-		let podcastCategories: [Category]
-		let likesCount: Int
+
+    var podcast: Podcast? {
+        didSet {
+            updateUI()
+        }
     }
 	
 	var onFirstCategoryPressed: ((Category) -> Void)?
+    var onSubscribe: (() -> Void)?
+    var onUnsubscribe: (() -> Void)?
 	
 	let expectedHeight: CGFloat = 623
 	
@@ -39,12 +38,7 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
 	@IBOutlet private var exclusivesIndicateView: UIView!
 	@IBOutlet private var episodesIndicateView: UIView!
 	@IBOutlet private var firstCategoryButton: UIButton!
-	
-//    var onSubscribeTapped: (() -> Void)?
-	
-	var data: Data? {
-		didSet { fillData() }
-	}
+    @IBOutlet private var subscribeButton: UIButton!
 	
 	private func selectedButton(episodes: Bool, exclusives: Bool) {
 		episodesButton.isSelected = episodes
@@ -69,36 +63,47 @@ class PodcastDetailTableHeaderView: UIView, NibLoadable {
 	}
 	
 	@IBAction func firstCategoryButtonPressed() {
-		if let category = data?.podcastCategories.first {
+		if let category = podcast?.categories?.first {
 			onFirstCategoryPressed?(category)
 		}
 	}
-	
-	private func fillData() {
-		logoImageView.sd_setImage(with: data?.image)
-		titleLabel.text = data?.title
-		descriptionLabel.text = data?.description
 
-        if let authorName = data?.authorName {
+    @IBAction func onSubscribePressed() {
+        if podcast?.isFollowing == false {
+            onSubscribe?()
+        }
+        else {
+            onUnsubscribe?()
+        }
+    }
+	
+	private func updateUI() {
+        guard let podcast = podcast else {
+            return
+        }
+
+		logoImageView.sd_setImage(with: podcast.albumArt?.url)
+		titleLabel.text = podcast.title
+		descriptionLabel.text = podcast.description
+
+        if podcast.isFollowing {
+            subscribeButton.setTitle("Unsubscribe", for: .normal)
+        }
+        else {
+            subscribeButton.setTitle("Subscribe", for: .normal)
+        }
+
+        if let authorName = podcast.user.profile?.profileFullName {
             authorNameLabel.text = "By \(authorName)"
         }
-		
-		if let rating = data?.rating {
-			ratingView.rating = rating
-			ratingLabel.text = "(\(rating))"
-		}
-		
-		if let likes = data?.likesCount {
-			likesCountLabel.text = "\(likes)"
-		}
-		
-		if let categories = data?.podcastCategories {
-			if categories.count >= 1 {
-				if let title = data?.podcastCategories.first?.name {
-					firstCategoryButton.setTitle("   \(title)   ", for: .normal)
-					firstCategoryButton.isHidden = false
-				}
-			}
-		}
+
+        ratingView.rating = podcast.totalRating
+        ratingLabel.text = "(\(podcast.totalRating))"
+		likesCountLabel.text = "\(podcast.likesCount)"
+
+        if let title = podcast.categories?.first?.name {
+            firstCategoryButton.setTitle("   \(title)   ", for: .normal)
+            firstCategoryButton.isHidden = false
+        }
 	}
 }

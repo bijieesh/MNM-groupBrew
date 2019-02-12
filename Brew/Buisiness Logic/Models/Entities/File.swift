@@ -10,15 +10,13 @@ import Foundation
 
 struct File: Codable {
     let id: Int?
-    let uploadPath: String?
-    let uploadFilename: String?
-    let uploadExtension: String?
+    let baseUrl: String?
+    let uploadPath: String
+    let uploadFilename: String
+    let uploadExtension: String
 
     var url: URL? {
-        guard let baseUrl = NetworkingStack.instance.baseUrl else {
-            return nil
-        }
-        guard let uploadPath = uploadPath, let uploadFilename = uploadFilename, let uploadExtension = uploadExtension else {
+        guard let baseUrl =  baseUrl else {
             return nil
         }
 

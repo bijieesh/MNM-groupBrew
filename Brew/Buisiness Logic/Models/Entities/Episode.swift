@@ -15,5 +15,5 @@ struct Episode: Codable {
 	let duration: Int
 	let podcast: Podcast?
     let file: File?
-
+    let shareableLink: URL
 }

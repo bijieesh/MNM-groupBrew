@@ -77,7 +77,7 @@ class MainFlowCoordinator: Coordinator {
         let coordinator = ProfileCoordinator()
 
         coordinator.onLogout = { [weak self] in
-            self?.onLogout?()
+            self?.logout()
         }
 
         coordinator.onNeedPlayPodcast = { [weak self] in
@@ -86,6 +86,11 @@ class MainFlowCoordinator: Coordinator {
 
         coordinator.start()
         return coordinator.contentController
+    }
+
+    private func logout() {
+        playerCoordinator.invalidate()
+        onLogout?()
     }
 }
 

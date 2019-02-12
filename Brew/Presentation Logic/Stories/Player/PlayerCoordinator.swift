@@ -22,6 +22,7 @@ class PlayerCoordinator: NSObject {
 
     private var autoContinueData: (podcast: Podcast, playingIndex: Int)?
     private var activityUpdateTimer: Timer?
+    private var activeEpisode: Episode?
 
     private let playerContainer: PlayerContainer
 
@@ -29,6 +30,10 @@ class PlayerCoordinator: NSObject {
         self.playerContainer = playerContainer
         super.init()
         prepareAudioSession()
+    }
+
+    func invalidate() {
+        invalidateCurrentData()
     }
 
     @discardableResult
@@ -76,6 +81,8 @@ class PlayerCoordinator: NSObject {
 
         setupActivityUpdateTimer(for: episode.id, data.audioPlayer)
 
+        activeEpisode = episode
+
         return true
     }
 
@@ -93,6 +100,14 @@ class PlayerCoordinator: NSObject {
         }
         else {
             fullScreenPlayerController = PlayerViewController(data: data, type: .fullScreen)
+
+            fullScreenPlayerController?.onClap = { [weak self] in
+                self?.clap()
+            }
+
+            fullScreenPlayerController?.onShowComments = { [weak self] in
+                self?.showComments()
+            }
         }
     }
 
@@ -207,5 +222,39 @@ class PlayerCoordinator: NSObject {
 
         removePlayerEndObservation(from: player)
         player.pause()
+    }
+
+    private func clap() {
+        guard let episode = activeEpisode else {
+            return
+        }
+
+        ClapEpisodeRequest(episodeId: episode.id).execute()
+    }
+
+    private func showComments() {
+        guard let episodeId = activeEpisode?.id else {
+            return
+        }
+
+        GetEpisodeCommentsRequest(episodeId: episodeId).execute(
+            onSuccess: {  [weak self] in
+                let controller = CommentsViewController()
+                controller.comments = $0
+
+                controller.onAddComment = { [weak controller] in
+                    AddEpisodeCommentRequest(episodeId: episodeId, comment: $0).execute()
+                    controller?.dismiss(animated: true)
+                }
+
+                controller.onClose = { [weak controller] in
+                    controller?.dismiss(animated: true)
+                }
+
+                self?.fullScreenPlayerController?.present(controller, animated: true)
+        },
+            onError: {
+                $0.display()
+        })
     }
 }

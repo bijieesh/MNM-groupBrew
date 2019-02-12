@@ -32,6 +32,8 @@ class PlayerViewController: AppViewController {
     }
 
     var onPlayListTapped: (() -> Void)?
+    var onClap: (() -> Void)?
+    var onShowComments: (() -> Void)?
 
     var data: Data {
         willSet {
@@ -209,6 +211,14 @@ class PlayerViewController: AppViewController {
         let currentRate = data.audioPlayer.rate
         data.audioPlayer.rate = max(0, currentRate - 0.25)
         updateRateLabel()
+    }
+
+    @IBAction private func clapPressed() {
+        onClap?()
+    }
+
+    @IBAction private func commentPressed() {
+        onShowComments?()
     }
 }
 

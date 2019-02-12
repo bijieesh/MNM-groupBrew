@@ -19,7 +19,17 @@ struct Podcast: Codable {
 	let totalRating: Int
 	let likesCount: Int
 
+    private(set) var isFollowing: Bool
+
     var episodesCount: Int {
         return episodes?.count ?? 0
+    }
+
+    mutating func handleSubscribe() {
+        isFollowing = true
+    }
+
+    mutating func handleUnsubscribe() {
+        isFollowing = false
     }
 }

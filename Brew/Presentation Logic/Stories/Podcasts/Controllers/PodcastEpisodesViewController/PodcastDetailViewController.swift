@@ -32,11 +32,14 @@ class PodcastDetailViewController: AppViewController {
         onBackPressed?()
     }
 	
-	private lazy var headerView: PodcastDetailTableHeaderView = {
+    private lazy var headerView: PodcastDetailTableHeaderView = {
+
 		let view = PodcastDetailTableHeaderView.loadFromNib()
+
 		view.onFirstCategoryPressed = { [weak self] in
 			self?.onFirstCategoryPressed?($0)
 		}
+        
 		return view
 	}()
 	
@@ -54,20 +57,21 @@ private extension PodcastDetailViewController {
 	}
 	
 	func fillData() {
-        guard let podcast = podcast else {
-            return
-        }
+		headerView.podcast = podcast
 
-        let data = PodcastDetailTableHeaderView.Data.init(image: podcast.albumArt?.url,
-                                                          title: podcast.title,
-                                                          description: podcast.description,
-                                                          authorName: podcast.user.profile?.profileFullName ?? "",
-														  rating: podcast.totalRating,
-														  podcastCategories: podcast.categories ?? [],
-														  likesCount: podcast.likesCount
-		)
-		
-		headerView.data = data
+        if var podcast = podcast {
+            headerView.onSubscribe = { [weak self] in
+                SubscribeToPodcastRequest(podcastId: podcast.id).execute()
+                podcast.handleSubscribe()
+                self?.headerView.podcast = podcast
+            }
+
+            headerView.onUnsubscribe = { [weak self] in
+                UnsubscribeFromPodcastRequest(podcastId: podcast.id).execute()
+                podcast.handleUnsubscribe()
+                self?.headerView.podcast = podcast
+            }
+        }
 	}
 }
 

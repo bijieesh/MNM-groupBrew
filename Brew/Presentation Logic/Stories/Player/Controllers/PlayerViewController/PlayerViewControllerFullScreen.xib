@@ -118,10 +118,16 @@
                                     <rect key="frame" x="60" y="0.0" width="30" height="32"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="player-comment"/>
+                                    <connections>
+                                        <action selector="commentPressed" destination="-1" eventType="touchUpInside" id="l4l-Zf-dY4"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSb-gg-f4j">
                                     <rect key="frame" x="120" y="0.0" width="30" height="32"/>
                                     <state key="normal" image="applause"/>
+                                    <connections>
+                                        <action selector="clapPressed" destination="-1" eventType="touchUpInside" id="HkM-R0-wjv"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <constraints>

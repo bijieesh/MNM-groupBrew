@@ -22,4 +22,8 @@ class AppViewController: UIViewController {
 
         view.backgroundColor = .black
     }
+
+    @IBAction private func closePressed() {
+        onClose?()
+    }
 }

@@ -73,6 +73,16 @@
 		3D798B0A22119FDD00B3DF26 /* EpisodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B0822119FDD00B3DF26 /* EpisodeTableViewCell.swift */; };
 		3D798B0B22119FDD00B3DF26 /* EpisodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D798B0922119FDD00B3DF26 /* EpisodeTableViewCell.xib */; };
 		3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B0C2211C57500B3DF26 /* StatusResponse.swift */; };
+		3D798B0F2212D52F00B3DF26 /* ClapEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B0E2212D52F00B3DF26 /* ClapEpisodeRequest.swift */; };
+		3D798B112212DEAA00B3DF26 /* GetEpisodeCommentsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B102212DEAA00B3DF26 /* GetEpisodeCommentsRequest.swift */; };
+		3D798B142212DECD00B3DF26 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B132212DECD00B3DF26 /* Comment.swift */; };
+		3D798B162212E01100B3DF26 /* AddEpisodeCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B152212E01100B3DF26 /* AddEpisodeCommentRequest.swift */; };
+		3D798B182212E2C200B3DF26 /* SubscribeToPodcastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B172212E2C200B3DF26 /* SubscribeToPodcastRequest.swift */; };
+		3D798B1A2212EAD200B3DF26 /* UnsubscribeFromPodcastRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B192212EAD200B3DF26 /* UnsubscribeFromPodcastRequest.swift */; };
+		3D798B1E22130CC400B3DF26 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B1D22130CC400B3DF26 /* CommentsViewController.swift */; };
+		3D798B2022130CEA00B3DF26 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D798B1F22130CEA00B3DF26 /* CommentsViewController.xib */; };
+		3D798B2322130F6500B3DF26 /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B2222130F6500B3DF26 /* CommentCell.swift */; };
+		3D798B2522130FFA00B3DF26 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D798B2422130FFA00B3DF26 /* CommentCell.xib */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
@@ -207,6 +217,16 @@
 		3D798B0822119FDD00B3DF26 /* EpisodeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EpisodeTableViewCell.swift; sourceTree = "<group>"; };
 		3D798B0922119FDD00B3DF26 /* EpisodeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeTableViewCell.xib; sourceTree = "<group>"; };
 		3D798B0C2211C57500B3DF26 /* StatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusResponse.swift; sourceTree = "<group>"; };
+		3D798B0E2212D52F00B3DF26 /* ClapEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClapEpisodeRequest.swift; sourceTree = "<group>"; };
+		3D798B102212DEAA00B3DF26 /* GetEpisodeCommentsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEpisodeCommentsRequest.swift; sourceTree = "<group>"; };
+		3D798B132212DECD00B3DF26 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		3D798B152212E01100B3DF26 /* AddEpisodeCommentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEpisodeCommentRequest.swift; sourceTree = "<group>"; };
+		3D798B172212E2C200B3DF26 /* SubscribeToPodcastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeToPodcastRequest.swift; sourceTree = "<group>"; };
+		3D798B192212EAD200B3DF26 /* UnsubscribeFromPodcastRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsubscribeFromPodcastRequest.swift; sourceTree = "<group>"; };
+		3D798B1D22130CC400B3DF26 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		3D798B1F22130CEA00B3DF26 /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
+		3D798B2222130F6500B3DF26 /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		3D798B2422130FFA00B3DF26 /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
@@ -353,6 +373,11 @@
 				3D798AFA2210CF0F00B3DF26 /* UpdateActivityRequest.swift */,
 				5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */,
 				5ACC94812211CA1600AA012A /* GetUserActivitiesRequest.swift */,
+				3D798B0E2212D52F00B3DF26 /* ClapEpisodeRequest.swift */,
+				3D798B102212DEAA00B3DF26 /* GetEpisodeCommentsRequest.swift */,
+				3D798B152212E01100B3DF26 /* AddEpisodeCommentRequest.swift */,
+				3D798B192212EAD200B3DF26 /* UnsubscribeFromPodcastRequest.swift */,
+				3D798B172212E2C200B3DF26 /* SubscribeToPodcastRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -533,6 +558,7 @@
 				7865294321FC915600A826F7 /* Profile.swift */,
 				3D798B0C2211C57500B3DF26 /* StatusResponse.swift */,
 				5ACC947F2211C97E00AA012A /* Activity.swift */,
+				3D798B132212DECD00B3DF26 /* Comment.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -664,6 +690,25 @@
 				3D798B0922119FDD00B3DF26 /* EpisodeTableViewCell.xib */,
 			);
 			path = EpisodeTableViewCell;
+			sourceTree = "<group>";
+		};
+		3D798B1C22130CAD00B3DF26 /* CommentsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3D798B1D22130CC400B3DF26 /* CommentsViewController.swift */,
+				3D798B1F22130CEA00B3DF26 /* CommentsViewController.xib */,
+				3D798B2122130F5000B3DF26 /* Cells */,
+			);
+			path = CommentsViewController;
+			sourceTree = "<group>";
+		};
+		3D798B2122130F5000B3DF26 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3D798B2222130F6500B3DF26 /* CommentCell.swift */,
+				3D798B2422130FFA00B3DF26 /* CommentCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3DA16B632206299600487323 /* Utils */ = {
@@ -807,6 +852,7 @@
 		3DCBBA7B21F90050009BCD31 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3D798B1C22130CAD00B3DF26 /* CommentsViewController */,
 				3DCBBA7C21F90063009BCD31 /* PlayerViewController */,
 			);
 			path = Controllers;
@@ -1085,6 +1131,7 @@
 				3D05F00821F5C8DE00174A91 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				3D05F01421F5D14400174A91 /* SignUpViewController.xib in Resources */,
 				3D05F00721F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf in Resources */,
+				3D798B2022130CEA00B3DF26 /* CommentsViewController.xib in Resources */,
 				3D05F00621F5C8DE00174A91 /* README.md in Resources */,
 				3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */,
 				85CA8F73220AE4C7007557D9 /* PodcastButton.xib in Resources */,
@@ -1102,6 +1149,7 @@
 				3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */,
 				7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */,
 				3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */,
+				3D798B2522130FFA00B3DF26 /* CommentCell.xib in Resources */,
 				3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */,
 				3D05F00921F5C8DE00174A91 /* SF-Pro-Display-Ultralight.otf in Resources */,
 				85EAABD92209D26900436458 /* SharpSansNo1-Medium.ttf in Resources */,
@@ -1214,6 +1262,7 @@
 				3D05EFCE21F13B1600174A91 /* Networking.swift in Sources */,
 				3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */,
 				3D798B012211930F00B3DF26 /* Array.swift in Sources */,
+				3D798B2322130F6500B3DF26 /* CommentCell.swift in Sources */,
 				5A68C3C7220C78240064A991 /* UIView+Controller.swift in Sources */,
 				3D2002AE21FDB1C800E38B99 /* File.swift in Sources */,
 				8596D38B220DB2BE00362DEC /* CategoryCollectionViewCell.swift in Sources */,
@@ -1223,6 +1272,7 @@
 				3DB447E821F7CBBB00F93876 /* PriceViewController.swift in Sources */,
 				3D2002A321FBBA4100E38B99 /* PodcastEpisodeCell.swift in Sources */,
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
+				3D798B1A2212EAD200B3DF26 /* UnsubscribeFromPodcastRequest.swift in Sources */,
 				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
 				3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */,
 				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,
@@ -1234,12 +1284,15 @@
 				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
 				3D05F01A21F5F1BF00174A91 /* SignUpRequest.swift in Sources */,
 				3D20029621FB7E2700E38B99 /* Category.swift in Sources */,
+				3D798B112212DEAA00B3DF26 /* GetEpisodeCommentsRequest.swift in Sources */,
 				7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
+				3D798B142212DECD00B3DF26 /* Comment.swift in Sources */,
 				5ACC947E2211AD4700AA012A /* DeleteUserEpisodeRequest.swift in Sources */,
+				3D798B1E22130CC400B3DF26 /* CommentsViewController.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,
 				7865294421FC915600A826F7 /* Profile.swift in Sources */,
 				3DCBBA8721FA0BAA009BCD31 /* MainFlowCoordinator.swift in Sources */,
@@ -1260,11 +1313,14 @@
 				3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */,
 				3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */,
 				7865294A21FDBD5A00A826F7 /* UIImage+Resize.swift in Sources */,
+				3D798B0F2212D52F00B3DF26 /* ClapEpisodeRequest.swift in Sources */,
+				3D798B162212E01100B3DF26 /* AddEpisodeCommentRequest.swift in Sources */,
 				3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */,
 				3D2002C22200B08A00E38B99 /* FeatureManager.swift in Sources */,
 				85CA8F6E220AE487007557D9 /* BaseButton.swift in Sources */,
 				3D20029421FB6D9B00E38B99 /* GetCurrentUserRequest.swift in Sources */,
 				8596D390220DEA0D00362DEC /* MenuContainerViewController.swift in Sources */,
+				3D798B182212E2C200B3DF26 /* SubscribeToPodcastRequest.swift in Sources */,
 				3DCBBA8C21FA2322009BCD31 /* GetPodcastsRequest.swift in Sources */,
 				3D20029021FB5DEA00E38B99 /* ProfileViewController.swift in Sources */,
 				3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */,

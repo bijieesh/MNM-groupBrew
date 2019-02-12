@@ -39,12 +39,12 @@ class GetPodcastsRequest: RequestType {
         }
 		
 		//TODO: Delete this code when server fix data structure
-		var data = mappedJson["data"] as? [Any]
+        var data = mappedJson["data"] as? [[String: Any]] ?? []
 		
-		if data == nil, let podcastJson = mappedJson["podcast"] as? [String : Any] {
-			data = podcastJson["data"] as? [Any]
+		if let podcastJson = mappedJson["podcast"] as? [String : Any] {
+            data = podcastJson["data"] as? [[String: Any]] ?? []
 		}
-
-        return data ?? serverJson
+        
+        return data
     }
 }
