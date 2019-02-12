@@ -103,6 +103,8 @@ private extension HomeCoordinator {
 			select(episode)
 		case .save:
 			save(episode)
+		case .skip:
+			skip(episode)
 		case .delete:
 			delete(episode)
 		}
@@ -118,6 +120,10 @@ private extension HomeCoordinator {
 	
 	func select(_ episode: Episode) {
 		onEpisodePressed?(episode)
+	}
+	
+	func skip(_ episode: Episode) {
+		skipEpisode(by: episode.id)
 	}
 }
 
@@ -143,6 +149,10 @@ private extension HomeCoordinator {
 	
 	func saveEpisode(by id: Int) {
 		SaveEpisodeRequest(id: id).execute()
+	}
+	
+	func skipEpisode(by id: Int) {
+		SkipEpisodeRequest(id: id).execute()
 	}
 	
 	func deleteEpisode(by id: Int) {

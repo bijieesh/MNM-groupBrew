@@ -110,6 +110,7 @@
 		5ACC947E2211AD4700AA012A /* DeleteUserEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */; };
 		5ACC94802211C97E00AA012A /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC947F2211C97E00AA012A /* Activity.swift */; };
 		5ACC94822211CA1600AA012A /* GetUserActivitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC94812211CA1600AA012A /* GetUserActivitiesRequest.swift */; };
+		5AD7A7CD2212D87B00A5BBDC /* SkipEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7A7CC2212D87B00A5BBDC /* SkipEpisodeRequest.swift */; };
 		5ADEFF14220DC88E00F7D8B9 /* SaveEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */; };
 		5ADEFF16220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
@@ -245,6 +246,7 @@
 		5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserEpisodeRequest.swift; sourceTree = "<group>"; };
 		5ACC947F2211C97E00AA012A /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		5ACC94812211CA1600AA012A /* GetUserActivitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserActivitiesRequest.swift; sourceTree = "<group>"; };
+		5AD7A7CC2212D87B00A5BBDC /* SkipEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipEpisodeRequest.swift; sourceTree = "<group>"; };
 		5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEpisodeRequest.swift; sourceTree = "<group>"; };
 		5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedEpisodesRequest.swift; sourceTree = "<group>"; };
 		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				3D798AFA2210CF0F00B3DF26 /* UpdateActivityRequest.swift */,
 				5ACC947D2211AD4700AA012A /* DeleteUserEpisodeRequest.swift */,
 				5ACC94812211CA1600AA012A /* GetUserActivitiesRequest.swift */,
+				5AD7A7CC2212D87B00A5BBDC /* SkipEpisodeRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -1203,6 +1206,7 @@
 				5ACC94802211C97E00AA012A /* Activity.swift in Sources */,
 				5ACC94822211CA1600AA012A /* GetUserActivitiesRequest.swift in Sources */,
 				3D798AF5220F99D800B3DF26 /* PodcastsListCoordinator.swift in Sources */,
+				5AD7A7CD2212D87B00A5BBDC /* SkipEpisodeRequest.swift in Sources */,
 				3D798AFB2210CF0F00B3DF26 /* UpdateActivityRequest.swift in Sources */,
 				3D2002AA21FBBA9600E38B99 /* PodcastDetailTableHeaderView.swift in Sources */,
 				3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */,
