@@ -21,9 +21,15 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LED-8e-AAe">
                         <rect key="frame" x="0.0" y="0.0" width="244" height="169"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="LED-8e-AAe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ECe-WL-7BX"/>
                 <constraint firstAttribute="trailing" secondItem="LED-8e-AAe" secondAttribute="trailing" id="FP7-FZ-kvz"/>

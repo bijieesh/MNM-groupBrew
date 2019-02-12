@@ -8,55 +8,77 @@
 
 import UIKit
 import Reusable
-import AlignedCollectionViewFlowLayout
 
-class InterestsViewController: AppViewController {
-
-    var onNextTapped: ((_ selected: [Category]) -> Void)?
-
-	@IBOutlet weak var backgroundGradientView: UIView!
-	@IBOutlet private var collectionViewLayout: AlignedCollectionViewFlowLayout! {
-        didSet {
-            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-            collectionViewLayout.minimumInteritemSpacing = 20
-            collectionViewLayout.horizontalAlignment = .left
-        }
-    }
+final class InterestsViewController: AppViewController {
+	typealias PodcastArrayAction = ([Podcast]) -> Void
+	typealias Action = () -> Void
+	
+    var onNext: PodcastArrayAction?
+	var onSkip: Action?
 
     @IBOutlet private var collectionView: UICollectionView! {
-        didSet {
-            collectionView?.register(cellType: TagViewCell.self)
-            collectionView.allowsMultipleSelection = true
-        }
+        didSet { configureCollectionView() }
     }
 	
-	var categories: [Category] = []
-	
-	let colors = [#colorLiteral(red: 0.2778550386, green: 0.2935783863, blue: 0.3268206716, alpha: 1), #colorLiteral(red: 0.1567189991, green: 0.1561391652, blue: 0.1934350431, alpha: 1)]
-	let startPoint = CGPoint(x:0.0, y:0.0)
-	let endPoint = CGPoint(x:1.0, y:1.0)
+	var podcasts: [Podcast] = [] {
+		didSet { collectionView.reloadData() }
+	}
 	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
-		backgroundGradientView.applyGradient(colors, startPoint: startPoint, endPoint: endPoint)
+		configureCollectionViewLayout()
 	}
-
-    @IBAction private func nextTapped() {
-        let selected = collectionView.indexPathsForSelectedItems?.map({ categories[$0.row] }) ?? []
-        onNextTapped?(selected)
-    }
 }
 
+//MARK: - Controller Helpers
+private extension InterestsViewController {
+	@IBAction func nextTapped() {
+		let selectedPodcasts = collectionView.indexPathsForSelectedItems?.map({ podcasts[$0.item] }) ?? []
+		onNext?(selectedPodcasts)
+	}
+	
+	@IBAction func skipTapped() {
+		onSkip?()
+	}
+	
+	func configureCollectionView() {
+		collectionView?.register(cellType: ImageCollectionViewCell.self)
+		collectionView.allowsMultipleSelection = true
+	}
+	
+	func configureCollectionViewLayout() {
+		let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
+		let columns: CGFloat = 3
+		let width = collectionView.frame.width / columns
+		let height: CGFloat = width
+		
+		layout?.itemSize = CGSize(width: width, height: height)
+		layout?.minimumInteritemSpacing = 0
+		layout?.minimumLineSpacing = 0
+		
+		collectionView.reloadData()
+	}
+}
+
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension InterestsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return podcasts.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: TagViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        let tag = categories[indexPath.row].name
-        cell.title = tag
+		let cell = collectionView.dequeueReusableCell(for: indexPath, cellType: ImageCollectionViewCell.self)
+		
+		cell.image = podcasts[indexPath.item].albumArt?.url
+		
         return cell
     }
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+		
+		cell.isSelected = !cell.isSelected
+	}
 }
+

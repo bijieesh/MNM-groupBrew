@@ -16,6 +16,13 @@ class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
 		didSet { imageView.sd_setImage(with: image) }
 	}
 	
+	override var isSelected: Bool {
+		didSet {
+			imageView.alpha = isSelected ? 0.6 : 1
+			imageView.layer.borderWidth = isSelected ? 2 : 0
+		}
+	}
+	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
