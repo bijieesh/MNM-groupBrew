@@ -12,21 +12,20 @@ import Reusable
 final class ShowsViewController: AppViewController {
 	typealias PodcastAction = (Podcast) -> Void
 
-	@IBOutlet private var backButton: UIButton! {
-		didSet {
-			backButton.isHidden = back
-		}
-	}
-
 	@IBOutlet private var collectionView: UICollectionView! {
 		didSet { configureCollectionView() }
 	}
 	
-	var back: Bool  = false
 	var onPodcastPressed: PodcastAction?
 	
 	var data: [Podcast] = [] {
 		didSet { collectionView.reloadData() }
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureBackButton()
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -34,8 +33,17 @@ final class ShowsViewController: AppViewController {
 		
 		configureCollectionViewLayout()
 	}
+}
+
+//MARK: - ControllerHelers
+private extension ShowsViewController {
+	func configureBackButton() {
+		let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back.pdf"), style: .plain, target: self, action: #selector(backButtonPressed))
+		backButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+		navigationItem.leftBarButtonItem = backButton
+	}
 	
-	@IBAction func backTapped(_ sender: Any) {
+	@objc func backButtonPressed() {
 		onClose?()
 	}
 }

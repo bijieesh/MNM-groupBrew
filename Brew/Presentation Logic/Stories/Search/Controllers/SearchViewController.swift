@@ -9,31 +9,74 @@
 import UIKit
 import Reusable
 
-class SearchViewController: UIViewController {
-
+final class SearchViewController: UIViewController {
+	typealias Action = () -> Void
+	typealias CategoryAction = (Category) -> Void
+	
 	@IBOutlet private var collectionView: UICollectionView! {
-		didSet {
-			configureCollectionView()
-		}
+		didSet { configureCollectionView() }
 	}
 	
-	var onCategorySelected: ((Category) -> Void)?
-	var data: [Category] = []
+	var onCategory: CategoryAction?
+	var onTopPodcast: Action?
+	var onEditorsChoice: Action?
 	
-	override func viewDidLayoutSubviews() {
-		super.viewDidLayoutSubviews()
-		
-		configureCollectionViewLayout()
+	var data: [Category] = [] {
+		didSet { fillData() }
 	}
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
+	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		fillData()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		setupNavigationController()
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		navigationController?.navigationBar.prefersLargeTitles = false
+	}
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+
+		configureCollectionViewLayout()
+	}
+}
+
+//MARK: - Controller Helpers
+private extension SearchViewController {
+	func fillData() {
+		if isViewLoaded {
+			collectionView.reloadData()
+		}
+	}
+	
+	func setupNavigationController() {
+		title = "Search"
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		navigationController?.navigationBar.isTranslucent = false
+		navigationController?.navigationBar.titleTextAttributes = [.foregroundColor : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+		navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor : #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)]
+		navigationController?.navigationBar.prefersLargeTitles = true
 	}
 }
 
 //MARK: - CollectionView Helpers
 private extension SearchViewController {
 	func configureCollectionView() {
+		collectionView.register(supplementaryViewType: SearchHeaderView.self, ofKind: UICollectionView.elementKindSectionHeader)
 		collectionView.register(cellType: CategoryCollectionViewCell.self)
 	}
 	
@@ -45,6 +88,7 @@ private extension SearchViewController {
 		let height: CGFloat = width
 		
 		layout?.itemSize = CGSize(width: width, height: height)
+		layout?.headerReferenceSize = CGSize(width: collectionView.frame.size.width, height: 270)
 		layout?.minimumInteritemSpacing = minimumInteritemSpacing
 		layout?.minimumLineSpacing = 20
 		
@@ -71,12 +115,30 @@ extension SearchViewController: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		return configureCell(for: collectionView, at: indexPath)
 	}
+	
+	func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+		if kind == UICollectionView.elementKindSectionHeader {
+			let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath, viewType: SearchHeaderView.self)
+			
+			headerView.onTopPodcast = { [weak self] in
+				self?.onTopPodcast?()
+			}
+			
+			headerView.onEditorsChoice = { [weak self] in
+				self?.onEditorsChoice?()
+			}
+			
+			return headerView
+		}
+		
+		return UICollectionReusableView()
+	}
 }
 
 //MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category = data[indexPath.row]
-		onCategorySelected?(category)
+		onCategory?(category)
 	}
 }

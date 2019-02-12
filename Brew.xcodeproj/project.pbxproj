@@ -111,6 +111,8 @@
 		5ACC94802211C97E00AA012A /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC947F2211C97E00AA012A /* Activity.swift */; };
 		5ACC94822211CA1600AA012A /* GetUserActivitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACC94812211CA1600AA012A /* GetUserActivitiesRequest.swift */; };
 		5AD7A7CD2212D87B00A5BBDC /* SkipEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7A7CC2212D87B00A5BBDC /* SkipEpisodeRequest.swift */; };
+		5AD7A7D52212FB3A00A5BBDC /* SearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD7A7D42212FB3A00A5BBDC /* SearchHeaderView.swift */; };
+		5AD7A7D72212FB4D00A5BBDC /* SearchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AD7A7D62212FB4D00A5BBDC /* SearchHeaderView.xib */; };
 		5ADEFF14220DC88E00F7D8B9 /* SaveEpisodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */; };
 		5ADEFF16220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */; };
 		7779C7FEA7DF64BC57173CF9 /* Pods_Brew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E400C05C3172ECE4CF1CA52 /* Pods_Brew.framework */; };
@@ -247,6 +249,8 @@
 		5ACC947F2211C97E00AA012A /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		5ACC94812211CA1600AA012A /* GetUserActivitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserActivitiesRequest.swift; sourceTree = "<group>"; };
 		5AD7A7CC2212D87B00A5BBDC /* SkipEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkipEpisodeRequest.swift; sourceTree = "<group>"; };
+		5AD7A7D42212FB3A00A5BBDC /* SearchHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeaderView.swift; sourceTree = "<group>"; };
+		5AD7A7D62212FB4D00A5BBDC /* SearchHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchHeaderView.xib; sourceTree = "<group>"; };
 		5ADEFF13220DC88E00F7D8B9 /* SaveEpisodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveEpisodeRequest.swift; sourceTree = "<group>"; };
 		5ADEFF15220DCB5000F7D8B9 /* GetSavedEpisodesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSavedEpisodesRequest.swift; sourceTree = "<group>"; };
 		7865293A21FC646700A826F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -908,6 +912,15 @@
 			path = ImageCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		5AD7A7CE2212F2D300A5BBDC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5AD7A7D42212FB3A00A5BBDC /* SearchHeaderView.swift */,
+				5AD7A7D62212FB4D00A5BBDC /* SearchHeaderView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		65E97A5620630B01F8C70077 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -948,6 +961,7 @@
 			children = (
 				8596D382220DA5D500362DEC /* SearchCoordinator.swift */,
 				8596D381220DA5AC00362DEC /* Controllers */,
+				5AD7A7CE2212F2D300A5BBDC /* Views */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1128,6 +1142,7 @@
 				3D05EFC121F128F000174A91 /* Assets.xcassets in Resources */,
 				3D2002A921FBBA9600E38B99 /* PodcastDetailTableHeaderView.xib in Resources */,
 				3D05EFFE21F5C8DE00174A91 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				5AD7A7D72212FB4D00A5BBDC /* SearchHeaderView.xib in Resources */,
 				3DB447E621F7CBBB00F93876 /* InterestsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1274,6 +1289,7 @@
 				3DB447CC21F74BC500F93876 /* PodcastsListView.swift in Sources */,
 				85CA8F6A2209EC6C007557D9 /* UIView+Inspectable.swift in Sources */,
 				3D05EFBA21F128EE00174A91 /* AppDelegate.swift in Sources */,
+				5AD7A7D52212FB3A00A5BBDC /* SearchHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

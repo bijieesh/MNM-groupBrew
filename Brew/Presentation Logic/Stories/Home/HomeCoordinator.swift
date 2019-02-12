@@ -45,7 +45,6 @@ private extension HomeCoordinator {
 	func createShowsController() -> ShowsViewController {
 		let showsVC = ShowsViewController()
 		loadShowsData(for: showsVC)
-		showsVC.back = true
 		
 		showsVC.onPodcastPressed = { [weak self] podcast in
 			self?.showDetails(for: podcast)

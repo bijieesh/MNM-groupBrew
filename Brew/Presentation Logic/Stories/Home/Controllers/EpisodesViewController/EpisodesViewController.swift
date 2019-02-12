@@ -38,8 +38,8 @@ class EpisodesViewController: UIViewController {
 	@IBOutlet private var seeMoreViewHeight: NSLayoutConstraint!
 	
 	//MARK: Properties
-	private var topCellHeight: CGFloat = 130
-	private var bottomCellHeight: CGFloat = 155
+	private var topCellHeight: CGFloat = 140
+	private var bottomCellHeight: CGFloat = 165
 	
 	var topData: [Episode] = [] {
 		didSet { topControllerData = topData.map { EpisodeTableViewCell.Data(episode: $0) } }
@@ -296,6 +296,6 @@ private extension EpisodeTableViewCell.Data {
 		image = activity.episode.podcast?.albumArt?.url
 		title = activity.episode.title
 		subtitle = activity.episode.podcast?.user.profile?.profileFullName ?? ""
-		listeningProgress = Float(activity.duration / activity.episode.duration)
+		listeningProgress = Float(activity.duration) / Float(activity.episode.duration)
 	}
 }

@@ -12,9 +12,10 @@ class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseOb
 
     private let request: T
 
-    init(request: T) {
+	init(request: T, title: String? = nil) {
         self.request = request
         let controller = ShowsViewController()
+		controller.title = title
 		
         super.init(contentController: controller)
 		
