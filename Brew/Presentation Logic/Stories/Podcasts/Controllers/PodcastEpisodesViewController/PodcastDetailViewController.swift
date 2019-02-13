@@ -11,14 +11,17 @@ import Reusable
 import SDWebImage
 
 class PodcastDetailViewController: AppViewController {
-
+	typealias Action = () -> Void
+	typealias PodcastAction = (Podcast, Int) -> Void
+	typealias CategoryAction = (Category) -> Void
+	
 	var podcast: Podcast? {
 		didSet { fillData() }
 	}
 
-    var onBackPressed: (() -> Void)?
-    var onPodcastPressed: ((Podcast, Int) -> Void)?
-	var onFirstCategoryPressed: ((Category) -> Void)?
+    var onBack: Action?
+    var onPodcastPressed: PodcastAction?
+	var onFirstCategoryPressed: CategoryAction?
 	
     @IBOutlet private var backButton: UIButton!
 	
@@ -27,10 +30,6 @@ class PodcastDetailViewController: AppViewController {
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
 	}
-
-    @IBAction private func backPressed() {
-        onBackPressed?()
-    }
 	
     private lazy var headerView: PodcastDetailTableHeaderView = {
 
@@ -43,6 +42,18 @@ class PodcastDetailViewController: AppViewController {
 		return view
 	}()
 	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		configureNavigationBar()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationController?.setNavigationBarHidden(false, animated: true)
+	}
+	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
@@ -51,6 +62,17 @@ class PodcastDetailViewController: AppViewController {
 }
 
 private extension PodcastDetailViewController {
+	func configureNavigationBar() {
+		let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back.pdf"), style: .plain, target: self, action: #selector(backButtonPressed))
+		backButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+		navigationItem.leftBarButtonItem = backButton
+		navigationItem.largeTitleDisplayMode = .never
+	}
+	
+	@objc func backButtonPressed() {
+		onBack?()
+	}
+	
 	func configureTableView() {
 		contentTableView.register(cellType: PodcastEpisodeCell.self)
 		contentTableView.rowHeight = UITableView.automaticDimension

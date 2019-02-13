@@ -30,14 +30,24 @@ private extension SearchCoordinator {
 		searchController.onTopPodcast = { [weak self] in
 			self?.showPodcasts(for: .popular)
 		}
+		
 		searchController.onEditorsChoice = { [weak self] in
 			self?.showPodcasts(for: .editors)
+		}
+		
+		searchController.onSearch = { [weak self] searchText in
+			self?.showSearchPodcast(for: searchText)
 		}
 		
 		let contentController = UINavigationController(rootViewController: searchController)
 		contentController.isNavigationBarHidden = true
 		
 		navigationController?.pushViewController(searchController, animated: false)
+	}
+	
+	func showSearchPodcast(for searchText: String) {
+		let request = PodcastSearchRequest(searchText: searchText)
+		loadPodcatListCoordinator(with: request, title: searchText)
 	}
 	
 	func showPodcasts(for type: GetPodcastsRequest.RequestType) {

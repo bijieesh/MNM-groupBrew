@@ -138,7 +138,7 @@ private extension ProfileCoordinator {
         let controller = PodcastDetailViewController()
         controller.podcast = podcast
         
-        controller.onBackPressed = { [weak self] in
+        controller.onBack = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
         

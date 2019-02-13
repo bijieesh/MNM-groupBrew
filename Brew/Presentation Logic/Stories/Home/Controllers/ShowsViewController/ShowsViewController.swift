@@ -35,7 +35,7 @@ final class ShowsViewController: AppViewController {
 	}
 }
 
-//MARK: - ControllerHelers
+//MARK: - Controller Helers
 private extension ShowsViewController {
 	func configureNavigationBar() {
 		let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back.pdf"), style: .plain, target: self, action: #selector(backButtonPressed))
@@ -92,8 +92,10 @@ extension ShowsViewController: UICollectionViewDataSource {
 
 //MARK: - UICollectionViewDelegate
 extension ShowsViewController: UICollectionViewDelegate {
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+	func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 		let podcast = data[indexPath.item]
 		onPodcastPressed?(podcast)
+
+		return false
 	}
 }

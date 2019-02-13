@@ -11,8 +11,10 @@ import Reusable
 
 final class SearchViewController: UIViewController {
 	typealias Action = () -> Void
+	typealias SearchAction = (String) -> Void
 	typealias CategoryAction = (Category) -> Void
 	
+	@IBOutlet private var searchBar: UISearchBar!
 	@IBOutlet private var collectionView: UICollectionView! {
 		didSet { configureCollectionView() }
 	}
@@ -20,6 +22,7 @@ final class SearchViewController: UIViewController {
 	var onCategory: CategoryAction?
 	var onTopPodcast: Action?
 	var onEditorsChoice: Action?
+	var onSearch: SearchAction?
 	
 	var data: [Category] = [] {
 		didSet { fillData() }
@@ -31,7 +34,7 @@ final class SearchViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		fillData()
 	}
 	
@@ -39,12 +42,6 @@ final class SearchViewController: UIViewController {
 		super.viewWillAppear(animated)
 		
 		setupNavigationController()
-	}
-	
-	override func viewWillDisappear(_ animated: Bool) {
-		super.viewWillDisappear(animated)
-		
-//		navigationController?.navigationBar.prefersLargeTitles = false
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -88,7 +85,7 @@ private extension SearchViewController {
 		let height: CGFloat = width
 		
 		layout?.itemSize = CGSize(width: width, height: height)
-		layout?.headerReferenceSize = CGSize(width: collectionView.frame.size.width, height: 270)
+		layout?.headerReferenceSize = CGSize(width: collectionView.frame.size.width, height: 200)
 		layout?.minimumInteritemSpacing = minimumInteritemSpacing
 		layout?.minimumLineSpacing = 20
 		
@@ -140,5 +137,16 @@ extension SearchViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let category = data[indexPath.row]
 		onCategory?(category)
+	}
+}
+
+//MARK: - UISearchBarDelegate
+extension SearchViewController: UISearchBarDelegate {
+	func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+		searchBar.endEditing(true)
+		
+		if let searchText = searchBar.text, !searchText.isEmpty {
+			onSearch?(searchText)
+		}
 	}
 }

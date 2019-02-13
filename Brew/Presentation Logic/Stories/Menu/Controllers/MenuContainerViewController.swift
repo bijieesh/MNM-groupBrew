@@ -53,7 +53,7 @@ class MenuContainerViewController: AppViewController {
 		setupTabBar()
 		addContentController()
 	}
-
+	
     func addPlayer(_ miniPlayer: UIViewController) {
         miniPlayer.willMove(toParent: self)
         playerContainer.addSubview(miniPlayer.view)
@@ -67,28 +67,23 @@ class MenuContainerViewController: AppViewController {
     }
 	
 	private func addContentController() {
-		let controller = controllers[selectedIndex]
+		selectedController.willMove(toParent: self)
+		selectedController.view.translatesAutoresizingMaskIntoConstraints = false
+		controllersContainer.addSubview(selectedController.view)
+		addChild(selectedController)
 		
-		selectedController.view.removeFromSuperview()
-		controller.willMove(toParent: self)
-		controller.view.translatesAutoresizingMaskIntoConstraints = false
-		controllersContainer.addSubview(controller.view)
-		addChild(controller)
+		selectedController.view.widthAnchor.constraint(equalTo: controllersContainer.widthAnchor).isActive = true
+		selectedController.view.heightAnchor.constraint(equalTo: controllersContainer.heightAnchor).isActive = true
+		selectedController.view.centerXAnchor.constraint(equalTo: controllersContainer.centerXAnchor).isActive = true
+		selectedController.view.centerYAnchor.constraint(equalTo: controllersContainer.centerYAnchor).isActive = true
 		
-		controller.view.widthAnchor.constraint(equalTo: controllersContainer.widthAnchor).isActive = true
-		controller.view.heightAnchor.constraint(equalTo: controllersContainer.heightAnchor).isActive = true
-		controller.view.centerXAnchor.constraint(equalTo: controllersContainer.centerXAnchor).isActive = true
-		controller.view.centerYAnchor.constraint(equalTo: controllersContainer.centerYAnchor).isActive = true
-		
-		controller.didMove(toParent: self)
+		selectedController.didMove(toParent: self)
 	}
 	
 	private func removeContentController() {
-		let controller = controllers[selectedIndex]
-		
-		controller.willMove(toParent: nil)
-		controller.view.removeFromSuperview()
-		controller.removeFromParent()
+		selectedController.willMove(toParent: nil)
+		selectedController.view.removeFromSuperview()
+		selectedController.removeFromParent()
 	}
 	
 	private func setupTabBar() {

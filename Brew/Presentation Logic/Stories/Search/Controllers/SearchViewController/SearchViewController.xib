@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Brew" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="v0a-b5-0u6" id="fv6-P3-8yK"/>
+                <outlet property="searchBar" destination="j2c-Yp-dOy" id="2fy-yJ-VKo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,8 +22,17 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v0a-b5-0u6">
-                    <rect key="frame" x="20" y="30" width="335" height="637"/>
+                <searchBar contentMode="redraw" barStyle="black" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="j2c-Yp-dOy">
+                    <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                    <color key="tintColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="96w-rD-1ZT"/>
+                    </connections>
+                </searchBar>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="v0a-b5-0u6">
+                    <rect key="frame" x="20" y="76" width="335" height="591"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tFv-17-Krw">
                         <size key="itemSize" width="50" height="50"/>
@@ -38,12 +48,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="v0a-b5-0u6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="5XS-OP-8H7"/>
+                <constraint firstItem="v0a-b5-0u6" firstAttribute="top" secondItem="j2c-Yp-dOy" secondAttribute="bottom" id="3mI-h1-ptl"/>
                 <constraint firstItem="v0a-b5-0u6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="FfS-Uu-SRp"/>
+                <constraint firstItem="j2c-Yp-dOy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Uur-Qg-5wl"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="v0a-b5-0u6" secondAttribute="trailing" constant="20" id="WkW-uG-4Su"/>
+                <constraint firstItem="j2c-Yp-dOy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="p5L-zu-Jco"/>
+                <constraint firstItem="j2c-Yp-dOy" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vQ5-4a-G3w"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="v0a-b5-0u6" secondAttribute="bottom" id="xq6-ms-J5a"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
 </document>

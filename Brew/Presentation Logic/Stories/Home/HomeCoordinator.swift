@@ -19,6 +19,8 @@ class HomeCoordinator: NavigationCoordinator {
         super.start()
 		
 		setupHomeContainer()
+		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		navigationController?.navigationBar.isTranslucent = false
     }
 }
 
@@ -83,7 +85,9 @@ private extension HomeCoordinator {
 		let controller = PodcastDetailViewController()
 		controller.podcast = podcast
 		
-		controller.onBackPressed = { [weak self] in self?.navigationController?.popViewController(animated: true) }
+		controller.onBack = { [weak self] in
+			self?.navigationController?.setNavigationBarHidden(true, animated: true)
+			self?.navigationController?.popViewController(animated: true) }
 		
 		controller.onPodcastPressed = { [weak self] in self?.onPodcastPressed?($0, $1) }
 		controller.onFirstCategoryPressed = { [weak self] in
