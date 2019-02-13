@@ -18,7 +18,8 @@ class ImageCollectionViewCell: UICollectionViewCell, NibReusable {
 	
 	override var isSelected: Bool {
 		didSet {
-			imageView.alpha = isSelected ? 0.6 : 1
+			backgroundColor = isSelected ? #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+			imageView.alpha = isSelected ? 0.5 : 1
 			imageView.layer.borderWidth = isSelected ? 2 : 0
 		}
 	}

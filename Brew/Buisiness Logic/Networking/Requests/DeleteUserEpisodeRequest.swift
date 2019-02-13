@@ -8,12 +8,8 @@
 
 import Foundation
 
-struct DeleteUserEpisodeResponse: Codable {
-	let success: Bool
-}
-
 struct DeleteUserEpisodeRequest: RequestType {
-	typealias ResponseObjectType = DeleteUserEpisodeResponse
+	typealias ResponseObjectType = StatusResponse
 	typealias ErrorType = SimpleError
 
 	var path: String

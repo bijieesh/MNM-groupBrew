@@ -90,9 +90,9 @@
                 <constraint firstItem="fcW-qd-JYY" firstAttribute="bottom" secondItem="HnX-9K-MUf" secondAttribute="bottom" constant="59" id="2lw-Fb-WtU"/>
                 <constraint firstItem="mCl-NZ-HcE" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" constant="5" id="Agm-M1-0Uk"/>
                 <constraint firstItem="M1B-Zk-BH5" firstAttribute="centerY" secondItem="yav-g7-ezn" secondAttribute="centerY" id="Gpr-vi-ERF"/>
-                <constraint firstItem="HnX-9K-MUf" firstAttribute="top" secondItem="mCl-NZ-HcE" secondAttribute="bottom" constant="50" id="Q4S-fg-X7Y"/>
                 <constraint firstItem="fcW-qd-JYY" firstAttribute="trailing" secondItem="mCl-NZ-HcE" secondAttribute="trailing" constant="5" id="QpW-Qk-SXF"/>
                 <constraint firstItem="yav-g7-ezn" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" constant="20" id="RsH-YQ-fjH"/>
+                <constraint firstItem="HnX-9K-MUf" firstAttribute="top" secondItem="mCl-NZ-HcE" secondAttribute="bottom" constant="50" id="YGD-kQ-FEt"/>
                 <constraint firstItem="HnX-9K-MUf" firstAttribute="centerX" secondItem="fcW-qd-JYY" secondAttribute="centerX" id="YQe-dH-nnF"/>
                 <constraint firstItem="mCl-NZ-HcE" firstAttribute="top" secondItem="yav-g7-ezn" secondAttribute="bottom" constant="30" id="cAV-a8-F45"/>
                 <constraint firstItem="yav-g7-ezn" firstAttribute="top" secondItem="fcW-qd-JYY" secondAttribute="top" constant="20" id="haD-DW-e1g"/>

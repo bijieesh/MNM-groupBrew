@@ -24,6 +24,12 @@ final class InterestsViewController: AppViewController {
 		didSet { collectionView.reloadData() }
 	}
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		navigationController?.setNavigationBarHidden(true, animated: false)
+	}
+	
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		

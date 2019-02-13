@@ -33,26 +33,27 @@ private extension OnboardingCoordinator {
 		}
 		
 		interestsViewController.onSkip = { [weak self] in
-			self?.onFinish?()
+			self?.showPriceController()
+
 		}
 		
-		contentController.present(interestsViewController, animated: false)
+		(contentController as? UINavigationController)?.setViewControllers([interestsViewController], animated: false)
 	}
 	
 	func showPriceController() {
 		let priceViewController = PriceViewController()
 		
 		priceViewController.onLaterTapped = { [weak self] in
-			self?.end()
 			self?.onFinish?()
+			self?.end()
 		}
 		
 		priceViewController.onNextTapped = { [weak self] in
-			self?.end()
 			self?.onFinish?()
+			self?.end()
 		}
 		
-		contentController.topController.present(priceViewController, animated: false)
+		(contentController as? UINavigationController)?.pushViewController(priceViewController, animated: true)
 	}
 }
 
@@ -65,6 +66,11 @@ private extension OnboardingCoordinator {
 	}
 	
 	func sendSelected(_ podcasts: [Podcast]) {
-		
+		let idArray = podcasts.map { $0.id }
+		SaveLikedPodcastsRequest(idArray: idArray).execute(onSuccess: { success in
+			
+		}) { error in
+			
+		}
 	}
 }
