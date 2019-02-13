@@ -48,7 +48,27 @@ private extension PodcastsListCoordinator {
 			self?.onPodcast?($0, $1)
 		}
 		
+		controller.onFirstCategoryPressed = { [weak self] category in
+			self?.show(category)
+		}
+		
 		contentController.navigationController?.pushViewController(controller, animated: true)
+	}
+	
+	func show(_ category: Category) {
+		let request = GetPodcastsRequest(categoryId: category.id)
+		loadPodcatListCoordinator(with: request, title: category.name)
+	}
+	
+	func loadPodcatListCoordinator<T: RequestType>(with request: T, title: String) where T.ResponseObjectType == [Podcast], T.ErrorType == SimpleError {
+		let coordinator = PodcastsListCoordinator<T>(request: request, title: title)
+		coordinator.start()
+		
+		coordinator.onPodcast = { [weak self] in
+			self?.onPodcast?($0, $1)
+		}
+		
+		contentController.navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
 }
 	
