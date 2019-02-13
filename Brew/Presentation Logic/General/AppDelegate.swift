@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         appFlowCoordinator.start()
 
+        application.setMinimumBackgroundFetchInterval(30)
+
         return true
     }
 }

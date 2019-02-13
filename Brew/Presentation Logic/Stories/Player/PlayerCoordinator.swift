@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import MediaPlayer
 
 protocol PlayerContainer {
     func presentMiniPlayer(_ player: AppViewController)
@@ -18,11 +19,12 @@ class PlayerCoordinator: NSObject {
 
     private(set) var miniPlayerController: PlayerViewController?
     private(set) var fullScreenPlayerController: PlayerViewController?
-    private(set) var activePlayer: AVPlayer?
+    private(set) var playerData: (player: AVPlayer, token: Any)?
 
     private var autoContinueData: (podcast: Podcast, playingIndex: Int)?
     private var activityUpdateTimer: Timer?
     private var activeEpisode: Episode?
+    private var turnOffTime: TimeInterval?
 
     private let playerContainer: PlayerContainer
 
@@ -112,6 +114,10 @@ class PlayerCoordinator: NSObject {
             fullScreenPlayerController?.onShowComments = { [weak self] in
                 self?.showComments()
             }
+
+            fullScreenPlayerController?.onSleep = { [weak self] in
+                self?.setupSleep(after: $0)
+            }
         }
     }
 
@@ -186,11 +192,24 @@ class PlayerCoordinator: NSObject {
             return nil
         }
 
-        let player = AVPlayer(url: audioUrl)
-
-        addPlayerEndObservation(to: player)
+        let player = updatedPlayer(for: audioUrl)
 
         return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile?.profileFullName ?? "", audioPlayer: player)
+    }
+
+    private func updatedPlayer(for audioUrl: URL) -> AVPlayer {
+        invalidateCurrentPlayer()
+
+        let player = AVPlayer(url: audioUrl)
+        addPlayerEndObservation(to: player)
+
+        let token = player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { [weak self] _ in
+            self?.checkSleepTime()
+        }
+
+        playerData = (player, token)
+
+        return player
     }
 
     private func addPlayerEndObservation(to player: AVPlayer) {
@@ -202,6 +221,20 @@ class PlayerCoordinator: NSObject {
         NotificationCenter.default.removeObserver(self, name: .AVPlayerItemDidPlayToEndTime, object: player.currentItem)
     }
 
+    private func checkSleepTime() {
+        guard playerData != nil else {
+            return
+        }
+
+        guard let turnOffTime = turnOffTime else {
+            return
+        }
+
+        if turnOffTime < Date().timeIntervalSince1970 {
+            invalidateCurrentData()
+        }
+    }
+
     @objc private func playerDidFinishPlaying(_ notification: NSNotification) {
         invalidateCurrentPlayer()
         playNextEpisodeIfNeeded()
@@ -211,21 +244,29 @@ class PlayerCoordinator: NSObject {
         let audioSession = AVAudioSession.sharedInstance()
         try? audioSession.setCategory(.playback, mode: .default, policy: .longForm)
         try? audioSession.setActive(true, options: [])
+        UIApplication.shared.beginReceivingRemoteControlEvents()
     }
 
     private func invalidateCurrentData() {
         invalidateCurrentPlayer()
-        invalidateActivityUpdateTimer()
         autoContinueData = nil
     }
 
     private func invalidateCurrentPlayer() {
-        guard let player = activePlayer else {
+        guard let data = playerData else {
             return
         }
 
-        removePlayerEndObservation(from: player)
-        player.pause()
+        data.player.removeTimeObserver(data.token)
+        removePlayerEndObservation(from: data.player)
+        data.player.pause()
+        invalidateActivityUpdateTimer()
+
+        playerData = nil
+    }
+
+    private func setupSleep(after seconds: Int) {
+        turnOffTime = Date().timeIntervalSince1970 + TimeInterval(seconds)
     }
 
     private func clap() {

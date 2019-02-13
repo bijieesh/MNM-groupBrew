@@ -35,6 +35,7 @@ class PlayerViewController: AppViewController {
     var onClap: (() -> Void)?
     var onShowComments: (() -> Void)?
     var onShare: (() -> Void)?
+    var onSleep: ((Int) -> Void)?
 
     var data: Data {
         willSet {
@@ -168,6 +169,20 @@ class PlayerViewController: AppViewController {
         rateLabel?.text = String(data.audioPlayer.rate)
     }
 
+    private func showSleepOptions() {
+        let controller = UIAlertController(title: "Sleep timer", message: "Chose when do you want to turn player off", preferredStyle: .actionSheet)
+
+        controller.addAction(UIAlertAction(title: "15 min", style: .default, handler: { [weak self] _ in self?.onSleep?(15*60) }))
+        controller.addAction(UIAlertAction(title: "30 min", style: .default, handler: { [weak self] _ in self?.onSleep?(30*60) }))
+        controller.addAction(UIAlertAction(title: "1 hour", style: .default, handler: { [weak self] _ in self?.onSleep?(60*60) }))
+        controller.addAction(UIAlertAction(title: "1 hour 30 min", style: .default, handler: { [weak self] _ in self?.onSleep?(90*60) }))
+        controller.addAction(UIAlertAction(title: "2 hours", style: .default, handler: { [weak self] _ in self?.onSleep?(2*60*60) }))
+
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(controller, animated: true)
+    }
+
     //Actions
     @IBAction private func playlistTapped() {
         onPlayListTapped?()
@@ -224,6 +239,10 @@ class PlayerViewController: AppViewController {
 
     @IBAction private func sharePressed() {
         onShare?()
+    }
+
+    @IBAction private func sleapTimerPressed() {
+        showSleepOptions()
     }
 }
 

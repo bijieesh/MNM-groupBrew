@@ -108,17 +108,17 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Klw-Pt-fDA">
-                            <rect key="frame" x="135" y="680" width="150" height="32"/>
+                            <rect key="frame" x="110" y="680" width="200" height="32"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udr-fM-mX5">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="27.5" height="32"/>
                                     <state key="normal" image="circles"/>
                                     <connections>
                                         <action selector="sharePressed" destination="-1" eventType="touchUpInside" id="RLZ-Um-BXW"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM0-O8-Djp">
-                                    <rect key="frame" x="60" y="0.0" width="30" height="32"/>
+                                    <rect key="frame" x="57.5" y="0.0" width="27.5" height="32"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="player-comment"/>
                                     <connections>
@@ -126,17 +126,27 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bSb-gg-f4j">
-                                    <rect key="frame" x="120" y="0.0" width="30" height="32"/>
+                                    <rect key="frame" x="115" y="0.0" width="27.5" height="32"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <state key="normal" image="applause"/>
                                     <connections>
                                         <action selector="clapPressed" destination="-1" eventType="touchUpInside" id="HkM-R0-wjv"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suZ-0b-XR1">
+                                    <rect key="frame" x="172.5" y="0.0" width="27.5" height="32"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" image="sleep_timer"/>
+                                    <connections>
+                                        <action selector="sleapTimerPressed" destination="-1" eventType="touchUpInside" id="Lec-WI-diH"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <constraints>
                                 <constraint firstItem="oM0-O8-Djp" firstAttribute="height" secondItem="udr-fM-mX5" secondAttribute="height" id="Dkn-Aw-NLd"/>
                                 <constraint firstItem="oM0-O8-Djp" firstAttribute="width" secondItem="udr-fM-mX5" secondAttribute="width" id="IrG-LO-AC6"/>
-                                <constraint firstAttribute="width" constant="150" id="h9R-hQ-Rq4"/>
+                                <constraint firstAttribute="width" constant="200" id="h9R-hQ-Rq4"/>
+                                <constraint firstItem="bSb-gg-f4j" firstAttribute="width" secondItem="suZ-0b-XR1" secondAttribute="width" id="hHI-Ze-F62"/>
                                 <constraint firstAttribute="height" constant="32" id="myt-kh-Y9p"/>
                                 <constraint firstItem="bSb-gg-f4j" firstAttribute="height" secondItem="oM0-O8-Djp" secondAttribute="height" id="sjO-nC-VKC"/>
                                 <constraint firstItem="bSb-gg-f4j" firstAttribute="width" secondItem="oM0-O8-Djp" secondAttribute="width" id="vVa-Y2-zan"/>
@@ -288,5 +298,6 @@
         <image name="rate_minus" width="15" height="15"/>
         <image name="rate_plus" width="15" height="15"/>
         <image name="replay_30" width="33" height="37"/>
+        <image name="sleep_timer" width="20" height="20"/>
     </resources>
 </document>
