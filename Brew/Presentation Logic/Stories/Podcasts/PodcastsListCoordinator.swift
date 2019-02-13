@@ -9,8 +9,11 @@
 import Foundation
 
 class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseObjectType == [Podcast], T.ErrorType == SimpleError {
+	typealias PodcastAction = (Podcast, Int) -> Void
 
     private let request: T
+	
+	var onPodcast: PodcastAction?
 
 	init(request: T, title: String? = nil) {
         self.request = request
@@ -22,19 +25,60 @@ class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseOb
 		controller.onClose = { [weak self] in
 			self?.contentController.navigationController?.popViewController(animated: true)
 		}
+		
+		controller.onPodcastPressed = { [weak self] podcast in
+			self?.showDetails(for: podcast)
+		}
 
         loadContent(for: controller)
     }
+}
 
-    private func loadContent(for controller: ShowsViewController) {
-        request.execute(
-            
-            onSuccess: {
-                controller.data = $0
-        },
-
-            onError: {
-                $0.display()
-        })
-    }
+//MARK: - Coordinator Helpers
+private extension PodcastsListCoordinator {
+	func showDetails(for podcast: Podcast) {
+		let controller = PodcastDetailViewController()
+		controller.podcast = podcast
+		
+		controller.onBack = { [weak self] in
+			self?.contentController.navigationController?.popViewController(animated: true)
+		}
+		
+		controller.onPodcastPressed = { [weak self] in
+			self?.onPodcast?($0, $1)
+		}
+		
+		controller.onFirstCategoryPressed = { [weak self] category in
+			self?.show(category)
+		}
+		
+		contentController.navigationController?.pushViewController(controller, animated: true)
+	}
+	
+	func show(_ category: Category) {
+		let request = GetPodcastsRequest(categoryId: category.id)
+		loadPodcatListCoordinator(with: request, title: category.name)
+	}
+	
+	func loadPodcatListCoordinator<T: RequestType>(with request: T, title: String) where T.ResponseObjectType == [Podcast], T.ErrorType == SimpleError {
+		let coordinator = PodcastsListCoordinator<T>(request: request, title: title)
+		coordinator.start()
+		
+		coordinator.onPodcast = { [weak self] in
+			self?.onPodcast?($0, $1)
+		}
+		
+		contentController.navigationController?.pushViewController(coordinator.contentController, animated: true)
+	}
+}
+	
+//MARK: - Server Communication
+private extension PodcastsListCoordinator {
+	func loadContent(for controller: ShowsViewController) {
+		request.execute( onSuccess: {
+			controller.data = $0
+		}, onError: {
+			$0.display()
+		})
+	}
 }

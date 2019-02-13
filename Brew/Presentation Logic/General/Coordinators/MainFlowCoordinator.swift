@@ -69,6 +69,10 @@ class MainFlowCoordinator: Coordinator {
 	private func setupedSearchController() -> UIViewController? {
 		let coordinator = SearchCoordinator()
 		
+		coordinator.onPodcast = { [weak self] in
+			self?.playerCoordinator.playEpisode(at: $1, from: $0)
+		}
+		
 		coordinator.start()
 		return coordinator.contentController
 	}

@@ -116,6 +116,9 @@
 		3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */; };
 		3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */; };
 		5A36C0E222141FB40091CC6A /* SaveLikedPodcastsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */; };
+		5A36C0EF22144A1C0091CC6A /* PodcastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0ED22144A1C0091CC6A /* PodcastSearchTableViewCell.swift */; };
+		5A36C0F022144A1C0091CC6A /* PodcastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36C0EE22144A1C0091CC6A /* PodcastSearchTableViewCell.xib */; };
+		5A36C0F3221459B70091CC6A /* PodcastSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0F2221459B70091CC6A /* PodcastSearchRequest.swift */; };
 		5A68C3C4220C6E6C0064A991 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */; };
 		5A68C3C5220C6E6C0064A991 /* HomeContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */; };
 		5A68C3C7220C78240064A991 /* UIView+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C6220C78240064A991 /* UIView+Controller.swift */; };
@@ -263,6 +266,9 @@
 		3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewControllerMini.xib; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
 		5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLikedPodcastsRequest.swift; sourceTree = "<group>"; };
+		5A36C0ED22144A1C0091CC6A /* PodcastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchTableViewCell.swift; sourceTree = "<group>"; };
+		5A36C0EE22144A1C0091CC6A /* PodcastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastSearchTableViewCell.xib; sourceTree = "<group>"; };
+		5A36C0F2221459B70091CC6A /* PodcastSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchRequest.swift; sourceTree = "<group>"; };
 		5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainerViewController.xib; sourceTree = "<group>"; };
 		5A68C3C6220C78240064A991 /* UIView+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Controller.swift"; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 				3D798B3522132CA100B3DF26 /* UpdateActivityRequest.swift */,
 				3D798B3622132CA100B3DF26 /* UpdateProfileInfoRequest.swift */,
 				5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */,
+				5A36C0F2221459B70091CC6A /* PodcastSearchRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -876,6 +883,24 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		5A36C0E5221446650091CC6A /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8596D384220DA6B100362DEC /* SearchViewController.swift */,
+				8596D385220DA6B100362DEC /* SearchViewController.xib */,
+			);
+			path = SearchViewController;
+			sourceTree = "<group>";
+		};
+		5A36C0F122144A220091CC6A /* PodcastSearchTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				5A36C0ED22144A1C0091CC6A /* PodcastSearchTableViewCell.swift */,
+				5A36C0EE22144A1C0091CC6A /* PodcastSearchTableViewCell.xib */,
+			);
+			path = PodcastSearchTableViewCell;
+			sourceTree = "<group>";
+		};
 		5A68C3C0220C6E3F0064A991 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +932,7 @@
 		5A68C3CE220C808D0064A991 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				5A36C0F122144A220091CC6A /* PodcastSearchTableViewCell */,
 				3D798B0722119FDD00B3DF26 /* EpisodeTableViewCell */,
 			);
 			path = UITableViewCell;
@@ -996,8 +1022,7 @@
 		8596D381220DA5AC00362DEC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8596D384220DA6B100362DEC /* SearchViewController.swift */,
-				8596D385220DA6B100362DEC /* SearchViewController.xib */,
+				5A36C0E5221446650091CC6A /* SearchViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1122,6 +1147,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A36C0F022144A1C0091CC6A /* PodcastSearchTableViewCell.xib in Resources */,
 				3D05F00521F5C8DE00174A91 /* SF-Pro-Display-Semibold.otf in Resources */,
 				3D05F00021F5C8DE00174A91 /* SF-Pro-Display-Light.otf in Resources */,
 				3D05F00421F5C8DE00174A91 /* SF-Pro-Display-Heavy.otf in Resources */,
@@ -1290,6 +1316,7 @@
 				7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */,
+				5A36C0F3221459B70091CC6A /* PodcastSearchRequest.swift in Sources */,
 				5A36C0E222141FB40091CC6A /* SaveLikedPodcastsRequest.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3D798B4C22132CA100B3DF26 /* TokenRefreshRequest.swift in Sources */,
@@ -1308,6 +1335,7 @@
 				3D05EFD421F21B7700174A91 /* User.swift in Sources */,
 				3D798B5622132CC000B3DF26 /* CommentsViewController.swift in Sources */,
 				3D798B4B22132CA100B3DF26 /* SignUpRequest.swift in Sources */,
+				5A36C0EF22144A1C0091CC6A /* PodcastSearchTableViewCell.swift in Sources */,
 				3D798AFD221180BB00B3DF26 /* AVPlayer.swift in Sources */,
 				3D798AF92210777400B3DF26 /* AppFileLoaderOperation.swift in Sources */,
 				3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */,

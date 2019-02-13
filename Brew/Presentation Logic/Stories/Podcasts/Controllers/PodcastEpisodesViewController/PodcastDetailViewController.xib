@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PodcastDetailViewController" customModule="Brew" customModuleProvider="target">
             <connections>
-                <outlet property="backButton" destination="gWj-6g-9Ci" id="oKr-6W-9Ci"/>
                 <outlet property="contentTableView" destination="yU8-Te-IBw" id="1OM-io-rdG"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ub5-iq-Bnw"/>
             </connections>
@@ -42,22 +41,9 @@
                         <constraint firstItem="yU8-Te-IBw" firstAttribute="leading" secondItem="dQV-58-oaL" secondAttribute="leading" id="oAP-sg-x12"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWj-6g-9Ci">
-                    <rect key="frame" x="8" y="44" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="BuC-Ph-tyQ"/>
-                        <constraint firstAttribute="width" constant="44" id="V0T-xm-nu8"/>
-                    </constraints>
-                    <state key="normal" image="back"/>
-                    <connections>
-                        <action selector="backPressed" destination="-1" eventType="touchUpInside" id="2R4-vi-hkF"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="gWj-6g-9Ci" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="05a-qr-DYL"/>
-                <constraint firstItem="gWj-6g-9Ci" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="KqC-GS-ysY"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dQV-58-oaL" secondAttribute="bottom" id="Ydx-q6-aER"/>
                 <constraint firstItem="dQV-58-oaL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="apl-12-SjP"/>
                 <constraint firstAttribute="trailing" secondItem="dQV-58-oaL" secondAttribute="trailing" id="shW-Hf-w8o"/>
@@ -67,7 +53,4 @@
             <point key="canvasLocation" x="60" y="62.068965517241381"/>
         </view>
     </objects>
-    <resources>
-        <image name="back" width="12" height="16"/>
-    </resources>
 </document>
