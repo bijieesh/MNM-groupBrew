@@ -10,12 +10,11 @@ import UIKit
 
 class SignUpViewController: AppViewController {
     var onSignInSelected: (() -> Void)?
-    var onSignUp: ((String, String, String, String, String?) -> Void)?
+    var onSignUp: ((String, String, String, String?) -> Void)?
 
 	@IBOutlet weak var backgraundGradientView: UIView!
 	@IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var emailTextField: UITextField!
-    @IBOutlet private var countryTextField: UITextField!
     @IBOutlet private var mobileTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var confirmPasswordTextField: UITextField!
@@ -42,9 +41,8 @@ class SignUpViewController: AppViewController {
         let email = emailTextField.text ?? ""
         let password = passwordTextField.text ?? ""
         let name = nameTextField.text ?? ""
-        let country = countryTextField.text ?? ""
         let mobile = mobileTextField.text
 
-        onSignUp?(name, country, email, password, mobile)
+        onSignUp?(name, email, password, mobile)
     }
 }

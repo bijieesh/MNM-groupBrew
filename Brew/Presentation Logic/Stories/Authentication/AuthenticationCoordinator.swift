@@ -46,8 +46,8 @@ class AuthenticationCoordinator: NavigationCoordinator {
             self?.showSignIn()
         }
 
-        controller.onSignUp = { [weak self] (name, country, email, password, mobile) in
-            self?.signUp(with: name, country, email, password, mobile)
+        controller.onSignUp = { [weak self] (name, email, password, mobile) in
+            self?.signUp(with: name, email, password, mobile)
         }
 
         navigationController?.pushViewController(controller, animated: false)
@@ -69,8 +69,8 @@ class AuthenticationCoordinator: NavigationCoordinator {
         })
     }
 
-    private func signUp(with name: String, _ country: String, _ email: String, _ password: String, _ mobile: String? = nil) {
-        let request = SignUpRequest(name: name, country: country, email: email, password: password, mobile: mobile)
+    private func signUp(with name: String, _ email: String, _ password: String, _ mobile: String? = nil) {
+        let request = SignUpRequest(name: name, email: email, password: password, mobile: mobile)
         request.execute(
             onSuccess: { [weak self] response in
                 self?.authenticate(with: response, completion: self?.onSignUp)

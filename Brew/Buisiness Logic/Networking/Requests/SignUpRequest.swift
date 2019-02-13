@@ -16,12 +16,12 @@ struct SignUpRequest: RequestType {
     let method: HTTPMethod = .post
     let bodyParams: [String: Any]
 
-    init(name: String, country: String, email: String, password: String, mobile: String?) {
+    init(name: String, email: String, password: String, mobile: String?) {
         var bodyParams = [
             "name": name,
             "email": email,
             "password": password,
-            "country": country
+            "country": "US"
         ]
 
         if let mobile = mobile {

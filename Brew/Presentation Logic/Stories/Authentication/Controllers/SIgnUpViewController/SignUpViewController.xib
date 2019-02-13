@@ -22,7 +22,6 @@
             <connections>
                 <outlet property="backgraundGradientView" destination="7tl-kr-jmE" id="tvw-s1-0WX"/>
                 <outlet property="confirmPasswordTextField" destination="BfZ-nI-4WA" id="c7p-oj-uMs"/>
-                <outlet property="countryTextField" destination="aZK-lH-oEr" id="3Wm-c6-rrZ"/>
                 <outlet property="emailTextField" destination="Svn-mK-eff" id="oYY-Wb-cyv"/>
                 <outlet property="mobileTextField" destination="okM-Eq-Jd8" id="Kwa-EI-rZz"/>
                 <outlet property="nameTextField" destination="dpA-Lg-NUR" id="Lg8-wm-bh5"/>
@@ -43,10 +42,10 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="779"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gzh-ZK-hUi">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="782.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="697.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="ned-CC-UYQ">
-                                    <rect key="frame" x="20" y="78" width="335" height="580"/>
+                                    <rect key="frame" x="20" y="78" width="335" height="495"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dpA-Lg-NUR" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="60"/>
@@ -98,27 +97,8 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Choose country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZK-lH-oEr" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="255" width="335" height="60"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="60" id="Pbh-Ck-zB4"/>
-                                            </constraints>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" name="SharpSansNo1-Medium" family="Sharp Sans No1 Medium" pointSize="18"/>
-                                            <textInputTraits key="textInputTraits" textContentType="country-name"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isRequired" value="YES"/>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="invalidColor">
-                                                    <color key="value" red="1" green="0.0" blue="0.0" alpha="0.14889895260989008" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
-                                                    <color key="value" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNU-5d-Yl5" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="340" width="335" height="60"/>
+                                            <rect key="frame" x="0.0" y="255" width="335" height="60"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="1wz-qM-zBW"/>
@@ -137,7 +117,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </textField>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BfZ-nI-4WA" customClass="ValidatedTextField" customModule="Brew" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="425" width="335" height="60"/>
+                                            <rect key="frame" x="0.0" y="340" width="335" height="60"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="60" id="gGq-jG-emn"/>
@@ -159,7 +139,7 @@
                                             </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y9c-Xv-4pC">
-                                            <rect key="frame" x="0.0" y="510" width="335" height="70"/>
+                                            <rect key="frame" x="0.0" y="425" width="335" height="70"/>
                                             <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="LC3-aQ-6fu"/>
@@ -180,7 +160,7 @@
                                     </subviews>
                                 </stackView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4E-2R-qUb">
-                                    <rect key="frame" x="59" y="698" width="257" height="34.5"/>
+                                    <rect key="frame" x="59" y="613" width="257" height="34.5"/>
                                     <state key="normal">
                                         <attributedString key="attributedTitle">
                                             <fragment content="Already">
