@@ -9,8 +9,11 @@
 import Foundation
 
 class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseObjectType == [Podcast], T.ErrorType == SimpleError {
+	typealias PodcastAction = (Podcast, Int) -> Void
 
     private let request: T
+	
+	var onPodcast: PodcastAction?
 
 	init(request: T, title: String? = nil) {
         self.request = request
@@ -41,8 +44,8 @@ private extension PodcastsListCoordinator {
 			self?.contentController.navigationController?.popViewController(animated: true)
 		}
 		
-		controller.onPodcastPressed = { podcast, episode in
-//			self?.onNeedPlayPodcast?($0, $1)
+		controller.onPodcastPressed = { [weak self] in
+			self?.onPodcast?($0, $1)
 		}
 		
 		contentController.navigationController?.pushViewController(controller, animated: true)

@@ -9,6 +9,9 @@
 import UIKit
 
 final class SearchCoordinator: NavigationCoordinator {
+	typealias PodcastAction = (Podcast, Int) -> Void
+	
+	var onPodcast: PodcastAction?
 	
 	override func start() {
 		super.start()
@@ -63,6 +66,10 @@ private extension SearchCoordinator {
 	func loadPodcatListCoordinator<T: RequestType>(with request: T, title: String) where T.ResponseObjectType == [Podcast], T.ErrorType == SimpleError {
 		let coordinator = PodcastsListCoordinator(request: request, title: title)
 		coordinator.start()
+		
+		coordinator.onPodcast = { [weak self] in
+			self?.onPodcast?($0, $1)
+		}
 		
 		navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}

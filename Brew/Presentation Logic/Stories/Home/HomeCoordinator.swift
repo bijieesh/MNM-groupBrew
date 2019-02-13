@@ -87,7 +87,8 @@ private extension HomeCoordinator {
 		
 		controller.onBack = { [weak self] in
 			self?.navigationController?.setNavigationBarHidden(true, animated: true)
-			self?.navigationController?.popViewController(animated: true) }
+			self?.navigationController?.popViewController(animated: true)
+		}
 		
 		controller.onPodcastPressed = { [weak self] in self?.onPodcastPressed?($0, $1) }
 		controller.onFirstCategoryPressed = { [weak self] in
