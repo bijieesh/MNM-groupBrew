@@ -25,7 +25,7 @@ final class ShowsViewController: AppViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		configureBackButton()
+		configureNavigationBar()
 	}
 	
 	override func viewDidLayoutSubviews() {
@@ -37,10 +37,11 @@ final class ShowsViewController: AppViewController {
 
 //MARK: - ControllerHelers
 private extension ShowsViewController {
-	func configureBackButton() {
+	func configureNavigationBar() {
 		let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "back.pdf"), style: .plain, target: self, action: #selector(backButtonPressed))
 		backButton.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 		navigationItem.leftBarButtonItem = backButton
+		navigationItem.largeTitleDisplayMode = .never
 	}
 	
 	@objc func backButtonPressed() {

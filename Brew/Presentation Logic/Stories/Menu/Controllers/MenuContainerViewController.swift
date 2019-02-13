@@ -19,9 +19,13 @@ class MenuContainerViewController: AppViewController {
 	}
 	
 	var selectedIndex: Int = 0 {
+		willSet {
+			removeContentController()
+		}
+		
 		didSet {
 			tabBar?.selectedItem = tabBar.items?[selectedIndex]
-			updateContentController()
+			addContentController()
 		}
 	}
 	
@@ -47,7 +51,7 @@ class MenuContainerViewController: AppViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupTabBar()
-		updateContentController()
+		addContentController()
 	}
 
     func addPlayer(_ miniPlayer: UIViewController) {
@@ -62,7 +66,7 @@ class MenuContainerViewController: AppViewController {
         miniPlayer.didMove(toParent: self)
     }
 	
-	private func updateContentController() {
+	private func addContentController() {
 		let controller = controllers[selectedIndex]
 		
 		selectedController.view.removeFromSuperview()
@@ -77,6 +81,14 @@ class MenuContainerViewController: AppViewController {
 		controller.view.centerYAnchor.constraint(equalTo: controllersContainer.centerYAnchor).isActive = true
 		
 		controller.didMove(toParent: self)
+	}
+	
+	private func removeContentController() {
+		let controller = controllers[selectedIndex]
+		
+		controller.willMove(toParent: nil)
+		controller.view.removeFromSuperview()
+		controller.removeFromParent()
 	}
 	
 	private func setupTabBar() {
