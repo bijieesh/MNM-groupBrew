@@ -17,9 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InterestsViewController" customModule="Brew" customModuleProvider="target">
             <connections>
-                <outlet property="backgroundGradientView" destination="JzC-cX-mdq" id="QNT-79-9NP"/>
                 <outlet property="collectionView" destination="mCl-NZ-HcE" id="ang-eQ-Fgg"/>
-                <outlet property="collectionViewLayout" destination="lhX-Cr-zQx" id="IgA-bT-13i"/>
                 <outlet property="view" destination="PUK-nk-kJ5" id="XPm-0Q-rnG"/>
             </connections>
         </placeholder>
@@ -28,17 +26,43 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="854"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzC-cX-mdq" userLabel="Backgraund Gradient View">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="854"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose shows that you like" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yav-g7-ezn">
+                    <rect key="frame" x="20" y="40" width="200" height="63"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Brew! What kind  of podcast do you listen to?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yav-g7-ezn">
-                    <rect key="frame" x="0.0" y="53" width="375" height="63"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="JdJ-Tg-dpf"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="SharpSansNo1-Bold" family="Sharp Sans No1 Bold" pointSize="23"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M1B-Zk-BH5">
+                    <rect key="frame" x="311" y="49.5" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eLd-XI-7tN"/>
+                        <constraint firstAttribute="width" constant="44" id="fiK-CV-JQw"/>
+                    </constraints>
+                    <state key="normal" title="Skip">
+                        <color key="titleColor" red="0.34901960780000002" green="0.34901960780000002" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="skipTapped" destination="-1" eventType="touchUpInside" id="T6K-yC-ziR"/>
+                    </connections>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mCl-NZ-HcE">
+                    <rect key="frame" x="5" y="133" width="365" height="552"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="lhX-Cr-zQx" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="8DM-EA-eVb"/>
+                        <outlet property="delegate" destination="-1" id="P2i-D0-i29"/>
+                    </connections>
+                </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HnX-9K-MUf">
                     <rect key="frame" x="87" y="735" width="201" height="60"/>
                     <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -59,36 +83,19 @@
                         <action selector="nextTapped" destination="-1" eventType="touchUpInside" id="Bo3-wA-crg"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mCl-NZ-HcE">
-                    <rect key="frame" x="24" y="167" width="327" height="518"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="20" minimumInteritemSpacing="20" id="lhX-Cr-zQx" customClass="AlignedCollectionViewFlowLayout" customModule="AlignedCollectionViewFlowLayout">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="8DM-EA-eVb"/>
-                        <outlet property="delegate" destination="-1" id="P2i-D0-i29"/>
-                    </connections>
-                </collectionView>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="JzC-cX-mdq" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" id="1oA-ff-Qw2"/>
+                <constraint firstItem="fcW-qd-JYY" firstAttribute="trailing" secondItem="M1B-Zk-BH5" secondAttribute="trailing" constant="20" id="1hS-q4-3d1"/>
                 <constraint firstItem="fcW-qd-JYY" firstAttribute="bottom" secondItem="HnX-9K-MUf" secondAttribute="bottom" constant="59" id="2lw-Fb-WtU"/>
-                <constraint firstItem="mCl-NZ-HcE" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" constant="24" id="Agm-M1-0Uk"/>
-                <constraint firstItem="HnX-9K-MUf" firstAttribute="top" secondItem="mCl-NZ-HcE" secondAttribute="bottom" constant="50" id="DUd-qU-FQC"/>
-                <constraint firstAttribute="bottom" secondItem="JzC-cX-mdq" secondAttribute="bottom" id="Dpg-oR-fnZ"/>
-                <constraint firstItem="fcW-qd-JYY" firstAttribute="trailing" secondItem="yav-g7-ezn" secondAttribute="trailing" id="ExQ-tx-NyZ"/>
-                <constraint firstItem="fcW-qd-JYY" firstAttribute="trailing" secondItem="mCl-NZ-HcE" secondAttribute="trailing" constant="24" id="QpW-Qk-SXF"/>
-                <constraint firstItem="yav-g7-ezn" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" id="RsH-YQ-fjH"/>
+                <constraint firstItem="mCl-NZ-HcE" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" constant="5" id="Agm-M1-0Uk"/>
+                <constraint firstItem="M1B-Zk-BH5" firstAttribute="centerY" secondItem="yav-g7-ezn" secondAttribute="centerY" id="Gpr-vi-ERF"/>
+                <constraint firstItem="fcW-qd-JYY" firstAttribute="trailing" secondItem="mCl-NZ-HcE" secondAttribute="trailing" constant="5" id="QpW-Qk-SXF"/>
+                <constraint firstItem="yav-g7-ezn" firstAttribute="leading" secondItem="fcW-qd-JYY" secondAttribute="leading" constant="20" id="RsH-YQ-fjH"/>
+                <constraint firstItem="HnX-9K-MUf" firstAttribute="top" secondItem="mCl-NZ-HcE" secondAttribute="bottom" constant="50" id="YGD-kQ-FEt"/>
                 <constraint firstItem="HnX-9K-MUf" firstAttribute="centerX" secondItem="fcW-qd-JYY" secondAttribute="centerX" id="YQe-dH-nnF"/>
-                <constraint firstItem="fcW-qd-JYY" firstAttribute="trailing" secondItem="JzC-cX-mdq" secondAttribute="trailing" id="aVa-nx-S9E"/>
-                <constraint firstItem="yav-g7-ezn" firstAttribute="top" secondItem="fcW-qd-JYY" secondAttribute="top" constant="33" id="haD-DW-e1g"/>
-                <constraint firstItem="mCl-NZ-HcE" firstAttribute="top" secondItem="yav-g7-ezn" secondAttribute="bottom" constant="51" id="rfW-X3-kOU"/>
-                <constraint firstItem="JzC-cX-mdq" firstAttribute="top" secondItem="PUK-nk-kJ5" secondAttribute="top" id="zXf-Yb-Gqc"/>
+                <constraint firstItem="mCl-NZ-HcE" firstAttribute="top" secondItem="yav-g7-ezn" secondAttribute="bottom" constant="30" id="cAV-a8-F45"/>
+                <constraint firstItem="yav-g7-ezn" firstAttribute="top" secondItem="fcW-qd-JYY" secondAttribute="top" constant="20" id="haD-DW-e1g"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="fcW-qd-JYY"/>

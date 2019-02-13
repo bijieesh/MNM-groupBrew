@@ -106,8 +106,6 @@
 		3DB447E821F7CBBB00F93876 /* PriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447E421F7CBBB00F93876 /* PriceViewController.swift */; };
 		3DCBBA6921F7D08C009BCD31 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6821F7D08C009BCD31 /* UIColor.swift */; };
 		3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6A21F86B63009BCD31 /* OnboardingCoordinator.swift */; };
-		3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */; };
-		3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */; };
 		3DCBBA7421F8943F009BCD31 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7321F8943F009BCD31 /* Coordinator.swift */; };
 		3DCBBA7721F8D22F009BCD31 /* AppAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */; };
 		3DCBBA7F21F90063009BCD31 /* PlayerViewControllerFullScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DCBBA7D21F90063009BCD31 /* PlayerViewControllerFullScreen.xib */; };
@@ -117,6 +115,7 @@
 		3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8821FA0F45009BCD31 /* HomeCoordinator.swift */; };
 		3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */; };
 		3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */; };
+		5A36C0E222141FB40091CC6A /* SaveLikedPodcastsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */; };
 		5A68C3C4220C6E6C0064A991 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */; };
 		5A68C3C5220C6E6C0064A991 /* HomeContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */; };
 		5A68C3C7220C78240064A991 /* UIView+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C6220C78240064A991 /* UIView+Controller.swift */; };
@@ -253,8 +252,6 @@
 		3DB447E421F7CBBB00F93876 /* PriceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceViewController.swift; sourceTree = "<group>"; };
 		3DCBBA6821F7D08C009BCD31 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		3DCBBA6A21F86B63009BCD31 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
-		3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagViewCell.xib; sourceTree = "<group>"; };
-		3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewCell.swift; sourceTree = "<group>"; };
 		3DCBBA7321F8943F009BCD31 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAuthManager.swift; sourceTree = "<group>"; };
 		3DCBBA7D21F90063009BCD31 /* PlayerViewControllerFullScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewControllerFullScreen.xib; sourceTree = "<group>"; };
@@ -265,6 +262,7 @@
 		3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewControllerMini.xib; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
+		5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLikedPodcastsRequest.swift; sourceTree = "<group>"; };
 		5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainerViewController.xib; sourceTree = "<group>"; };
 		5A68C3C6220C78240064A991 /* UIView+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Controller.swift"; sourceTree = "<group>"; };
@@ -385,6 +383,7 @@
 				3D798B2A22132CA100B3DF26 /* UnsubscribeFromPodcastRequest.swift */,
 				3D798B3522132CA100B3DF26 /* UpdateActivityRequest.swift */,
 				3D798B3622132CA100B3DF26 /* UpdateProfileInfoRequest.swift */,
+				5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -550,6 +549,7 @@
 			isa = PBXGroup;
 			children = (
 				3D05F01D21F5F5EE00174A91 /* AuthResponse.swift */,
+				3D798B0C2211C57500B3DF26 /* StatusResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -564,7 +564,6 @@
 				3D2002AB21FDB10800E38B99 /* Episode.swift */,
 				3D2002AD21FDB1C800E38B99 /* File.swift */,
 				7865294321FC915600A826F7 /* Profile.swift */,
-				3D798B0C2211C57500B3DF26 /* StatusResponse.swift */,
 				5ACC947F2211C97E00AA012A /* Activity.swift */,
 			);
 			path = Entities;
@@ -816,7 +815,6 @@
 			children = (
 				3DB447E021F7CBBB00F93876 /* InterestsViewController.swift */,
 				3DB447E121F7CBBB00F93876 /* InterestsViewController.xib */,
-				3DCBBA6C21F87522009BCD31 /* Cells */,
 			);
 			path = InterestsViewController;
 			sourceTree = "<group>";
@@ -828,23 +826,6 @@
 				3DB447E421F7CBBB00F93876 /* PriceViewController.swift */,
 			);
 			path = PriceViewController;
-			sourceTree = "<group>";
-		};
-		3DCBBA6C21F87522009BCD31 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3DCBBA7121F87581009BCD31 /* TagViewCell */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		3DCBBA7121F87581009BCD31 /* TagViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				3DCBBA6E21F8757C009BCD31 /* TagViewCell.swift */,
-				3DCBBA6D21F8757C009BCD31 /* TagViewCell.xib */,
-			);
-			path = TagViewCell;
 			sourceTree = "<group>";
 		};
 		3DCBBA7A21F8FF3C009BCD31 /* Player */ = {
@@ -1149,7 +1130,6 @@
 				3D05F01421F5D14400174A91 /* SignUpViewController.xib in Resources */,
 				3D05F00721F5C8DE00174A91 /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				3D05F00621F5C8DE00174A91 /* README.md in Resources */,
-				3DCBBA6F21F8757C009BCD31 /* TagViewCell.xib in Resources */,
 				85CA8F73220AE4C7007557D9 /* PodcastButton.xib in Resources */,
 				3D20029C21FBB84800E38B99 /* PodcastDetailViewController.xib in Resources */,
 				3D05F00D21F5C8DE00174A91 /* SF-Pro-Display-Black.otf in Resources */,
@@ -1310,9 +1290,9 @@
 				7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */,
+				5A36C0E222141FB40091CC6A /* SaveLikedPodcastsRequest.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3D798B4C22132CA100B3DF26 /* TokenRefreshRequest.swift in Sources */,
-				3DCBBA7021F8757C009BCD31 /* TagViewCell.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,
 				7865294421FC915600A826F7 /* Profile.swift in Sources */,
 				3DCBBA8721FA0BAA009BCD31 /* MainFlowCoordinator.swift in Sources */,

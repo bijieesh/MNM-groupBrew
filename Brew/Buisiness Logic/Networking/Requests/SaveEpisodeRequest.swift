@@ -8,12 +8,8 @@
 
 import Foundation
 
-struct SaveEpisodeResponse: Codable {
-	let success: Bool
-}
-
 struct SaveEpisodeRequest: RequestType {
-	typealias ResponseObjectType = SaveEpisodeResponse
+	typealias ResponseObjectType = StatusResponse
 	typealias ErrorType = SimpleError
 	
 	var path: String = "api/episode/downloads"

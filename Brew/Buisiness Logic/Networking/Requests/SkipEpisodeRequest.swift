@@ -8,12 +8,8 @@
 
 import Foundation
 
-struct SkipEpisodeResponse: Codable {
-	var success: Bool
-}
-
 struct SkipEpisodeRequest: RequestType {
-	typealias ResponseObjectType = SkipEpisodeResponse
+	typealias ResponseObjectType = StatusResponse
 	typealias ErrorType = SimpleError
 	
 	var path: String = "api/episode/skip"

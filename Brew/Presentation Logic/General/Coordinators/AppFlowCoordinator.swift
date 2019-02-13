@@ -71,7 +71,8 @@ class AppFlowCoordinator: Coordinator {
     }
 
     private func startOnboardingFlow() {
-        let onboardingCoordinator = OnboardingCoordinator()
+		let navigation = UINavigationController()
+        let onboardingCoordinator = OnboardingCoordinator(contentController: navigation)
 
         onboardingCoordinator.onFinish = { [weak self] in
 
@@ -80,7 +81,7 @@ class AppFlowCoordinator: Coordinator {
             }
         }
 
-        contentController.present(onboardingCoordinator.contentController, animated: true)
+        contentController.present(navigation, animated: true)
         onboardingCoordinator.start()
     }
 
