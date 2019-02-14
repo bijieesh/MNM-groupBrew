@@ -11,9 +11,11 @@ import UIKit
 class HomeCoordinator: NavigationCoordinator {
 	typealias EpisodeAction = (Episode) -> Void
 	typealias PodcastAction = (Podcast, Int) -> Void
+	typealias ActivityAction = (Episode, Int) -> Void
 	
-	var onEpisodePressed: EpisodeAction?
-	var onPodcastPressed: PodcastAction?
+	var onEpisode: EpisodeAction?
+	var onPodcast: PodcastAction?
+	var onActivity: ActivityAction?
 
     override func start() {
         super.start()
@@ -34,8 +36,12 @@ private extension HomeCoordinator {
 		let newReleaseVC = EpisodesViewController()
 		newReleaseVC.controllerType = .new
 		
-		newReleaseVC.onPodcastPressed = { [weak self] episode, actionType in
+		newReleaseVC.onPodcast = { [weak self] episode, actionType in
 			self?.handleActionOn(episode, action: actionType)
+		}
+		
+		newReleaseVC.onActivity = { [weak self] in
+			self?.onActivity?($0, $1)
 		}
 		
 		loadNewEpisodes(for: newReleaseVC)
@@ -59,8 +65,12 @@ private extension HomeCoordinator {
 		let savedVC = EpisodesViewController()
 		savedVC.controllerType = .saved
 		
-		savedVC.onPodcastPressed = { [weak self] episode, actionType in
+		savedVC.onPodcast = { [weak self] episode, actionType in
 			self?.handleActionOn(episode, action: actionType)
+		}
+		
+		savedVC.onActivity = { [weak self] in
+			self?.onActivity?($0, $1)
 		}
 		
 		loadSavedEpisodes(for: savedVC)
@@ -90,7 +100,7 @@ private extension HomeCoordinator {
 			self?.navigationController?.popViewController(animated: true)
 		}
 		
-		controller.onPodcast = { [weak self] in self?.onPodcastPressed?($0, $1) }
+		controller.onPodcast = { [weak self] in self?.onPodcast?($0, $1) }
 		controller.onFirstCategory = { [weak self] in
 			self?.show($0)
 		}
@@ -123,7 +133,7 @@ private extension HomeCoordinator {
 	}
 	
 	func select(_ episode: Episode) {
-		onEpisodePressed?(episode)
+		onEpisode?(episode)
 	}
 	
 	func skip(_ episode: Episode) {

@@ -39,15 +39,15 @@ class PlayerCoordinator: NSObject {
     }
 
     @discardableResult
-    func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true) -> Bool {
+	func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true, startFrom: Int = 0) -> Bool {
 
         guard let episodes = podcast.episodes, episodes.count > index else {
             return false
         }
 
         let episode = episodes[index]
-
-        if playEpisode(episode, from: podcast) {
+		
+        if playEpisode(episode, from: podcast, startFrom: startFrom) {
             if autoContinue {
                 autoContinueData = (podcast, index)
             }
@@ -63,7 +63,7 @@ class PlayerCoordinator: NSObject {
     }
 
     @discardableResult
-    func playEpisode(_ episode: Episode, from podcast: Podcast? = nil) -> Bool {
+	func playEpisode(_ episode: Episode, from podcast: Podcast? = nil, startFrom: Int = 0) -> Bool {
         invalidateCurrentData()
 
         guard let podcast = (podcast ?? episode.podcast) else {
@@ -78,7 +78,11 @@ class PlayerCoordinator: NSObject {
 
         updatePlayerControllers(with: data)
         presentPlayerControllerIfNeeded()
-
+		
+		if startFrom < episode.duration {
+			data.audioPlayer.currentPosition += startFrom
+		}
+		
         data.audioPlayer.play()
 
         setupActivityUpdateTimer(for: episode.id, data.audioPlayer)
