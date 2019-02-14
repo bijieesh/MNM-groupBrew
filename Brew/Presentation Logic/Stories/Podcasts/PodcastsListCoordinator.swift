@@ -44,11 +44,11 @@ private extension PodcastsListCoordinator {
 			self?.contentController.navigationController?.popViewController(animated: true)
 		}
 		
-		controller.onPodcastPressed = { [weak self] in
+		controller.onPodcast = { [weak self] in
 			self?.onPodcast?($0, $1)
 		}
 		
-		controller.onFirstCategoryPressed = { [weak self] category in
+		controller.onFirstCategory = { [weak self] category in
 			self?.show(category)
 		}
 		

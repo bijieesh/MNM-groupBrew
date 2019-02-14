@@ -140,15 +140,15 @@ private extension EpisodesViewController {
 
         let episode = originalData[index]
 
-		cell.onSavePressed = { [weak self] in
+		cell.onSave = { [weak self] in
 			self?.save(episode, for: cell)
 		}
 		
-		cell.onCancelDownloadPressed = { [weak self] in
+		cell.onCancelDownload = { [weak self] in
 			self?.cancelDownload(for: episode, cell: cell)
 		}
 
-        cell.onRemoveLocalFilePressed = { [weak self] in
+        cell.onRemoveLocalFile = { [weak self] in
             self?.removeDownload(for: episode, cell: cell)
         }
 

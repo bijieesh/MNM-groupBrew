@@ -90,8 +90,8 @@ private extension HomeCoordinator {
 			self?.navigationController?.popViewController(animated: true)
 		}
 		
-		controller.onPodcastPressed = { [weak self] in self?.onPodcastPressed?($0, $1) }
-		controller.onFirstCategoryPressed = { [weak self] in
+		controller.onPodcast = { [weak self] in self?.onPodcastPressed?($0, $1) }
+		controller.onFirstCategory = { [weak self] in
 			self?.show($0)
 		}
 		
