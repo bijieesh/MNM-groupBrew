@@ -188,11 +188,10 @@ class PlayerCoordinator: NSObject {
     }
 
     private func playerData(for episode: Episode, in podcast: Podcast) -> PlayerViewController.Data? {
-        guard let audioUrl = episode.file?.url else {
-            return nil
-        }
-
-        let player = updatedPlayer(for: audioUrl)
+		guard let serverUrl = episode.file?.url else { return nil }
+		
+		let url = AppFileLoader.shared.localFileUrl(for: serverUrl) ?? serverUrl
+        let player = updatedPlayer(for: url)
 
         return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile?.profileFullName ?? "", audioPlayer: player)
     }
