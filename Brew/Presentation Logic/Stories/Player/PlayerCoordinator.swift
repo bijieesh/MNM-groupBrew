@@ -193,7 +193,11 @@ class PlayerCoordinator: NSObject {
 		let url = AppFileLoader.shared.localFileUrl(for: serverUrl) ?? serverUrl
         let player = updatedPlayer(for: url)
 
-        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile?.profileFullName ?? "", audioPlayer: player)
+        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url,
+										 title: episode.title,
+										 artist: podcast.user.profile?.profileFullName ?? "",
+										 description: episode.description,
+										 audioPlayer: player)
     }
 
     private func updatedPlayer(for audioUrl: URL) -> AVPlayer {

@@ -59,6 +59,13 @@ class EpisodesViewController: UIViewController {
 	
 	var controllerType: ControllerType!
 	var onPodcastPressed: PodcastAction?
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		handleTopData()
+		handleBottomData()
+	}
 }
 
 //MARK: - @IBAction
@@ -95,12 +102,16 @@ private extension EpisodesViewController {
 //MARK: - TableView Helpers
 private extension EpisodesViewController {
 	func handleTopData() {
+		guard isViewLoaded else { return }
+		
 		topTableViewHeight.constant = topCellHeight * CGFloat((topData.count < 4 ? topData.count : 3))
 		showMoreView.isHidden = topData.count < 4
 		topTableView.reloadData()
 	}
 	
 	func handleBottomData() {
+		guard isViewLoaded else { return }
+
 		bottomTableViewHeight.constant = bottomCellHeight * CGFloat(bottomData.count)
 		bottomTableViewHeaderView.isHidden = false
 		bottomTableView.isHidden = false
