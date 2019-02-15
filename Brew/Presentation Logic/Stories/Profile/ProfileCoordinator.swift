@@ -24,10 +24,8 @@ class ProfileCoordinator: NavigationCoordinator {
 
     private func setupProfileController() {
         let profileController = ProfileViewController()
-        let contentController = UINavigationController(rootViewController: profileController)
-        contentController.isNavigationBarHidden = true
 
-        profileController.onProfileImageTapped = { [weak self, profileController] in
+		profileController.onProfileImageTapped = { [weak self, profileController] in
             self?.showImagePicker(from: profileController)
         }
 
@@ -48,6 +46,20 @@ class ProfileCoordinator: NavigationCoordinator {
         loadUserInfo(for: profileController)
         navigationController?.pushViewController(profileController, animated: false)
     }
+	
+	func showPriceController() {
+		let priceViewController = PriceViewController()
+		
+		priceViewController.onLaterTapped = { [weak self] in
+		
+		}
+		
+		priceViewController.onNextTapped = { [weak self] in
+		
+		}
+		
+		navigationController?.pushViewController(priceViewController, animated: true)
+	}
 }
 
 private extension ProfileCoordinator {

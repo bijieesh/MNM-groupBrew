@@ -67,10 +67,6 @@ private extension OnboardingCoordinator {
 	
 	func sendSelected(_ podcasts: [Podcast]) {
 		let idArray = podcasts.map { $0.id }
-		SaveLikedPodcastsRequest(idArray: idArray).execute(onSuccess: { success in
-			
-		}) { error in
-			
-		}
+		SaveLikedPodcastsRequest(idArray: idArray).execute()
 	}
 }
