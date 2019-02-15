@@ -33,6 +33,7 @@ final class HomeContainerViewController: AppViewController {
     }
 }
 
+//MARK: - @IBAction
 private extension HomeContainerViewController {
 	@IBAction func newReleasePressed() {
 		topButtons.forEach { $0.isSelected = false }
@@ -53,6 +54,7 @@ private extension HomeContainerViewController {
 	}
 }
 
+//MARK: Controller Helpers
 private extension HomeContainerViewController {
 	func setupView() {
 		topButtons.first?.isSelected = true
@@ -62,9 +64,8 @@ private extension HomeContainerViewController {
 	func setupControllers() {
 		controllers.forEach {
 			let view = UIView()
-			view.add(controller: $0)
-			
 			stackView.addArrangedSubview(view)
+			view.add(controller: $0)
 		}
 	}
 	

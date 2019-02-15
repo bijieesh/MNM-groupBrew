@@ -10,6 +10,7 @@ import UIKit
 import Reusable
 
 final class ShowsViewController: AppViewController {
+	typealias Action = () -> Void
 	typealias PodcastAction = (Podcast) -> Void
 
 	@IBOutlet private var collectionView: UICollectionView! {
@@ -17,6 +18,7 @@ final class ShowsViewController: AppViewController {
 	}
 	
 	var onPodcastPressed: PodcastAction?
+	var onGetData: Action?
 	
 	var data: [Podcast] = [] {
 		didSet { collectionView.reloadData() }
@@ -26,6 +28,12 @@ final class ShowsViewController: AppViewController {
 		super.viewDidLoad()
 		
 		configureNavigationBar()
+	}
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		onGetData?()
 	}
 	
 	override func viewDidLayoutSubviews() {

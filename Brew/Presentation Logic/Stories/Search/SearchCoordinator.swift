@@ -24,7 +24,10 @@ final class SearchCoordinator: NavigationCoordinator {
 private extension SearchCoordinator {
 	func setupSearchController() {
 		let searchController = SearchViewController()
-		loadCategories(for: searchController)
+		
+		searchController.onGetData = { [weak self, weak searchController] in
+			self?.loadCategories(for: searchController)
+		}
 		
 		searchController.onCategory = { [weak self] in
 			self?.show($0)
@@ -77,9 +80,9 @@ private extension SearchCoordinator {
 
 //MARK: - Server Communication
 private extension SearchCoordinator {
-	func loadCategories(for controller: SearchViewController) {
+	func loadCategories(for controller: SearchViewController?) {
 		GetAllCategoriesRequest().execute(onSuccess: { categories in
-			controller.data = categories
+			controller?.data = categories
 		})
 	}
 }

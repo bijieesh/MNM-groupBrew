@@ -24,6 +24,7 @@ class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseOb
 		
 		controller.onClose = { [weak self] in
 			self?.contentController.navigationController?.popViewController(animated: true)
+			self?.end()
 		}
 		
 		controller.onPodcastPressed = { [weak self] podcast in
@@ -44,12 +45,16 @@ private extension PodcastsListCoordinator {
 			self?.contentController.navigationController?.popViewController(animated: true)
 		}
 		
-		controller.onPodcastPressed = { [weak self] in
+		controller.onPodcast = { [weak self] in
 			self?.onPodcast?($0, $1)
 		}
 		
-		controller.onFirstCategoryPressed = { [weak self] category in
+		controller.onFirstCategory = { [weak self] category in
 			self?.show(category)
+		}
+		
+		controller.onSave = { [weak self] in
+			self?.save($0)
 		}
 		
 		contentController.navigationController?.pushViewController(controller, animated: true)
@@ -70,6 +75,10 @@ private extension PodcastsListCoordinator {
 		
 		contentController.navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
+	
+	func save(_ episode: Episode) {
+		saveEpisode(by: episode.id)
+	}
 }
 	
 //MARK: - Server Communication
@@ -80,5 +89,9 @@ private extension PodcastsListCoordinator {
 		}, onError: {
 			$0.display()
 		})
+	}
+	
+	func saveEpisode(by id: Int) {
+		SaveEpisodeRequest(id: id).execute()
 	}
 }

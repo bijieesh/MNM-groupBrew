@@ -56,12 +56,16 @@ class MainFlowCoordinator: Coordinator {
     private func setupedHomeController() -> UIViewController? {
         let coordinator = HomeCoordinator()
 
-        coordinator.onEpisodePressed = { [weak self] in
+        coordinator.onEpisode = { [weak self] in
             self?.playerCoordinator.playEpisode($0)
         }
 		
-		coordinator.onPodcastPressed = { [weak self] in
+		coordinator.onPodcast = { [weak self] in
 			self?.playerCoordinator.playEpisode(at: $1, from: $0)
+		}
+		
+		coordinator.onActivity = { [weak self] in
+			self?.playerCoordinator.playEpisode($0, startFrom: $1)
 		}
 
         coordinator.start()

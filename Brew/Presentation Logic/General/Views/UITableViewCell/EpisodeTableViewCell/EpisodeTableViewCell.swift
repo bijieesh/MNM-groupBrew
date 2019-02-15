@@ -43,22 +43,22 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
 	
 	@IBAction func saveButtonPressed() {
         if case .notDownloaded = downloadState {
-			onSavePressed?()
+			onSave?()
 		}
         else if case .downloading = downloadState {
-			onCancelDownloadPressed?()
+			onCancelDownload?()
 		}
         else {
-            onRemoveLocalFilePressed?()
+            onRemoveLocalFile?()
         }
 	}
 	
-	var onSavePressed: Action?
-	var onCancelDownloadPressed: Action?
-    var onRemoveLocalFilePressed: Action?
+	var onSave: Action?
+	var onCancelDownload: Action?
+    var onRemoveLocalFile: Action?
 	
 	func fill(data: Data) {
-		mainImageView.sd_setImage(with: data.image)
+		mainImageView.sd_setImage(with: data.image, placeholderImage: #imageLiteral(resourceName: "headphones"), options: .retryFailed)
 		titleLabel.text = data.title
 		subtitleLabel.text = data.subtitle
 		progressView.progress = data.listeningProgress
@@ -69,10 +69,12 @@ final class EpisodeTableViewCell: MGSwipeTableCell, NibReusable {
     private func updateDownloadButton() {
         switch downloadState {
         case .downloaded:
+			saveButton.isUserInteractionEnabled = true
             saveButton.setTitle("REMOVE", for: .normal)
         case .notDownloaded:
             saveButton.setTitle("DOWNLOAD", for: .normal)
         case .downloading(let progress):
+			saveButton.isUserInteractionEnabled = false
             if progress >= 1 {
                 downloadState = .downloaded
             }

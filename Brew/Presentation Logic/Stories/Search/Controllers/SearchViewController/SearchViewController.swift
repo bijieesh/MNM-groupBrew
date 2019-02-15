@@ -23,6 +23,7 @@ final class SearchViewController: UIViewController {
 	var onTopPodcast: Action?
 	var onEditorsChoice: Action?
 	var onSearch: SearchAction?
+	var onGetData: Action?
 	
 	var data: [Category] = [] {
 		didSet { fillData() }
@@ -32,15 +33,10 @@ final class SearchViewController: UIViewController {
 		return .lightContent
 	}
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-
-		fillData()
-	}
-	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		onGetData?()
 		setupNavigationController()
 	}
 	
@@ -54,9 +50,7 @@ final class SearchViewController: UIViewController {
 //MARK: - Controller Helpers
 private extension SearchViewController {
 	func fillData() {
-		if isViewLoaded {
-			collectionView.reloadData()
-		}
+		collectionView.reloadData()
 	}
 	
 	func setupNavigationController() {

@@ -43,10 +43,10 @@ class AppFileLoaderOperation: Operation, URLSessionDownloadDelegate {
     }
 
     override func main() {
-        downloadTask = urlSession.downloadTask(with: url)
-
-        progress = 0
-        downloadTask?.resume()
+		downloadTask = urlSession.downloadTask(with: url)
+		
+		progress = 0
+		downloadTask?.resume()
     }
 
     override func cancel() {

@@ -39,15 +39,15 @@ class PlayerCoordinator: NSObject {
     }
 
     @discardableResult
-    func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true) -> Bool {
+	func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true, startFrom: Int = 0) -> Bool {
 
         guard let episodes = podcast.episodes, episodes.count > index else {
             return false
         }
 
         let episode = episodes[index]
-
-        if playEpisode(episode, from: podcast) {
+		
+        if playEpisode(episode, from: podcast, startFrom: startFrom) {
             if autoContinue {
                 autoContinueData = (podcast, index)
             }
@@ -63,7 +63,7 @@ class PlayerCoordinator: NSObject {
     }
 
     @discardableResult
-    func playEpisode(_ episode: Episode, from podcast: Podcast? = nil) -> Bool {
+	func playEpisode(_ episode: Episode, from podcast: Podcast? = nil, startFrom: Int = 0) -> Bool {
         invalidateCurrentData()
 
         guard let podcast = (podcast ?? episode.podcast) else {
@@ -78,7 +78,11 @@ class PlayerCoordinator: NSObject {
 
         updatePlayerControllers(with: data)
         presentPlayerControllerIfNeeded()
-
+		
+		if startFrom < episode.duration {
+			data.audioPlayer.currentPosition += startFrom
+		}
+		
         data.audioPlayer.play()
 
         setupActivityUpdateTimer(for: episode.id, data.audioPlayer)
@@ -188,13 +192,16 @@ class PlayerCoordinator: NSObject {
     }
 
     private func playerData(for episode: Episode, in podcast: Podcast) -> PlayerViewController.Data? {
-        guard let audioUrl = episode.file?.url else {
-            return nil
-        }
+		guard let serverUrl = episode.file?.url else { return nil }
+		
+		let url = AppFileLoader.shared.localFileUrl(for: serverUrl) ?? serverUrl
+        let player = updatedPlayer(for: url)
 
-        let player = updatedPlayer(for: audioUrl)
-
-        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url, title: episode.title, artist: podcast.user.profile?.profileFullName ?? "", audioPlayer: player)
+        return PlayerViewController.Data(imageUrl: podcast.albumArt?.url,
+										 title: episode.title,
+										 artist: podcast.user.profile?.profileFullName ?? "",
+										 description: episode.description,
+										 audioPlayer: player)
     }
 
     private func updatedPlayer(for audioUrl: URL) -> AVPlayer {

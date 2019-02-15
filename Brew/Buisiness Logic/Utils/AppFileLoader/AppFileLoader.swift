@@ -32,6 +32,7 @@ class AppFileLoader: NSObject {
             }
 
             queue.addOperation(operation)
+			
         }
     }
 	

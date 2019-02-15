@@ -11,7 +11,9 @@ import MGSwipeTableCell
 import Reusable
 
 class EpisodesViewController: UIViewController {
+	typealias Action = () -> Void
 	typealias PodcastAction = (_ episode: Episode, _ actionType: ActionType) -> Void
+	typealias ActivityAction = (_ episode: Episode, _ startFrom: Int) -> Void
 	
 	enum ControllerType {
 		case new, saved
@@ -58,7 +60,15 @@ class EpisodesViewController: UIViewController {
 	}
 	
 	var controllerType: ControllerType!
-	var onPodcastPressed: PodcastAction?
+	var onGetData: Action?
+	var onPodcast: PodcastAction?
+	var onActivity: ActivityAction?
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		onGetData?()
+	}
 }
 
 //MARK: - @IBAction
@@ -95,15 +105,19 @@ private extension EpisodesViewController {
 //MARK: - TableView Helpers
 private extension EpisodesViewController {
 	func handleTopData() {
+		guard isViewLoaded else { return }
+		
 		topTableViewHeight.constant = topCellHeight * CGFloat((topData.count < 4 ? topData.count : 3))
 		showMoreView.isHidden = topData.count < 4
 		topTableView.reloadData()
 	}
 	
 	func handleBottomData() {
+		guard isViewLoaded else { return }
+
 		bottomTableViewHeight.constant = bottomCellHeight * CGFloat(bottomData.count)
-		bottomTableViewHeaderView.isHidden = false
-		bottomTableView.isHidden = false
+		bottomTableViewHeaderView.isHidden = bottomControllerData.isEmpty
+		bottomTableView.isHidden = bottomControllerData.isEmpty
 		bottomTableView.reloadData()
 	}
 	
@@ -140,15 +154,15 @@ private extension EpisodesViewController {
 
         let episode = originalData[index]
 
-		cell.onSavePressed = { [weak self] in
+		cell.onSave = { [weak self] in
 			self?.save(episode, for: cell)
 		}
 		
-		cell.onCancelDownloadPressed = { [weak self] in
+		cell.onCancelDownload = { [weak self] in
 			self?.cancelDownload(for: episode, cell: cell)
 		}
 
-        cell.onRemoveLocalFilePressed = { [weak self] in
+        cell.onRemoveLocalFile = { [weak self] in
             self?.removeDownload(for: episode, cell: cell)
         }
 
@@ -217,11 +231,12 @@ extension EpisodesViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 extension EpisodesViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		let podcast = tableView == topTableView
-			? topData[indexPath.row]
-			: bottomData[indexPath.row].episode
-		
-		onPodcastPressed?(podcast, .select)
+		if tableView == topTableView {
+			onPodcast?(topData[indexPath.row], .select)
+		} else {
+			let activity = bottomData[indexPath.row]
+			onActivity?(activity.episode, activity.duration)
+		}
 	}
 }
 
@@ -236,7 +251,7 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 			let podcast = topData[topIndexPath.row]
 
 			if direction == .leftToRight {
-				onPodcastPressed?(podcast, .skip)
+				onPodcast?(podcast, .skip)
 				
 				topTableView.performBatchUpdates({
 					topData.remove(at: topIndexPath.row)
@@ -245,14 +260,14 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 			}
 			
 			if controllerType == .saved {
-				onPodcastPressed?(podcast, .delete)
+				onPodcast?(podcast, .delete)
 				
 				topTableView.performBatchUpdates({
 					topData.remove(at: topIndexPath.row)
 					topTableView.deleteRows(at: [topIndexPath], with: .top)
 				})
 			} else {
-				onPodcastPressed?(podcast, .save)
+				onPodcast?(podcast, .save)
 			}
 		}
 		
@@ -260,7 +275,7 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 			let podcast = bottomData[bottomIndexPath.row].episode
 			
 			if direction == .leftToRight {
-				onPodcastPressed?(podcast, .skip)
+				onPodcast?(podcast, .skip)
 				
 				topTableView.performBatchUpdates({
 					topData.remove(at: bottomIndexPath.row)
@@ -269,14 +284,14 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 			}
 			
 			if controllerType == .saved {
-				onPodcastPressed?(podcast, .delete)
+				onPodcast?(podcast, .delete)
 				
 				bottomTableView.performBatchUpdates({
 					bottomData.remove(at: bottomIndexPath.row)
 					bottomTableView.deleteRows(at: [bottomIndexPath], with: .top)
 				})
 			} else {
-				onPodcastPressed?(podcast, .save)
+				onPodcast?(podcast, .save)
 			}
 		}
 		

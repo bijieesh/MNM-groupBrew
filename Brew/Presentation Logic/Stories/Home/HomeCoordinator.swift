@@ -11,9 +11,11 @@ import UIKit
 class HomeCoordinator: NavigationCoordinator {
 	typealias EpisodeAction = (Episode) -> Void
 	typealias PodcastAction = (Podcast, Int) -> Void
+	typealias ActivityAction = (Episode, Int) -> Void
 	
-	var onEpisodePressed: EpisodeAction?
-	var onPodcastPressed: PodcastAction?
+	var onEpisode: EpisodeAction?
+	var onPodcast: PodcastAction?
+	var onActivity: ActivityAction?
 
     override func start() {
         super.start()
@@ -34,22 +36,31 @@ private extension HomeCoordinator {
 		let newReleaseVC = EpisodesViewController()
 		newReleaseVC.controllerType = .new
 		
-		newReleaseVC.onPodcastPressed = { [weak self] episode, actionType in
+		newReleaseVC.onPodcast = { [weak self] episode, actionType in
 			self?.handleActionOn(episode, action: actionType)
 		}
 		
-		loadNewEpisodes(for: newReleaseVC)
-		loadUserEpisodes(for: newReleaseVC)
+		newReleaseVC.onActivity = { [weak self] in
+			self?.onActivity?($0, $1)
+		}
+		
+		newReleaseVC.onGetData = { [weak self, weak newReleaseVC] in
+			self?.loadNewEpisodes(for: newReleaseVC)
+			self?.loadUserEpisodes(for: newReleaseVC)
+		}
 		
 		return newReleaseVC
 	}
 	
 	func createShowsController() -> ShowsViewController {
 		let showsVC = ShowsViewController()
-		loadShowsData(for: showsVC)
 		
 		showsVC.onPodcastPressed = { [weak self] podcast in
 			self?.showDetails(for: podcast)
+		}
+		
+		showsVC.onGetData = { [weak self, weak showsVC] in
+			self?.loadShowsData(for: showsVC)
 		}
 		
 		return showsVC
@@ -59,12 +70,18 @@ private extension HomeCoordinator {
 		let savedVC = EpisodesViewController()
 		savedVC.controllerType = .saved
 		
-		savedVC.onPodcastPressed = { [weak self] episode, actionType in
+		savedVC.onPodcast = { [weak self] episode, actionType in
 			self?.handleActionOn(episode, action: actionType)
 		}
 		
-		loadSavedEpisodes(for: savedVC)
-		loadUserEpisodes(for: savedVC)
+		savedVC.onActivity = { [weak self] in
+			self?.onActivity?($0, $1)
+		}
+		
+		savedVC.onGetData = { [weak self, weak savedVC] in
+			self?.loadSavedEpisodes(for: savedVC)
+			self?.loadUserEpisodes(for: savedVC)
+		}
 		
 		return savedVC
 	}
@@ -90,8 +107,8 @@ private extension HomeCoordinator {
 			self?.navigationController?.popViewController(animated: true)
 		}
 		
-		controller.onPodcastPressed = { [weak self] in self?.onPodcastPressed?($0, $1) }
-		controller.onFirstCategoryPressed = { [weak self] in
+		controller.onPodcast = { [weak self] in self?.onPodcast?($0, $1) }
+		controller.onFirstCategory = { [weak self] in
 			self?.show($0)
 		}
 		
@@ -123,7 +140,7 @@ private extension HomeCoordinator {
 	}
 	
 	func select(_ episode: Episode) {
-		onEpisodePressed?(episode)
+		onEpisode?(episode)
 	}
 	
 	func skip(_ episode: Episode) {
@@ -133,21 +150,21 @@ private extension HomeCoordinator {
 
 //MARK: - Server Communication
 private extension HomeCoordinator {
-	func loadNewEpisodes(for controller: EpisodesViewController) {
+	func loadNewEpisodes(for controller: EpisodesViewController?) {
         GetNewReleasesRequest().execute(onSuccess: { episodes in
-			controller.topData = episodes
+			controller?.topData = episodes
         })
 	}
 	
-	func loadShowsData(for controller: ShowsViewController) {
+	func loadShowsData(for controller: ShowsViewController?) {
 		GetPodcastsRequest(type: .all).execute(onSuccess: { podcasts in
-			controller.data = podcasts
+			controller?.data = podcasts
 		})
 	}
 	
-	func loadSavedEpisodes(for controller: EpisodesViewController) {
+	func loadSavedEpisodes(for controller: EpisodesViewController?) {
 		GetSavedEpisodesRequest().execute(onSuccess: { episodes in
-			controller.topData = episodes
+			controller?.topData = episodes
 		})
 	}
 	
@@ -171,9 +188,9 @@ private extension HomeCoordinator {
 		navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
 	
-	func loadUserEpisodes(for controller: EpisodesViewController) {
+	func loadUserEpisodes(for controller: EpisodesViewController?) {
 		GetUserActivitiesRequest().execute(onSuccess: { activities in
-			controller.bottomData = activities
+			controller?.bottomData = activities
 		})
 	}
 }

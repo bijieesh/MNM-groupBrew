@@ -16,6 +16,7 @@ class PlayerViewController: AppViewController {
         let imageUrl: URL?
         let title: String
         let artist: String
+		let description: String
         let audioPlayer: AVPlayer
     }
 
@@ -51,6 +52,7 @@ class PlayerViewController: AppViewController {
     @IBOutlet weak private var songNameLabel: UILabel?
     @IBOutlet weak private var artistNameLabel: UILabel?
     @IBOutlet weak private var currentTimeLabel: UILabel?
+	@IBOutlet weak private var descriptionLabel: UILabel?
     @IBOutlet weak private var songFullTimeLabel: UILabel?
     @IBOutlet weak private var unmuteButton: UIButton?
     @IBOutlet weak private var playButton: UIButton?
@@ -108,6 +110,7 @@ class PlayerViewController: AppViewController {
 
         songNameLabel?.text = data.title
         artistNameLabel?.text = data.artist
+		descriptionLabel?.text = data.description
 
         if view.window != nil {
             setupObservaton()
