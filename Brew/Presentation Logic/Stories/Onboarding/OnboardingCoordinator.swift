@@ -15,8 +15,12 @@ class OnboardingCoordinator: Coordinator {
 
     override func start() {
         super.start()
-		
 		showInterests()
+    }
+
+    override func end() {
+        onFinish?()
+        super.end()
     }
 }
 
@@ -29,31 +33,15 @@ private extension OnboardingCoordinator {
 		
 		interestsViewController.onNext = { [weak self] podcasts in
 			self?.sendSelected(podcasts)
-			self?.showPriceController()
+			self?.end()
 		}
 		
 		interestsViewController.onSkip = { [weak self] in
-			self?.showPriceController()
+			self?.end()
 
 		}
 		
 		(contentController as? UINavigationController)?.setViewControllers([interestsViewController], animated: false)
-	}
-	
-	func showPriceController() {
-		let priceViewController = PriceViewController()
-		
-		priceViewController.onLaterTapped = { [weak self] in
-			self?.onFinish?()
-			self?.end()
-		}
-		
-		priceViewController.onNextTapped = { [weak self] in
-			self?.onFinish?()
-			self?.end()
-		}
-		
-		(contentController as? UINavigationController)?.pushViewController(priceViewController, animated: true)
 	}
 }
 

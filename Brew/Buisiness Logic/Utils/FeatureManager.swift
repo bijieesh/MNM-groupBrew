@@ -29,11 +29,11 @@ class FeatureManager: NSObject, RMStoreObserver {
 
     }
     
-    func fetchAvailability(with completion: @escaping ((_ available: [Feature], _ unavailable: [Feature]) -> Void)) {
+    func fetchAvailability(with completion: ((_ available: [Feature], _ unavailable: [Feature]) -> Void)? = nil) {
         let featureIds = [
-            Feature.lowPriceSubscription,
-            Feature.mediumPriceSubscription,
-            Feature.highPriceSubsription
+            Feature.smallPriceSubscription.rawValue,
+            Feature.mediumPriceSubscription.rawValue,
+            Feature.highPriceSubscription.rawValue
         ]
         
         RMStore.default().requestProducts(Set(featureIds),
@@ -50,21 +50,33 @@ class FeatureManager: NSObject, RMStoreObserver {
                                                 unavailable = unavailableStrings.compactMap({ Feature(rawValue: $0) })
                                             }
                                             
-                                            completion(available, unavailable)
+                                            completion?(available, unavailable)
         },
                                           failure: { _ in
-                                            completion([], [])
+                                            completion?([], [])
         })
     }
     
-    func purchase(_ feature: Feature, with callback: ((_ success: Bool) -> Void)? = nil) {
+    func purchase(_ feature: Feature, fetchProductsOnFail: Bool = true, with callback: ((_ success: Bool) -> Void)? = nil) {
         RMStore.default().addPayment(feature.rawValue,
                                      success: { _ in
                                         feature.store()
                                         callback?(true)
         },
-                                     failure: { (_, _) in
-                                        callback?(false)
+                                     failure: { (_, error) in
+                                        if fetchProductsOnFail {
+                                            self.fetchAvailability { (products, _) in
+                                                if products.contains(where: { $0.rawValue == feature.rawValue }) {
+                                                    self.purchase(feature, fetchProductsOnFail: false, with: callback)
+                                                }
+                                                else {
+                                                    callback?(false)
+                                                }
+                                            }
+                                        }
+                                        else {
+                                            callback?(false)
+                                        }
         })
     }
 
@@ -80,9 +92,9 @@ class FeatureManager: NSObject, RMStoreObserver {
 extension FeatureManager {
     
     enum Feature: String {
-        case lowPriceSubscription = "lowPriceSubscription"
-        case mediumPriceSubscription = "mediumPriceSubscription"
-        case highPriceSubsription = "highPriceSubsription"
+        case smallPriceSubscription = "subscription.small"
+        case mediumPriceSubscription = "subscription.medium"
+        case highPriceSubscription = "subscription.high"
         
         var isPurchased: Bool {
             return UserDefaults.standard.bool(forKey: rawValue)

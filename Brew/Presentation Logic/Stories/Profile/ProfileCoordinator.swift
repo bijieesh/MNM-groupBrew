@@ -11,9 +11,18 @@ import UIKit
 class ProfileCoordinator: NavigationCoordinator {
 
     var onLogout: (() -> Void)?
+    var onUserUpdated: ((User) -> Void)?
     var onNeedPlayPodcast: ((Podcast, Int) -> Void)?
 
-    private var user: User?
+    private var user: User? {
+        didSet {
+            guard let user = user else {
+                return
+            }
+
+            onUserUpdated?(user)
+        }
+    }
 
     private let imagePickerCoordinator = ImagePickerCoordinator()
 

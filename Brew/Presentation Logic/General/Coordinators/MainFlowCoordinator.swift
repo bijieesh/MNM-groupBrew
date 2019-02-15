@@ -14,6 +14,8 @@ class MainFlowCoordinator: Coordinator {
 
     private var activeMenuCoordinator: MenuCoordinator?
 
+    private let paymentScene = PaymentScene()
+
     private lazy var playerCoordinator: PlayerCoordinator = {
         return PlayerCoordinator(playerContainer: self)
     }()
@@ -88,6 +90,12 @@ class MainFlowCoordinator: Coordinator {
             self?.playerCoordinator.playEpisode(at: $1, from: $0)
         }
 
+        coordinator.onUserUpdated = { [weak self] in
+            if !$0.subscriptionActive {
+                self?.showPaymentSelection()
+            }
+        }
+
         coordinator.start()
         return coordinator.contentController
     }
@@ -95,6 +103,15 @@ class MainFlowCoordinator: Coordinator {
     private func logout() {
         playerCoordinator.invalidate()
         onLogout?()
+    }
+
+    private func showPaymentSelection() {
+
+        paymentScene.onFinish = { [weak self] in
+            self?.paymentScene.controller.dismiss(animated: true)
+        }
+
+        contentController.topController.present(paymentScene.controller, animated: true)
     }
 }
 

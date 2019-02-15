@@ -9,9 +9,14 @@
 import UIKit
 
 class PriceViewController: AppViewController {
-    
-    var onNextTapped: (() -> Void)?
+    enum PriceOption {
+        case small, medium, high
+    }
+
     var onLaterTapped: (() -> Void)?
+    var onPurchase: ((PriceOption) -> Void)?
+
+    private(set) var currentOption: PriceOption = .high
 
     @IBOutlet private var fiveButton: PriceButton!
     @IBOutlet private var tenButton: PriceButton!
@@ -19,7 +24,7 @@ class PriceViewController: AppViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectOption(fifteenButton)
+        selectOption(currentOption)
     }
 	
 	override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -28,24 +33,34 @@ class PriceViewController: AppViewController {
     
     //MARK: - Action
     @IBAction private func fiveSelected() {
-        selectOption(fiveButton)
+        selectOption(.small)
     }
     @IBAction private func tenSelected() {
-        selectOption(tenButton)
+        selectOption(.medium)
     }
     @IBAction private func fifteenTapped() {
-        selectOption(fifteenButton)
+        selectOption(.high)
     }
     
     @IBAction private func nextTapped() {
-        onNextTapped?()
+        onPurchase?(currentOption)
     }
 
     @IBAction private func laterTapped() {
         onLaterTapped?()
     }
-    
-    private func selectOption(_ button: PriceButton){
+
+    private func selectOption(_ option: PriceOption) {
+        switch option {
+        case .small: selectButton(fiveButton)
+        case .medium: selectButton(tenButton)
+        case .high: selectButton(fifteenButton)
+        }
+
+        currentOption = option
+    }
+
+    private func selectButton(_ button: PriceButton) {
         fiveButton.isChoosen = button == fiveButton
         tenButton.isChoosen = button == tenButton
         fifteenButton.isChoosen = button == fifteenButton

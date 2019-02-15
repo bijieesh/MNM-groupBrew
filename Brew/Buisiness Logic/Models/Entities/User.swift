@@ -13,6 +13,7 @@ class User: Codable {
     let name: String
     let email: String
     let country: String
+    let subscriptionActive: Bool
     let phoneNumber: String?
     let profile: Profile?
     let podcasts: [Podcast]?
