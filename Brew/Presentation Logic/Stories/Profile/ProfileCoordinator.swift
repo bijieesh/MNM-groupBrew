@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileCoordinator: NavigationCoordinator {
+class ProfileCoordinator: NavigationCoordinator, ImageUploadable {
 
     var onLogout: (() -> Void)?
     var onUserUpdated: ((User) -> Void)?
@@ -63,9 +63,10 @@ class ProfileCoordinator: NavigationCoordinator {
 private extension ProfileCoordinator {
 
     func showImagePicker(from controller: ProfileViewController?) {
-        imagePickerCoordinator.showImagePicker(for: controller) { image in
+        imagePickerCoordinator.showImagePicker(for: controller) { [weak self] image in
             guard let image = image else { return }
             controller?.updateProfileImage(with: image)
+			self?.upload(image: image)
         }
     }
     
@@ -157,4 +158,10 @@ private extension ProfileCoordinator {
         
         navigationController?.pushViewController(controller, animated: true)
     }
+	
+	func upload(image: UIImage) {
+		upload(image: image,
+			   url: "https://cast.brew.com/api/profile/profile_picture",
+			   token: AppAuthManager().authToken?.token ?? "")
+	}
 }

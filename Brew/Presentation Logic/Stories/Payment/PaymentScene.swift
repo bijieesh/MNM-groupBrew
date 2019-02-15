@@ -8,9 +8,10 @@
 
 import UIKit
 
-class PaymentScene {
+final class PaymentScene {
+	typealias Action = () -> Void
 
-    var onFinish: (() -> Void)?
+    var onFinish: Action?
 
     private(set) lazy var controller: UIViewController = {
         let priceViewController = PriceViewController()

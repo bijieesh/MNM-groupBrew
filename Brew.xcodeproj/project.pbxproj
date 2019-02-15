@@ -116,6 +116,7 @@
 		3DCBBA8921FA0F45009BCD31 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8821FA0F45009BCD31 /* HomeCoordinator.swift */; };
 		3DCBBA8F21FA4E9D009BCD31 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */; };
 		3DDCCFE7220854C500244311 /* PlayerViewControllerMini.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */; };
+		5A0512742216FBDB0084434E /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0512732216FBDB0084434E /* ImageUploader.swift */; };
 		5A36C0E222141FB40091CC6A /* SaveLikedPodcastsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */; };
 		5A36C0EF22144A1C0091CC6A /* PodcastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0ED22144A1C0091CC6A /* PodcastSearchTableViewCell.swift */; };
 		5A36C0F022144A1C0091CC6A /* PodcastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A36C0EE22144A1C0091CC6A /* PodcastSearchTableViewCell.xib */; };
@@ -267,6 +268,7 @@
 		3DCBBA8E21FA4E9D009BCD31 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
 		3DDCCFE6220854C500244311 /* PlayerViewControllerMini.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerViewControllerMini.xib; sourceTree = "<group>"; };
 		488F898F4235E136B7D311B4 /* Pods-Brew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brew.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brew/Pods-Brew.debug.xcconfig"; sourceTree = "<group>"; };
+		5A0512732216FBDB0084434E /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLikedPodcastsRequest.swift; sourceTree = "<group>"; };
 		5A36C0ED22144A1C0091CC6A /* PodcastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchTableViewCell.swift; sourceTree = "<group>"; };
 		5A36C0EE22144A1C0091CC6A /* PodcastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastSearchTableViewCell.xib; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 		3D05EFCC21F13A7000174A91 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				5A0512722216FBC50084434E /* ImageUploader */,
 				3D05EFCF21F219EA00174A91 /* Requests */,
 				3D05EFCD21F13B1600174A91 /* Networking.swift */,
 				3DCBBA7621F8D22F009BCD31 /* AppAuthManager.swift */,
@@ -894,6 +897,14 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		5A0512722216FBC50084434E /* ImageUploader */ = {
+			isa = PBXGroup;
+			children = (
+				5A0512732216FBDB0084434E /* ImageUploader.swift */,
+			);
+			path = ImageUploader;
+			sourceTree = "<group>";
+		};
 		5A36C0E5221446650091CC6A /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1281,6 +1292,7 @@
 				3D798B0A22119FDD00B3DF26 /* EpisodeTableViewCell.swift in Sources */,
 				3D2002AC21FDB10800E38B99 /* Episode.swift in Sources */,
 				5A68C3DE220C85740064A991 /* ImageCollectionViewCell.swift in Sources */,
+				5A0512742216FBDB0084434E /* ImageUploader.swift in Sources */,
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
 				3D798B4D22132CA100B3DF26 /* GetUserActivitiesRequest.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
