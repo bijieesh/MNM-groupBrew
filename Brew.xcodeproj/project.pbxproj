@@ -621,12 +621,12 @@
 		3D20029921FBB84800E38B99 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3D20029E21FBBA0D00E38B99 /* PodcastEpisodesViewController */,
+				3D20029E21FBBA0D00E38B99 /* PodcastDetailViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		3D20029E21FBBA0D00E38B99 /* PodcastEpisodesViewController */ = {
+		3D20029E21FBBA0D00E38B99 /* PodcastDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
 				3D20029B21FBB84800E38B99 /* PodcastDetailViewController.swift */,
@@ -634,7 +634,7 @@
 				3D2002A521FBBA8600E38B99 /* Views */,
 				3D20029F21FBBA2500E38B99 /* Cells */,
 			);
-			path = PodcastEpisodesViewController;
+			path = PodcastDetailViewController;
 			sourceTree = "<group>";
 		};
 		3D20029F21FBBA2500E38B99 /* Cells */ = {
@@ -755,9 +755,9 @@
 		3DB447C821F74B8B00F93876 /* Podcasts */ = {
 			isa = PBXGroup;
 			children = (
+				3D798AF4220F99D800B3DF26 /* PodcastsListCoordinator.swift */,
 				3D20029921FBB84800E38B99 /* Controllers */,
 				3DB447C921F74B9500F93876 /* Views */,
-				3D798AF4220F99D800B3DF26 /* PodcastsListCoordinator.swift */,
 			);
 			path = Podcasts;
 			sourceTree = "<group>";

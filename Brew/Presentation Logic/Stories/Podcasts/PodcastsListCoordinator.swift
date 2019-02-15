@@ -52,6 +52,10 @@ private extension PodcastsListCoordinator {
 			self?.show(category)
 		}
 		
+		controller.onSave = { [weak self] in
+			self?.save($0)
+		}
+		
 		contentController.navigationController?.pushViewController(controller, animated: true)
 	}
 	
@@ -70,6 +74,10 @@ private extension PodcastsListCoordinator {
 		
 		contentController.navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
+	
+	func save(_ episode: Episode) {
+		saveEpisode(by: episode.id)
+	}
 }
 	
 //MARK: - Server Communication
@@ -80,5 +88,9 @@ private extension PodcastsListCoordinator {
 		}, onError: {
 			$0.display()
 		})
+	}
+	
+	func saveEpisode(by id: Int) {
+		SaveEpisodeRequest(id: id).execute()
 	}
 }

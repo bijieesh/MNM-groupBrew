@@ -9,9 +9,11 @@
 import UIKit
 import Reusable
 import SDWebImage
+import MGSwipeTableCell
 
 class PodcastDetailViewController: AppViewController {
 	typealias Action = () -> Void
+	typealias EpisodeAction = (Episode) -> Void
 	typealias PodcastAction = (Podcast, Int) -> Void
 	typealias CategoryAction = (Category) -> Void
 	
@@ -20,6 +22,7 @@ class PodcastDetailViewController: AppViewController {
 	}
 
     var onBack: Action?
+	var onSave: EpisodeAction?
     var onPodcast: PodcastAction?
 	var onFirstCategory: CategoryAction?
 	
@@ -117,6 +120,22 @@ private extension PodcastDetailViewController {
 	}
 }
 
+//MARK: - Table View Helpers
+private extension PodcastDetailViewController {
+	func configureSwipe(for cell: EpisodeTableViewCell) {
+		cell.delegate = self
+		
+		let rightButton = MGSwipeButton(title: "Save      ", backgroundColor: #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.102151113))
+		rightButton.setTitleColor(#colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 1), for: .normal)
+		cell.rightButtons = [rightButton]
+		cell.rightSwipeSettings.transition = .clipCenter
+		cell.rightExpansion.expansionColor = #colorLiteral(red: 0.2823529412, green: 0.7529411765, blue: 0.6196078431, alpha: 0.1012949486)
+		cell.rightExpansion.buttonIndex = 0
+		cell.rightExpansion.fillOnTrigger = true
+		cell.rightExpansion.threshold = 2
+	}
+}
+
 //MARK: - UITableViewDataSource
 extension PodcastDetailViewController: UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,14 +180,14 @@ extension PodcastDetailViewController: UITableViewDataSource {
 				cell.downloadState = .notDownloaded
 			}
 		}
-
+		
+		configureSwipe(for: cell)
 		
 		return cell
 	}
 }
 
-//MARK: UITableViewDelegate
-
+//MARK: - UITableViewDelegate
 extension PodcastDetailViewController: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let podcast = podcast else { return }
@@ -183,4 +202,16 @@ extension PodcastDetailViewController: UITableViewDelegate {
         return headerView.expectedHeight
     }
 }
+
+//MARK: - MGSwipeTableCellDelegate
+extension PodcastDetailViewController: MGSwipeTableCellDelegate {
+	func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
+		if let indexPath = contentTableView.indexPath(for: cell), let episode = podcast?.episodes?[indexPath.row] {
+			onSave?(episode)
+		}
+		
+		return true
+	}
+}
+
 
