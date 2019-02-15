@@ -24,50 +24,39 @@ class ProfileCoordinator: NavigationCoordinator {
 
     private func setupProfileController() {
         let profileController = ProfileViewController()
+		
+		profileController.onGetData = { [weak self, weak profileController] in
+			self?.loadUserInfo(for: profileController)
+		}
 
-		profileController.onProfileImageTapped = { [weak self, profileController] in
+		profileController.onProfileImage = { [weak self, weak profileController] in
             self?.showImagePicker(from: profileController)
         }
 
-        profileController.onSettingsTapped = { [weak self, profileController] in
+        profileController.onSettings = { [weak self, weak profileController] in
             self?.showProfileSettings(onContentUpdated: { [weak self, profileController] in
                 self?.loadUserInfo(for: profileController)
             })
         }
 
-        profileController.onLogOutTapped = { [weak self] in
+        profileController.onLogOut = { [weak self] in
             self?.logout()
         }
         
-        profileController.onPodcastSelected = { [weak self] in
+        profileController.onPodcast = { [weak self] in
             self?.showPodcastDetails(for: $0)
         }
     
-        loadUserInfo(for: profileController)
         navigationController?.pushViewController(profileController, animated: false)
     }
-	
-	func showPriceController() {
-		let priceViewController = PriceViewController()
-		
-		priceViewController.onLaterTapped = { [weak self] in
-		
-		}
-		
-		priceViewController.onNextTapped = { [weak self] in
-		
-		}
-		
-		navigationController?.pushViewController(priceViewController, animated: true)
-	}
 }
 
 private extension ProfileCoordinator {
 
-    func showImagePicker(from controller: ProfileViewController) {
+    func showImagePicker(from controller: ProfileViewController?) {
         imagePickerCoordinator.showImagePicker(for: controller) { image in
             guard let image = image else { return }
-            controller.updateProfileImage(with: image)
+            controller?.updateProfileImage(with: image)
         }
     }
     
@@ -98,12 +87,11 @@ private extension ProfileCoordinator {
         navigationController?.pushViewController(settingsViewController, animated: true)
     }
     
-    func loadUserInfo(for controller: ProfileViewController) {
+    func loadUserInfo(for controller: ProfileViewController?) {
         GetCurrentUserRequest().execute(
 
-            onSuccess: { [weak self] user in
-                self?.user = user
-                controller.updateContent(with: user)
+            onSuccess: { user in
+                controller?.user = user
         },
 
             onError: { error in

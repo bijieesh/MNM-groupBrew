@@ -10,41 +10,46 @@ import UIKit
 import SDWebImage
 
 class ProfileViewController: AppViewController {
+	typealias Action = () -> Void
+	typealias PodcastAction = (Podcast) -> Void
 
-    var onSettingsTapped: (() -> Void)?
-    var onLogOutTapped: (() -> Void)?
-    var onProfileImageTapped: (() -> Void)?
-    var onPodcastSelected: ((Podcast) -> Void)?
+	var onGetData: Action?
+    var onSettings: Action?
+    var onLogOut: Action?
+    var onProfileImage: Action?
+    var onPodcast: PodcastAction?
     
     //MARK: IBOutlets
     
     @IBOutlet private var userNameLabel: UILabel!
     @IBOutlet private var podcastsView: PodcastsListView!
-    @IBOutlet private var logoImageView: UIImageView! {
-        didSet {
-            logoImageView.layer.masksToBounds = true
-        }
+	
+	@IBOutlet private var logoImageView: UIImageView! {
+        didSet { logoImageView.layer.masksToBounds = true }
     }
     
-    var user: User?
+	var user: User? {
+		didSet { updateUI() }
+	}
 
     //MARK: Lifecycle
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        updateUI()
-    }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		onGetData?()
+	}
     
     //MARK: IBActions
 
     @IBAction private func settingsTapped() {
-        onSettingsTapped?()
+        onSettings?()
     }
     @IBAction private func logOutTapped() {
-        onLogOutTapped?()
+        onLogOut?()
     }
     @IBAction private func profilePhotoTapped() {
-        onProfileImageTapped?()
+        onProfileImage?()
     }
 }
 
@@ -55,18 +60,8 @@ extension ProfileViewController {
         setupTabBarImage(image)
     }
 
-
-    func updateContent(with user: User) {
-        self.user = user
-        updateUI()
-    }
-
     private func updateUI() {
-        guard isViewLoaded else {
-            return
-        }
-
-        userNameLabel?.text = user?.profile?.profileFullName
+		userNameLabel?.text = user?.profile?.profileFullName
 
         setupPodcasts()
         setupAvatarFromUser()
@@ -75,7 +70,7 @@ extension ProfileViewController {
     private func setupPodcasts() {
         let podcasts = user?.podcasts ?? []
         podcastsView?.setup(with: podcasts)
-        podcastsView?.onItemSelected = { [weak self] in self?.onPodcastSelected?(podcasts[$0]) }
+        podcastsView?.onItemSelected = { [weak self] in self?.onPodcast?(podcasts[$0]) }
     }
 
     private func setupAvatarFromUser() {
@@ -91,7 +86,6 @@ extension ProfileViewController {
 }
 
 private extension ProfileViewController {
-    
     func setupTabBarImage(_ image: UIImage) {
         let resizedImage = image.resizeImage(targetSize: CGSize(width: 24, height: 24))
         if let roundedImage = resizedImage?.circleMasked?.withRenderingMode(.alwaysOriginal) {

@@ -44,18 +44,23 @@ private extension HomeCoordinator {
 			self?.onActivity?($0, $1)
 		}
 		
-		loadNewEpisodes(for: newReleaseVC)
-		loadUserEpisodes(for: newReleaseVC)
+		newReleaseVC.onGetData = { [weak self, weak newReleaseVC] in
+			self?.loadNewEpisodes(for: newReleaseVC)
+			self?.loadUserEpisodes(for: newReleaseVC)
+		}
 		
 		return newReleaseVC
 	}
 	
 	func createShowsController() -> ShowsViewController {
 		let showsVC = ShowsViewController()
-		loadShowsData(for: showsVC)
 		
 		showsVC.onPodcastPressed = { [weak self] podcast in
 			self?.showDetails(for: podcast)
+		}
+		
+		showsVC.onGetData = { [weak self, weak showsVC] in
+			self?.loadShowsData(for: showsVC)
 		}
 		
 		return showsVC
@@ -73,8 +78,10 @@ private extension HomeCoordinator {
 			self?.onActivity?($0, $1)
 		}
 		
-		loadSavedEpisodes(for: savedVC)
-		loadUserEpisodes(for: savedVC)
+		savedVC.onGetData = { [weak self, weak savedVC] in
+			self?.loadSavedEpisodes(for: savedVC)
+			self?.loadUserEpisodes(for: savedVC)
+		}
 		
 		return savedVC
 	}
@@ -143,21 +150,21 @@ private extension HomeCoordinator {
 
 //MARK: - Server Communication
 private extension HomeCoordinator {
-	func loadNewEpisodes(for controller: EpisodesViewController) {
+	func loadNewEpisodes(for controller: EpisodesViewController?) {
         GetNewReleasesRequest().execute(onSuccess: { episodes in
-			controller.topData = episodes
+			controller?.topData = episodes
         })
 	}
 	
-	func loadShowsData(for controller: ShowsViewController) {
+	func loadShowsData(for controller: ShowsViewController?) {
 		GetPodcastsRequest(type: .all).execute(onSuccess: { podcasts in
-			controller.data = podcasts
+			controller?.data = podcasts
 		})
 	}
 	
-	func loadSavedEpisodes(for controller: EpisodesViewController) {
+	func loadSavedEpisodes(for controller: EpisodesViewController?) {
 		GetSavedEpisodesRequest().execute(onSuccess: { episodes in
-			controller.topData = episodes
+			controller?.topData = episodes
 		})
 	}
 	
@@ -181,9 +188,9 @@ private extension HomeCoordinator {
 		navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
 	
-	func loadUserEpisodes(for controller: EpisodesViewController) {
+	func loadUserEpisodes(for controller: EpisodesViewController?) {
 		GetUserActivitiesRequest().execute(onSuccess: { activities in
-			controller.bottomData = activities
+			controller?.bottomData = activities
 		})
 	}
 }

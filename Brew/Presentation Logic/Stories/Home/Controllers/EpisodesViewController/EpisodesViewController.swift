@@ -11,6 +11,7 @@ import MGSwipeTableCell
 import Reusable
 
 class EpisodesViewController: UIViewController {
+	typealias Action = () -> Void
 	typealias PodcastAction = (_ episode: Episode, _ actionType: ActionType) -> Void
 	typealias ActivityAction = (_ episode: Episode, _ startFrom: Int) -> Void
 	
@@ -59,14 +60,14 @@ class EpisodesViewController: UIViewController {
 	}
 	
 	var controllerType: ControllerType!
+	var onGetData: Action?
 	var onPodcast: PodcastAction?
 	var onActivity: ActivityAction?
 	
-	override func viewDidLoad() {
-		super.viewDidLoad()
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		
-		handleTopData()
-		handleBottomData()
+		onGetData?()
 	}
 }
 
@@ -115,8 +116,8 @@ private extension EpisodesViewController {
 		guard isViewLoaded else { return }
 
 		bottomTableViewHeight.constant = bottomCellHeight * CGFloat(bottomData.count)
-		bottomTableViewHeaderView.isHidden = false
-		bottomTableView.isHidden = false
+		bottomTableViewHeaderView.isHidden = bottomControllerData.isEmpty
+		bottomTableView.isHidden = bottomControllerData.isEmpty
 		bottomTableView.reloadData()
 	}
 	

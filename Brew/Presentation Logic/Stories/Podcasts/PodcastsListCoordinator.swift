@@ -24,6 +24,7 @@ class PodcastsListCoordinator<T>: Coordinator where T: RequestType, T.ResponseOb
 		
 		controller.onClose = { [weak self] in
 			self?.contentController.navigationController?.popViewController(animated: true)
+			self?.end()
 		}
 		
 		controller.onPodcastPressed = { [weak self] podcast in

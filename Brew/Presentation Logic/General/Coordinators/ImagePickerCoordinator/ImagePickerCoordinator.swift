@@ -13,7 +13,7 @@ class ImagePickerCoordinator: NSObject {
     private weak var responsibleController: UIViewController?
     private var imageSelectionCompletion: ((_ image: UIImage?) -> Void)?
     
-    func showImagePicker(for controller: UIViewController, and sourceType: UIImagePickerController.SourceType? = nil,
+    func showImagePicker(for controller: UIViewController?, and sourceType: UIImagePickerController.SourceType? = nil,
                          with imageCompletion: @escaping (_ image: UIImage?) -> Void) {
         
         responsibleController = controller
