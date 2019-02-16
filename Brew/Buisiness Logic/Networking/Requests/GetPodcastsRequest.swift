@@ -52,6 +52,9 @@ class GetPodcastsRequest: RequestType {
 		if let podcastJson = mappedJson["podcast"] as? [String : Any] {
             data = podcastJson["data"] as? [[String: Any]] ?? []
 		}
+        else if let podcastsJson = mappedJson["podcast"] as? [[String: Any]] {
+            data = podcastsJson
+        }
         
         return data
     }

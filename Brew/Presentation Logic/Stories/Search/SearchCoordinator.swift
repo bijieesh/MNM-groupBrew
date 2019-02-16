@@ -25,7 +25,7 @@ private extension SearchCoordinator {
 	func setupSearchController() {
 		let searchController = SearchViewController()
 		
-		searchController.onGetData = { [weak self, weak searchController] in
+		searchController.onNeedUpdate = { [weak self, weak searchController] in
 			self?.loadCategories(for: searchController)
 		}
 		

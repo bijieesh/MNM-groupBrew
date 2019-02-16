@@ -13,7 +13,7 @@ class ProfileViewController: AppViewController {
 	typealias Action = () -> Void
 	typealias PodcastAction = (Podcast) -> Void
 
-	var onGetData: Action?
+	var onNeedUpdate: Action?
     var onSettings: Action?
     var onLogOut: Action?
     var onProfileImage: Action?
@@ -37,7 +37,7 @@ class ProfileViewController: AppViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		onGetData?()
+		onNeedUpdate?()
 	}
     
     //MARK: IBActions

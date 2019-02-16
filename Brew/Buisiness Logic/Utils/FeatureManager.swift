@@ -57,11 +57,12 @@ class FeatureManager: NSObject, RMStoreObserver {
         })
     }
     
-    func purchase(_ feature: Feature, fetchProductsOnFail: Bool = true, with callback: ((_ success: Bool) -> Void)? = nil) {
+    func purchase(_ feature: Feature, fetchProductsOnFail: Bool = true, with callback: ((_ transactionId: String?) -> Void)? = nil) {
         RMStore.default().addPayment(feature.rawValue,
-                                     success: { _ in
+                                     success: {
                                         feature.store()
-                                        callback?(true)
+                                        let id = ($0?.original ?? $0)?.transactionIdentifier
+                                        callback?(id)
         },
                                      failure: { (_, error) in
                                         if fetchProductsOnFail {
@@ -70,12 +71,12 @@ class FeatureManager: NSObject, RMStoreObserver {
                                                     self.purchase(feature, fetchProductsOnFail: false, with: callback)
                                                 }
                                                 else {
-                                                    callback?(false)
+                                                    callback?(nil)
                                                 }
                                             }
                                         }
                                         else {
-                                            callback?(false)
+                                            callback?(nil)
                                         }
         })
     }
@@ -104,7 +105,7 @@ extension FeatureManager {
             return RMStore.localizedPrice(of: RMStore.default().product(forIdentifier: rawValue))
         }
 
-        func purchase(completion: ((Bool) -> Void)? = nil) {
+        func purchase(completion: ((String?) -> Void)? = nil) {
             FeatureManager.shared.purchase(self, with: completion)
         }
         

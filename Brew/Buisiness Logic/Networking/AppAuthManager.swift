@@ -24,10 +24,6 @@ class AppAuthManager: AuthManager {
 
     var authToken: AuthToken? {
         set {
-            guard authToken != newValue else {
-                return
-            }
-
             UserDefaults.standard.set(newValue?.token, forKey: Constants.tokenKey)
             onTokenUpdated?(newValue)
         }

@@ -18,10 +18,12 @@ final class ShowsViewController: AppViewController {
 	}
 	
 	var onPodcastPressed: PodcastAction?
-	var onGetData: Action?
+	var onNeedUpdate: Action?
 	
 	var data: [Podcast] = [] {
-		didSet { collectionView.reloadData() }
+		didSet {
+            collectionView.reloadData()
+        }
 	}
 	
 	override func viewDidLoad() {
@@ -29,13 +31,13 @@ final class ShowsViewController: AppViewController {
 		
 		configureNavigationBar()
 	}
-	
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-		
-		onGetData?()
-	}
-	
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        onNeedUpdate?()
+    }
+
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
@@ -61,7 +63,16 @@ private extension ShowsViewController {
 private extension ShowsViewController {
 	func configureCollectionView() {
 		collectionView.register(cellType: ImageCollectionViewCell.self)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(update), for: .valueChanged)
+
+        collectionView.refreshControl = refreshControl
 	}
+
+    @objc private func update() {
+        onNeedUpdate?()
+    }
 
 	func configureCollectionViewLayout() {
 		let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout

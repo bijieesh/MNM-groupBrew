@@ -93,6 +93,7 @@
 		3D798B5722132CC000B3DF26 /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D798B5322132CC000B3DF26 /* CommentsViewController.xib */; };
 		3D798B5922132CFD00B3DF26 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B5822132CFC00B3DF26 /* Comment.swift */; };
 		3D7E41FF2216CF5B00B850AC /* PaymentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E41FE2216CF5B00B850AC /* PaymentScene.swift */; };
+		3D7E42012217F4F700B850AC /* PaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E42002217F4F700B850AC /* PaymentRequest.swift */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
@@ -244,6 +245,7 @@
 		3D798B5322132CC000B3DF26 /* CommentsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
 		3D798B5822132CFC00B3DF26 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		3D7E41FE2216CF5B00B850AC /* PaymentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScene.swift; sourceTree = "<group>"; };
+		3D7E42002217F4F700B850AC /* PaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequest.swift; sourceTree = "<group>"; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				3D798B3622132CA100B3DF26 /* UpdateProfileInfoRequest.swift */,
 				5A36C0E122141FB40091CC6A /* SaveLikedPodcastsRequest.swift */,
 				5A36C0F2221459B70091CC6A /* PodcastSearchRequest.swift */,
+				3D7E42002217F4F700B850AC /* PaymentRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -1327,6 +1330,7 @@
 				3D2002A321FBBA4100E38B99 /* PodcastEpisodeCell.swift in Sources */,
 				3D05F01221F5D12E00174A91 /* SignUpViewController.swift in Sources */,
 				3D798B4222132CA100B3DF26 /* ChangePasswordRequest.swift in Sources */,
+				3D7E42012217F4F700B850AC /* PaymentRequest.swift in Sources */,
 				3DB447D121F7534E00F93876 /* PodcastsListItemView.swift in Sources */,
 				3DCBBA6B21F86B63009BCD31 /* OnboardingCoordinator.swift in Sources */,
 				3D05EFE421F5C4E900174A91 /* AppViewController.swift in Sources */,

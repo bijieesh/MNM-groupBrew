@@ -289,7 +289,7 @@ private class DefaultRequestExecuter: RequestExecuter {
 
                                     if statusCode.isSuccessful {
                                         let result = try strongSelf.jsonDecoder.decode(T.ResponseObjectType.self, from: convertedData)
-                                        responseQueue.async { onSuccess?(result)}
+                                        responseQueue.async { onSuccess?(result) }
                                     }
                                     else {
                                         let result = try strongSelf.jsonDecoder.decode(T.ErrorType.self, from: data)

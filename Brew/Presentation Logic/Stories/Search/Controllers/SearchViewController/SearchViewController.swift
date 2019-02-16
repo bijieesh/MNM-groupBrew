@@ -23,7 +23,7 @@ final class SearchViewController: UIViewController {
 	var onTopPodcast: Action?
 	var onEditorsChoice: Action?
 	var onSearch: SearchAction?
-	var onGetData: Action?
+	var onNeedUpdate: Action?
 	
 	var data: [Category] = [] {
 		didSet { fillData() }
@@ -36,7 +36,7 @@ final class SearchViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		onGetData?()
+		onNeedUpdate?()
 		setupNavigationController()
 	}
 	

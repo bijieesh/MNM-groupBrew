@@ -10,7 +10,7 @@ import UIKit
 import MGSwipeTableCell
 import Reusable
 
-class EpisodesViewController: UIViewController {
+class EpisodesViewController: AppViewController {
 	typealias Action = () -> Void
 	typealias PodcastAction = (_ episode: Episode, _ actionType: ActionType) -> Void
 	typealias ActivityAction = (_ episode: Episode, _ startFrom: Int) -> Void
@@ -34,6 +34,7 @@ class EpisodesViewController: UIViewController {
 	
 	@IBOutlet private var showMoreView: UIView!
 	@IBOutlet private var bottomTableViewHeaderView: UIView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
 	
 	@IBOutlet private var topTableViewHeight: NSLayoutConstraint!
 	@IBOutlet private var bottomTableViewHeight: NSLayoutConstraint!
@@ -60,15 +61,25 @@ class EpisodesViewController: UIViewController {
 	}
 	
 	var controllerType: ControllerType!
-	var onGetData: Action?
+	var onNeedUpdate: Action?
 	var onPodcast: PodcastAction?
 	var onActivity: ActivityAction?
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		onGetData?()
+		update()
 	}
+
+    private func update() {
+        guard !activityIndicator.isAnimating else {
+            return
+        }
+
+        onNeedUpdate?()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+    }
 }
 
 //MARK: - @IBAction
@@ -110,6 +121,8 @@ private extension EpisodesViewController {
 		topTableViewHeight.constant = topCellHeight * CGFloat((topData.count < 4 ? topData.count : 3))
 		showMoreView.isHidden = topData.count < 4
 		topTableView.reloadData()
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
 	}
 	
 	func handleBottomData() {
@@ -119,6 +132,8 @@ private extension EpisodesViewController {
 		bottomTableViewHeaderView.isHidden = bottomControllerData.isEmpty
 		bottomTableView.isHidden = bottomControllerData.isEmpty
 		bottomTableView.reloadData()
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
 	}
 	
 	func configureTopTableView() {
@@ -297,6 +312,15 @@ extension EpisodesViewController: MGSwipeTableCellDelegate {
 		
 		return true
 	}
+}
+
+extension EpisodesViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y < -50 {
+            update()
+        }
+    }
 }
 
 //MARK: - Convert Helpers

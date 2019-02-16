@@ -32,8 +32,19 @@ final class PaymentScene {
     }()
 
     private func purchase(_ feature: FeatureManager.Feature) {
-        feature.purchase { [weak self] _ in
-            self?.onFinish?()
+        feature.purchase { [weak self] in
+            if let transactionId = $0 {
+                PaymentRequest(productId: feature.rawValue, transactionId: transactionId).execute(
+                    onSuccess: { [weak self] _ in
+                        self?.onFinish?()
+                    },
+                    onError: { [weak self] _ in
+                        self?.onFinish?()
+                })
+            }
+            else {
+                self?.onFinish?()
+            }
         }
     }
 }

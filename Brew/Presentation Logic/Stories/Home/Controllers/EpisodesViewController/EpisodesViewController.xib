@@ -17,6 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EpisodesViewController" customModule="Brew" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="B3i-DW-Lg0" id="Ct4-Ac-VDE"/>
                 <outlet property="bottomTableView" destination="16a-87-pjV" id="fV7-Rk-t2G"/>
                 <outlet property="bottomTableViewHeaderView" destination="b6M-cb-hdg" id="VAT-XD-mGW"/>
                 <outlet property="bottomTableViewHeight" destination="sKE-3D-Vzw" id="vRs-Ne-4va"/>
@@ -32,7 +33,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kL4-at-jPz">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kL4-at-jPz">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mto-SH-fxX">
@@ -113,12 +114,20 @@
                         <constraint firstItem="Mto-SH-fxX" firstAttribute="leading" secondItem="kL4-at-jPz" secondAttribute="leading" id="box-5I-enn"/>
                         <constraint firstItem="Mto-SH-fxX" firstAttribute="width" secondItem="kL4-at-jPz" secondAttribute="width" id="dl8-1Q-LAn"/>
                     </constraints>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="oCx-pw-Nqx"/>
+                    </connections>
                 </scrollView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="B3i-DW-Lg0">
+                    <rect key="frame" x="177.5" y="36" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="B3i-DW-Lg0" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="6bC-oe-gSD"/>
                 <constraint firstAttribute="trailing" secondItem="kL4-at-jPz" secondAttribute="trailing" id="7SJ-1b-5yh"/>
                 <constraint firstItem="kL4-at-jPz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gx0-dH-V5b"/>
+                <constraint firstItem="B3i-DW-Lg0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="N6N-q0-K9g"/>
                 <constraint firstAttribute="bottom" secondItem="kL4-at-jPz" secondAttribute="bottom" id="g7l-lz-AaK"/>
                 <constraint firstItem="kL4-at-jPz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="tjs-nP-DV9"/>
             </constraints>

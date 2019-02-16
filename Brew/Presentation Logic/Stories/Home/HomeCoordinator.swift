@@ -44,7 +44,7 @@ private extension HomeCoordinator {
 			self?.onActivity?($0, $1)
 		}
 		
-		newReleaseVC.onGetData = { [weak self, weak newReleaseVC] in
+		newReleaseVC.onNeedUpdate = { [weak self, weak newReleaseVC] in
 			self?.loadNewEpisodes(for: newReleaseVC)
 			self?.loadUserEpisodes(for: newReleaseVC)
 		}
@@ -59,7 +59,7 @@ private extension HomeCoordinator {
 			self?.showDetails(for: podcast)
 		}
 		
-		showsVC.onGetData = { [weak self, weak showsVC] in
+		showsVC.onNeedUpdate = { [weak self, weak showsVC] in
 			self?.loadShowsData(for: showsVC)
 		}
 		
@@ -78,7 +78,7 @@ private extension HomeCoordinator {
 			self?.onActivity?($0, $1)
 		}
 		
-		savedVC.onGetData = { [weak self, weak savedVC] in
+		savedVC.onNeedUpdate = { [weak self, weak savedVC] in
 			self?.loadSavedEpisodes(for: savedVC)
 			self?.loadUserEpisodes(for: savedVC)
 		}

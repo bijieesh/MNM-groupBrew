@@ -34,7 +34,7 @@ class ProfileCoordinator: NavigationCoordinator, ImageUploadable {
     private func setupProfileController() {
         let profileController = ProfileViewController()
 		
-		profileController.onGetData = { [weak self, weak profileController] in
+		profileController.onNeedUpdate = { [weak self, weak profileController] in
 			self?.loadUserInfo(for: profileController)
 		}
 
