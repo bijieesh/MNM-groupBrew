@@ -37,7 +37,7 @@ class ProfileViewController: AppViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		onNeedUpdate?()
+		updateUI()
 	}
     
     //MARK: IBActions

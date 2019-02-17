@@ -10,6 +10,12 @@ import UIKit
 import AVFoundation
 import MediaPlayer
 
+private struct PlayerState: Codable {
+    let episide: Episode
+    let startFrom: Int
+    let podcast: Podcast?
+}
+
 protocol PlayerContainer {
     func presentMiniPlayer(_ player: AppViewController)
     func presentFullScreenPlayer(_ player: AppViewController)
@@ -32,6 +38,7 @@ class PlayerCoordinator: NSObject {
         self.playerContainer = playerContainer
         super.init()
         prepareAudioSession()
+        NotificationCenter.default.addObserver(self, selector: #selector(storeState), name: UIApplication.willResignActiveNotification, object: nil)
     }
 
     func invalidate() {
@@ -39,7 +46,7 @@ class PlayerCoordinator: NSObject {
     }
 
     @discardableResult
-	func playEpisode(at index: Int, from podcast: Podcast, autoContinue: Bool = true, startFrom: Int = 0) -> Bool {
+	func playEpisode(at index: Int, from podcast: Podcast, autoplay: Bool = true, startFrom: Int = 0) -> Bool {
 
         guard let episodes = podcast.episodes, episodes.count > index else {
             return false
@@ -48,12 +55,7 @@ class PlayerCoordinator: NSObject {
         let episode = episodes[index]
 		
         if playEpisode(episode, from: podcast, startFrom: startFrom) {
-            if autoContinue {
-                autoContinueData = (podcast, index)
-            }
-            else {
-                autoContinueData = nil
-            }
+            autoContinueData = (podcast, index)
 
             return true
         }
@@ -63,7 +65,7 @@ class PlayerCoordinator: NSObject {
     }
 
     @discardableResult
-	func playEpisode(_ episode: Episode, from podcast: Podcast? = nil, startFrom: Int = 0) -> Bool {
+    func playEpisode(_ episode: Episode, from podcast: Podcast? = nil, autoplay: Bool = true, startFrom: Int = 0) -> Bool {
         invalidateCurrentData()
 
         guard let podcast = (podcast ?? episode.podcast) else {
@@ -77,19 +79,50 @@ class PlayerCoordinator: NSObject {
         autoContinueData = nil
 
         updatePlayerControllers(with: data)
-        presentPlayerControllerIfNeeded()
+        presentPlayerControllerIfNeeded(showFullScreen: autoplay)
 		
 		if startFrom < episode.duration {
 			data.audioPlayer.currentPosition += startFrom
 		}
-		
-        data.audioPlayer.play()
+
+        if autoplay {
+            data.audioPlayer.play()
+        }
 
         setupActivityUpdateTimer(for: episode.id, data.audioPlayer)
 
         activeEpisode = episode
 
         return true
+    }
+
+    func restoreState() {
+        guard let json = UserDefaults.standard.value(forKey: "PlayerCoordinator.playerState") as? Data else {
+            return
+        }
+
+        guard let state = try? JSONDecoder().decode(PlayerState.self, from: json) else {
+            return
+        }
+
+        if let podcast = state.podcast, let index = podcast.episodes?.firstIndex(where: { $0.id == state.episide.id }) {
+            playEpisode(at: index, from: podcast, autoplay: false, startFrom: state.startFrom)
+        }
+        else {
+            playEpisode(state.episide, from: state.podcast, autoplay: false, startFrom: state.startFrom)
+        }
+    }
+
+    @objc private func storeState() {
+        guard let activeEpisode = activeEpisode, let currentTime = playerData?.player.currentPosition else {
+            return
+        }
+
+        let currentState = PlayerState(episide: activeEpisode, startFrom: currentTime, podcast: autoContinueData?.podcast)
+
+        if let json = try? JSONEncoder().encode(currentState) {
+            UserDefaults.standard.set(json, forKey: "PlayerCoordinator.playerState")
+        }
     }
 
     private func updatePlayerControllers(with data: PlayerViewController.Data) {
@@ -143,12 +176,14 @@ class PlayerCoordinator: NSObject {
         activityUpdateTimer = nil
     }
 
-    private func presentPlayerControllerIfNeeded() {
+    private func presentPlayerControllerIfNeeded(showFullScreen: Bool) {
         if let miniPlayerController = miniPlayerController, miniPlayerController.view.window == nil {
             playerContainer.presentMiniPlayer(miniPlayerController)
         }
 
-        presentFullScreenControllerIfNeeded()
+        if showFullScreen {
+            presentFullScreenControllerIfNeeded()
+        }
     }
 
     @objc private func presentFullScreenControllerIfNeeded() {

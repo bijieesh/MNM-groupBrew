@@ -14,7 +14,15 @@ class MainFlowCoordinator: Coordinator {
 
     private var activeMenuCoordinator: MenuCoordinator?
 
-    private let paymentScene = PaymentScene()
+    private lazy var paymentScene: PaymentScene = {
+        let scene = PaymentScene()
+
+        scene.onFinish = { [weak self] in
+            self?.paymentScene.controller.dismiss(animated: true)
+        }
+
+        return scene
+    }()
 
     private lazy var playerCoordinator: PlayerCoordinator = {
         return PlayerCoordinator(playerContainer: self)
@@ -46,7 +54,9 @@ class MainFlowCoordinator: Coordinator {
             ])
 
         activeMenuCoordinator = menuCoordinator
-        contentController.present(menuCoordinator.contentController, animated: false)
+        contentController.present(menuCoordinator.contentController, animated: false) { [weak self] in
+            self?.playerCoordinator.restoreState()
+        }
     }
 
     private func playPodcast(_ podcast: Podcast, from index: Int) {
@@ -110,12 +120,14 @@ class MainFlowCoordinator: Coordinator {
     }
 
     private func showPaymentSelection() {
+        //TODO: quick fix to avoid when ui is not loaded
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
+            guard let scene = self?.paymentScene, !scene.controller.isBeingPresented else {
+                return
+            }
 
-        paymentScene.onFinish = { [weak self] in
-            self?.paymentScene.controller.dismiss(animated: true)
+            self?.contentController.topController.present(scene.controller, animated: true)
         }
-
-        contentController.topController.present(paymentScene.controller, animated: true)
     }
 }
 

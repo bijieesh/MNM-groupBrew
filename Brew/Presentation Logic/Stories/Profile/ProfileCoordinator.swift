@@ -55,7 +55,11 @@ class ProfileCoordinator: NavigationCoordinator, ImageUploadable {
         profileController.onPodcast = { [weak self] in
             self?.showPodcastDetails(for: $0)
         }
-    
+
+        loadUserInfo(for: profileController)
+
+        loadUserInfo(for: profileController)
+
         navigationController?.pushViewController(profileController, animated: false)
     }
 }
@@ -100,7 +104,8 @@ private extension ProfileCoordinator {
     func loadUserInfo(for controller: ProfileViewController?) {
         GetCurrentUserRequest().execute(
 
-            onSuccess: { user in
+            onSuccess: { [weak self] user in
+                self?.user = user
                 controller?.user = user
         },
 
