@@ -2,4 +2,70 @@
 <Bucket
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brew/Buisiness Logic/Networking/AppAuthManager.swift"
+            timestampString = "572105453.944445"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "refreshToken(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brew/Buisiness Logic/Networking/Networking.swift"
+            timestampString = "572106783.814389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
+            landmarkName = "dispatch(_:onSuccess:onError:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Brew.URLSessionNetworkDispatcher.dispatch(_: Brew.RequestData, onSuccess: (Foundation.Data, Swift.Int) -&gt; (), onError: (Swift.Error) -&gt; ()) -&gt; ()"
+                  moduleName = "Brew"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Desktop/Projects/Brew/Brew/Brew/Buisiness%20Logic/Networking/Networking.swift"
+                  timestampString = "572106794.237453"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "443"
+                  endingLineNumber = "443"
+                  offsetFromSymbolStart = "275">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Brew.URLSessionNetworkDispatcher.dispatch(_: Brew.RequestData, onSuccess: (Foundation.Data, Swift.Int) -&gt; (), onError: (Swift.Error) -&gt; ()) -&gt; ()"
+                  moduleName = "Brew"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/newuser/Desktop/Projects/Brew/Brew/Brew/Buisiness%20Logic/Networking/Networking.swift"
+                  timestampString = "572106794.239059"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "444"
+                  endingLineNumber = "444"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

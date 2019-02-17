@@ -61,6 +61,10 @@ extension ProfileViewController {
     }
 
     private func updateUI() {
+        guard isViewLoaded else {
+            return
+        }
+        
 		userNameLabel?.text = user?.profile?.profileFullName
 
         setupPodcasts()

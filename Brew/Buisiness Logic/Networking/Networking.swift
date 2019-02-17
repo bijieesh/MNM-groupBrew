@@ -8,12 +8,37 @@
 
 import Foundation
 
+struct Status: Codable {
+    enum CodingKeys: String, CodingKey {
+        case code
+    }
+
+    let statusCode: StatusCode
+
+    init(statusCode: StatusCode) {
+        self.statusCode = statusCode
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let code = try container.decode(Int.self, forKey: .code)
+        statusCode = StatusCode(code)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(statusCode.code, forKey: .code)
+    }
+}
+
+struct Empty: Codable { }
+
 class NetworkingStack {
     static let instance = NetworkingStack()
 
     private(set) var authManager: AuthManager?
     private(set) var baseUrl: String?
-    
+
     private(set) var requestExecuter: RequestExecuter?
 
     private init() {}
@@ -283,7 +308,7 @@ private class DefaultRequestExecuter: RequestExecuter {
                                 let statusCode = StatusCode(statusCode)
 
                                 do {
-                                    let serverJson = try JSONSerialization.jsonObject(with: data, options: [])
+                                    let serverJson = (try? JSONSerialization.jsonObject(with: data, options: [])) ?? [String: Any]()
                                     let convertedJson = request.convert(serverJson, for: statusCode)
                                     let convertedData = try JSONSerialization.data(withJSONObject: convertedJson, options: [])
 
@@ -307,7 +332,7 @@ private class DefaultRequestExecuter: RequestExecuter {
                                 catch {
                                     responseQueue.async { onError?(.system(error: error)) }
                                 }
-        },
+            },
 
                             onError: {
                                 let error: NetworkingError<T.ErrorType> = .system(error: $0)
@@ -378,7 +403,11 @@ private class DefaultRequestFactory: RequestFactory {
         }
 
         var urlRequest = URLRequest(url: url)
-        urlRequest.httpBody = try JSONSerialization.data(withJSONObject: requestData.bodyParams, options: [])
+
+        if !requestData.bodyParams.isEmpty {
+            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: requestData.bodyParams, options: [])
+        }
+
         urlRequest.httpMethod = requestData.method.rawValue
 
         urlRequest.allHTTPHeaderFields = (defaultHeaders + requestData.headers).reduce([:]) {
@@ -386,6 +415,8 @@ private class DefaultRequestFactory: RequestFactory {
             copy?[$1.key] = $1.value
             return copy
         }
+
+        urlRequest.allHTTPHeaderFields?["Accept"] = "application/json"
 
         return urlRequest
     }
