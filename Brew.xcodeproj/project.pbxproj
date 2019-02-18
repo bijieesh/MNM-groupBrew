@@ -94,6 +94,8 @@
 		3D798B5922132CFD00B3DF26 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D798B5822132CFC00B3DF26 /* Comment.swift */; };
 		3D7E41FF2216CF5B00B850AC /* PaymentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E41FE2216CF5B00B850AC /* PaymentScene.swift */; };
 		3D7E42012217F4F700B850AC /* PaymentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7E42002217F4F700B850AC /* PaymentRequest.swift */; };
+		3D922E7A221B5A5100306BF8 /* LatestReleasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D922E79221B5A5100306BF8 /* LatestReleasesView.swift */; };
+		3D922E7C221B5A8A00306BF8 /* LatestReleasesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D922E7B221B5A8A00306BF8 /* LatestReleasesView.xib */; };
 		3DA16B622205D94100487323 /* AppFileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA16B612205D94100487323 /* AppFileLoader.swift */; };
 		3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */; };
 		3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB447C321F644DC00F93876 /* ValidatedTextField.swift */; };
@@ -252,6 +254,8 @@
 		3D798B5822132CFC00B3DF26 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		3D7E41FE2216CF5B00B850AC /* PaymentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScene.swift; sourceTree = "<group>"; };
 		3D7E42002217F4F700B850AC /* PaymentRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequest.swift; sourceTree = "<group>"; };
+		3D922E79221B5A5100306BF8 /* LatestReleasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestReleasesView.swift; sourceTree = "<group>"; };
+		3D922E7B221B5A8A00306BF8 /* LatestReleasesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestReleasesView.xib; sourceTree = "<group>"; };
 		3DA16B612205D94100487323 /* AppFileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileLoader.swift; sourceTree = "<group>"; };
 		3DB447C021F60F9D00F93876 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		3DB447C321F644DC00F93876 /* ValidatedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedTextField.swift; sourceTree = "<group>"; };
@@ -753,6 +757,15 @@
 			path = Payment;
 			sourceTree = "<group>";
 		};
+		3D922E78221B5A3D00306BF8 /* LatestReleasesView */ = {
+			isa = PBXGroup;
+			children = (
+				3D922E79221B5A5100306BF8 /* LatestReleasesView.swift */,
+				3D922E7B221B5A8A00306BF8 /* LatestReleasesView.xib */,
+			);
+			path = LatestReleasesView;
+			sourceTree = "<group>";
+		};
 		3DA16B632206299600487323 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -950,6 +963,7 @@
 		5A3BC53B221AC647006F9127 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3D922E78221B5A3D00306BF8 /* LatestReleasesView */,
 				5A3BC549221B0494006F9127 /* ActivityView */,
 				5A3BC53C221AC797006F9127 /* ActivityListView */,
 			);
@@ -1263,6 +1277,7 @@
 				5A68C3C5220C6E6C0064A991 /* HomeContainerViewController.xib in Resources */,
 				3D05F00F21F5C8DE00174A91 /* SF-Pro-Display-BoldItalic.otf in Resources */,
 				8596D38C220DB2BE00362DEC /* CategoryCollectionViewCell.xib in Resources */,
+				3D922E7C221B5A8A00306BF8 /* LatestReleasesView.xib in Resources */,
 				3D798B5722132CC000B3DF26 /* CommentsViewController.xib in Resources */,
 				3D798B0B22119FDD00B3DF26 /* EpisodeTableViewCell.xib in Resources */,
 				5A68C3DF220C85740064A991 /* ImageCollectionViewCell.xib in Resources */,
@@ -1352,6 +1367,7 @@
 				5A68C3DE220C85740064A991 /* ImageCollectionViewCell.swift in Sources */,
 				5A0512742216FBDB0084434E /* ImageUploader.swift in Sources */,
 				3DB447C621F66CDD00F93876 /* AppFont.swift in Sources */,
+				3D922E7A221B5A5100306BF8 /* LatestReleasesView.swift in Sources */,
 				3D798B4D22132CA100B3DF26 /* GetUserActivitiesRequest.swift in Sources */,
 				3DB447C421F644DC00F93876 /* ValidatedTextField.swift in Sources */,
 				3D798B3C22132CA100B3DF26 /* GetSavedEpisodesRequest.swift in Sources */,
