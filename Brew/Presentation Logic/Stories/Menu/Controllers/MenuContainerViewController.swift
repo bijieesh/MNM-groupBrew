@@ -89,6 +89,7 @@ class MenuContainerViewController: AppViewController {
 	private func setupTabBar() {
 		tabBar.tintColor = .appOrange
 		tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+		tabBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 		tabBar.items = controllers.map { $0.tabBarItem }
 		selectedIndex = 0
 	}

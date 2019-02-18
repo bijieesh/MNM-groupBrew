@@ -12,10 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeContainerViewController" customModule="Brew" customModuleProvider="target">
             <connections>
-                <outlet property="newReleasesButton" destination="Xm0-H3-g9D" id="Cte-4C-Dg2"/>
-                <outlet property="savedButotn" destination="oAj-Ac-698" id="02g-Zm-71M"/>
+                <outlet property="downloadsButton" destination="oAj-Ac-698" id="02g-Zm-71M"/>
+                <outlet property="homeButton" destination="Xm0-H3-g9D" id="Cte-4C-Dg2"/>
+                <outlet property="podcastsButton" destination="sMA-B6-OcD" id="dc1-nb-ObY"/>
                 <outlet property="scrollView" destination="PI0-WW-rSU" id="uQM-MU-HRK"/>
-                <outlet property="showsButton" destination="sMA-B6-OcD" id="dc1-nb-ObY"/>
                 <outlet property="stackView" destination="eeM-dV-CXL" id="2Vn-ax-7lO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,6 +25,88 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdB-5w-AAP" userLabel="Top View">
+                    <rect key="frame" x="16" y="30" width="343" height="40"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYk-UN-t6m">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                            <subviews>
+                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ghc-mG-8ds">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm0-H3-g9D">
+                                            <rect key="frame" x="0.0" y="0.0" width="114.5" height="40"/>
+                                            <color key="backgroundColor" red="0.08235294118" green="0.086274509799999996" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                            <state key="normal" title="Home">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="newReleasePressed" destination="-1" eventType="touchUpInside" id="TyC-un-8Hr"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-B6-OcD">
+                                            <rect key="frame" x="114.5" y="0.0" width="114" height="40"/>
+                                            <color key="backgroundColor" red="0.08235294118" green="0.086274509799999996" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                            <state key="normal" title="Podcasts">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="showsPressed" destination="-1" eventType="touchUpInside" id="kDD-0J-xac"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAj-Ac-698">
+                                            <rect key="frame" x="228.5" y="0.0" width="114.5" height="40"/>
+                                            <color key="backgroundColor" red="0.08235294118" green="0.086274509799999996" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
+                                            <state key="normal" title="Downloads">
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <state key="selected">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="savedPressed" destination="-1" eventType="touchUpInside" id="KgK-Af-71P"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="6"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="ghc-mG-8ds" firstAttribute="leading" secondItem="jYk-UN-t6m" secondAttribute="leading" id="4dm-67-J0X"/>
+                                <constraint firstItem="ghc-mG-8ds" firstAttribute="top" secondItem="jYk-UN-t6m" secondAttribute="top" id="KdY-dN-b1E"/>
+                                <constraint firstAttribute="trailing" secondItem="ghc-mG-8ds" secondAttribute="trailing" id="PAD-lI-2GD"/>
+                                <constraint firstAttribute="bottom" secondItem="ghc-mG-8ds" secondAttribute="bottom" id="c7U-Ft-xTy"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="jYk-UN-t6m" firstAttribute="leading" secondItem="xdB-5w-AAP" secondAttribute="leading" id="2xz-XW-l2W"/>
+                        <constraint firstAttribute="trailing" secondItem="jYk-UN-t6m" secondAttribute="trailing" id="Jyg-ZO-xXG"/>
+                        <constraint firstAttribute="bottom" secondItem="jYk-UN-t6m" secondAttribute="bottom" id="obn-mj-sJU"/>
+                        <constraint firstItem="jYk-UN-t6m" firstAttribute="top" secondItem="xdB-5w-AAP" secondAttribute="top" id="t20-em-ITA"/>
+                        <constraint firstAttribute="height" constant="40" id="xmz-G3-YP4"/>
+                    </constraints>
+                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PI0-WW-rSU">
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <subviews>
@@ -44,73 +126,13 @@
                         <outlet property="delegate" destination="-1" id="cZe-xa-Uwy"/>
                     </connections>
                 </scrollView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdB-5w-AAP" userLabel="Top View">
-                    <rect key="frame" x="0.0" y="20" width="375" height="50"/>
-                    <subviews>
-                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ghc-mG-8ds">
-                            <rect key="frame" x="10" y="0.0" width="355" height="50"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm0-H3-g9D">
-                                    <rect key="frame" x="0.0" y="0.0" width="118.5" height="50"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                    <state key="normal" title="New Releases">
-                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="selected">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="newReleasePressed" destination="-1" eventType="touchUpInside" id="TyC-un-8Hr"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-B6-OcD">
-                                    <rect key="frame" x="118.5" y="0.0" width="118" height="50"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Shows">
-                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="selected">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="showsPressed" destination="-1" eventType="touchUpInside" id="kDD-0J-xac"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAj-Ac-698">
-                                    <rect key="frame" x="236.5" y="0.0" width="118.5" height="50"/>
-                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Saved">
-                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <state key="selected">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="savedPressed" destination="-1" eventType="touchUpInside" id="KgK-Af-71P"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="ghc-mG-8ds" secondAttribute="bottom" id="47d-ZG-98x"/>
-                        <constraint firstItem="ghc-mG-8ds" firstAttribute="leading" secondItem="xdB-5w-AAP" secondAttribute="leading" constant="10" id="KFf-Ta-KdN"/>
-                        <constraint firstItem="ghc-mG-8ds" firstAttribute="top" secondItem="xdB-5w-AAP" secondAttribute="top" id="dgE-MA-rD0"/>
-                        <constraint firstAttribute="trailing" secondItem="ghc-mG-8ds" secondAttribute="trailing" constant="10" id="eFd-Ev-hsb"/>
-                        <constraint firstAttribute="height" constant="50" id="xmz-G3-YP4"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="xdB-5w-AAP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1nH-7P-QdA"/>
+                <constraint firstItem="xdB-5w-AAP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="1nH-7P-QdA"/>
                 <constraint firstItem="PI0-WW-rSU" firstAttribute="top" secondItem="xdB-5w-AAP" secondAttribute="bottom" id="AS5-bn-snX"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xdB-5w-AAP" secondAttribute="trailing" id="d7L-jn-hOJ"/>
-                <constraint firstItem="xdB-5w-AAP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="duU-F7-BAO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xdB-5w-AAP" secondAttribute="trailing" constant="16" id="d7L-jn-hOJ"/>
+                <constraint firstItem="xdB-5w-AAP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="duU-F7-BAO"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PI0-WW-rSU" secondAttribute="bottom" id="gNX-gj-gpZ"/>
                 <constraint firstItem="PI0-WW-rSU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ib6-U2-YoP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PI0-WW-rSU" secondAttribute="trailing" id="l3a-T9-GxA"/>
