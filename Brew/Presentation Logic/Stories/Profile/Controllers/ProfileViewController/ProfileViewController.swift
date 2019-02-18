@@ -54,8 +54,9 @@ class ProfileViewController: AppViewController {
 }
 
 extension ProfileViewController {
-
     func updateProfileImage(with image: UIImage) {
+		guard isViewLoaded else { return }
+		
         logoImageView.image = image
         setupTabBarImage(image)
     }

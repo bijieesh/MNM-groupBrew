@@ -54,7 +54,7 @@ private extension SearchViewController {
 	}
 	
 	func setupNavigationController() {
-		title = "Search"
+		navigationItem.title = "Search"
 		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 		navigationController?.navigationBar.isTranslucent = false

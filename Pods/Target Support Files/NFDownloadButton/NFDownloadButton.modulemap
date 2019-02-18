@@ -1,6 +1,0 @@
-framework module NFDownloadButton {
-  umbrella header "NFDownloadButton-umbrella.h"
-
-  export *
-  module * { export * }
-}

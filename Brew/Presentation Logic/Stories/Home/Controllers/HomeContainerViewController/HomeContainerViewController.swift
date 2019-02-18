@@ -13,15 +13,15 @@ final class HomeContainerViewController: AppViewController {
 		case newRelease, shows, saved
 	}
 	
-	@IBOutlet private var newReleasesButton: UIButton!
-	@IBOutlet private var showsButton: UIButton!
-	@IBOutlet private var savedButotn: UIButton!
+	@IBOutlet private var homeButton: UIButton!
+	@IBOutlet private var podcastsButton: UIButton!
+	@IBOutlet private var downloadsButton: UIButton!
 	
 	@IBOutlet private var scrollView: UIScrollView!
 	@IBOutlet private var stackView: UIStackView!
 	
 	var topButtons: [UIButton] {
-		return [newReleasesButton, showsButton, savedButotn]
+		return [homeButton, podcastsButton, downloadsButton]
 	}
 	
 	var controllers: [UIViewController] = []
@@ -35,21 +35,21 @@ final class HomeContainerViewController: AppViewController {
 
 //MARK: - @IBAction
 private extension HomeContainerViewController {
-	@IBAction func newReleasePressed() {
+	@IBAction func homePressed() {
 		topButtons.forEach { $0.isSelected = false }
-		newReleasesButton.isSelected = true
+		homeButton.isSelected = true
 		scrollTo(container: .newRelease)
 	}
 	
-	@IBAction func showsPressed() {
+	@IBAction func podcastsPressed() {
 		topButtons.forEach { $0.isSelected = false }
-		showsButton.isSelected = true
+		podcastsButton.isSelected = true
 		scrollTo(container: .shows)
 	}
 	
-	@IBAction func savedPressed() {
+	@IBAction func downloadsPressed() {
 		topButtons.forEach { $0.isSelected = false }
-		savedButotn.isSelected = true
+		downloadsButton.isSelected = true
 		scrollTo(container: .saved)
 	}
 }

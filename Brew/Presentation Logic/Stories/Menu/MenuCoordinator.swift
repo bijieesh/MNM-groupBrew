@@ -30,9 +30,26 @@ class MenuCoordinator: Coordinator {
     }
 
 	private static func setupContainerController(for controllers: [(option: Option, controller: UIViewController)]) -> MenuContainerViewController {
-		controllers.first(where: { $0.option == .home })?.controller.tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "tab_bar_home"), selectedImage: UIImage(named: "tab_bar_home_selected"))
-		controllers.first(where: { $0.option == .search })?.controller.tabBarItem = UITabBarItem(title: "Search", image: UIImage(named: "tab_bar_search"), selectedImage: UIImage(named: "tab_bar_search_selected"))
-		controllers.first(where: { $0.option == .profile })?.controller.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "tab_bar_profile"), selectedImage: UIImage(named: "tab_bar_profile_selected"))
+		controllers
+			.first(where: { $0.option == .home })?
+			.controller
+			.tabBarItem = UITabBarItem(title: nil,
+									   image: #imageLiteral(resourceName: "home.pdf"),
+									   selectedImage: #imageLiteral(resourceName: "home_selected.pdf"))
+		
+		controllers
+			.first(where: { $0.option == .search })?
+			.controller
+			.tabBarItem = UITabBarItem(title: nil,
+									   image: #imageLiteral(resourceName: "search.pdf"),
+									   selectedImage: #imageLiteral(resourceName: "search_selected.pdf"))
+		
+		controllers
+			.first(where: { $0.option == .profile })?
+			.controller
+			.tabBarItem = UITabBarItem(title: nil,
+									   image: #imageLiteral(resourceName: "profile.pdf"),
+									   selectedImage: #imageLiteral(resourceName: "profile_selected.pdf"))
 		
 		let controllers = controllers.sorted(by: { $0.option.rawValue < $1.option.rawValue }).map({ $0.controller })
 		
