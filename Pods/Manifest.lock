@@ -1,7 +1,10 @@
 PODS:
-  - HGCircularSlider (2.0.0)
+  - HGCircularSlider (2.1.0)
+  - Koloda (4.6):
+    - pop (~> 1.0)
   - LDProgressView (1.2.1)
   - MGSwipeTableCell (1.6.8)
+  - pop (1.0.12)
   - Reusable (4.0.5):
     - Reusable/Storyboard (= 4.0.5)
     - Reusable/View (= 4.0.5)
@@ -18,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - HGCircularSlider
+  - Koloda
   - LDProgressView
   - MGSwipeTableCell
   - Reusable
@@ -29,8 +33,10 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - HGCircularSlider
+    - Koloda
     - LDProgressView
     - MGSwipeTableCell
+    - pop
     - Reusable
     - RMStore
     - SDWebImage
@@ -38,15 +44,17 @@ SPEC REPOS:
     - TPKeyboardAvoiding
 
 SPEC CHECKSUMS:
-  HGCircularSlider: 92e2ee098c814709f455b8f46cd9008147f6a869
+  HGCircularSlider: 5b39e1c6eaf39c9e14859e242060196468389f17
+  Koloda: bcf5acded25fc49020d1447ed8ddd87e14d01e7e
   LDProgressView: f6afc7c30d2a9edf33001515f3189338567a32d2
   MGSwipeTableCell: dc4eca3212ed38a563b27d6aa7b3c01ce656c1e2
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   Reusable: 188be1a54ac0691bc66e5bb24ec6eb91971b315b
   RMStore: 64ba13a9c040e3b7572765d169f77175cd3243e5
   SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   STRatingControl: 254ee5f6dd174e3fa9d8365a08326291fd0bd950
   TPKeyboardAvoiding: cb69d5ddbe90ce0170e4bc2db1e5e41d4a3ad9a4
 
-PODFILE CHECKSUM: cdf3ed240dc07af022ada1a35b159dcc1f7815cc
+PODFILE CHECKSUM: 1dc9412f8d1f2e7dc8246b402adcc0f2022fbbd6
 
 COCOAPODS: 1.5.3
