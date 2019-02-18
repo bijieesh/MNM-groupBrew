@@ -13,6 +13,8 @@ class HomeCoordinator: NavigationCoordinator {
 	typealias PodcastAction = (Podcast, Int) -> Void
 	typealias ActivityAction = (Episode, Int) -> Void
 	
+	typealias ActivityCompletion = ([Activity]) -> Void
+	
 	var onEpisode: EpisodeAction?
 	var onPodcast: PodcastAction?
 	var onActivity: ActivityAction?
@@ -30,6 +32,16 @@ class HomeCoordinator: NavigationCoordinator {
 private extension HomeCoordinator {
 	func createHomeController() -> HomeViewController {
 		let homeVC = HomeViewController()
+		
+		homeVC.onGetData = { [weak self] in
+			self?.loadUserEpisodes(completion: { activities in
+				homeVC.activities = activities
+			})
+		}
+		
+		homeVC.onActivity = { activity in
+			
+		}
 		
 		return homeVC
 	}
@@ -62,7 +74,9 @@ private extension HomeCoordinator {
 		
 		savedVC.onNeedUpdate = { [weak self, weak savedVC] in
 			self?.loadSavedEpisodes(for: savedVC)
-			self?.loadUserEpisodes(for: savedVC)
+			self?.loadUserEpisodes(completion: { activities in
+				savedVC?.bottomData = activities
+			})
 		}
 		
 		return savedVC
@@ -170,9 +184,9 @@ private extension HomeCoordinator {
 		navigationController?.pushViewController(coordinator.contentController, animated: true)
 	}
 	
-	func loadUserEpisodes(for controller: EpisodesViewController?) {
+	func loadUserEpisodes(completion: ActivityCompletion? = nil) {
 		GetUserActivitiesRequest().execute(onSuccess: { activities in
-			controller?.bottomData = activities
+			completion?(activities)
 		})
 	}
 }

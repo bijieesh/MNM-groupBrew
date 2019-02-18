@@ -124,10 +124,10 @@
 		5A36C0F3221459B70091CC6A /* PodcastSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A36C0F2221459B70091CC6A /* PodcastSearchRequest.swift */; };
 		5A3BC539221AC3E2006F9127 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BC537221AC3E2006F9127 /* HomeViewController.swift */; };
 		5A3BC53A221AC3E2006F9127 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BC538221AC3E2006F9127 /* HomeViewController.xib */; };
-		5A3BC53E221AC7AB006F9127 /* PodcastCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BC53D221AC7AB006F9127 /* PodcastCollectionView.swift */; };
-		5A3BC540221AC7EB006F9127 /* PodcastCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BC53F221AC7EB006F9127 /* PodcastCollectionView.xib */; };
-		5A3BC54B221B04AA006F9127 /* PodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BC54A221B04AA006F9127 /* PodcastView.swift */; };
-		5A3BC54D221B04BB006F9127 /* PodcastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BC54C221B04BB006F9127 /* PodcastView.xib */; };
+		5A3BC53E221AC7AB006F9127 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BC53D221AC7AB006F9127 /* ActivityListView.swift */; };
+		5A3BC540221AC7EB006F9127 /* ActivityListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BC53F221AC7EB006F9127 /* ActivityListView.xib */; };
+		5A3BC54B221B04AA006F9127 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3BC54A221B04AA006F9127 /* ActivityView.swift */; };
+		5A3BC54D221B04BB006F9127 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A3BC54C221B04BB006F9127 /* ActivityView.xib */; };
 		5A68C3C4220C6E6C0064A991 /* HomeContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */; };
 		5A68C3C5220C6E6C0064A991 /* HomeContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */; };
 		5A68C3C7220C78240064A991 /* UIView+Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3C6220C78240064A991 /* UIView+Controller.swift */; };
@@ -283,10 +283,10 @@
 		5A36C0F2221459B70091CC6A /* PodcastSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastSearchRequest.swift; sourceTree = "<group>"; };
 		5A3BC537221AC3E2006F9127 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5A3BC538221AC3E2006F9127 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
-		5A3BC53D221AC7AB006F9127 /* PodcastCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastCollectionView.swift; sourceTree = "<group>"; };
-		5A3BC53F221AC7EB006F9127 /* PodcastCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastCollectionView.xib; sourceTree = "<group>"; };
-		5A3BC54A221B04AA006F9127 /* PodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastView.swift; sourceTree = "<group>"; };
-		5A3BC54C221B04BB006F9127 /* PodcastView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PodcastView.xib; sourceTree = "<group>"; };
+		5A3BC53D221AC7AB006F9127 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		5A3BC53F221AC7EB006F9127 /* ActivityListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityListView.xib; sourceTree = "<group>"; };
+		5A3BC54A221B04AA006F9127 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		5A3BC54C221B04BB006F9127 /* ActivityView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityView.xib; sourceTree = "<group>"; };
 		5A68C3C2220C6E6C0064A991 /* HomeContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContainerViewController.swift; sourceTree = "<group>"; };
 		5A68C3C3220C6E6C0064A991 /* HomeContainerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeContainerViewController.xib; sourceTree = "<group>"; };
 		5A68C3C6220C78240064A991 /* UIView+Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Controller.swift"; sourceTree = "<group>"; };
@@ -950,28 +950,28 @@
 		5A3BC53B221AC647006F9127 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5A3BC549221B0494006F9127 /* PodcastView */,
-				5A3BC53C221AC797006F9127 /* PodcastCollectionView */,
+				5A3BC549221B0494006F9127 /* ActivityView */,
+				5A3BC53C221AC797006F9127 /* ActivityListView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		5A3BC53C221AC797006F9127 /* PodcastCollectionView */ = {
+		5A3BC53C221AC797006F9127 /* ActivityListView */ = {
 			isa = PBXGroup;
 			children = (
-				5A3BC53D221AC7AB006F9127 /* PodcastCollectionView.swift */,
-				5A3BC53F221AC7EB006F9127 /* PodcastCollectionView.xib */,
+				5A3BC53D221AC7AB006F9127 /* ActivityListView.swift */,
+				5A3BC53F221AC7EB006F9127 /* ActivityListView.xib */,
 			);
-			path = PodcastCollectionView;
+			path = ActivityListView;
 			sourceTree = "<group>";
 		};
-		5A3BC549221B0494006F9127 /* PodcastView */ = {
+		5A3BC549221B0494006F9127 /* ActivityView */ = {
 			isa = PBXGroup;
 			children = (
-				5A3BC54A221B04AA006F9127 /* PodcastView.swift */,
-				5A3BC54C221B04BB006F9127 /* PodcastView.xib */,
+				5A3BC54A221B04AA006F9127 /* ActivityView.swift */,
+				5A3BC54C221B04BB006F9127 /* ActivityView.xib */,
 			);
-			path = PodcastView;
+			path = ActivityView;
 			sourceTree = "<group>";
 		};
 		5A68C3C0220C6E3F0064A991 /* Controllers */ = {
@@ -1241,13 +1241,13 @@
 				3D05F00221F5C8DE00174A91 /* SF-Pro-Display-Bold.otf in Resources */,
 				3D05F00B21F5C8DE00174A91 /* SF-Pro-Display-LightItalic.otf in Resources */,
 				3DB447D321F7543F00F93876 /* PodcastsListItemView.xib in Resources */,
-				5A3BC540221AC7EB006F9127 /* PodcastCollectionView.xib in Resources */,
+				5A3BC540221AC7EB006F9127 /* ActivityListView.xib in Resources */,
 				3D2002A221FBBA4100E38B99 /* PodcastEpisodeCell.xib in Resources */,
 				3D05F00E21F5C8DE00174A91 /* SF-Pro-Display-ThinItalic.otf in Resources */,
 				5A68C3D8220C83E20064A991 /* ShowsViewController.xib in Resources */,
 				3D05F00121F5C8DE00174A91 /* SF-Pro-Display-Regular.otf in Resources */,
 				7865293D21FC646700A826F7 /* SettingsViewController.xib in Resources */,
-				5A3BC54D221B04BB006F9127 /* PodcastView.xib in Resources */,
+				5A3BC54D221B04BB006F9127 /* ActivityView.xib in Resources */,
 				3D05F00321F5C8DE00174A91 /* SF-Pro-Display-Medium.otf in Resources */,
 				3D05EFE621F5C54800174A91 /* SignInViewController.xib in Resources */,
 				3D798B5422132CC000B3DF26 /* CommentCell.xib in Resources */,
@@ -1392,14 +1392,14 @@
 				3DCBBA8021F90063009BCD31 /* PlayerViewController.swift in Sources */,
 				3D05F01721F5E45300174A91 /* AuthenticationCoordinator.swift in Sources */,
 				3D20029621FB7E2700E38B99 /* Category.swift in Sources */,
-				5A3BC53E221AC7AB006F9127 /* PodcastCollectionView.swift in Sources */,
+				5A3BC53E221AC7AB006F9127 /* ActivityListView.swift in Sources */,
 				3D798B3A22132CA100B3DF26 /* ClapEpisodeRequest.swift in Sources */,
 				7865294021FC653000A826F7 /* ImagePickerCoordinator.swift in Sources */,
 				3DCBBA8521FA0703009BCD31 /* MenuCoordinator.swift in Sources */,
 				3D798B0D2211C57500B3DF26 /* StatusResponse.swift in Sources */,
 				5A36C0F3221459B70091CC6A /* PodcastSearchRequest.swift in Sources */,
 				5A36C0E222141FB40091CC6A /* SaveLikedPodcastsRequest.swift in Sources */,
-				5A3BC54B221B04AA006F9127 /* PodcastView.swift in Sources */,
+				5A3BC54B221B04AA006F9127 /* ActivityView.swift in Sources */,
 				3DB447C121F60F9D00F93876 /* AppFlowCoordinator.swift in Sources */,
 				3D798B4C22132CA100B3DF26 /* TokenRefreshRequest.swift in Sources */,
 				3D20028921FB530600E38B99 /* PodcastsListHighlitedItemView.swift in Sources */,

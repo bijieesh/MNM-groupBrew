@@ -1,5 +1,5 @@
 //
-//  PodcastView.swift
+//  ActivityView.swift
 //  Brew
 //
 //  Created by Andriy Vahniy on 2/18/19.
@@ -10,18 +10,23 @@ import UIKit
 import Reusable
 import HGCircularSlider
 
-final class PodcastView: UIView, NibOwnerLoadable {
+final class ActivityView: UIView, NibOwnerLoadable {
+	typealias Action = () -> Void
+	
 	@IBOutlet private var progressView: CircularSlider!
 	@IBOutlet private var backgroundView: UIView!
 	@IBOutlet private var imageView: UIImageView!
 	@IBOutlet private var titleLable: UILabel!
 	
-	init(title: String, image: URL?) {
+	var onActivity: Action?
+	
+	init(title: String, image: URL?, progress: CGFloat) {
 		super.init(frame: .zero)
 		
 		loadNibContent()
 		self.titleLable.text = title
 		self.imageView.sd_setImage(with: image)
+		self.progressView.endPointValue = progress
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -36,5 +41,11 @@ final class PodcastView: UIView, NibOwnerLoadable {
 		layoutIfNeeded()
 		backgroundView.layer.cornerRadius = backgroundView.frame.width / 2
 		imageView.layer.cornerRadius = imageView.frame.width / 2
+	}
+}
+
+private extension ActivityView {
+	@IBAction func onActivityPressed() {
+		onActivity?()
 	}
 }

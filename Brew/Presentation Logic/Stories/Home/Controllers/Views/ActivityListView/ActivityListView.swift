@@ -1,5 +1,5 @@
 //
-//  PodcastCollectionView.swift
+//  ActivityListView.swift
 //  Brew
 //
 //  Created by Vasyl Khmil on 2/18/19.
@@ -9,11 +9,14 @@
 import UIKit
 import Reusable
 
-final class PodcastCollectionView: UIView, NibOwnerLoadable {
+final class ActivityListView: UIView, NibOwnerLoadable {
+	typealias ActivityAction = (Activity) -> Void
+	
 	@IBOutlet private var stackView: UIStackView!
 	@IBOutlet private var stackViewHeightConstraint: NSLayoutConstraint!
 	
-	var data: [Int] = [1,2,3,4, 5, 6, 7, 8, 9, 10] {
+	var onActivity: ActivityAction?
+	var data: [Activity] = [] {
 		didSet { fillStackView() }
 	}
 	
@@ -38,17 +41,21 @@ final class PodcastCollectionView: UIView, NibOwnerLoadable {
 }
 
 //MARK: - View Helers
-private extension PodcastCollectionView {
+private extension ActivityListView {
 	func fillStackView() {
 		stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 		
 		data.forEach {
-			_ = $0
-			let view = PodcastView(title: "How to talk to investors on…",
-								   image: URL(string: "https://upload.wikimedia.org/wikipedia/en/b/b6/StartUp_Podcast_Art.png"))
-			stackView.addArrangedSubview(view)
-			
+			let activity = $0
 			let proportionWidth: CGFloat = 0.75
+			let progress = CGFloat(activity.duration) / CGFloat(activity.episode.duration)
+			let view = ActivityView(title: activity.episode.title, image: activity.episode.podcast?.albumArt?.url, progress: progress)
+			
+			view.onActivity = { [weak self] in
+				self?.onActivity?(activity)
+			}
+			
+			stackView.addArrangedSubview(view)
 			view.widthAnchor.constraint(equalToConstant: stackView.frame.height * proportionWidth).isActive = true
 		}
 	}
