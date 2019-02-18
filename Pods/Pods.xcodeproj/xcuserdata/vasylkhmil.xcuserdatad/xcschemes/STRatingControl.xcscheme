@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "48B1188785AECDA6A56BC6124B472991"
-               BlueprintName = "AlignedCollectionViewFlowLayout"
+               BlueprintIdentifier = "9A907E963FD14B20509E6FF3B489981B"
+               BlueprintName = "STRatingControl"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "AlignedCollectionViewFlowLayout.framework">
+               BuildableName = "STRatingControl.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
