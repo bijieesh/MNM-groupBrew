@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double AlignedCollectionViewFlowLayoutVersionNumber;
-FOUNDATION_EXPORT const unsigned char AlignedCollectionViewFlowLayoutVersionString[];
+FOUNDATION_EXPORT double HGCircularSliderVersionNumber;
+FOUNDATION_EXPORT const unsigned char HGCircularSliderVersionString[];
 

@@ -45,7 +45,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="newReleasePressed" destination="-1" eventType="touchUpInside" id="TyC-un-8Hr"/>
+                                                <action selector="homePressed" destination="-1" eventType="touchUpInside" id="TyC-un-8Hr"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMA-B6-OcD">
@@ -59,7 +59,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="showsPressed" destination="-1" eventType="touchUpInside" id="kDD-0J-xac"/>
+                                                <action selector="podcastsPressed" destination="-1" eventType="touchUpInside" id="kDD-0J-xac"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oAj-Ac-698">
@@ -73,7 +73,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="savedPressed" destination="-1" eventType="touchUpInside" id="KgK-Af-71P"/>
+                                                <action selector="downloadsPressed" destination="-1" eventType="touchUpInside" id="KgK-Af-71P"/>
                                             </connections>
                                         </button>
                                     </subviews>

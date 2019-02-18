@@ -9,6 +9,12 @@
 import UIKit
 
 extension UIView {
+	@IBInspectable
+	var radiusInPercent: CGFloat {
+		get {return (layer.cornerRadius / self.bounds.size.height) * 100 }
+		set { layer.cornerRadius = self.bounds.size.width * (newValue / 100) }
+	}
+	
     @IBInspectable
     var cornerRadius: CGFloat {
         get { return layer.cornerRadius }

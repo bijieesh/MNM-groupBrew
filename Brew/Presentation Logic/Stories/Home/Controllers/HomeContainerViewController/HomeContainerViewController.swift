@@ -35,19 +35,19 @@ final class HomeContainerViewController: AppViewController {
 
 //MARK: - @IBAction
 private extension HomeContainerViewController {
-	@IBAction func newReleasePressed() {
+	@IBAction func homePressed() {
 		topButtons.forEach { $0.isSelected = false }
 		homeButton.isSelected = true
 		scrollTo(container: .newRelease)
 	}
 	
-	@IBAction func showsPressed() {
+	@IBAction func podcastsPressed() {
 		topButtons.forEach { $0.isSelected = false }
 		podcastsButton.isSelected = true
 		scrollTo(container: .shows)
 	}
 	
-	@IBAction func savedPressed() {
+	@IBAction func downloadsPressed() {
 		topButtons.forEach { $0.isSelected = false }
 		downloadsButton.isSelected = true
 		scrollTo(container: .saved)

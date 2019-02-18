@@ -20,7 +20,7 @@ class HomeCoordinator: NavigationCoordinator {
     override func start() {
         super.start()
 		
-		setupHomeContainer()
+		createHomeContainer()
 		navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 		navigationController?.navigationBar.isTranslucent = false
     }
@@ -28,28 +28,10 @@ class HomeCoordinator: NavigationCoordinator {
 
 //MARK: - Controller Presentation
 private extension HomeCoordinator {
-	func setupHomeContainer() {
-		createHomeController()
-	}
-	
-	func createNewReleaseController() -> EpisodesViewController {
-		let newReleaseVC = EpisodesViewController()
-		newReleaseVC.controllerType = .new
+	func createHomeController() -> HomeViewController {
+		let homeVC = HomeViewController()
 		
-		newReleaseVC.onPodcast = { [weak self] episode, actionType in
-			self?.handleActionOn(episode, action: actionType)
-		}
-		
-		newReleaseVC.onActivity = { [weak self] in
-			self?.onActivity?($0, $1)
-		}
-		
-		newReleaseVC.onNeedUpdate = { [weak self, weak newReleaseVC] in
-			self?.loadNewEpisodes(for: newReleaseVC)
-			self?.loadUserEpisodes(for: newReleaseVC)
-		}
-		
-		return newReleaseVC
+		return homeVC
 	}
 	
 	func createShowsController() -> ShowsViewController {
@@ -86,14 +68,14 @@ private extension HomeCoordinator {
 		return savedVC
 	}
 	
-	func createHomeController() {
-		let newRelease = createNewReleaseController()
+	func createHomeContainer() {
+		let home = createHomeController()
 		let shows = createShowsController()
 		let saved = createSavedController()
 		
 		let homeContainer = HomeContainerViewController()
 		
-		homeContainer.controllers = [newRelease, shows, saved]
+		homeContainer.controllers = [home, shows, saved]
 		
 		navigationController?.pushViewController(homeContainer, animated: true)
 	}
