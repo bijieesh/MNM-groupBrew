@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="BrewGroup" customModuleProvider="target">
+                    <items>
+                        <label width="182" height="23" alignment="left" text="Lucid Truth" id="nQv-3y-r4h">
+                            <fontDescription key="font" type="system" pointSize="18"/>
+                        </label>
+                        <label width="182" height="26" alignment="left" text="Blackmill" textAlignment="left" id="2Do-6S-DTi">
+                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="system" weight="thin" pointSize="16"/>
+                        </label>
+                        <group width="182" height="67" alignment="center" spacing="17" id="l5Y-JK-qNA">
+                            <items>
+                                <button width="20" height="20" alignment="center" verticalAlignment="center" backgroundImage="Rewind(1)" id="6BU-hk-ciF">
+                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="backseek30second" destination="AgC-eL-Hgc" id="71j-6u-jui"/>
+                                    </connections>
+                                </button>
+                                <button width="40" height="40" alignment="center" verticalAlignment="center" backgroundImage="playIcon1" id="sQa-jV-Amg">
+                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="playaction" destination="AgC-eL-Hgc" id="yx0-s4-5YJ"/>
+                                    </connections>
+                                </button>
+                                <button width="20" height="20" alignment="center" verticalAlignment="center" backgroundImage="Fastforward(1)" id="w0u-0y-g91">
+                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <connections>
+                                        <action selector="forwardSeek30Second" destination="AgC-eL-Hgc" id="H6O-3J-8Pi"/>
+                                    </connections>
+                                </button>
+                            </items>
+                            <variation key="device=watch42mm" height="52" width="136"/>
+                        </group>
+                        <group width="1" height="64" alignment="left" id="49V-pJ-mjZ">
+                            <items>
+                                <volumeControlView width="51" height="61" alignment="center" verticalAlignment="center" controlsLocalVolume="NO" id="GhG-1S-FPi">
+                                    <variation key="device=watch40mm" height="56" width="57"/>
+                                    <variation key="device=watch42mm" height="55" width="53"/>
+                                </volumeControlView>
+                            </items>
+                            <variation key="device=watch40mm" height="57"/>
+                            <variation key="device=watch42mm" height="56"/>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="PayAndPause" destination="sQa-jV-Amg" id="IfM-4m-Ctz"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="BrewGroup" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="BrewGroup" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+</document>

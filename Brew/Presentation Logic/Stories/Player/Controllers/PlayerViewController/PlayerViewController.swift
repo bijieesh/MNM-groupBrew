@@ -10,8 +10,20 @@ import UIKit
 import LDProgressView
 import AVFoundation
 import SDWebImage
-
-class PlayerViewController: AppViewController {
+import  WatchConnectivity
+class PlayerViewController: AppViewController,WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("test")
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+         print("test")
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+         print("test")
+    }
+    
     struct Data {
         let imageUrl: URL?
         let title: String
@@ -57,7 +69,7 @@ class PlayerViewController: AppViewController {
     @IBOutlet weak private var unmuteButton: UIButton?
     @IBOutlet weak private var playButton: UIButton?
     @IBOutlet weak private var rateLabel: UILabel?
-    
+    var wcsession : WCSession!
     @IBOutlet weak private var progressView: LDProgressView? {
         didSet {
             progressView?.progress = 0.0
@@ -86,8 +98,34 @@ class PlayerViewController: AppViewController {
         super.viewDidLoad()
 
         updateFlow()
-    }
+        wcsession = WCSession.default
+        wcsession.delegate = self
+        wcsession.activate()
 
+    }
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        
+        var messageStatus = message["action"] as! String
+        
+        if messageStatus == "play"{
+            data.audioPlayer.play()
+        }
+        if messageStatus == "pause"{
+            data.audioPlayer.pause()
+        }
+        
+        if messageStatus == "seekbackward30second"{
+            data.audioPlayer.currentPosition -= 30
+            updateTime()
+        }
+        if messageStatus == "seekforwordward30second"{
+            data.audioPlayer.currentPosition += 30
+            updateTime()
+        }
+        
+        
+        print(message)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupObservaton()
@@ -162,10 +200,23 @@ class PlayerViewController: AppViewController {
 
     private func play() {
         data.audioPlayer.play()
+        let stringsend = ["playerStatus" : "playaction"]
+        if self.wcsession.isPaired == true && self.wcsession.isWatchAppInstalled == true{
+            self.wcsession.sendMessage(stringsend, replyHandler: nil, errorHandler:{ error in
+                print(error.localizedDescription)
+            })
+        }
     }
 
     private func pause() {
         data.audioPlayer.pause()
+        let stringsend = ["playerStatus" : "pauseaction"]
+        if self.wcsession.isPaired == true && self.wcsession.isWatchAppInstalled == true{
+            self.wcsession.sendMessage(stringsend, replyHandler: nil, errorHandler:{ error in
+                print(error.localizedDescription)
+            })
+        }
+        
     }
 
     private func updateRateLabel() {
