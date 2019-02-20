@@ -11,6 +11,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     @IBOutlet weak var PayAndPause: WKInterfaceButton!
     var wcsession = WCSession.default
     
+    @IBOutlet weak var audiostatus: WKInterfaceVolumeControl!
+    @IBOutlet weak var songname: WKInterfaceLabel!
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("session complete")
     }
@@ -36,6 +38,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
         wcsession.activate()
         imagestatusvalue =  "pause"
         PayAndPause.setBackgroundImageNamed("pause")
+        audiostatus.setTintColor(UIColor.red)
+        
     }
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
@@ -45,16 +49,22 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
-        var messageStatus = message["playerStatus"] as! String
-        
+        let messageStatus = message["playerStatus"] as! String
+        songname.setText(message["SongName"] as? String)
         if messageStatus == "pauseaction"{
             PayAndPause.setBackgroundImageNamed("playIcon1")
             imagestatusvalue = "playaction"
+            return
         }
         if messageStatus == "playaction"{
             PayAndPause.setBackgroundImageNamed("pause")
             imagestatusvalue = "pause"
+            return
+            
         }
+        
+       // var messageStatusSplit = messageStatus.split(separator: ":") ?? []
+       // songname.setText(String(messageStatusSplit[1]) ?? "")
         
         print(message)
     }
@@ -90,12 +100,7 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             
         }
         
-        
-        
-        var stringtest = PayAndPause.description
-        
-        print(stringtest)
-        // PayAndPause.setBackgroundImageNamed("pause")
+ 
     }
     
     
@@ -113,5 +118,8 @@ class InterfaceController: WKInterfaceController,WCSessionDelegate {
             print(error.localizedDescription)
         })
     }
+    
+    
+    
  }
 

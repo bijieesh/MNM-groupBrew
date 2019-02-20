@@ -105,7 +105,7 @@ class PlayerViewController: AppViewController,WCSessionDelegate {
     }
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         
-        var messageStatus = message["action"] as! String
+        let messageStatus = message["action"] as! String
         
         if messageStatus == "play"{
             data.audioPlayer.play()
@@ -149,10 +149,11 @@ class PlayerViewController: AppViewController,WCSessionDelegate {
         songNameLabel?.text = data.title
         artistNameLabel?.text = data.artist
 		descriptionLabel?.text = data.description
-
+      
         if view.window != nil {
             setupObservaton()
         }
+      
     }
 
     private func setupObservaton() {
@@ -200,9 +201,9 @@ class PlayerViewController: AppViewController,WCSessionDelegate {
 
     private func play() {
         data.audioPlayer.play()
-        let stringsend = ["playerStatus" : "playaction"]
+        let stringsend = ["playerStatus" : "playaction","SongName" : songNameLabel?.text]
         if self.wcsession.isPaired == true && self.wcsession.isWatchAppInstalled == true{
-            self.wcsession.sendMessage(stringsend, replyHandler: nil, errorHandler:{ error in
+            self.wcsession.sendMessage(stringsend as [String : Any], replyHandler: nil, errorHandler:{ error in
                 print(error.localizedDescription)
             })
         }
@@ -210,9 +211,9 @@ class PlayerViewController: AppViewController,WCSessionDelegate {
 
     private func pause() {
         data.audioPlayer.pause()
-        let stringsend = ["playerStatus" : "pauseaction"]
+        let stringsend = ["playerStatus" : "pauseaction" , "SongName" : songNameLabel?.text]
         if self.wcsession.isPaired == true && self.wcsession.isWatchAppInstalled == true{
-            self.wcsession.sendMessage(stringsend, replyHandler: nil, errorHandler:{ error in
+            self.wcsession.sendMessage(stringsend as [String : Any], replyHandler: nil, errorHandler:{ error in
                 print(error.localizedDescription)
             })
         }
